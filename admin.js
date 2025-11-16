@@ -1,324 +1,273 @@
-import {
-    $, $all, createEl, fileToBase64,
-    parseCSV, generateCSV, downloadFile
-} from "./utils.js";
+// admin.js
+import { db, DB_KEYS } from './db.js';
 
-import {
-    validateAdmin,
-    getSubjects, addSubject, updateSubject, deleteSubject,
-    getTopics, addTopic, updateTopic, deleteTopic,
-    getQuestions, addQuestion, updateQuestion, deleteQuestion,
-    getTestHistory, importQuestionsBulk,
-    exportQuestionsCSV, exportJSON
-} from "./db.js";
+// --- DOM Elements ---
+const loginSection = document.getElementById('admin-login');
+const dashboardSection = document.getElementById('admin-dashboard');
+const loginForm = document.getElementById('login-form');
+const logoutBtn = document.getElementById('logout-btn');
+const dbExportBtn = document.getElementById('db-export-btn');
+const subjectListDiv = document.getElementById('subject-list');
+const topicListDiv = document.getElementById('topic-list');
+const questionListDiv = document.getElementById('question-list');
+const historyListDiv = document.getElementById('history-list');
+const subjectSelects = [document.getElementById('topic-subject-select')];
+const topicSelect = document.getElementById('question-topic-select');
 
-/* ------------------- LOGIN ------------------- */
-$("#adminLoginBtn").addEventListener("click", async () => {
-    const u = $("#adminUsername").value.trim();
-    const p = $("#adminPassword").value.trim();
+// --- State and Constants ---
+const ADMIN_CREDENTIALS = {
+    username: 'admin',
+    password: 'admin123'
+};
+const IS_LOGGED_IN_KEY = 'admin_logged_in';
 
-    const admin = await validateAdmin(u, p);
-
-    if (!admin) {
-        $("#adminLoginError").textContent = "Invalid credentials";
-        return;
+// --- Utility: Login/Logout ---
+function checkLogin() {
+    const isLoggedIn = localStorage.getItem(IS_LOGGED_IN_KEY) === 'true';
+    if (isLoggedIn) {
+        showDashboard();
+    } else {
+        showLogin();
     }
-
-    $("#adminLoginPage").classList.add("hidden");
-    $("#adminDashboard").classList.remove("hidden");
-});
-
-$("#adminLogoutBtn").addEventListener("click", () => {
-    location.reload();
-});
-
-/* ------------------- NAVIGATION ------------------- */
-$all(".sidebar-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const sec = btn.getAttribute("data-admin-section");
-        if (!sec) return;
-
-        $all(".admin-section").forEach(s => s.classList.add("hidden"));
-        $("#admin" + sec.charAt(0).toUpperCase() + sec.slice(1)).classList.remove("hidden");
-
-        if (sec === "subjects") renderSubjects();
-        if (sec === "topics") loadTopicsPage();
-        if (sec === "questions") loadQuestionsPage();
-        if (sec === "history") renderHistory();
-    });
-});
-
-/* ------------------- SUBJECTS ------------------- */
-function renderSubjects() {
-    const list = getSubjects();
-    const box = $("#subjectsTableContainer");
-
-    if (!list.length) {
-        box.innerHTML = "<p>No subjects added.</p>";
-        return;
-    }
-
-    let html = `<table><tr>
-        <th>Name</th><th>Description</th><th>Actions</th>
-    </tr>`;
-
-    list.forEach(s => {
-        html += `<tr>
-            <td>${s.name}</td>
-            <td>${s.description}</td>
-            <td>
-                <button class="btn-secondary editSub" data-id="${s.id}">Edit</button>
-                <button class="btn-primary deleteSub" data-id="${s.id}">Delete</button>
-            </td>
-        </tr>`;
-    });
-
-    html += "</table>";
-    box.innerHTML = html;
-
-    $all(".editSub").forEach(b => {
-        b.addEventListener("click", () => {
-            const id = b.dataset.id;
-            const s = getSubjects().find(x => x.id === id);
-            const n = prompt("New name:", s.name);
-            const d = prompt("New desc:", s.description);
-            if (n) updateSubject(id, { name: n, description: d });
-            renderSubjects();
-        });
-    });
-
-    $all(".deleteSub").forEach(b => {
-        b.addEventListener("click", () => {
-            if (!confirm("Delete subject?")) return;
-            deleteSubject(b.dataset.id);
-            renderSubjects();
-        });
-    });
 }
 
-$("#addSubjectBtn").addEventListener("click", () => {
-    const n = $("#subjectName").value.trim();
-    const d = $("#subjectDesc").value.trim();
-    if (!n) return;
-    addSubject(n, d);
-    $("#subjectName").value = "";
-    $("#subjectDesc").value = "";
-    renderSubjects();
-});
+function showLogin() {
+    loginSection.style.display = 'block';
+    dashboardSection.style.display = 'none';
+}
 
-/* ------------------- TOPICS ------------------- */
-function loadTopicsPage() {
-    const sel = $("#topicSubjectSelect");
-    sel.innerHTML = `<option value="">Select Subject</option>`;
-    getSubjects().forEach(s => {
-        sel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+function showDashboard() {
+    loginSection.style.display = 'none';
+    dashboardSection.style.display = 'block';
+    renderAllCRUDLists();
+}
+
+function handleLogin(e) {
+    e.preventDefault();
+    const username = document.getElementById('admin-username').value;
+    const password = document.getElementById('admin-password').value;
+    const msgEl = document.getElementById('login-message');
+
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+        localStorage.setItem(IS_LOGGED_IN_KEY, 'true');
+        msgEl.textContent = 'Login successful!';
+        showDashboard();
+    } else {
+        msgEl.textContent = 'Invalid credentials.';
+    }
+}
+
+function handleLogout() {
+    localStorage.removeItem(IS_LOGGED_IN_KEY);
+    showLogin();
+}
+
+// --- CRUD Rendering Functions ---
+
+function renderSubjects() {
+    const subjects = db.getSubjects();
+    let html = '<ul>';
+    let selectOptions = '<option value="">-- Select Subject --</option>';
+
+    subjects.forEach(sub => {
+        html += `
+            <li>
+                <span>${sub.name} (ID: ${sub.id})</span>
+                <div>
+                    <button class="btn btn-secondary btn-sm" onclick="editSubject('${sub.id}', '${sub.name}')">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteRecord('${DB_KEYS.SUBJECTS}', '${sub.id}')">Delete</button>
+                </div>
+            </li>
+        `;
+        selectOptions += `<option value="${sub.id}">${sub.name}</option>`;
     });
-    renderTopics();
+    html += '</ul>';
+    subjectListDiv.innerHTML = html;
+
+    // Update all subject select fields
+    subjectSelects.forEach(select => select.innerHTML = selectOptions);
+    
+    renderTopics(); // Re-render topics as they depend on subjects
 }
 
 function renderTopics() {
-    const list = getTopics();
-    const box = $("#topicsTableContainer");
+    const topics = db.getTopics();
+    const subjects = db.getSubjects().reduce((map, sub) => (map[sub.id] = sub.name, map), {});
+    let html = '<ul>';
+    let topicSelectOptions = '<option value="">-- Select Topic --</option>';
 
-    if (!list.length) {
-        box.innerHTML = "<p>No topics.</p>";
-        return;
-    }
-
-    let html = `<table><tr>
-        <th>Subject</th><th>Topic</th><th>Description</th><th>Actions</th>
-    </tr>`;
-
-    list.forEach(t => {
-        const s = getSubjects().find(x => x.id === t.subjectId);
-        html += `<tr>
-            <td>${s?.name ?? ""}</td>
-            <td>${t.name}</td>
-            <td>${t.description}</td>
-            <td>
-                <button class="btn-secondary editTopic" data-id="${t.id}">Edit</button>
-                <button class="btn-primary deleteTopic" data-id="${t.id}">Delete</button>
-            </td>
-        </tr>`;
+    topics.forEach(topic => {
+        const subjectName = subjects[topic.subjectId] || 'Unknown Subject';
+        html += `
+            <li>
+                <span>${topic.name} (${subjectName})</span>
+                <div>
+                    <button class="btn btn-secondary btn-sm" onclick="editTopic('${topic.id}', '${topic.subjectId}', '${topic.name}')">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteRecord('${DB_KEYS.TOPICS}', '${topic.id}')">Delete</button>
+                </div>
+            </li>
+        `;
+        topicSelectOptions += `<option value="${topic.id}">${topic.name}</option>`;
     });
-
-    html += "</table>";
-    box.innerHTML = html;
-
-    $all(".editTopic").forEach(b => {
-        b.addEventListener("click", () => {
-            const id = b.dataset.id;
-            const t = getTopics().find(x => x.id === id);
-            const n = prompt("New name:", t.name);
-            const d = prompt("New description:", t.description);
-            if (n) updateTopic(id, { name: n, description: d });
-            renderTopics();
-        });
-    });
-
-    $all(".deleteTopic").forEach(b => {
-        b.addEventListener("click", () => {
-            if (!confirm("Delete topic?")) return;
-            deleteTopic(b.dataset.id);
-            renderTopics();
-        });
-    });
-}
-
-$("#addTopicBtn").addEventListener("click", () => {
-    const sid = $("#topicSubjectSelect").value;
-    const n = $("#topicName").value.trim();
-    const d = $("#topicDesc").value.trim();
-    if (!sid || !n) return;
-
-    addTopic(sid, n, d);
-    $("#topicName").value = "";
-    $("#topicDesc").value = "";
-    renderTopics();
-});
-
-/* ------------------- QUESTIONS ------------------- */
-function loadQuestionsPage() {
-    const subjectSel = $("#questionSubjectSelect");
-    subjectSel.innerHTML = `<option value="">Select Subject</option>`;
-    getSubjects().forEach(s => {
-        subjectSel.innerHTML += `<option value="${s.id}">${s.name}</option>`;
-    });
-
-    subjectSel.addEventListener("change", () => {
-        const tidSel = $("#questionTopicSelect");
-        tidSel.innerHTML = `<option value="">Select Topic</option>`;
-        getTopics(subjectSel.value).forEach(t => {
-            tidSel.innerHTML += `<option value="${t.id}">${t.name}</option>`;
-        });
-    });
-
-    renderQuestions();
+    html += '</ul>';
+    topicListDiv.innerHTML = html;
+    
+    topicSelect.innerHTML = topicSelectOptions; // Update question topic select
+    renderQuestions(); // Re-render questions
 }
 
 function renderQuestions() {
-    const list = getQuestions();
-    const box = $("#questionsTableContainer");
+    const questions = db.getQuestions();
+    const topics = db.getTopics().reduce((map, top) => (map[top.id] = top.name, map), {});
+    let html = '<ul>';
 
-    if (!list.length) {
-        box.innerHTML = "<p>No questions.</p>";
+    questions.forEach(q => {
+        const topicName = topics[q.topicId] || 'Unknown Topic';
+        html += `
+            <li>
+                <span>${topicName}: ${q.question.substring(0, 50)}...</span>
+                <div>
+                    <button class="btn btn-secondary btn-sm" onclick="editQuestion('${q.id}')">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteRecord('${DB_KEYS.QUESTIONS}', '${q.id}')">Delete</button>
+                </div>
+            </li>
+        `;
+    });
+    html += '</ul>';
+    questionListDiv.innerHTML = html;
+    
+    renderHistoryList();
+}
+
+function renderHistoryList() {
+    const history = db.getHistory().reverse(); // Show most recent first
+    let html = '<ul>';
+
+    history.forEach(h => {
+        const date = new Date(h.timestamp).toLocaleString();
+        html += `
+            <li>
+                <span>${date} | ${h.title} (Score: ${h.correct}/${h.totalMarks}, Time: ${h.totalTime})</span>
+                <div>
+                    <button class="btn btn-danger btn-sm" onclick="deleteRecord('${DB_KEYS.HISTORY}', '${h.timestamp}')">Delete</button>
+                </div>
+            </li>
+        `;
+    });
+    html += '</ul>';
+    historyListDiv.innerHTML = html;
+}
+
+function renderAllCRUDLists() {
+    renderSubjects();
+}
+
+// --- CRUD Helper Functions (Attached to window for inline HTML calls) ---
+
+window.deleteRecord = (key, id) => {
+    if (confirm('Are you sure you want to delete this record?')) {
+        db.delete(key, id);
+        renderAllCRUDLists();
+    }
+};
+
+window.editSubject = (id, name) => {
+    document.getElementById('subject-id').value = id;
+    document.getElementById('subject-name').value = name;
+};
+
+window.editTopic = (id, subjectId, name) => {
+    document.getElementById('topic-id').value = id;
+    document.getElementById('topic-subject-select').value = subjectId;
+    document.getElementById('topic-name').value = name;
+};
+
+window.editQuestion = (id) => {
+    const question = db.getQuestions().find(q => q.id === id);
+    if (!question) return;
+
+    document.getElementById('question-id').value = id;
+    document.getElementById('question-topic-select').value = question.topicId;
+    document.getElementById('question-text-input').value = question.question;
+    document.getElementById('question-choices').value = question.choices.join(', ');
+    document.getElementById('question-answer').value = question.answer;
+    document.getElementById('question-explanation').value = question.explanation || '';
+    document.getElementById('question-img-url').value = question.imgUrl || '';
+};
+
+// --- CRUD Form Submission Handlers ---
+
+document.getElementById('subject-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const id = document.getElementById('subject-id').value;
+    const name = document.getElementById('subject-name').value;
+    
+    db.save(DB_KEYS.SUBJECTS, { id, name });
+    e.target.reset(); // Clear form
+    renderSubjects();
+});
+
+document.getElementById('topic-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const id = document.getElementById('topic-id').value;
+    const subjectId = document.getElementById('topic-subject-select').value;
+    const name = document.getElementById('topic-name').value;
+    
+    db.save(DB_KEYS.TOPICS, { id, subjectId, name });
+    e.target.reset();
+    renderTopics();
+});
+
+document.getElementById('question-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const id = document.getElementById('question-id').value;
+    const topicId = document.getElementById('question-topic-select').value;
+    const question = document.getElementById('question-text-input').value;
+    const choices = document.getElementById('question-choices').value.split(',').map(c => c.trim()).filter(c => c);
+    const answer = document.getElementById('question-answer').value.trim();
+    const explanation = document.getElementById('question-explanation').value.trim();
+    const imgUrl = document.getElementById('question-img-url').value.trim();
+    
+    if (!choices.includes(answer)) {
+        alert("The correct answer must match one of the choices!");
         return;
     }
 
-    let html = `<table><tr>
-        <th>Subject</th><th>Topic</th><th>Prompt</th><th>Correct</th><th>Actions</th>
-    </tr>`;
-
-    list.forEach(q => {
-        const s = getSubjects().find(x => x.id === q.subjectId);
-        const t = getTopics().find(x => x.id === q.topicId);
-
-        html += `<tr>
-            <td>${s?.name ?? ""}</td>
-            <td>${t?.name ?? ""}</td>
-            <td>${q.questionText.slice(0,50)}...</td>
-            <td>${q.correctChoice}</td>
-            <td>
-                <button class="btn-primary deleteQ" data-id="${q.id}">Delete</button>
-            </td>
-        </tr>`;
+    db.save(DB_KEYS.QUESTIONS, { 
+        id, topicId, question, choices, answer, explanation, imgUrl 
     });
-
-    html += "</table>";
-    box.innerHTML = html;
-
-    $all(".deleteQ").forEach(b => {
-        b.addEventListener("click", () => {
-            if (!confirm("Delete question?")) return;
-            deleteQuestion(b.dataset.id);
-            renderQuestions();
-        });
-    });
-}
-
-$("#questionImage").addEventListener("change", async function(){
-    const f=this.files[0];
-    if(!f) return;
-    $("#imagePreview").value = await fileToBase64(f);
-});
-
-$("#addQuestionBtn").addEventListener("click", () => {
-    const sid = $("#questionSubjectSelect").value;
-    const tid = $("#questionTopicSelect").value;
-    const txt = $("#questionText").value.trim();
-    const A = $("#choiceA").value.trim();
-    const B = $("#choiceB").value.trim();
-    const C = $("#choiceC").value.trim();
-    const D = $("#choiceD").value.trim();
-    const correct = $("#correctChoiceSelect").value;
-    const img = $("#imagePreview").value.trim();
-    const diff = $("#difficultySelect").value;
-
-    if (!sid || !tid || !txt || !correct) return;
-
-    addQuestion(sid, tid, txt, {A,B,C,D}, correct, img, diff);
-
-    $("#questionText").value = "";
-    $("#choiceA").value = "";
-    $("#choiceB").value = "";
-    $("#choiceC").value = "";
-    $("#choiceD").value = "";
-    $("#correctChoiceSelect").value = "";
-    $("#imagePreview").value = "";
-    $("#difficultySelect").value = "";
-
+    e.target.reset();
     renderQuestions();
 });
 
-/* ------------------- CSV ------------------- */
-$("#csvImportBtn").addEventListener("click", async () => {
-    const file = $("#csvImportInput").files[0];
-    if (!file) return alert("No file selected.");
+// --- DB Export Functionality ---
 
-    const text = await file.text();
-    const parsed = parseCSV(text);
-    importQuestionsBulk(parsed.rows);
+dbExportBtn.addEventListener('click', () => {
+    const dbData = db.getFullDB();
+    const dataStr = JSON.stringify(dbData, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
 
-    alert("CSV imported!");
-    renderQuestions();
+    const exportFileDefaultName = 'quiz_db_export.json';
+
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+
+    alert('Database successfully exported as quiz_db_export.json');
 });
 
-$("#csvExportBtn").addEventListener("click", () => {
-    const rows = exportQuestionsCSV();
-    const headers = ["subject","topic","prompt","choiceA","choiceB","choiceC","choiceD","correctIndex","image","difficulty"];
-    const csv = generateCSV(headers, rows);
-    downloadFile("questions.csv", csv);
+// --- Initialization ---
+document.addEventListener('DOMContentLoaded', () => {
+    loginForm.addEventListener('submit', handleLogin);
+    logoutBtn.addEventListener('click', handleLogout);
+    checkLogin();
 });
 
-$("#jsonExportBtn").addEventListener("click", () => {
-    const s = exportJSON();
-    downloadFile("quizmaster_db.json", s);
-});
-
-/* ------------------- HISTORY ------------------- */
-function renderHistory() {
-    const list = getTestHistory();
-    const box = $("#testHistoryContainer");
-
-    if (!list.length) {
-        box.innerHTML = "<p>No test history.</p>";
-        return;
+// Sync localStorage changes after any admin action
+// This ensures that rendering is always up-to-date.
+window.addEventListener('storage', (e) => {
+    if (e.key && Object.values(DB_KEYS).includes(e.key) && dashboardSection.style.display !== 'none') {
+        renderAllCRUDLists();
     }
-
-    let html = `<table><tr>
-        <th>Date</th><th>Subject</th><th>Score</th><th>Total</th><th>Time</th>
-    </tr>`;
-
-    list.forEach(h => {
-        html += `<tr>
-            <td>${new Date(h.createdAt).toLocaleString()}</td>
-            <td>${h.subjectName ?? ""}</td>
-            <td>${h.score}</td>
-            <td>${h.totalQuestions}</td>
-            <td>${h.timeTaken}s</td>
-        </tr>`;
-    });
-
-    html += "</table>";
-    box.innerHTML = html;
-}
+});

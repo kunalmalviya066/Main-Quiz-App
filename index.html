@@ -3,126 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz & Mock Test Platform</title>
+    <title>Quiz & Mock Test Portal</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Anti-cheat basic meta -->
-    <meta http-equiv="Cache-Control" content="no-store" />
 </head>
 <body>
 
-    <!-- ================= HEADER ================= -->
-    <header class="main-header">
-        <div class="logo">QuizMaster</div>
-        <nav class="nav-links">
-            <a href="#home" data-route="home">Home</a>
-            <a href="#subjects" data-route="subjects">Subjects</a>
-            <a href="#topicwise" data-route="topicwise">Topic-wise</a>
-            <a href="#dailyquiz" data-route="dailyquiz">Daily Quiz</a>
-            <a href="admin.html">Admin</a>
-            <a href="#help" data-route="help">Help/Contact</a>
-        </nav>
-        <div class="mobile-menu" id="mobileMenuToggle">☰</div>
-    </header>
-
-    <!-- Mobile Dropdown -->
-    <div class="mobile-nav" id="mobileNav">
-        <a href="#home" data-route="home">Home</a>
-        <a href="#subjects" data-route="subjects">Subjects</a>
-        <a href="#topicwise" data-route="topicwise">Topic-wise</a>
-        <a href="#dailyquiz" data-route="dailyquiz">Daily Quiz</a>
-        <a href="admin.html">Admin</a>
-        <a href="#help" data-route="help">Help/Contact</a>
+    <div class="anti-cheat-overlay" id="anti-cheat-overlay">
+        🚨 Anti-Cheat Violation 🚨<br>
+        Please return to the test immediately.
     </div>
 
-    <!-- ================= MAIN CONTENT ROUTER VIEW ================= -->
-    <main id="appView">
+    <div class="container">
+        <header class="header">
+            <h1>🧠 Modular Quiz & Mock Test System</h1>
+            <p>Select a subject and topic to begin your practice.</p>
+        </header>
 
-        <!-- ================= HOME PAGE SECTIONS ================= -->
-        <section id="home" class="page-section visible">
-
-            <!-- Hero -->
-            <div class="hero">
-                <h1>Welcome to QuizMaster</h1>
-                <p>Your complete platform for quizzes, mock tests, topicwise practice, and exam preparation.</p>
-                <button class="btn-primary" data-route="subjects">Start Learning</button>
+        <section id="selection-section">
+            <div class="card">
+                <h2>Test Builder</h2>
+                <div id="quiz-selection-panel">
+                    </div>
+                <div class="selection-controls" style="margin-top: 20px; text-align: center;">
+                    <button class="btn btn-primary" id="start-test-btn" disabled>Start Custom Test (0 Questions)</button>
+                    <button class="btn btn-secondary" id="daily-quiz-btn">Start Daily Quiz (Random 10)</button>
+                </div>
             </div>
+            
+            <div class="card" id="history-section" style="margin-top: 30px;">
+                <h2>Test History 📚</h2>
+                <ul id="history-list">
+                    </ul>
+            </div>
+        </section>
 
-            <!-- Features -->
-            <div class="features-section">
-                <h2>Why Choose This Platform?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>Structured Subjects</h3>
-                        <p>Explore subjects & topics designed for exam-oriented practice.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Smart Quiz Engine</h3>
-                        <p>Enjoy modern features like timers, navigation, marking, and anti-cheat.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Daily Quiz</h3>
-                        <p>Improve consistently with one fresh quiz every day.</p>
-                    </div>
+        <section id="quiz-section" style="display: none;">
+            <div class="quiz-header card">
+                <div>
+                    <h2 id="quiz-title"></h2>
+                    <p>Question <span id="current-q-index">1</span> of <span id="total-q-count">10</span></p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 1.2rem; font-weight: 700;">Total Time: <span id="total-timer">00:00</span></div>
+                    <div style="font-size: 0.9rem;">Q. Time: <span id="question-timer">00:00</span></div>
+                    <button class="btn btn-secondary full-screen-btn" id="fullscreen-btn">Toggle Fullscreen</button>
+                    <button class="btn btn-secondary" id="pause-resume-btn">Pause</button>
                 </div>
             </div>
 
-            <!-- Footer Intro -->
-            <div class="footer-intro">
-                <h2>Ready to Begin?</h2>
-                <p>Choose a subject and start practicing now.</p>
-                <button class="btn-secondary" data-route="subjects">Browse Subjects</button>
-            </div>
+            <div class="quiz-main">
+                <div class="question-panel card">
+                    <p class="question-text" id="question-text">Loading...</p>
+                    <img id="question-image" class="question-img" alt="Question Image" style="display: none;">
+                    
+                    <div class="choices" id="choices-container">
+                        </div>
+                    
+                    <div class="quiz-footer">
+                        <button class="btn btn-secondary" id="prev-btn" disabled>« Previous</button>
+                        <div>
+                            <button class="btn btn-warning" id="mark-review-btn">Mark for Review</button>
+                            <button class="btn btn-primary" id="next-btn">Next »</button>
+                            <button class="btn btn-success" id="submit-btn" style="display: none;">Submit Test</button>
+                        </div>
+                    </div>
+                </div>
 
-        </section>
-
-        <!-- ================= SUBJECTS PAGE ================= -->
-        <section id="subjects" class="page-section hidden">
-            <h2>Subjects</h2>
-            <div id="subjectList" class="list-container">Loading...</div>
-        </section>
-
-        <!-- ================= TOPICWISE PAGE ================= -->
-        <section id="topicwise" class="page-section hidden">
-            <h2>Select a Subject for Topic-wise Practice</h2>
-            <div id="topicSubjectList" class="list-container">Loading...</div>
-
-            <h3>Topics</h3>
-            <div id="topicList" class="list-container">Select a subject first.</div>
-        </section>
-
-        <!-- ================= DAILY QUIZ PAGE ================= -->
-        <section id="dailyquiz" class="page-section hidden">
-            <h2>Daily Quiz</h2>
-            <div id="dailyQuizContainer">
-                <p>One fresh quiz every day. Boost your performance.</p>
-                <button class="btn-primary" id="startDailyQuizBtn">Start Today’s Quiz</button>
-                <div id="dailyQuizStatus"></div>
+                <div class="navigator-panel">
+                    <h3>Navigator</h3>
+                    <div class="nav-grid" id="navigator-grid">
+                        </div>
+                </div>
             </div>
         </section>
 
-        <!-- ================= HELP PAGE ================= -->
-        <section id="help" class="page-section hidden">
-            <h2>Help & Contact</h2>
-            <p>If you need help or have feedback, reach us here.</p>
-
-            <div class="contact-box">
-                <p><strong>Email:</strong> support@quizmaster.local</p>
-                <p><strong>Phone:</strong> +91-9876543210</p>
-                <p><strong>FAQ:</strong> Common issues & solutions will be available soon.</p>
+        <section id="results-section" style="display: none;">
+            <div class="card">
+                <h2>Test Completed! 🎉</h2>
+                <p>Your result for <strong id="results-title"></strong></p>
             </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card"><h4>Score</h4><p><span id="final-score">0</span> / <span id="total-marks">0</span></p></div>
+                <div class="stat-card"><h4>Accuracy</h4><p><span id="accuracy-rate">0%</span></p></div>
+                <div class="stat-card"><h4>Attempted</h4><p><span id="attempted-count">0</span> / <span id="total-q-count-result">0</span></p></div>
+                <div class="stat-card"><h4>Time Taken</h4><p><span id="time-taken-result">00:00</span></p></div>
+            </div>
+
+            <div class="card">
+                <h3>Question-by-Question Review</h3>
+                <div id="review-container">
+                    </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="window.location.reload()">Go Back to Selection</button>
         </section>
 
-    </main>
+    </div>
+    
+    <script>
+        // Simple Anti-Cheat: Block Context Menu, Copy, and Tab Switch (Focus Loss)
+        const antiCheatOverlay = document.getElementById('anti-cheat-overlay');
+        const quizSection = document.getElementById('quiz-section');
+        const blockEvent = (e) => {
+            if (quizSection.style.display !== 'none') {
+                 e.preventDefault();
+                 antiCheatOverlay.style.display = 'flex';
+                 setTimeout(() => antiCheatOverlay.style.display = 'none', 1000);
+            }
+        };
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="main-footer">
-        <p>© 2025 QuizMaster | Built for Smart Learning</p>
-    </footer>
+        document.addEventListener('contextmenu', blockEvent); // Right Click
+        document.addEventListener('copy', blockEvent); // Copy
+        document.addEventListener('cut', blockEvent); // Cut
 
-    <script src="router.js"></script>
+        window.addEventListener('blur', () => {
+            if (quizSection.style.display !== 'none') {
+                antiCheatOverlay.style.display = 'flex';
+            }
+        });
+        window.addEventListener('focus', () => {
+             antiCheatOverlay.style.display = 'none';
+        });
+
+    </script>
+    <script type="module" src="quiz.js"></script>
     <script type="module" src="script.js"></script>
-
-   
 </body>
 </html>
