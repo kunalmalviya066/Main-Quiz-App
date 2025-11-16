@@ -321,6 +321,140 @@ submitTestBtn.addEventListener('click', ()=>{
   resultsView.classList.remove('hidden');
 });
 
+/* ---------- SECOND HALF IMPLEMENTATION ---------- */
+
+/* Anti-cheat features */
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && ['c','v','x','u','s'].includes(e.key.toLowerCase())) {
+    e.preventDefault();
+  }
+  if (e.key === 'F12') e.preventDefault();
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    current.paused = true;
+    btnPause.textContent = 'Resume';
+  }
+});
+
+/* Submit test fully */
+submitTestBtn.addEventListener('click', finalizeTest);
+
+function finalizeTest(){
+  clearInterval(timerInterval);
+
+  const endAt = Date.now();
+  const duration = Math.floor((endAt - current.startAt)/1000);
+
+  const report = computeReport(duration);
+  DB.saveUserResult(report);
+
+  displayReport(report);
+}
+
+/* Compute score and stats */
+function computeReport(duration){
+  let correct = 0;
+  let attempted = 0;
+  const details = [];
+
+  current.questions.forEach((q, i)=>{
+    const chosen = current.answers[i];
+    const actual = q.answerIndex;
+    const isAtt = typeof chosen !== 'undefined';
+    const isCorrect = (chosen === q.choices.indexOf(q.choices[actual]));
+
+    if(isAtt) attempted++;
+    if(isCorrect) correct++;
+
+    details.push({
+      text: q.text,
+      choices: q.choices,
+      answerIndex: actual,
+      chosen: chosen,
+      image: q.image || ''
+    });
+  });
+
+  return {
+    id: uid('test'),
+    takenAt: new Date().toISOString(),
+    total: current.questions.length,
+    correct,
+    attempted,
+    duration,
+    accuracy: correct/current.questions.length,
+    details
+  };
+}
+
+/* Results View */
+function displayReport(r){
+  quizView.classList.add('hidden');
+  resultsView.classList.remove('hidden');
+
+  resultsView.innerHTML = `
+    <h2>Results</h2>
+    <div class="card">
+      <p><strong>Score:</strong> ${r.correct} / ${r.total}</p>
+      <p><strong>Accuracy:</strong> ${(r.accuracy*100).toFixed(1)}%</p>
+      <p><strong>Attempted:</strong> ${r.attempted}</p>
+      <p><strong>Unattempted:</strong> ${r.total - r.attempted}</p>
+      <p><strong>Time Taken:</strong> ${formatTimeSeconds(r.duration)}</p>
+    </div>
+
+    <h3>Review Questions</h3>
+    <div id="review-area"></div>
+  `;
+
+  const rev = $('#review-area');
+  r.details.forEach((d, i)=>{
+    const opts = d.choices.map((c, idx)=>{
+      const correct = idx === d.answerIndex;
+      const chosen = idx === d.chosen;
+      return `
+        <li class="${correct?'correct':''} ${chosen&&!correct?'wrong':''}">
+          ${escapeHtml(c)}
+          ${correct?' <strong>(Correct)</strong>':''}
+          ${chosen&&!correct?' <strong>(Your Choice)</strong>':''}
+        </li>
+      `;
+    }).join('');
+    rev.innerHTML += `
+      <div class="card" style="margin-top:12px">
+        <h4>Q${i+1}. ${escapeHtml(d.text)}</h4>
+        ${d.image?`<img src="${d.image}" style="max-width:100%;margin-top:10px">`:''}
+        <ul class="options">${opts}</ul>
+      </div>
+    `;
+  });
+}
+
+/* Home page test history preview */
+function renderHistoryPreview(){
+  const db = DB.getDB();
+  const hist = db.users || [];
+  const area = document.createElement('div');
+  area.className = 'card';
+  area.innerHTML = `<h3>Your Test History</h3>`;
+  if(hist.length === 0){
+    area.innerHTML += `<p class="muted">No tests taken yet.</p>`;
+  } else {
+    area.innerHTML += hist.slice().reverse().map(h=>{
+      return `<div class="card">
+        <strong>${new Date(h.takenAt).toLocaleString()}</strong>
+        <p>Score: ${h.correct}/${h.total} (${(h.accuracy*100).toFixed(1)}%)</p>
+        <p>Time: ${formatTimeSeconds(h.duration)}</p>
+      </div>`;
+    }).join('');
+  }
+  homeView.appendChild(area);
+}
+renderHistoryPreview();
+
+
 /* Utilities */
 function shuffleArray(arr){
   for(let i=arr.length-1;i>0;i--){

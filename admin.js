@@ -287,4 +287,86 @@ importJsonBtn.addEventListener('click', ()=>{
   });
   input.click();
 });
+/* ---------- SECOND HALF: ADMIN ENHANCEMENTS ---------- */
+
+/* CSV Import */
+const csvInputButton = document.createElement('button');
+csvInputButton.textContent = "Import CSV";
+csvInputButton.className = "btn";
+openQuestions.parentElement.appendChild(csvInputButton);
+
+csvInputButton.addEventListener('click', ()=>{
+  const file = document.createElement('input');
+  file.type = 'file';
+  file.accept = '.csv';
+  file.onchange = e =>{
+    const f = e.target.files[0];
+    if(!f) return;
+    const rdr = new FileReader();
+    rdr.onload = () => parseCSVImport(rdr.result);
+    rdr.readAsText(f);
+  };
+  file.click();
+});
+
+function parseCSVImport(csv){
+  const rows = csv.split(/\r?\n/).map(r => r.split(',').map(x=>x.replace(/^"|"$/g,'')));
+  rows.shift(); // header
+  rows.forEach(r=>{
+    if(!r[3]) return; // no text
+    const subjName = r[1];
+    const topicName = r[2];
+    let subj = DB.listSubjects().find(s=>s.name===subjName);
+    if(!subj) subj = {id: DB.addSubject(subjName), name: subjName};
+    let topic = DB.listTopics().find(t=>t.name===topicName);
+    if(!topic) topic = {id: DB.addTopic(subj.id, topicName), name: topicName};
+
+    DB.addQuestion({
+      subjectId: subj.id,
+      topicId: topic.id,
+      text: r[3],
+      choices: JSON.parse(r[4] || '[]'),
+      answerIndex: Number(r[5]||0),
+      image: r[6] || ''
+    });
+  });
+  alert("Import complete");
+  openQuestions.click();
+}
+
+/* Base64 Image Tool */
+function uploadImageBase64(callback){
+  const file = document.createElement('input');
+  file.type = 'file';
+  file.accept = 'image/*';
+  file.onchange = e =>{
+    const f = e.target.files[0];
+    if(!f) return;
+    const rdr = new FileReader();
+    rdr.onload = () => callback(rdr.result);
+    rdr.readAsDataURL(f);
+  };
+  file.click();
+}
+
+/* Enhance Question Editor to include base64 button */
+function enhanceImageField(){
+  const btn = document.createElement('button');
+  btn.textContent = "Upload Image (Base64)";
+  btn.className = 'btn';
+  const imgInput = $('#q-image');
+  imgInput.parentNode.appendChild(btn);
+  btn.addEventListener('click', ()=>{
+    uploadImageBase64(data => {
+      imgInput.value = data;
+    });
+  });
+}
+
+/* Run enhancement when question editor loads */
+const observer = new MutationObserver(()=>{
+  const img = document.querySelector('#q-image');
+  if(img) enhanceImageField();
+});
+observer.observe(adminMain, {childList:true, subtree:true});
 
