@@ -338,3 +338,163 @@ textarea {
 .muted {
   color: var(--muted);
 }
+/***************************************************
+ MOBILE OPTIMIZED ENHANCEMENTS
+***************************************************/
+@media (max-width: 900px) {
+
+  /* General layout spacing */
+  .container {
+    padding: 14px;
+  }
+
+  .topbar-inner {
+    padding: 0 14px;
+  }
+
+  /* Single-column layout */
+  .main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  /* Sidebar improvements */
+  .sidepanel {
+    width: 100%;
+  }
+
+  .list li {
+    padding: 12px;
+    font-size: 1.05rem;
+  }
+
+  /* Content area spacing */
+  .content {
+    padding: 10px;
+  }
+
+  /* Subject cards - single column on narrow screens */
+  .grid-cards {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  /* Quiz Toolbar on mobile → stacked vertically */
+  .quiz-toolbar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  /* Timer bigger for mobile */
+  .timer {
+    font-size: 1.3rem;
+    padding: 8px 14px;
+  }
+
+  /* Quiz body stacked */
+  .quiz-body {
+    flex-direction: column !important;
+  }
+
+  /* Navigator full width */
+  .navigator {
+    width: 100% !important;
+  }
+
+  .navigator-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+  }
+
+  /* Buttons larger for touch */
+  .btn {
+    padding: 10px 16px;
+    font-size: 1rem;
+  }
+  .btn.primary, .btn.danger {
+    padding: 12px 18px;
+    font-size: 1rem;
+  }
+
+  /* Options easier to tap */
+  .options li {
+    padding: 12px;
+    font-size: 1.05rem;
+  }
+
+  /* Question text spacing */
+  .question-card h3 {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+
+  /* Review cards */
+  #review-area .card {
+    padding: 14px;
+  }
+
+  /* Admin panel: single column */
+  .admin-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  /* Admin cards spacing */
+  .admin-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .admin-actions .btn {
+    width: 48%;
+    margin: 0;
+  }
+
+  /* Form fields bigger */
+  input, select, textarea {
+    padding: 12px !important;
+    font-size: 1rem !important;
+  }
+
+  /* Subject/Topic selector spacing */
+  #builder-controls {
+    margin-bottom: 16px;
+  }
+}
+
+/***************************************************
+ EXTRA SMALL PHONES (max-width: 480px)
+***************************************************/
+@media (max-width: 480px) {
+
+  .navigator-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+
+  .grid-cards {
+    grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .btn.primary, .btn.danger {
+    width: 100%;
+  }
+
+  .quiz-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-controls .btn {
+    width: 100%;
+  }
+}
