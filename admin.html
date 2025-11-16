@@ -1,90 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Quiz System</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QuizLab Admin</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>Admin Panel 🔑</h1>
-            <p id="admin-status"></p>
-        </header>
-
-        <section id="admin-login">
-            <div class="card">
-                <h2>Admin Login</h2>
-                <p>Default Credentials: **admin** / **admin123**</p>
-                <form id="login-form">
-                    <input type="text" id="admin-username" placeholder="Username" required value="admin">
-                    <input type="password" id="admin-password" placeholder="Password" required value="admin123">
-                    <button type="submit" class="btn btn-primary">Login</button>
-                    <p id="login-message" style="color: var(--danger); margin-top: 10px;"></p>
-                </form>
-            </div>
-        </section>
-
-        <section id="admin-dashboard" style="display: none;">
-            <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
-                <h2>Dashboard</h2>
-                <div>
-                    <button class="btn btn-secondary" id="db-export-btn">Export DB (JSON)</button>
-                    <button class="btn btn-danger" id="logout-btn">Logout</button>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>Subject Management (CRUD)</h3>
-                <form id="subject-form">
-                    <input type="text" id="subject-name" placeholder="New Subject Name" required>
-                    <input type="hidden" id="subject-id">
-                    <button type="submit" class="btn btn-primary">Save Subject</button>
-                </form>
-                <div class="crud-list" id="subject-list"></div>
-            </div>
-
-            <div class="card">
-                <h3>Topic Management (CRUD)</h3>
-                <form id="topic-form">
-                    <select id="topic-subject-select" required>
-                        <option value="">-- Select Subject --</option>
-                        </select>
-                    <input type="text" id="topic-name" placeholder="New Topic Name" required>
-                    <input type="hidden" id="topic-id">
-                    <button type="submit" class="btn btn-primary">Save Topic</button>
-                </form>
-                <div class="crud-list" id="topic-list"></div>
-            </div>
-
-            <div class="card">
-                <h3>Question Management (CRUD)</h3>
-                <form id="question-form">
-                    <select id="question-topic-select" required>
-                        <option value="">-- Select Topic --</option>
-                        </select>
-                    <textarea id="question-text-input" placeholder="Question Text" rows="3" required></textarea>
-                    <input type="text" id="question-choices" placeholder="Choices (comma separated, e.g., A,B,C)" required>
-                    <input type="text" id="question-answer" placeholder="Correct Answer (must match one choice)" required>
-                    <input type="text" id="question-explanation" placeholder="Explanation (optional)">
-                    <p>Image Upload (Base64/URL)</p>
-                    <input type="text" id="question-img-url" placeholder="Image URL or Base64 String (optional)">
-                    <input type="hidden" id="question-id">
-                    <button type="submit" class="btn btn-primary">Save Question</button>
-                </form>
-                <div class="crud-list" id="question-list"></div>
-            </div>
-            
-            <div class="card">
-                <h3>User History 📜</h3>
-                <div class="crud-list" id="history-list">
-                    </div>
-            </div>
-            
-        </section>
-
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <h1 class="brand">QuizLab Admin</h1>
+      <nav class="top-actions">
+        <a class="btn ghost" href="index.html">Back to App</a>
+      </nav>
     </div>
-    <script type="module" src="admin.js"></script>
+  </header>
+
+  <main class="container admin-grid">
+    <section class="card" id="login-card">
+      <h2>Admin Login</h2>
+      <div class="form-row">
+        <label>Username</label>
+        <input id="admin-user" type="text" />
+      </div>
+      <div class="form-row">
+        <label>Password</label>
+        <input id="admin-pass" type="password" />
+      </div>
+      <div class="form-row">
+        <button id="admin-login" class="btn primary">Login</button>
+      </div>
+      <div id="login-msg"></div>
+    </section>
+
+    <section class="hidden card" id="admin-dashboard">
+      <div class="admin-header">
+        <h2>Dashboard</h2>
+        <div>
+          <button id="btn-logout" class="btn">Logout</button>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button id="open-subjects" class="btn">Subjects</button>
+        <button id="open-topics" class="btn">Topics</button>
+        <button id="open-questions" class="btn primary">Questions</button>
+        <button id="export-json" class="btn">Export DB</button>
+        <button id="import-json" class="btn">Import DB</button>
+      </div>
+
+      <div id="admin-main-area"></div>
+    </section>
+  </main>
+
+  <script type="module" src="admin.js"></script>
 </body>
 </html>

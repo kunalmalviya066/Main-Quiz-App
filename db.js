@@ -1,102 +1,204 @@
 // db.js
-// Complete LocalStorage Database Layer
-export const DB_KEYS = {
-    SUBJECTS: 'quiz_subjects',
-    TOPICS: 'quiz_topics',
-    QUESTIONS: 'quiz_questions',
-    HISTORY: 'quiz_history',
-};
+// ES module providing localStorage-backed DB functions.
 
-const INITIAL_DATA = {
-    [DB_KEYS.SUBJECTS]: [
-        { id: 'sub-1', name: 'Mathematics' },
-        { id: 'sub-2', name: 'Science' },
-    ],
-    [DB_KEYS.TOPICS]: [
-        { id: 'top-1', subjectId: 'sub-1', name: 'Algebra' },
-        { id: 'top-2', subjectId: 'sub-1', name: 'Calculus' },
-        { id: 'top-3', subjectId: 'sub-2', name: 'Physics' },
-    ],
-    [DB_KEYS.QUESTIONS]: [
-        { id: 'q-1', topicId: 'top-1', question: 'What is $2x + 5 = 9$?', choices: ['x=2', 'x=4', 'x=7'], answer: 'x=2', explanation: 'Subtract 5, then divide by 2.', imgUrl: '' },
-        { id: 'q-2', topicId: 'top-3', question: 'What is the SI unit of force?', choices: ['Joule', 'Newton', 'Watt'], answer: 'Newton', explanation: 'The unit of force is the Newton (N).', imgUrl: '' },
-        { id: 'q-3', topicId: 'top-1', question: 'Solve $x^2 - 4 = 0$.', choices: ['2', '-2', '±2'], answer: '±2', explanation: 'The square root of 4 is both 2 and -2.', imgUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzMCIgZmlsbD0iI2Y5ZTRhYiIgc3Ryb2tlPSIjYmQ5ZTAwIiBzdHJva2Utd2lkdGg9IjMiLz48dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtZmFtaWx5PSJTYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDAwIj5NYXRoPC90ZXh0Pjwvc3ZnPg==' }
-    ],
-    [DB_KEYS.HISTORY]: [],
-};
+const DB_KEY = 'quizlab_db_v1';
 
-// Initialize DB with dummy data if empty
-function initializeDB() {
-    Object.keys(INITIAL_DATA).forEach(key => {
-        if (!localStorage.getItem(key)) {
-            localStorage.setItem(key, JSON.stringify(INITIAL_DATA[key]));
-        }
-    });
-}
-initializeDB();
-
-// --- CRUD Operations ---
-function getAll(key) {
-    return JSON.parse(localStorage.getItem(key)) || [];
-}
-
-function saveAll(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
-}
-
-export const db = {
-    // Read
-    getSubjects: () => getAll(DB_KEYS.SUBJECTS),
-    getTopics: () => getAll(DB_KEYS.TOPICS),
-    getQuestions: () => getAll(DB_KEYS.QUESTIONS),
-    getHistory: () => getAll(DB_KEYS.HISTORY),
-
-    // Create/Update (Generic)
-    save: (key, record) => {
-        const records = getAll(key);
-        let updated = false;
-
-        if (record.id) {
-            // Update
-            const index = records.findIndex(r => r.id === record.id);
-            if (index !== -1) {
-                records[index] = { ...records[index], ...record };
-                updated = true;
-            }
-        }
-
-        if (!updated) {
-            // Create
-            record.id = key.substring(5, 8) + '-' + Date.now();
-            records.push(record);
-        }
-
-        saveAll(key, records);
-        return record;
+const DEFAULT_DB = {
+  subjects: [
+    { id: 'sub-1', name: 'General Knowledge', createdAt: Date.now() },
+    { id: 'sub-2', name: 'Mathematics', createdAt: Date.now() }
+  ],
+  topics: [
+    { id: 'top-1', subjectId: 'sub-1', name: 'History' },
+    { id: 'top-2', subjectId: 'sub-1', name: 'Science' },
+    { id: 'top-3', subjectId: 'sub-2', name: 'Algebra' }
+  ],
+  questions: [
+    {
+      id: 'q-1',
+      subjectId: 'sub-1',
+      topicId: 'top-1',
+      text: 'Who was the first person to walk on the Moon?',
+      choices: ['Yuri Gagarin','Neil Armstrong','Buzz Aldrin','Michael Collins'],
+      answerIndex: 1,
+      image: '',
+      createdAt: Date.now()
     },
-
-    // Delete
-    delete: (key, id) => {
-        const records = getAll(key);
-        const filtered = records.filter(r => r.id !== id);
-        saveAll(key, filtered);
-    },
-
-    // History Specific
-    addHistory: (testResult) => {
-        const history = getAll(DB_KEYS.HISTORY);
-        testResult.timestamp = new Date().toISOString();
-        history.push(testResult);
-        saveAll(DB_KEYS.HISTORY, history);
-    },
-    
-    // Admin Utility
-    getFullDB: () => {
-        return {
-            subjects: db.getSubjects(),
-            topics: db.getTopics(),
-            questions: db.getQuestions(),
-            history: db.getHistory()
-        };
+    {
+      id: 'q-2',
+      subjectId: 'sub-2',
+      topicId: 'top-3',
+      text: 'Solve: 2x + 3 = 11',
+      choices: ['3','4','5','6'],
+      answerIndex: 1,
+      image: '',
+      createdAt: Date.now()
     }
+  ],
+  users: [
+    // user test history entries
+  ],
+  admin: {
+    username: 'admin',
+    // default password: 'admin' (hashed simply)
+    passwordHash: btoa('admin') // simple base64 for demo; replace later
+  }
 };
+
+function readRaw(){
+  try{
+    const raw = localStorage.getItem(DB_KEY);
+    if(!raw){
+      localStorage.setItem(DB_KEY, JSON.stringify(DEFAULT_DB));
+      return JSON.parse(JSON.stringify(DEFAULT_DB));
+    }
+    return JSON.parse(raw);
+  }catch(e){
+    console.error('DB read error', e);
+    localStorage.setItem(DB_KEY, JSON.stringify(DEFAULT_DB));
+    return JSON.parse(JSON.stringify(DEFAULT_DB));
+  }
+}
+
+function write(db){
+  localStorage.setItem(DB_KEY, JSON.stringify(db));
+  return true;
+}
+
+export function getDB(){
+  return readRaw();
+}
+
+export function saveDB(updated){
+  write(updated);
+}
+
+/* Subjects */
+export function listSubjects(){
+  return readRaw().subjects.slice();
+}
+export function addSubject(name){
+  const db = readRaw();
+  const id = 'sub-' + Date.now();
+  db.subjects.push({ id, name, createdAt: Date.now() });
+  write(db);
+  return id;
+}
+export function updateSubject(id, name){
+  const db = readRaw();
+  const s = db.subjects.find(x => x.id === id);
+  if(s) s.name = name;
+  write(db);
+}
+export function deleteSubject(id){
+  const db = readRaw();
+  db.subjects = db.subjects.filter(s=>s.id!==id);
+  db.topics = db.topics.filter(t=>t.subjectId!==id);
+  db.questions = db.questions.filter(q=>q.subjectId!==id);
+  write(db);
+}
+
+/* Topics */
+export function listTopics(subjectId){
+  const db = readRaw();
+  return subjectId ? db.topics.filter(t=>t.subjectId===subjectId) : db.topics.slice();
+}
+export function addTopic(subjectId, name){
+  const db = readRaw();
+  const id = 'top-' + Date.now();
+  db.topics.push({ id, subjectId, name });
+  write(db);
+  return id;
+}
+export function updateTopic(id, name){
+  const db = readRaw();
+  const t = db.topics.find(x=>x.id===id);
+  if(t) t.name = name;
+  write(db);
+}
+export function deleteTopic(id){
+  const db = readRaw();
+  db.topics = db.topics.filter(t=>t.id!==id);
+  db.questions = db.questions.filter(q=>q.topicId!==id);
+  write(db);
+}
+
+/* Questions */
+export function listQuestions({subjectId=null, topicId=null} = {}){
+  const db = readRaw();
+  let qs = db.questions.slice();
+  if(subjectId) qs = qs.filter(q=>q.subjectId===subjectId);
+  if(topicId) qs = qs.filter(q=>q.topicId===topicId);
+  return qs;
+}
+export function getQuestion(id){
+  const db = readRaw();
+  return db.questions.find(q=>q.id===id) || null;
+}
+export function addQuestion(q){
+  const db = readRaw();
+  const id = 'q-' + Date.now();
+  const question = Object.assign({}, q, { id, createdAt: Date.now() });
+  db.questions.push(question);
+  write(db);
+  return id;
+}
+export function updateQuestion(id, patch){
+  const db = readRaw();
+  const q = db.questions.find(x=>x.id===id);
+  if(!q) return false;
+  Object.assign(q, patch);
+  write(db);
+  return true;
+}
+export function deleteQuestion(id){
+  const db = readRaw();
+  db.questions = db.questions.filter(q=>q.id!==id);
+  write(db);
+}
+
+/* Users / history */
+export function saveUserResult(result){
+  const db = readRaw();
+  db.users = db.users || [];
+  db.users.push(result);
+  write(db);
+}
+
+/* Import / Export */
+export function exportJSON(){
+  const db = readRaw();
+  return JSON.stringify(db, null, 2);
+}
+export function importJSON(jsonString){
+  try{
+    const parsed = JSON.parse(jsonString);
+    // naive validation
+    if(!parsed.subjects || !parsed.questions) throw new Error('Invalid DB');
+    localStorage.setItem(DB_KEY, JSON.stringify(parsed));
+    return true;
+  }catch(e){
+    console.error('Import failed', e);
+    return false;
+  }
+}
+
+/* Simple CSV helpers (basic) */
+export function exportQuestionsCSV(){
+  const db = readRaw();
+  const rows = [['id','subject','topic','text','choices','answerIndex','image']];
+  db.questions.forEach(q=>{
+    const subj = (db.subjects.find(s=>s.id===q.subjectId)||{}).name || '';
+    const topic = (db.topics.find(t=>t.id===q.topicId)||{}).name || '';
+    rows.push([
+      q.id,
+      subj,
+      topic,
+      q.text.replace(/\n/g,'\\n'),
+      JSON.stringify(q.choices).replace(/"/g,'""'),
+      q.answerIndex,
+      q.image ? q.image : ''
+    ]);
+  });
+  return rows.map(r=>r.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n');
+}

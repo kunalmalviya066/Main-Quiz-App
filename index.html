@@ -1,133 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz & Mock Test Portal</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QuizLab — Practice & Mock Tests</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-    <div class="anti-cheat-overlay" id="anti-cheat-overlay">
-        🚨 Anti-Cheat Violation 🚨<br>
-        Please return to the test immediately.
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <h1 class="brand">QuizLab</h1>
+      <nav class="top-actions">
+        <button id="btn-daily" class="btn">Daily Quiz</button>
+        <button id="btn-build" class="btn">Custom Test Builder</button>
+        <a class="btn ghost" href="admin.html">Admin</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="container">
-        <header class="header">
-            <h1>🧠 Modular Quiz & Mock Test System</h1>
-            <p>Select a subject and topic to begin your practice.</p>
-        </header>
+  <main class="container main-grid">
+    <aside class="sidepanel card" id="left-panel">
+      <section>
+        <h2>Subjects</h2>
+        <ul id="subject-list" class="list"></ul>
+      </section>
+      <section>
+        <h3>Topics</h3>
+        <ul id="topic-list" class="list"></ul>
+      </section>
+      <section>
+        <h3>Filters</h3>
+        <div class="form-row">
+          <label>Questions:</label>
+          <input id="input-num-questions" type="number" min="1" max="200" value="10" />
+        </div>
+        <div class="form-row">
+          <label>Shuffle choices</label>
+          <input id="chk-shuffle" type="checkbox" checked />
+        </div>
+        <div class="form-row">
+          <label>Total timer (mins)</label>
+          <input id="input-timer-mins" type="number" min="0" max="600" value="15" />
+        </div>
+        <div class="actions">
+          <button id="start-test" class="btn primary">Start Test</button>
+        </div>
+      </section>
+    </aside>
 
-        <section id="selection-section">
-            <div class="card">
-                <h2>Test Builder</h2>
-                <div id="quiz-selection-panel">
-                    </div>
-                <div class="selection-controls" style="margin-top: 20px; text-align: center;">
-                    <button class="btn btn-primary" id="start-test-btn" disabled>Start Custom Test (0 Questions)</button>
-                    <button class="btn btn-secondary" id="daily-quiz-btn">Start Daily Quiz (Random 10)</button>
-                </div>
+    <section class="content card" id="content-area">
+      <div id="home-view">
+        <h2>Welcome</h2>
+        <p>Select a subject or topic to begin, or use the Custom Test Builder to craft an exam.</p>
+        <div id="subject-cards" class="grid-cards"></div>
+      </div>
+
+      <div id="builder-view" class="hidden">
+        <h2>Custom Test Builder</h2>
+        <div id="builder-controls" class="card small">
+          <div class="form-row">
+            <label>Pick subject</label>
+            <select id="builder-subject"></select>
+          </div>
+          <div class="form-row">
+            <label>Pick topics</label>
+            <select id="builder-topics" multiple></select>
+          </div>
+          <div class="form-row">
+            <button id="builder-create" class="btn primary">Create Test</button>
+            <button id="builder-reset" class="btn ghost">Reset</button>
+          </div>
+        </div>
+        <div id="builder-preview"></div>
+      </div>
+
+      <div id="quiz-view" class="hidden">
+        <div class="quiz-toolbar">
+          <div class="left">
+            <button id="btn-fullscreen" class="btn ghost">Fullscreen</button>
+            <button id="btn-pause" class="btn ghost">Pause</button>
+          </div>
+          <div class="right">
+            <div id="timer" class="timer">00:00</div>
+          </div>
+        </div>
+
+        <div class="quiz-body">
+          <div class="quiz-left">
+            <div id="question-card" class="card question-card"></div>
+            <div class="quiz-controls">
+              <button id="prev-btn" class="btn">Previous</button>
+              <button id="mark-btn" class="btn">Mark Review</button>
+              <button id="next-btn" class="btn primary">Next</button>
             </div>
-            
-            <div class="card" id="history-section" style="margin-top: 30px;">
-                <h2>Test History 📚</h2>
-                <ul id="history-list">
-                    </ul>
+          </div>
+
+          <aside class="navigator card">
+            <h4>Navigator</h4>
+            <div id="navigator-grid" class="navigator-grid"></div>
+            <div class="nav-footer">
+              <button id="submit-test" class="btn danger">Submit</button>
             </div>
-        </section>
+          </aside>
+        </div>
+      </div>
 
-        <section id="quiz-section" style="display: none;">
-            <div class="quiz-header card">
-                <div>
-                    <h2 id="quiz-title"></h2>
-                    <p>Question <span id="current-q-index">1</span> of <span id="total-q-count">10</span></p>
-                </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 1.2rem; font-weight: 700;">Total Time: <span id="total-timer">00:00</span></div>
-                    <div style="font-size: 0.9rem;">Q. Time: <span id="question-timer">00:00</span></div>
-                    <button class="btn btn-secondary full-screen-btn" id="fullscreen-btn">Toggle Fullscreen</button>
-                    <button class="btn btn-secondary" id="pause-resume-btn">Pause</button>
-                </div>
-            </div>
+      <div id="results-view" class="hidden card">
+        <!-- Filled by script -->
+      </div>
+    </section>
+  </main>
 
-            <div class="quiz-main">
-                <div class="question-panel card">
-                    <p class="question-text" id="question-text">Loading...</p>
-                    <img id="question-image" class="question-img" alt="Question Image" style="display: none;">
-                    
-                    <div class="choices" id="choices-container">
-                        </div>
-                    
-                    <div class="quiz-footer">
-                        <button class="btn btn-secondary" id="prev-btn" disabled>« Previous</button>
-                        <div>
-                            <button class="btn btn-warning" id="mark-review-btn">Mark for Review</button>
-                            <button class="btn btn-primary" id="next-btn">Next »</button>
-                            <button class="btn btn-success" id="submit-btn" style="display: none;">Submit Test</button>
-                        </div>
-                    </div>
-                </div>
+  <footer class="container footer">
+    <small>QuizLab — local-only mock test platform · All data stored in browser</small>
+  </footer>
 
-                <div class="navigator-panel">
-                    <h3>Navigator</h3>
-                    <div class="nav-grid" id="navigator-grid">
-                        </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="results-section" style="display: none;">
-            <div class="card">
-                <h2>Test Completed! 🎉</h2>
-                <p>Your result for <strong id="results-title"></strong></p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card"><h4>Score</h4><p><span id="final-score">0</span> / <span id="total-marks">0</span></p></div>
-                <div class="stat-card"><h4>Accuracy</h4><p><span id="accuracy-rate">0%</span></p></div>
-                <div class="stat-card"><h4>Attempted</h4><p><span id="attempted-count">0</span> / <span id="total-q-count-result">0</span></p></div>
-                <div class="stat-card"><h4>Time Taken</h4><p><span id="time-taken-result">00:00</span></p></div>
-            </div>
-
-            <div class="card">
-                <h3>Question-by-Question Review</h3>
-                <div id="review-container">
-                    </div>
-            </div>
-
-            <button class="btn btn-primary" onclick="window.location.reload()">Go Back to Selection</button>
-        </section>
-
-    </div>
-    
-    <script>
-        // Simple Anti-Cheat: Block Context Menu, Copy, and Tab Switch (Focus Loss)
-        const antiCheatOverlay = document.getElementById('anti-cheat-overlay');
-        const quizSection = document.getElementById('quiz-section');
-        const blockEvent = (e) => {
-            if (quizSection.style.display !== 'none') {
-                 e.preventDefault();
-                 antiCheatOverlay.style.display = 'flex';
-                 setTimeout(() => antiCheatOverlay.style.display = 'none', 1000);
-            }
-        };
-
-        document.addEventListener('contextmenu', blockEvent); // Right Click
-        document.addEventListener('copy', blockEvent); // Copy
-        document.addEventListener('cut', blockEvent); // Cut
-
-        window.addEventListener('blur', () => {
-            if (quizSection.style.display !== 'none') {
-                antiCheatOverlay.style.display = 'flex';
-            }
-        });
-        window.addEventListener('focus', () => {
-             antiCheatOverlay.style.display = 'none';
-        });
-
-    </script>
-    <script type="module" src="quiz.js"></script>
-    <script type="module" src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
