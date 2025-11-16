@@ -312,15 +312,6 @@ btnPause.addEventListener('click', ()=>{
   btnPause.textContent = current.paused ? 'Resume' : 'Pause';
 });
 
-/* Submit (simple) */
-submitTestBtn.addEventListener('click', ()=>{
-  // we will finalize and compute results in second half
-  // but store a placeholder: move to results view
-  resultsView.innerHTML = `<div class="card"><h3>Submitting...</h3><p>Final results will be computed in the next batch.</p></div>`;
-  quizView.classList.add('hidden');
-  resultsView.classList.remove('hidden');
-});
-
 /* ---------- SECOND HALF IMPLEMENTATION ---------- */
 
 /* Anti-cheat features */
