@@ -16,6 +16,15 @@
      in the current scope.
 
    ============================================================ */
+import { $, $all, createEl } from "./utils.js";
+import {
+    getSubjects,
+    getTopics,
+    getQuestions,
+    addTestHistory,
+    getDailyQuiz,
+    setDailyQuiz
+} from "./db.js";
 
 (function () {
 
