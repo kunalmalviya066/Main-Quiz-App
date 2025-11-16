@@ -39,9 +39,9 @@ const DEFAULT_DB = {
     // user test history entries
   ],
   admin: {
-    username: 'admin',
+    username: 'kunalmalviya06',
     // default password: 'admin' (hashed simply)
-    passwordHash: btoa('admin') // simple base64 for demo; replace later
+    passwordHash: btoa('Kunalm@123') // simple base64 for demo; replace later
   }
 };
 
