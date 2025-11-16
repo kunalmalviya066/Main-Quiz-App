@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz & Mock Test Platform</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Anti-cheat basic meta -->
+    <meta http-equiv="Cache-Control" content="no-store" />
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="main-header">
+        <div class="logo">QuizMaster</div>
+        <nav class="nav-links">
+            <a href="#home" data-route="home">Home</a>
+            <a href="#subjects" data-route="subjects">Subjects</a>
+            <a href="#topicwise" data-route="topicwise">Topic-wise</a>
+            <a href="#dailyquiz" data-route="dailyquiz">Daily Quiz</a>
+            <a href="admin.html">Admin</a>
+            <a href="#help" data-route="help">Help/Contact</a>
+        </nav>
+        <div class="mobile-menu" id="mobileMenuToggle">☰</div>
+    </header>
+
+    <!-- Mobile Dropdown -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#home" data-route="home">Home</a>
+        <a href="#subjects" data-route="subjects">Subjects</a>
+        <a href="#topicwise" data-route="topicwise">Topic-wise</a>
+        <a href="#dailyquiz" data-route="dailyquiz">Daily Quiz</a>
+        <a href="admin.html">Admin</a>
+        <a href="#help" data-route="help">Help/Contact</a>
+    </div>
+
+    <!-- ================= MAIN CONTENT ROUTER VIEW ================= -->
+    <main id="appView">
+
+        <!-- ================= HOME PAGE SECTIONS ================= -->
+        <section id="home" class="page-section visible">
+
+            <!-- Hero -->
+            <div class="hero">
+                <h1>Welcome to QuizMaster</h1>
+                <p>Your complete platform for quizzes, mock tests, topicwise practice, and exam preparation.</p>
+                <button class="btn-primary" data-route="subjects">Start Learning</button>
+            </div>
+
+            <!-- Features -->
+            <div class="features-section">
+                <h2>Why Choose This Platform?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Structured Subjects</h3>
+                        <p>Explore subjects & topics designed for exam-oriented practice.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Smart Quiz Engine</h3>
+                        <p>Enjoy modern features like timers, navigation, marking, and anti-cheat.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Daily Quiz</h3>
+                        <p>Improve consistently with one fresh quiz every day.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Intro -->
+            <div class="footer-intro">
+                <h2>Ready to Begin?</h2>
+                <p>Choose a subject and start practicing now.</p>
+                <button class="btn-secondary" data-route="subjects">Browse Subjects</button>
+            </div>
+
+        </section>
+
+        <!-- ================= SUBJECTS PAGE ================= -->
+        <section id="subjects" class="page-section hidden">
+            <h2>Subjects</h2>
+            <div id="subjectList" class="list-container">Loading...</div>
+        </section>
+
+        <!-- ================= TOPICWISE PAGE ================= -->
+        <section id="topicwise" class="page-section hidden">
+            <h2>Select a Subject for Topic-wise Practice</h2>
+            <div id="topicSubjectList" class="list-container">Loading...</div>
+
+            <h3>Topics</h3>
+            <div id="topicList" class="list-container">Select a subject first.</div>
+        </section>
+
+        <!-- ================= DAILY QUIZ PAGE ================= -->
+        <section id="dailyquiz" class="page-section hidden">
+            <h2>Daily Quiz</h2>
+            <div id="dailyQuizContainer">
+                <p>One fresh quiz every day. Boost your performance.</p>
+                <button class="btn-primary" id="startDailyQuizBtn">Start Today’s Quiz</button>
+                <div id="dailyQuizStatus"></div>
+            </div>
+        </section>
+
+        <!-- ================= HELP PAGE ================= -->
+        <section id="help" class="page-section hidden">
+            <h2>Help & Contact</h2>
+            <p>If you need help or have feedback, reach us here.</p>
+
+            <div class="contact-box">
+                <p><strong>Email:</strong> support@quizmaster.local</p>
+                <p><strong>Phone:</strong> +91-9876543210</p>
+                <p><strong>FAQ:</strong> Common issues & solutions will be available soon.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="main-footer">
+        <p>© 2025 QuizMaster | Built for Smart Learning</p>
+    </footer>
+
+    <script src="router.js"></script>
+    <script src="utils.js"></script>
+    <script src="db.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | QuizMaster</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="main-header admin-header">
+        <div class="logo">QuizMaster Admin</div>
+        <nav>
+            <a href="index.html">Back to Site</a>
+        </nav>
+    </header>
+
+    <!-- LOGIN SCREEN -->
+    <div id="adminLoginPage" class="admin-login-section visible">
+        <div class="admin-login-box">
+            <h2>Admin Login</h2>
+            <label>Username</label>
+            <input type="text" id="adminUsername">
+
+            <label>Password</label>
+            <input type="password" id="adminPassword">
+
+            <button id="adminLoginBtn" class="btn-primary">Login</button>
+
+            <p id="adminLoginError" class="login-error"></p>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="adminDashboard" class="admin-dashboard hidden">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <h3>Dashboard</h3>
+            <button class="sidebar-btn" data-admin-section="subjects">Subjects</button>
+            <button class="sidebar-btn" data-admin-section="topics">Topics</button>
+            <button class="sidebar-btn" data-admin-section="questions">Questions</button>
+            <button class="sidebar-btn" data-admin-section="csv">CSV Import/Export</button>
+            <button class="sidebar-btn" data-admin-section="history">Users Test History</button>
+            <button id="adminLogoutBtn" class="sidebar-btn">Logout</button>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="admin-main">
+
+            <!-- SUBJECTS -->
+            <div id="adminSubjects" class="admin-section hidden">
+                <h2>Manage Subjects</h2>
+
+                <div class="form-grid">
+                    <input type="text" id="subjectName" placeholder="Subject name">
+                    <input type="text" id="subjectDesc" placeholder="Description">
+                    <button id="addSubjectBtn" class="btn-primary">Add</button>
+                </div>
+
+                <div id="subjectsTableContainer" class="table-container"></div>
+            </div>
+
+            <!-- TOPICS -->
+            <div id="adminTopics" class="admin-section hidden">
+                <h2>Manage Topics</h2>
+
+                <div class="form-grid">
+                    <select id="topicSubjectSelect"></select>
+                    <input type="text" id="topicName" placeholder="Topic name">
+                    <input type="text" id="topicDesc" placeholder="Description">
+                    <button id="addTopicBtn" class="btn-primary">Add</button>
+                </div>
+
+                <div id="topicsTableContainer" class="table-container"></div>
+            </div>
+
+            <!-- QUESTIONS -->
+            <div id="adminQuestions" class="admin-section hidden">
+                <h2>Manage Questions</h2>
+
+                <div class="form-grid question-form">
+                    <select id="questionSubjectSelect"></select>
+                    <select id="questionTopicSelect"></select>
+
+                    <textarea id="questionText" placeholder="Question text"></textarea>
+
+                    <input type="text" id="choiceA" placeholder="Choice A">
+                    <input type="text" id="choiceB" placeholder="Choice B">
+                    <input type="text" id="choiceC" placeholder="Choice C">
+                    <input type="text" id="choiceD" placeholder="Choice D">
+
+                    <select id="correctChoiceSelect">
+                        <option value="">Correct Answer</option>
+                        <option value="A">Choice A</option>
+                        <option value="B">Choice B</option>
+                        <option value="C">Choice C</option>
+                        <option value="D">Choice D</option>
+                    </select>
+
+                    <label>Upload Image</label>
+                    <input type="file" id="questionImage" accept="image/*">
+                    <textarea id="imagePreview" placeholder="Image Base64 or URL"></textarea>
+
+                    <select id="difficultySelect">
+                        <option value="">Difficulty</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+
+                    <button id="addQuestionBtn" class="btn-primary">Add</button>
+                </div>
+
+                <div id="questionsTableContainer" class="table-container"></div>
+            </div>
+
+            <!-- CSV -->
+            <div id="adminCSV" class="admin-section hidden">
+                <h2>CSV Import/Export</h2>
+
+                <div class="csv-section">
+                    <h3>Import CSV</h3>
+                    <input type="file" id="csvImportInput" accept=".csv">
+                    <button id="csvImportBtn" class="btn-primary">Import</button>
+                    <p id="csvImportStatus"></p>
+                </div>
+
+                <div class="csv-section">
+                    <h3>Export Questions CSV</h3>
+                    <button id="csvExportBtn" class="btn-secondary">Export CSV</button>
+                </div>
+
+                <div class="csv-section">
+                    <h3>Export Full Database</h3>
+                    <button id="jsonExportBtn" class="btn-secondary">Export JSON</button>
+                </div>
+            </div>
+
+            <!-- HISTORY -->
+            <div id="adminHistory" class="admin-section hidden">
+                <h2>User Test History</h2>
+                <div id="testHistoryContainer" class="table-container"></div>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- MUST BE A MODULE!! -->
+    <script type="module" src="admin.js"></script>
+
+</body>
+</html>
