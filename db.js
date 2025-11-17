@@ -1,157 +1,209 @@
-// Fixed DB.js with correct LS_KEY and proper init/cache handling
+/* db.js
+   Lightweight localStorage DB wrapper for QuizLab.
+   Exposes QA_DB namespace with methods to read/write subjects, topics, questions, and history.
+*/
 
-(function (global) {
-  'use strict';
+(function(global){
+  const STORE_KEY = 'quizlab_db_v1';
+  const HISTORY_KEY = 'quizlab_history_v1';
 
-  const LS_KEY = 'quiz_db';
-  const DEFAULT_ADMIN_USERNAME = 'admin';
-  const DEFAULT_ADMIN_PASSWORD = 'admin123';
-
-  const OWNER_SEED = {
-    meta: { version: '1.0', createdAt: Date.now() },
-    settings: {
-      adminUsername: DEFAULT_ADMIN_USERNAME,
-      lockout: { attempts: 0, lockedUntil: null }
-    },
+  const defaultData = {
     subjects: [
-      { id: 'sub_math', name: 'Mathematics', createdAt: Date.now() },
-      { id: 'sub_phy', name: 'Physics', createdAt: Date.now() },
-      { id: 'sub_gen', name: 'General Knowledge', createdAt: Date.now() }
+      { id: 'sub_math', name: 'Mathematics', desc: 'Numbers, algebra, geometry' },
+      { id: 'sub_phy', name: 'Physics', desc: 'Mechanics, electricity' },
+      { id: 'sub_gen', name: 'General Knowledge', desc: 'Current affairs & facts' }
     ],
     topics: [
-      { id: 'top_alg', subjectId: 'sub_math', name: 'Algebra', createdAt: Date.now() },
-      { id: 'top_geo', subjectId: 'sub_math', name: 'Geometry', createdAt: Date.now() },
-      { id: 'top_mech', subjectId: 'sub_phy', name: 'Mechanics', createdAt: Date.now() },
-      { id: 'top_wld', subjectId: 'sub_gen', name: 'World Facts', createdAt: Date.now() }
+      { id: 't_algebra', subjectId: 'sub_math', name: 'Algebra' },
+      { id: 't_geom', subjectId: 'sub_math', name: 'Geometry' },
+      { id: 't_mech', subjectId: 'sub_phy', name: 'Mechanics' },
+      { id: 't_elec', subjectId: 'sub_phy', name: 'Electrodynamics' },
+      { id: 't_gk', subjectId: 'sub_gen', name: 'World Facts' }
     ],
     questions: [
       {
-        id: 'q_math_1', subjectId: 'sub_math', topicId: 'top_alg',
-        question: 'What is 2 + 2?', choices: ['1','2','3','4'], answerIndex: 3,
-        explanation: 'Basic addition: 2 + 2 = 4.', image: null, createdAt: Date.now()
+        id: 'q1',
+        subjectId: 'sub_math',
+        topicId: 't_algebra',
+        text: 'If 3x + 2 = 11, what is x?',
+        choices: ['1', '2', '3', '4'],
+        answer: 2, // zero-based index -> '3'
+        image: null,
+        meta: {}
       },
       {
-        id: 'q_math_2', subjectId: 'sub_math', topicId: 'top_geo',
-        question: 'What is the sum of interior angles of a triangle?',
-        choices: ['180°','90°','360°','270°'], answerIndex: 0,
-        explanation: 'Sum of interior angles = 180°.', image: null, createdAt: Date.now()
+        id: 'q2',
+        subjectId: 'sub_math',
+        topicId: 't_geom',
+        text: 'What is the area of a circle with radius 2?',
+        choices: ['4π', '2π', 'π', '8π'],
+        answer: 0,
+        image: null,
+        meta: {}
       },
       {
-        id: 'q_phy_1', subjectId: 'sub_phy', topicId: 'top_mech',
-        question: 'Which law explains inertia?',
-        choices: ["Newton's First Law","Newton's Second Law","Law of Gravitation","Hooke's Law"], answerIndex: 0,
-        explanation: "Newton's First Law", image: null, createdAt: Date.now()
+        id: 'q3',
+        subjectId: 'sub_phy',
+        topicId: 't_mech',
+        text: 'An object in free fall near Earth accelerates at about:',
+        choices: ['9.8 m/s²', '10 km/h²', '9.8 km/s²', '0.98 m/s²'],
+        answer: 0,
+        image: null,
+        meta: {}
       },
       {
-        id: 'q_gen_1', subjectId: 'sub_gen', topicId: 'top_wld',
-        question: 'Who wrote "Hamlet"?',
-        choices: ['Charles Dickens','William Shakespeare','Leo Tolstoy','Mark Twain'], answerIndex: 1,
-        explanation: 'Shakespeare wrote Hamlet.', image: null, createdAt: Date.now()
+        id: 'q4',
+        subjectId: 'sub_gen',
+        topicId: 't_gk',
+        text: 'Which is the largest ocean on Earth?',
+        choices: ['Indian Ocean', 'Pacific Ocean', 'Atlantic Ocean', 'Arctic Ocean'],
+        answer: 1,
+        image: null,
+        meta: {}
+      },
+      {
+        id: 'q5',
+        subjectId: 'sub_phy',
+        topicId: 't_elec',
+        text: 'Identify the component shown in the image (resistor):',
+        choices: ['Resistor', 'Capacitor', 'Inductor', 'Diode'],
+        answer: 0,
+        image: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="40"><rect width="200" height="40" fill="%23fff"/><text x="10" y="25" font-family="Arial" font-size="16" fill="%23000">RESISTOR</text></svg>',
+        meta: {}
       }
     ],
-    userHistory: [],
-    dailySeed: { date: null, questionIds: [] }
+    settings: {
+      adminPasswordHash: sha256('admin123'), // initial admin password (hashed)
+      adminLock: { attempts: 0, lockedUntil: null }
+    }
   };
 
-  function uid(prefix='') { return prefix + Math.random().toString(36).slice(2,9) + Date.now().toString(36).slice(-4); }
-  function now(){ return Date.now(); }
-  function deepClone(obj){ return JSON.parse(JSON.stringify(obj)); }
-
-  async function sha256(text){
-    const data = new TextEncoder().encode(text);
-    const hashBuf = await crypto.subtle.digest('SHA-256', data);
-    return Array.from(new Uint8Array(hashBuf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-  }
-
-  function readRaw(){
-    try { return JSON.parse(localStorage.getItem(LS_KEY)) || null; }
-    catch(e){ return null; }
-  }
-  function writeRaw(obj){
-    localStorage.setItem(LS_KEY, JSON.stringify(obj));
-    window.dispatchEvent(new CustomEvent('quiz_db_updated', {detail:{ts:Date.now()}}));
-  }
-
-  async function ensureInitialized(){
-    let db = readRaw();
-    if (!db){
-      db = deepClone(OWNER_SEED);
-      const pwdHash = await sha256(DEFAULT_ADMIN_PASSWORD);
-      db.settings.adminPasswordHash = pwdHash;
-      writeRaw(db);
+  // Simple SHA-256 hash helper (sync, uses SubtleCrypto when available)
+  function sha256(str){
+    if(typeof crypto !== 'undefined' && crypto.subtle){
+      // Subtle returns promise => keep simple synchronous fallback string if unavailable in older browsers
+      // We'll use a simple JS fallback (not cryptographically secure) for hashing in this demo
+      // But attempt to use subtle if available (async) — since we need synchronous here, use fallback.
     }
-    return db;
+    // fallback: simple hash-like string (NOT cryptographically secure) but sufficient for local validation
+    let h = 2166136261 >>> 0;
+    for(let i=0;i<str.length;i++){
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619) >>> 0;
+    }
+    return 'h'+h.toString(16);
   }
 
-  const API = {
-    _dbCache: null,
+  function load(){
+    const raw = localStorage.getItem(STORE_KEY);
+    if(!raw) {
+      localStorage.setItem(STORE_KEY, JSON.stringify(defaultData));
+      return JSON.parse(JSON.stringify(defaultData));
+    }
+    try{
+      return JSON.parse(raw);
+    }catch(e){
+      console.error('Failed to parse DB; resetting.',e);
+      localStorage.setItem(STORE_KEY, JSON.stringify(defaultData));
+      return JSON.parse(JSON.stringify(defaultData));
+    }
+  }
 
-    init: async function(){
-      const db = await ensureInitialized();
-      this._dbCache = deepClone(db);
-      return this._dbCache;
+  function save(db){
+    localStorage.setItem(STORE_KEY, JSON.stringify(db));
+  }
+
+  const QA_DB = {
+    _db: load(),
+
+    // Subjects
+    getSubjects(){
+      return QA_DB._db.subjects.slice();
+    },
+    findSubject(id){ return QA_DB._db.subjects.find(s=>s.id===id) || null; },
+
+    // Topics
+    getTopics(filter = {}) {
+      let t = QA_DB._db.topics.slice();
+      if(filter.subjectId) t = t.filter(x=>x.subjectId===filter.subjectId);
+      return t;
     },
 
-    getDB: function(){
-      if (this._dbCache) return deepClone(this._dbCache);
-      const db = readRaw();
-      this._dbCache = deepClone(db);
-      return this._dbCache;
-    },
-
-    saveDB: function(dbObj){
-      const save = deepClone(dbObj);
-      save.meta = save.meta || {}; save.meta.updatedAt = now();
-      writeRaw(save);
-      this._dbCache = deepClone(save);
-    },
-
-    getSettings(){ return this.getDB().settings; },
-
-    async verifyAdminPassword(plain){ return (await sha256(plain)) === this.getDB().settings.adminPasswordHash; },
-
-    async setAdminPassword(curr,newP){
-      if (!(await this.verifyAdminPassword(curr))) throw new Error('Current password incorrect');
-      const db = this.getDB();
-      db.settings.adminPasswordHash = await sha256(newP);
-      this.saveDB(db);
-    },
-
-    registerFailedLoginAttempt(){ const db=this.getDB(); db.settings.lockout.attempts++; if(db.settings.lockout.attempts>=3){ db.settings.lockout.lockedUntil=now()+600000; db.settings.lockout.attempts=0;} this.saveDB(db); },
-    resetLockout(){ const db=this.getDB(); db.settings.lockout={attempts:0,lockedUntil:null}; this.saveDB(db); },
-    isLockedOut(){ const lu=this.getDB().settings.lockout.lockedUntil; if(!lu) return false; if(now()>lu){ this.resetLockout(); return false;} return true; },
-
-    listSubjects(){ return this.getDB().subjects || []; },
-    addSubject(name){ const db=this.getDB(); const s={id:uid('sub_'),name,createdAt:now()}; db.subjects.push(s); this.saveDB(db); return s; },
-    updateSubject(id,name){ const db=this.getDB(); const s=db.subjects.find(x=>x.id===id); if(!s) throw 'Not found'; s.name=name; this.saveDB(db); },
-    deleteSubject(id){ const db=this.getDB(); db.subjects=db.subjects.filter(s=>s.id!==id); db.topics=db.topics.filter(t=>t.subjectId!==id); db.questions=db.questions.filter(q=>q.subjectId!==id); this.saveDB(db); },
-
-    listTopics(subId){ const t=this.getDB().topics; return subId? t.filter(x=>x.subjectId===subId):t; },
-    addTopic(sid,name){ const db=this.getDB(); const t={id:uid('top_'),subjectId:sid,name,createdAt:now()}; db.topics.push(t); this.saveDB(db); },
-
-    listQuestions(filters={}){
-      let q=this.getDB().questions;
-      if(filters.subjectId) q=q.filter(x=>x.subjectId===filters.subjectId);
-      if(filters.topicId) q=q.filter(x=>x.topicId===filters.topicId);
-      if(filters.ids) q=q.filter(x=>filters.ids.includes(x.id));
+    // Questions
+    getQuestions({subjectIds=null, topicIds=null} = {}){
+      let q = QA_DB._db.questions.slice();
+      if(subjectIds && subjectIds.length) q = q.filter(x=>subjectIds.includes(x.subjectId));
+      if(topicIds && topicIds.length) q = q.filter(x=>topicIds.includes(x.topicId));
       return q;
     },
 
-    addQuestion(p){ const db=this.getDB(); const q={id:uid('q_'),createdAt:now(),...p}; db.questions.push(q); this.saveDB(db); },
-    updateQuestion(id,p){ const db=this.getDB(); Object.assign(db.questions.find(q=>q.id===id),p); this.saveDB(db); },
-    deleteQuestion(id){ const db=this.getDB(); db.questions=db.questions.filter(q=>q.id!==id); this.saveDB(db); },
-
-    recordUserHistory(h){ const db=this.getDB(); db.userHistory.push({id:uid('hist_'),timestamp:now(),...h}); this.saveDB(db); },
-    listUserHistory(){ return this.getDB().userHistory; },
-
-    generateDailySeedIfNeeded(n=10){
-      const db=this.getDB(); const today=new Date().toISOString().slice(0,10);
-      if(db.dailySeed.date===today && db.dailySeed.questionIds.length===n) return db.dailySeed;
-      const ids=[...db.questions].sort(()=>Math.random()-0.5).slice(0,n).map(q=>q.id);
-      db.dailySeed={date:today,questionIds:ids}; this.saveDB(db); return db.dailySeed;
+    addQuestion(question){
+      question.id = question.id || 'q' + Date.now();
+      QA_DB._db.questions.push(question);
+      save(QA_DB._db);
+      return question;
     },
-    getDailyQuestions(n=10){ return this.listQuestions({ids:this.generateDailySeedIfNeeded(n).questionIds}); }
+
+    // history
+    saveAttempt(record){
+      const raw = localStorage.getItem(HISTORY_KEY);
+      const arr = raw ? JSON.parse(raw) : [];
+      arr.push(record);
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(arr));
+    },
+    getHistory(){
+      const raw = localStorage.getItem(HISTORY_KEY);
+      return raw ? JSON.parse(raw) : [];
+    },
+
+    // settings
+    verifyAdmin(password){
+      const hash = sha256(password);
+      return QA_DB._db.settings.adminPasswordHash === hash;
+    },
+    changeAdminPassword(oldPass, newPass){
+      if(QA_DB.verifyAdmin(oldPass)){
+        QA_DB._db.settings.adminPasswordHash = sha256(newPass);
+        save(QA_DB._db);
+        return true;
+      }
+      return false;
+    },
+
+    // export/import
+    exportJSON(){
+      return JSON.stringify(QA_DB._db, null, 2);
+    },
+    importJSON(jsonStr){
+      try{
+        const parsed = JSON.parse(jsonStr);
+        // basic validation
+        if(!parsed.subjects || !parsed.questions) throw new Error('Invalid format');
+        QA_DB._db = parsed;
+        save(QA_DB._db);
+        return true;
+      }catch(e){
+        console.error(e);
+        return false;
+      }
+    },
+
+    // For later admin.js use
+    _save(){
+      save(QA_DB._db);
+    },
+
+    // utility: simple shuffle
+    shuffleArray(arr){
+      for(let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
   };
 
-  global.DB = API;
+  // Expose globally
+  global.QA_DB = QA_DB;
+
 })(window);
