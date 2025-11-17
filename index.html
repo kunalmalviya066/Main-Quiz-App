@@ -1,31 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz & Mock Test App</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QuizLab — Practice & Mocks</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="db.js"></script>
-  <script src="utils.js"></script>
+  <meta name="description" content="QuizLab — lightweight quiz & mock test app using localStorage" />
 </head>
 <body>
-  <header>
-    <h2>Quiz App</h2>
-    <nav>
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#subjects" class="nav-link">Subjects</a>
-      <a href="#topics" class="nav-link">Topics</a>
-      <a href="#daily" class="nav-link">Daily Quiz</a>
-      <a href="#mock" class="nav-link">Mock Test</a>
-      <a href="#help" class="nav-link">Help</a>
-      <a href="admin.html">Admin</a>
+  <header class="topbar">
+    <div class="logo">QuizLab</div>
+    <nav class="nav">
+      <a href="#" id="nav-home">Home</a>
+      <a href="#" id="nav-subjects">Subjects</a>
+      <a href="#" id="nav-topics">Topics</a>
+      <a href="#" id="nav-daily">Daily Quiz</a>
+      <a href="#" id="nav-fullmock">Full Mock</a>
+      <a href="#" id="nav-help">Help</a>
+      <a href="admin.html" id="nav-admin">Admin</a>
     </nav>
   </header>
 
-  <div class="container" id="app">
-    <!-- Dynamic content injected by script.js -->
-  </div>
+  <main class="container" id="app">
+    <!-- Home card -->
+    <section id="home" class="card hero">
+      <h1>Sharpen your skills with daily practice</h1>
+      <p>Choose subjects and topics, set timers, and simulate exam-like mock tests.</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="start-practice">Start Practice</button>
+        <button class="btn" id="try-daily">Try Today's Quiz</button>
+      </div>
+      <div class="quick-cards">
+        <div class="card small">
+          <h3>Daily quiz</h3>
+          <p>10 fresh questions every day.</p>
+        </div>
+        <div class="card small">
+          <h3>Full mock</h3>
+          <p>Create timed mocks with shuffle & review tools.</p>
+        </div>
+        <div class="card small">
+          <h3>History</h3>
+          <p>Review previous attempts anytime.</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- Subject selection -->
+    <section id="subject-selection" class="card hidden">
+      <h2>Select Subjects</h2>
+      <p class="muted">Choose one or more subjects to practice. You can then pick topics.</p>
+      <div id="subject-list" class="grid"></div>
+      <div class="form-row">
+        <button class="btn" id="back-home">Back</button>
+        <button class="btn primary" id="to-topic-select">Next: Topics</button>
+      </div>
+    </section>
+
+    <!-- Topic selection -->
+    <section id="topic-selection" class="card hidden">
+      <h2>Select Topics</h2>
+      <p class="muted">Pick topics (or leave all selected).</p>
+      <div id="topic-list" class="grid"></div>
+      <div class="form-row">
+        <button class="btn" id="back-to-subjects">Back</button>
+        <button class="btn primary" id="to-builder">Continue to Test Builder</button>
+      </div>
+    </section>
+
+    <!-- Builder -->
+    <section id="builder" class="card hidden">
+      <h2>Custom Test Builder</h2>
+      <div class="form-row">
+        <label>Number of questions:
+          <input type="number" id="num-questions" min="1" max="200" value="20" />
+        </label>
+        <label>Timer (minutes):
+          <input type="number" id="timer-minutes" min="1" max="600" value="30" />
+        </label>
+        <label>
+          <input type="checkbox" id="shuffle-choices" checked /> Shuffle choices
+        </label>
+      </div>
+      <div class="form-row">
+        <button class="btn" id="builder-back">Back</button>
+        <button class="btn primary" id="start-custom-test">Start Test</button>
+      </div>
+    </section>
+
+    <!-- Quiz area -->
+    <section id="quiz-area" class="card hidden">
+      <div class="quiz-header">
+        <div>
+          <h3 id="quiz-title">Mock Test</h3>
+          <div class="muted" id="quiz-meta"></div>
+        </div>
+        <div class="quiz-controls">
+          <button class="btn" id="toggle-fullscreen">Fullscreen</button>
+          <button class="btn" id="pause-resume">Pause</button>
+          <button class="btn" id="end-test">End Test</button>
+        </div>
+      </div>
+
+      <div class="quiz-main">
+        <aside class="navigator card" id="navigator">
+          <div class="nav-top">
+            <strong>Navigator</strong>
+            <div class="muted" id="nav-summary">0 / 0</div>
+          </div>
+          <div id="nav-grid" class="nav-grid"></div>
+        </aside>
+
+        <section class="question-panel">
+          <div id="timer" class="timer">00:00:00</div>
+          <div id="question-card" class="card question-card"></div>
+          <div class="question-actions">
+            <button class="btn" id="prev-q">Previous</button>
+            <button class="btn" id="mark-review">Mark for review</button>
+            <button class="btn" id="clear-answer">Clear</button>
+            <button class="btn" id="next-q">Next</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="card hidden">
+      <h2>Results</h2>
+      <div id="result-summary" class="card"></div>
+      <div id="review-list" class="card"></div>
+      <div class="form-row">
+        <button class="btn" id="results-home">Home</button>
+        <button class="btn primary" id="results-history">View History</button>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section id="history" class="card hidden">
+      <h2>Attempt History</h2>
+      <div id="history-list" class="stack"></div>
+      <div class="form-row">
+        <button class="btn" id="history-home">Home</button>
+      </div>
+    </section>
+
+    <!-- Help -->
+    <section id="help" class="card hidden">
+      <h2>Help</h2>
+      <p>Use the navigation to start a practice session. The app works fully offline using your browser's localStorage.</p>
+      <ul>
+        <li>Daily quiz: one unique 10-question quiz per day (refreshed daily).</li>
+        <li>Full mock: build tests with a timer and exam-like tools.</li>
+        <li>Admin: manage subjects, topics, and questions (admin page).</li>
+      </ul>
+      <div class="form-row">
+        <button class="btn" id="help-home">Home</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>© QuizLab — LocalMock • Light theme</div>
+    <div class="muted">All data stored locally in your browser</div>
+  </footer>
+
+  <script src="db.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
