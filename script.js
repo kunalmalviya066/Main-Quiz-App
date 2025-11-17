@@ -1,471 +1,452 @@
-// script.js
-import * as DB from './db.js';
-import { $, $all, formatTimeSeconds, uid, blockCopyPaste } from './utils.js';
+/* script.js
+   Handles user UI, building tests, quiz engine, anti-cheat and history.
+*/
+(function(){
+  // elements
+  const subjectList = document.getElementById('subject-list');
+  const topicCards = document.getElementById('topic-cards');
+  const builderTopic = document.getElementById('builder-topic');
+  const builderCount = document.getElementById('builder-count');
+  const builderTimer = document.getElementById('builder-timer');
+  const builderShuffle = document.getElementById('builder-shuffle');
+  const buildTestBtn = document.getElementById('build-test');
+  const dailyQuizBtn = document.getElementById('daily-quiz-btn');
+  const dailyInfo = document.getElementById('daily-info');
+  const historyList = document.getElementById('history-list');
+  const openAdmin = document.getElementById('open-admin');
+  const openFullscreenBtn = document.getElementById('open-fullscreen');
 
-const subjectListEl = $('#subject-list');
-const topicListEl = $('#topic-list');
-const subjectCardsEl = $('#subject-cards');
-const inputNumQuestions = $('#input-num-questions');
-const chkShuffle = $('#chk-shuffle');
-const inputTimerMins = $('#input-timer-mins');
-const startTestBtn = $('#start-test');
+  // quiz elements
+  const landing = document.getElementById('landing');
+  const quizScreen = document.getElementById('quiz-screen');
+  const resultScreen = document.getElementById('result-screen');
+  const qText = document.getElementById('q-text');
+  const qImage = document.getElementById('q-image');
+  const choicesEl = document.getElementById('choices');
+  const qIndex = document.getElementById('q-index');
+  const qTotal = document.getElementById('q-total');
+  const prevBtn = document.getElementById('prev-q');
+  const nextBtn = document.getElementById('next-q');
+  const pauseBtn = document.getElementById('pause-resume');
+  const timeLeftEl = document.getElementById('time-left');
+  const navigatorPanel = document.getElementById('navigator');
+  const navigatorGrid = document.getElementById('navigator-panel');
+  const toggleNavigatorBtn = document.getElementById('toggle-navigator');
+  const markReviewBtn = document.getElementById('mark-review');
+  const endQuizBtn = document.getElementById('end-quiz');
+  const navCloseBtn = document.getElementById('nav-close');
+  const resultSummary = document.getElementById('result-summary');
+  const resultDetails = document.getElementById('result-details');
+  const reviewAnswersBtn = document.getElementById('review-answers');
+  const restartBtn = document.getElementById('restart');
 
-const builderBtn = $('#btn-build');
-const dailyBtn = $('#btn-daily');
-const homeView = $('#home-view');
-const builderView = $('#builder-view');
-const quizView = $('#quiz-view');
-const resultsView = $('#results-view');
+  // state
+  let subjects = [];
+  let topics = [];
+  let questions = [];
+  let currentQuiz = null; // {id,title,questions:[{...}], settings}
+  let curIndex = 0;
+  let timer = null;
+  let paused = false;
+  let timeRemaining = 0;
+  let antiCheatFlags = {copies:0, visibilityChanges:0};
+  let quizStartTs = null;
 
-const builderSubject = $('#builder-subject');
-const builderTopics = $('#builder-topics');
-const builderCreate = $('#builder-create');
-const builderPreview = $('#builder-preview');
-
-const questionCard = $('#question-card');
-const prevBtn = $('#prev-btn');
-const nextBtn = $('#next-btn');
-const markBtn = $('#mark-btn');
-const navigatorGrid = $('#navigator-grid');
-const submitTestBtn = $('#submit-test');
-
-const timerEl = $('#timer');
-const btnFullscreen = $('#btn-fullscreen');
-const btnPause = $('#btn-pause');
-
-let current = {
-  subjectId: null,
-  topicId: null,
-  questions: [],
-  cursor: 0,
-  answers: {},
-  marked: {},
-  startAt: null,
-  totalSeconds: 0,
-  paused: false
-};
-
-function renderSubjects(){
-  const subs = DB.listSubjects();
-  subjectListEl.innerHTML = '';
-  subjectCardsEl.innerHTML = '';
-  subs.forEach(s => {
-    const li = document.createElement('li');
-    li.textContent = s.name;
-    li.dataset.id = s.id;
-    li.addEventListener('click', () => {
-      selectSubject(s.id);
+  // init
+  function init(){
+    subjects = DB.getSubjects();
+    renderSubjects();
+    renderHistory();
+    attachEvents();
+    refreshTopicsForBuilder();
+    showDailyInfo();
+    // auto-sync: listen for storage changes (cross-tab)
+    window.addEventListener('storage', (e)=>{
+      if(e.key === 'quiz_db_v1'){
+        // reload data
+        subjects = DB.getSubjects();
+        renderSubjects();
+        refreshTopicsForBuilder();
+        if(currentQuiz) syncQuestionsInPlace();
+      }
     });
-    subjectListEl.appendChild(li);
-
-    // card
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `<h3>${s.name}</h3><p class="muted">Click to explore topics & start tests</p>`;
-    card.addEventListener('click', ()=>selectSubject(s.id));
-    subjectCardsEl.appendChild(card);
-  });
-}
-
-function renderTopics(subjectId){
-  const topics = DB.listTopics(subjectId);
-  topicListEl.innerHTML = '';
-  builderTopics.innerHTML = '';
-  topics.forEach(t=>{
-    const li = document.createElement('li');
-    li.textContent = t.name;
-    li.dataset.id = t.id;
-    li.addEventListener('click', ()=>selectTopic(t.id));
-    topicListEl.appendChild(li);
-
-    // builder multi-select
-    const opt = document.createElement('option');
-    opt.value = t.id;
-    opt.textContent = t.name;
-    builderTopics.appendChild(opt);
-  });
-}
-
-function selectSubject(id){
-  current.subjectId = id;
-  renderTopics(id);
-  // highlight
-  $all('#subject-list li').forEach(li=>{
-    li.classList.toggle('active', li.dataset.id === id);
-  });
-  homeView.scrollIntoView({behavior:'smooth'});
-}
-
-function selectTopic(id){
-  current.topicId = id;
-  $all('#topic-list li').forEach(li=>{
-    li.classList.toggle('active', li.dataset.id === id);
-  });
-  // show details or builder preview
-}
-
-function wireBuilder(){
-  // fill subjects select
-  builderSubject.innerHTML = '';
-  DB.listSubjects().forEach(s=>{
-    const opt = document.createElement('option');
-    opt.value = s.id; opt.textContent = s.name;
-    builderSubject.appendChild(opt);
-  });
-
-  builderCreate.addEventListener('click', ()=>{
-    const subjectId = builderSubject.value;
-    const selectedTopics = Array.from(builderTopics.selectedOptions).map(o=>o.value);
-    createCustomTest({subjectId, topicIds: selectedTopics});
-  });
-}
-
-function createCustomTest({subjectId, topicIds=[]}){
-  const n = Math.max(1, Number(inputNumQuestions.value) || 10);
-  let pool = [];
-  if(topicIds.length){
-    topicIds.forEach(tid => pool = pool.concat(DB.listQuestions({topicId: tid})));
-  } else if(subjectId){
-    pool = DB.listQuestions({subjectId});
-  } else {
-    pool = DB.listQuestions();
   }
-  // shuffle pool
-  pool = pool.slice();
-  for(let i=pool.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [pool[i], pool[j]] = [pool[j], pool[i]];
+
+  function renderSubjects(){
+    subjectList.innerHTML = '';
+    subjects.forEach(s=>{
+      const li = document.createElement('li');
+      li.textContent = s.name;
+      li.title = s.description || '';
+      li.onclick = ()=>selectSubject(s.id);
+      subjectList.appendChild(li);
+    });
   }
-  const selection = pool.slice(0,n);
-  if(selection.length === 0){
-    builderPreview.innerHTML = '<div class="card">No questions found for selected subject/topics.</div>';
-    return;
+
+  function selectSubject(subjectId){
+    topics = DB.getTopics(subjectId);
+    renderTopicCards();
+    refreshTopicsForBuilder();
   }
-  // show preview
-  builderPreview.innerHTML = `<div class="card"><h4>Preview (${selection.length} questions)</h4><ol>${selection.map(q=>`<li>${escapeHtml(q.text)}</li>`).join('')}</ol><div class="actions"><button id="preview-start" class="btn primary">Start This Test</button></div></div>`;
-  $('#preview-start').addEventListener('click', ()=>startTest(selection));
-}
 
-function startTest(questions){
-  // set current
-  current.questions = questions.map(q => ({
-    ...q,
-    choices: chkShuffle.checked ? shuffleArray(q.choices.slice()) : q.choices.slice()
-  }));
-  current.cursor = 0;
-  current.answers = {};
-  current.marked = {};
-  const mins = Number(inputTimerMins.value) || 0;
-  current.totalSeconds = mins * 60;
-  current.startAt = Date.now();
-  showQuizView();
-  renderQuestion();
-  renderNavigator();
-  startTimer();
-  blockCopyPaste(); // basic anti-copy
-}
+  function renderTopicCards(){
+    topicCards.innerHTML = '';
+    topics.forEach(t=>{
+      const card = document.createElement('div');
+      card.className = 'topic-card';
+      card.innerHTML = `<h4>${t.name}</h4><p>${t.description||''}</p><div class="mt"><button class="btn subtle start-topic" data-topic="${t.id}">Start</button></div>`;
+      topicCards.appendChild(card);
+    });
+    document.querySelectorAll('.start-topic').forEach(btn=>{
+      btn.onclick = ()=> {
+        const topicId = btn.dataset.topic;
+        const qs = DB.getQuestions({topicId});
+        startQuiz({
+          title: `Topic: ${topics.find(x=>x.id===topicId).name}`,
+          questions: chooseN(qs, Math.min(qs.length, 10)),
+          settings: { timerMins: 10, shuffleChoices: true }
+        });
+      }
+    });
+  }
 
-function showQuizView(){
-  homeView.classList.add('hidden');
-  builderView.classList.add('hidden');
-  resultsView.classList.add('hidden');
-  quizView.classList.remove('hidden');
-}
+  function refreshTopicsForBuilder(){
+    builderTopic.innerHTML = '';
+    const allTopics = DB.getTopics();
+    allTopics.forEach(t=>{
+      const opt = document.createElement('option');
+      opt.value = t.id; opt.textContent = `${t.name} (${DB.getSubjects().find(s=>s.id===t.subjectId)?.name||''})`;
+      builderTopic.appendChild(opt);
+    });
+  }
 
-/* Timer scaffolding (will be completed in second half) */
-let timerInterval = null;
-let remainingSeconds = 0;
-function startTimer(){
-  if(current.totalSeconds > 0){
-    remainingSeconds = current.totalSeconds;
-    updateTimerUI();
-    if(timerInterval) clearInterval(timerInterval);
-    timerInterval = setInterval(()=>{
-      if(!current.paused){
-        remainingSeconds--;
-        updateTimerUI();
-        if(remainingSeconds <= 0){
-          clearInterval(timerInterval);
-          // auto submit (finalization in second half)
+  function attachEvents(){
+    buildTestBtn.onclick = ()=>{
+      const topicId = builderTopic.value;
+      const n = Math.max(1, parseInt(builderCount.value||10,10));
+      const timerMins = Math.max(1, parseInt(builderTimer.value||10,10));
+      const shuffle = !!builderShuffle.checked;
+      const qs = DB.getQuestions({topicId});
+      if(qs.length===0){ alert('No questions for selected topic'); return; }
+      const selected = chooseN(qs, Math.min(n, qs.length));
+      startQuiz({
+        title: `Custom: ${document.querySelector('#builder-topic option:checked').textContent}`,
+        questions: selected,
+        settings: { timerMins, shuffleChoices: shuffle }
+      });
+    };
+
+    dailyQuizBtn.onclick = ()=>startDailyQuiz();
+    openAdmin.onclick = ()=> location.href = 'admin.html';
+    openFullscreenBtn.onclick = ()=>toggleFullscreen();
+
+    prevBtn.onclick = ()=>gotoQuestion(curIndex-1);
+    nextBtn.onclick = ()=>gotoQuestion(curIndex+1);
+    pauseBtn.onclick = togglePause;
+    toggleNavigatorBtn.onclick = ()=>navigatorPanel.classList.toggle('hidden');
+    markReviewBtn.onclick = ()=>toggleMark(curIndex);
+    endQuizBtn.onclick = ()=>endQuiz();
+    navCloseBtn.onclick = ()=>navigatorPanel.classList.add('hidden');
+    reviewAnswersBtn.onclick = ()=>reviewAllAnswers();
+    restartBtn.onclick = ()=>backHome();
+
+    // anti-cheat: block context menu, copy/paste, keys
+    window.addEventListener('contextmenu', e => e.preventDefault());
+    window.addEventListener('copy', e => { antiCheatFlags.copies++; e.preventDefault(); toast('Copy blocked (anti-cheat)'); });
+    window.addEventListener('cut', e => { antiCheatFlags.copies++; e.preventDefault(); toast('Cut blocked (anti-cheat)'); });
+    window.addEventListener('paste', e => { e.preventDefault(); toast('Paste blocked (anti-cheat)'); });
+
+    // block obvious keys like Ctrl+T? We'll prevent Ctrl+Tab detection is not possible; we monitor visibilitychange
+    document.addEventListener('keydown', (e)=>{
+      if((e.ctrlKey || e.metaKey) && ['c','v','x','u','s'].includes(e.key.toLowerCase())){ e.preventDefault(); toast('Blocked'); }
+      if(e.key === 'F11'){ e.preventDefault(); toggleFullscreen(); }
+      if(e.key === 'Tab'){ e.preventDefault(); toast('Tab switching is disabled during quiz'); }
+    });
+
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.hidden && quizScreen.style.display !== 'none' && !quizScreen.classList.contains('hidden')){
+        antiCheatFlags.visibilityChanges++;
+        pauseQuizForVisibility();
+      }
+    });
+  }
+
+  // small toast
+  function toast(msg){
+    console.log('TOAST',msg);
+    // simple alertless toast:
+    const t = document.createElement('div');
+    t.textContent = msg; t.style = 'position:fixed;bottom:16px;right:16px;background:#111;color:#fff;padding:8px 12px;border-radius:8px;z-index:9999';
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(),2200);
+  }
+
+  // choose N with shuffle
+  function chooseN(arr, n){
+    const copy = JSON.parse(JSON.stringify(arr));
+    shuffleArray(copy);
+    return copy.slice(0,n).map(q=>{
+      const qq = JSON.parse(JSON.stringify(q));
+      qq.choices = qq.choices.map(c=>({ ...c }));
+      return qq;
+    });
+  }
+
+  function shuffleArray(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} }
+
+  // Start quiz
+  function startQuiz({title, questions:qs, settings}){
+    if(!qs || qs.length===0) return alert('No questions provided');
+    currentQuiz = {
+      id: 'local_' + Date.now(),
+      title,
+      settings,
+      questions: qs.map(q=>{
+        // prepare runtime fields
+        return {
+          ...q,
+          runtime: {
+            selected: [], // choice ids selected by user
+            marked: false,
+            answered: false,
+            timeSpent: 0
+          }
+        }
+      })
+    };
+    if(settings.shuffleChoices){
+      currentQuiz.questions.forEach(q=> shuffleArray(q.choices));
+    }
+    curIndex = 0;
+    timeRemaining = (settings.timerMins || 10) * 60;
+    quizStartTs = Date.now();
+    antiCheatFlags = {copies:0, visibilityChanges:0};
+    showQuizScreen();
+    renderQuestion();
+    startTimer();
+    renderNavigator();
+  }
+
+  function showQuizScreen(){
+    landing.classList.add('hidden');
+    resultScreen.classList.add('hidden');
+    quizScreen.classList.remove('hidden');
+    quizScreen.style.display = '';
+  }
+
+  function renderQuestion(){
+    const q = currentQuiz.questions[curIndex];
+    qIndex.textContent = curIndex+1;
+    qTotal.textContent = currentQuiz.questions.length;
+    qText.innerHTML = q.text || '';
+    if(q.imageUrl){
+      qImage.innerHTML = `<img src="${q.imageUrl}" alt="question image">`;
+    } else qImage.innerHTML = '';
+    choicesEl.innerHTML = '';
+    q.choices.forEach(c=>{
+      const div = document.createElement('div');
+      div.className = 'choice' + (q.runtime.selected.includes(c.id) ? ' selected' : '');
+      div.textContent = c.text;
+      div.onclick = ()=>toggleSelect(c.id);
+      choicesEl.appendChild(div);
+    });
+    updateNavItem(curIndex);
+  }
+
+  function toggleSelect(choiceId){
+    const q = currentQuiz.questions[curIndex];
+    // single-select for simplicity; if multiple answers allowed, toggle multiple
+    q.runtime.selected = [choiceId];
+    q.runtime.answered = true;
+    renderQuestion();
+    renderNavigator();
+  }
+
+  function gotoQuestion(idx){
+    if(idx < 0) idx = 0;
+    if(idx >= currentQuiz.questions.length) idx = currentQuiz.questions.length - 1;
+    curIndex = idx;
+    renderQuestion();
+  }
+
+  function startTimer(){
+    clearInterval(timer);
+    paused = false;
+    pauseBtn.textContent = 'Pause';
+    timer = setInterval(()=>{
+      if(!paused){
+        timeRemaining--;
+        timeLeftEl.textContent = formatTime(timeRemaining);
+        // add to current question time
+        currentQuiz.questions[curIndex].runtime.timeSpent++;
+        if(timeRemaining <= 0){
+          clearInterval(timer);
+          toast('Time up — auto-submitting');
+          finalizeQuiz();
         }
       }
-    }, 1000);
-  } else {
-    timerEl.textContent = '—';
+    },1000);
   }
-}
-function updateTimerUI(){
-  timerEl.textContent = formatTimeSeconds(remainingSeconds);
-}
 
-/* Render question */
-function renderQuestion(){
-  const q = current.questions[current.cursor];
-  if(!q){
-    questionCard.innerHTML = '<p>No question</p>';
-    return;
+  function togglePause(){
+    paused = !paused;
+    pauseBtn.textContent = paused ? 'Resume' : 'Pause';
+    if(paused) toast('Quiz paused'); else toast('Quiz resumed');
   }
-  const choicesHtml = q.choices.map((c, idx)=>{
-    return `<li data-idx="${idx}" class="opt">${escapeHtml(c)}</li>`;
-  }).join('');
-  const imgHtml = q.image ? `<img src="${q.image}" alt="question image" style="max-width:100%;border-radius:10px;margin-top:8px;" />` : '';
-  questionCard.innerHTML = `
-    <div>
-      <h3>Q${current.cursor+1}. ${escapeHtml(q.text)}</h3>
-      ${imgHtml}
-      <ul class="options">${choicesHtml}</ul>
-    </div>
-  `;
-  // wire options
-  $all('.opt', questionCard).forEach(li=>{
-    li.addEventListener('click', ()=>{
-      const idx = Number(li.dataset.idx);
-      selectAnswer(current.cursor, idx);
+
+  function pauseQuizForVisibility(){
+    paused = true;
+    pauseBtn.textContent = 'Resume';
+    toast('You left the tab — paused (anti-cheat logged)');
+  }
+
+  function formatTime(sec){
+    const m = Math.floor(sec/60).toString().padStart(2,'0');
+    const s = (sec%60).toString().padStart(2,'0');
+    return `${m}:${s}`;
+  }
+
+  function toggleMark(index){
+    const q = currentQuiz.questions[index];
+    q.runtime.marked = !q.runtime.marked;
+    renderNavigator();
+    toast(q.runtime.marked ? 'Marked for review' : 'Unmarked');
+  }
+
+  function renderNavigator(){
+    navigatorGrid.innerHTML = '';
+    currentQuiz.questions.forEach((q,i)=>{
+      const btn = document.createElement('div');
+      btn.className = 'nav-item';
+      if(q.runtime.answered) btn.classList.add('answered');
+      if(q.runtime.marked) btn.classList.add('marked');
+      btn.textContent = i+1;
+      btn.onclick = ()=> { gotoQuestion(i); };
+      navigatorGrid.appendChild(btn);
     });
-  });
-  // highlight selected
-  highlightSelection();
-}
-
-function selectAnswer(index, choiceIdx){
-  current.answers[index] = choiceIdx;
-  renderNavigator();
-  highlightSelection();
-}
-
-function highlightSelection(){
-  $all('.options li', questionCard).forEach(li=>{
-    li.classList.remove('selected');
-  });
-  const sel = current.answers[current.cursor];
-  if(typeof sel !== 'undefined'){
-    const el = questionCard.querySelector(`.options li[data-idx="${sel}"]`);
-    if(el) el.classList.add('selected');
   }
-}
 
-/* Navigator */
-function renderNavigator(){
-  navigatorGrid.innerHTML = '';
-  current.questions.forEach((q, i)=>{
-    const btn = document.createElement('button');
-    btn.textContent = (i+1);
-    if(current.marked[i]) btn.classList.add('marked');
-    if(typeof current.answers[i] !== 'undefined') btn.classList.add('answered');
-    btn.addEventListener('click', ()=>{ goTo(i); });
-    navigatorGrid.appendChild(btn);
-  });
-}
-
-function goTo(i){
-  current.cursor = i;
-  renderQuestion();
-}
-
-/* Controls */
-prevBtn.addEventListener('click', ()=>{
-  if(current.cursor > 0) { current.cursor--; renderQuestion(); }
-});
-nextBtn.addEventListener('click', ()=>{
-  if(current.cursor < current.questions.length - 1){ current.cursor++; renderQuestion(); }
-});
-markBtn.addEventListener('click', ()=>{
-  current.marked[current.cursor] = !current.marked[current.cursor];
-  renderNavigator();
-});
-
-/* Daily quiz quick launcher */
-dailyBtn.addEventListener('click', ()=>{
-  // pick random 10 from DB
-  const all = DB.listQuestions();
-  const sel = shuffleArray(all).slice(0, 10).map(q=>({...q, choices: q.choices.slice()}));
-  startTest(sel);
-});
-
-/* Start Test from side panel */
-startTestBtn.addEventListener('click', ()=>{
-  const subj = current.subjectId;
-  const topic = current.topicId;
-  const n = Math.max(1, Number(inputNumQuestions.value) || 10);
-  let pool = [];
-  if(topic) pool = DB.listQuestions({topicId: topic});
-  else if(subj) pool = DB.listQuestions({subjectId: subj});
-  else pool = DB.listQuestions();
-  pool = shuffleArray(pool).slice(0,n).map(q=>({...q, choices: q.choices.slice()}));
-  startTest(pool);
-});
-
-/* builder button wiring */
-builderBtn.addEventListener('click', ()=>{
-  homeView.classList.add('hidden');
-  builderView.classList.remove('hidden');
-  quizView.classList.add('hidden');
-});
-
-/* fullscreen & pause buttons basic wiring */
-btnFullscreen.addEventListener('click', ()=>{
-  if(!document.fullscreenElement) document.documentElement.requestFullscreen();
-  else document.exitFullscreen();
-});
-btnPause.addEventListener('click', ()=>{
-  current.paused = !current.paused;
-  btnPause.textContent = current.paused ? 'Resume' : 'Pause';
-});
-
-/* ---------- SECOND HALF IMPLEMENTATION ---------- */
-
-/* Anti-cheat features */
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('selectstart', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-  if (e.ctrlKey && ['c','v','x','u','s'].includes(e.key.toLowerCase())) {
-    e.preventDefault();
+  function updateNavItem(i){
+    const items = navigatorGrid.children;
+    if(items[i]) {
+      Array.from(items).forEach(x=>x.classList.remove('current'));
+      items[i].classList.add('current');
+    }
   }
-  if (e.key === 'F12') e.preventDefault();
-});
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    current.paused = true;
-    btnPause.textContent = 'Resume';
+
+  function endQuiz(){
+    if(confirm('End quiz and submit?')) finalizeQuiz();
   }
-});
 
-/* Submit test fully */
-submitTestBtn.addEventListener('click', finalizeTest);
-
-function finalizeTest(){
-  clearInterval(timerInterval);
-
-  const endAt = Date.now();
-  const duration = Math.floor((endAt - current.startAt)/1000);
-
-  const report = computeReport(duration);
-  DB.saveUserResult(report);
-
-  displayReport(report);
-}
-
-/* Compute score and stats */
-function computeReport(duration){
-  let correct = 0;
-  let attempted = 0;
-  const details = [];
-
-  current.questions.forEach((q, i)=>{
-    const chosen = current.answers[i];
-    const actual = q.answerIndex;
-    const isAtt = typeof chosen !== 'undefined';
-    const isCorrect = (chosen === q.choices.indexOf(q.choices[actual]));
-
-    if(isAtt) attempted++;
-    if(isCorrect) correct++;
-
-    details.push({
-      text: q.text,
-      choices: q.choices,
-      answerIndex: actual,
-      chosen: chosen,
-      image: q.image || ''
+  function finalizeQuiz(){
+    clearInterval(timer);
+    // compute score
+    let correct=0, attempted=0;
+    const details = currentQuiz.questions.map(q=>{
+      const user = q.runtime.selected || [];
+      const correctIds = q.answerIds || [];
+      const isCorrect = arraysEqual(user, correctIds);
+      if(user.length) attempted++;
+      if(isCorrect) correct++;
+      return {
+        id: q.id, text: q.text, choices: q.choices, user, correctIds, isCorrect, imageUrl: q.imageUrl, marked: q.runtime.marked, timeSpent: q.runtime.timeSpent
+      }
     });
-  });
+    const total = currentQuiz.questions.length;
+    const percent = Math.round((correct/total)*100);
+    const historyEntry = {
+      title: currentQuiz.title,
+      meta: {
+        total, correct, attempted, percent,
+        timerUsed: (currentQuiz.settings.timerMins*60) - timeRemaining,
+        antiCheat: antiCheatFlags
+      },
+      results: details
+    };
+    DB.pushHistory(historyEntry);
+    showResults(historyEntry);
+  }
 
-  return {
-    id: uid('test'),
-    takenAt: new Date().toISOString(),
-    total: current.questions.length,
-    correct,
-    attempted,
-    duration,
-    accuracy: correct/current.questions.length,
-    details
-  };
-}
-
-/* Results View */
-function displayReport(r){
-  quizView.classList.add('hidden');
-  resultsView.classList.remove('hidden');
-
-  resultsView.innerHTML = `
-    <h2>Results</h2>
-    <div class="card">
-      <p><strong>Score:</strong> ${r.correct} / ${r.total}</p>
-      <p><strong>Accuracy:</strong> ${(r.accuracy*100).toFixed(1)}%</p>
-      <p><strong>Attempted:</strong> ${r.attempted}</p>
-      <p><strong>Unattempted:</strong> ${r.total - r.attempted}</p>
-      <p><strong>Time Taken:</strong> ${formatTimeSeconds(r.duration)}</p>
-    </div>
-
-    <h3>Review Questions</h3>
-    <div id="review-area"></div>
-  `;
-
-  const rev = $('#review-area');
-  r.details.forEach((d, i)=>{
-    const opts = d.choices.map((c, idx)=>{
-      const correct = idx === d.answerIndex;
-      const chosen = idx === d.chosen;
-      return `
-        <li class="${correct?'correct':''} ${chosen&&!correct?'wrong':''}">
-          ${escapeHtml(c)}
-          ${correct?' <strong>(Correct)</strong>':''}
-          ${chosen&&!correct?' <strong>(Your Choice)</strong>':''}
-        </li>
-      `;
-    }).join('');
-    rev.innerHTML += `
-      <div class="card" style="margin-top:12px">
-        <h4>Q${i+1}. ${escapeHtml(d.text)}</h4>
-        ${d.image?`<img src="${d.image}" style="max-width:100%;margin-top:10px">`:''}
-        <ul class="options">${opts}</ul>
+  function showResults(entry){
+    quizScreen.classList.add('hidden');
+    resultScreen.classList.remove('hidden');
+    resultScreen.style.display = '';
+    resultSummary.innerHTML = `<strong>${entry.title}</strong>
+      <p class="muted">Score: ${entry.meta.correct} / ${entry.meta.total} (${entry.meta.percent}%) • Attempted: ${entry.meta.attempted} • Time: ${formatTime(entry.meta.timerUsed)}</p>
+      <p class="muted small">Anti-cheat flags: copies=${entry.meta.antiCheat.copies}, visibility=${entry.meta.antiCheat.visibilityChanges}</p>`;
+    // compact details
+    resultDetails.innerHTML = entry.results.map((r,i)=>`
+      <div class="card mt" style="padding:8px">
+        <div><strong>Q${i+1}:</strong> ${r.text}</div>
+        ${r.imageUrl ? `<img src="${r.imageUrl}" style="max-width:200px;margin-top:8px" />` : ''}
+        <div class="muted small">Your answer: ${r.user.join(',') || '—'} • Correct: ${r.correctIds.join(',')}</div>
       </div>
-    `;
-  });
-}
-
-/* Home page test history preview */
-function renderHistoryPreview(){
-  const db = DB.getDB();
-  const hist = db.users || [];
-  const area = document.createElement('div');
-  area.className = 'card';
-  area.innerHTML = `<h3>Your Test History</h3>`;
-  if(hist.length === 0){
-    area.innerHTML += `<p class="muted">No tests taken yet.</p>`;
-  } else {
-    area.innerHTML += hist.slice().reverse().map(h=>{
-      return `<div class="card">
-        <strong>${new Date(h.takenAt).toLocaleString()}</strong>
-        <p>Score: ${h.correct}/${h.total} (${(h.accuracy*100).toFixed(1)}%)</p>
-        <p>Time: ${formatTimeSeconds(h.duration)}</p>
-      </div>`;
-    }).join('');
+    `).join('');
+    // refresh history list
+    renderHistory();
   }
-  homeView.appendChild(area);
-}
-renderHistoryPreview();
 
-
-/* Utilities */
-function shuffleArray(arr){
-  for(let i=arr.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+  function reviewAllAnswers(){
+    // show Q-by-Q review UI: reuse landing area to present full review - for brevity, just show result details (already present)
+    window.scrollTo({top:0, behavior:'smooth'});
   }
-  return arr;
-}
-function escapeHtml(str){
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
 
-/* init */
-function init(){
-  renderSubjects();
-  renderTopics(null);
-  wireBuilder();
-  homeView.classList.remove('hidden');
-}
-init();
+  function backHome(){
+    resultScreen.classList.add('hidden');
+    quizScreen.classList.add('hidden');
+    landing.classList.remove('hidden');
+  }
 
-/* Expose some for debugging */
-window.__QUIZLAB = { DB, current };
+  function renderHistory(){
+    const hist = DB.getHistory();
+    if(hist.length===0){ historyList.innerHTML = '<div class="muted small">No history yet</div>'; return;}
+    historyList.innerHTML = hist.map(h=>`<div>${new Date(h.timestamp).toLocaleString()} — <strong>${h.title}</strong> • ${h.meta.percent}%</div>`).join('');
+  }
+
+  // helpers
+  function arraysEqual(a,b){
+    if(!a) a=[]; if(!b) b=[];
+    if(a.length !== b.length) return false;
+    return a.every((v,i)=>v === b[i]);
+  }
+
+  function syncQuestionsInPlace(){
+    // if DB changed externally, try to update question pool of currentQuiz by id matching
+    const currentIds = currentQuiz.questions.map(q=>q.id);
+    const fresh = DB.getQuestions();
+    currentQuiz.questions = currentQuiz.questions.map(q=>{
+      const updated = fresh.find(x=>x.id===q.id);
+      return updated ? { ...updated, runtime: q.runtime } : q;
+    });
+    renderQuestion();
+    renderNavigator();
+  }
+
+  // Daily quiz generator (simple deterministic seed based)
+  function showDailyInfo(){
+    const today = (new Date()).toISOString().slice(0,10);
+    dailyInfo.textContent = `Daily quiz for ${today}`;
+  }
+
+  function startDailyQuiz(){
+    // choose 10 random across DB
+    const all = DB.getQuestions();
+    if(all.length === 0) return alert('No questions in DB');
+    const n = Math.min(10, all.length);
+    const quizQs = chooseN(all, n);
+    startQuiz({ title: 'Daily Quiz', questions: quizQs, settings: { timerMins: 10, shuffleChoices: true } });
+  }
+
+  // fullscreen
+  function toggleFullscreen(){
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen().catch(()=>{});
+    } else {
+      document.exitFullscreen().catch(()=>{});
+    }
+  }
+
+  // init
+  init();
+
+})();

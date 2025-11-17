@@ -3,118 +3,120 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>QuizLab — Practice & Mock Tests</title>
+  <title>Quiz & Mock Test — Home</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="container topbar-inner">
-      <h1 class="brand">QuizLab</h1>
-      <nav class="top-actions">
-        <button id="btn-daily" class="btn">Daily Quiz</button>
-        <button id="btn-build" class="btn">Custom Test Builder</button>
-        <a class="btn ghost" href="admin.html">Admin</a>
+    <div class="container">
+      <h1 class="brand">Quiz & Mock Test</h1>
+      <nav>
+        <button id="open-admin" class="btn subtle">Admin</button>
+        <button id="open-fullscreen" class="btn">Fullscreen</button>
       </nav>
     </div>
   </header>
 
   <main class="container main-grid">
-    <aside class="sidepanel card" id="left-panel">
-      <section>
-        <h2>Subjects</h2>
+    <aside class="panel sidebar">
+      <section class="card">
+        <h3>Subjects</h3>
         <ul id="subject-list" class="list"></ul>
+        <div class="muted small">Select a subject to see topics & quizzes</div>
       </section>
-      <section>
-        <h3>Topics</h3>
-        <ul id="topic-list" class="list"></ul>
+
+      <section class="card mt">
+        <h3>Daily Quiz</h3>
+        <button id="daily-quiz-btn" class="btn block">Start Today's Quiz</button>
+        <div id="daily-info" class="muted small mt"></div>
       </section>
-      <section>
-        <h3>Filters</h3>
-        <div class="form-row">
-          <label>Questions:</label>
-          <input id="input-num-questions" type="number" min="1" max="200" value="10" />
-        </div>
-        <div class="form-row">
-          <label>Shuffle choices</label>
-          <input id="chk-shuffle" type="checkbox" checked />
-        </div>
-        <div class="form-row">
-          <label>Total timer (mins)</label>
-          <input id="input-timer-mins" type="number" min="0" max="600" value="15" />
-        </div>
-        <div class="actions">
-          <button id="start-test" class="btn primary">Start Test</button>
-        </div>
+
+      <section class="card mt">
+        <h3>Test Builder</h3>
+        <label>Topic
+          <select id="builder-topic"></select>
+        </label>
+        <label>Number of Questions
+          <input id="builder-count" type="number" min="1" max="200" value="10" />
+        </label>
+        <label>Total Timer (minutes)
+          <input id="builder-timer" type="number" min="1" value="10" />
+        </label>
+        <label><input id="builder-shuffle" type="checkbox" /> Shuffle choices</label>
+        <button id="build-test" class="btn block">Build & Start</button>
+      </section>
+
+      <section class="card mt">
+        <h3>History</h3>
+        <div id="history-list" class="list small muted"></div>
       </section>
     </aside>
 
-    <section class="content card" id="content-area">
-      <div id="home-view">
+    <section class="panel content-area card">
+      <div id="landing" class="landing">
         <h2>Welcome</h2>
-        <p>Select a subject or topic to begin, or use the Custom Test Builder to craft an exam.</p>
-        <div id="subject-cards" class="grid-cards"></div>
+        <p class="muted">Choose a subject on the left or create a custom test. Questions support images (URL or base64). Anti-cheat active: copying, pasting, right-click and leaving tab are monitored.</p>
+
+        <div id="topic-cards" class="grid-cards mt"></div>
       </div>
 
-      <div id="builder-view" class="hidden">
-        <h2>Custom Test Builder</h2>
-        <div id="builder-controls" class="card small">
-          <div class="form-row">
-            <label>Pick subject</label>
-            <select id="builder-subject"></select>
+      <div id="quiz-screen" class="hidden">
+        <div class="quiz-top">
+          <div>
+            <h3 id="quiz-title">Quiz</h3>
+            <div id="quiz-meta" class="muted small"></div>
           </div>
-          <div class="form-row">
-            <label>Pick topics</label>
-            <select id="builder-topics" multiple></select>
-          </div>
-          <div class="form-row">
-            <button id="builder-create" class="btn primary">Create Test</button>
-            <button id="builder-reset" class="btn ghost">Reset</button>
-          </div>
-        </div>
-        <div id="builder-preview"></div>
-      </div>
-
-      <div id="quiz-view" class="hidden">
-        <div class="quiz-toolbar">
-          <div class="left">
-            <button id="btn-fullscreen" class="btn ghost">Fullscreen</button>
-            <button id="btn-pause" class="btn ghost">Pause</button>
-          </div>
-          <div class="right">
-            <div id="timer" class="timer">00:00</div>
+          <div class="quiz-controls">
+            <button id="pause-resume" class="btn subtle">Pause</button>
+            <button id="toggle-navigator" class="btn subtle">Navigator</button>
+            <button id="mark-review" class="btn subtle">Mark</button>
+            <button id="end-quiz" class="btn danger">End</button>
           </div>
         </div>
 
         <div class="quiz-body">
-          <div class="quiz-left">
-            <div id="question-card" class="card question-card"></div>
-            <div class="quiz-controls">
-              <button id="prev-btn" class="btn">Previous</button>
-              <button id="mark-btn" class="btn">Mark Review</button>
-              <button id="next-btn" class="btn primary">Next</button>
+          <aside id="navigator" class="navigator hidden card">
+            <div class="nav-head">
+              <strong>Navigator</strong>
+              <button id="nav-close" class="btn subtle">Close</button>
             </div>
-          </div>
-
-          <aside class="navigator card">
-            <h4>Navigator</h4>
-            <div id="navigator-grid" class="navigator-grid"></div>
-            <div class="nav-footer">
-              <button id="submit-test" class="btn danger">Submit</button>
-            </div>
+            <div id="navigator-panel" class="nav-grid"></div>
           </aside>
+
+          <article id="question-area" class="question card">
+            <div id="q-progress" class="muted small">Q <span id="q-index">1</span> / <span id="q-total">1</span></div>
+            <div id="q-text" class="q-text"></div>
+            <div id="q-image" class="q-image"></div>
+            <div id="choices" class="choices"></div>
+
+            <div class="q-actions">
+              <button id="prev-q" class="btn subtle">Previous</button>
+              <button id="next-q" class="btn subtle">Next</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="quiz-footer">
+          <div class="muted small">Time left: <span id="time-left">00:00</span></div>
         </div>
       </div>
 
-      <div id="results-view" class="hidden card">
-        <!-- Filled by script -->
+      <div id="result-screen" class="hidden card">
+        <h2>Results</h2>
+        <div id="result-summary" class="mt"></div>
+        <div id="result-details" class="mt"></div>
+        <button id="review-answers" class="btn">Review Q-by-Q</button>
+        <button id="restart" class="btn subtle">Back to Home</button>
       </div>
+
     </section>
   </main>
 
-  <footer class="container footer">
-    <small>QuizLab — local-only mock test platform · All data stored in browser</small>
+  <footer class="footer">
+    <div class="container muted small">Made with ❤️ • Client-side only • localStorage DB</div>
   </footer>
 
-  <script type="module" src="script.js"></script>
+  <script src="db.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

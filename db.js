@@ -1,204 +1,257 @@
-// db.js
-// ES module providing localStorage-backed DB functions.
+/* db.js
+   localStorage DB module.
+   Schema (in localStorage under key 'quiz_db_v1'):
+   {
+     subjects: [{id, name, description}],
+     topics: [{id, subjectId, name, description}],
+     questions: [{id, topicId, subjectId, text, choices:[{id,text}], answerIds:[id,...], imageUrl, tags:[], difficulty}],
+     history: [{id, timestamp, title, meta: {...}, results: {...}}],
+     admin: {user:'admin', pwHash: '...' } // simple base64 stored password
+   }
+*/
 
-const DB_KEY = 'quizlab_db_v1';
+(function(global){
+  const STORAGE_KEY = 'quiz_db_v1';
 
-const DEFAULT_DB = {
-  subjects: [
-    { id: 'sub-1', name: 'General Knowledge', createdAt: Date.now() },
-    { id: 'sub-2', name: 'Mathematics', createdAt: Date.now() }
-  ],
-  topics: [
-    { id: 'top-1', subjectId: 'sub-1', name: 'History' },
-    { id: 'top-2', subjectId: 'sub-1', name: 'Science' },
-    { id: 'top-3', subjectId: 'sub-2', name: 'Algebra' }
-  ],
-  questions: [
-    {
-      id: 'q-1',
-      subjectId: 'sub-1',
-      topicId: 'top-1',
-      text: 'Who was the first person to walk on the Moon?',
-      choices: ['Yuri Gagarin','Neil Armstrong','Buzz Aldrin','Michael Collins'],
-      answerIndex: 1,
-      image: '',
-      createdAt: Date.now()
-    },
-    {
-      id: 'q-2',
-      subjectId: 'sub-2',
-      topicId: 'top-3',
-      text: 'Solve: 2x + 3 = 11',
-      choices: ['3','4','5','6'],
-      answerIndex: 1,
-      image: '',
-      createdAt: Date.now()
-    }
-  ],
-  users: [
-    // user test history entries
-  ],
-  admin: {
-    username: 'kunalmalviya06',
-    // default password: 'admin' (hashed simply)
-    passwordHash: btoa('Kunalm@123') // simple base64 for demo; replace later
+  function uid(prefix='id'){
+    return prefix + '_' + Math.random().toString(36).slice(2,9);
   }
-};
 
-function readRaw(){
-  try{
-    const raw = localStorage.getItem(DB_KEY);
+  // default seed data (owner may edit directly)
+  const SEED_DATA = {
+    subjects: [
+      { id: 's_general', name: 'General Knowledge', description: 'Mixed GK' },
+      { id: 's_math', name: 'Mathematics', description: 'Math problems & quizzes' }
+    ],
+    topics: [
+      { id: 't_gk_1', subjectId: 's_general', name: 'World Facts', description: '' },
+      { id: 't_math_1', subjectId: 's_math', name: 'Algebra Basics', description: '' }
+    ],
+    questions: [
+      {
+        id: 'q1',
+        topicId: 't_gk_1',
+        subjectId: 's_general',
+        text: 'Which is the largest ocean on Earth?',
+        choices: [
+          { id: 'c1', text: 'Atlantic' },
+          { id: 'c2', text: 'Indian' },
+          { id: 'c3', text: 'Pacific' },
+          { id: 'c4', text: 'Arctic' }
+        ],
+        answerIds: ['c3'],
+        imageUrl: '',
+        tags: ['geography'],
+        difficulty: 'easy'
+      },
+      {
+        id: 'q2',
+        topicId: 't_math_1',
+        subjectId: 's_math',
+        text: 'Solve: 2x + 3 = 11. What is x?',
+        choices: [
+          { id: 'c1', text: '4' },
+          { id: 'c2', text: '3' },
+          { id: 'c3', text: '5' },
+          { id: 'c4', text: '6' }
+        ],
+        answerIds: ['c1'],
+        imageUrl: '',
+        tags: ['algebra'],
+        difficulty: 'easy'
+      }
+    ],
+    history: [],
+    admin: {
+      user: 'admin',
+      // default password "admin" but base64 encoded; you may change.
+      pwHash: btoa('admin')
+    }
+  };
+
+  // load or init
+  function load(){
+    const raw = localStorage.getItem(STORAGE_KEY);
     if(!raw){
-      localStorage.setItem(DB_KEY, JSON.stringify(DEFAULT_DB));
-      return JSON.parse(JSON.stringify(DEFAULT_DB));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_DATA));
+      return JSON.parse(JSON.stringify(SEED_DATA));
     }
-    return JSON.parse(raw);
-  }catch(e){
-    console.error('DB read error', e);
-    localStorage.setItem(DB_KEY, JSON.stringify(DEFAULT_DB));
-    return JSON.parse(JSON.stringify(DEFAULT_DB));
+    try {
+      return JSON.parse(raw);
+    } catch(e){
+      console.error('Corrupt DB — resetting', e);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_DATA));
+      return JSON.parse(JSON.stringify(SEED_DATA));
+    }
   }
-}
 
-function write(db){
-  localStorage.setItem(DB_KEY, JSON.stringify(db));
-  return true;
-}
-
-export function getDB(){
-  return readRaw();
-}
-
-export function saveDB(updated){
-  write(updated);
-}
-
-/* Subjects */
-export function listSubjects(){
-  return readRaw().subjects.slice();
-}
-export function addSubject(name){
-  const db = readRaw();
-  const id = 'sub-' + Date.now();
-  db.subjects.push({ id, name, createdAt: Date.now() });
-  write(db);
-  return id;
-}
-export function updateSubject(id, name){
-  const db = readRaw();
-  const s = db.subjects.find(x => x.id === id);
-  if(s) s.name = name;
-  write(db);
-}
-export function deleteSubject(id){
-  const db = readRaw();
-  db.subjects = db.subjects.filter(s=>s.id!==id);
-  db.topics = db.topics.filter(t=>t.subjectId!==id);
-  db.questions = db.questions.filter(q=>q.subjectId!==id);
-  write(db);
-}
-
-/* Topics */
-export function listTopics(subjectId){
-  const db = readRaw();
-  return subjectId ? db.topics.filter(t=>t.subjectId===subjectId) : db.topics.slice();
-}
-export function addTopic(subjectId, name){
-  const db = readRaw();
-  const id = 'top-' + Date.now();
-  db.topics.push({ id, subjectId, name });
-  write(db);
-  return id;
-}
-export function updateTopic(id, name){
-  const db = readRaw();
-  const t = db.topics.find(x=>x.id===id);
-  if(t) t.name = name;
-  write(db);
-}
-export function deleteTopic(id){
-  const db = readRaw();
-  db.topics = db.topics.filter(t=>t.id!==id);
-  db.questions = db.questions.filter(q=>q.topicId!==id);
-  write(db);
-}
-
-/* Questions */
-export function listQuestions({subjectId=null, topicId=null} = {}){
-  const db = readRaw();
-  let qs = db.questions.slice();
-  if(subjectId) qs = qs.filter(q=>q.subjectId===subjectId);
-  if(topicId) qs = qs.filter(q=>q.topicId===topicId);
-  return qs;
-}
-export function getQuestion(id){
-  const db = readRaw();
-  return db.questions.find(q=>q.id===id) || null;
-}
-export function addQuestion(q){
-  const db = readRaw();
-  const id = 'q-' + Date.now();
-  const question = Object.assign({}, q, { id, createdAt: Date.now() });
-  db.questions.push(question);
-  write(db);
-  return id;
-}
-export function updateQuestion(id, patch){
-  const db = readRaw();
-  const q = db.questions.find(x=>x.id===id);
-  if(!q) return false;
-  Object.assign(q, patch);
-  write(db);
-  return true;
-}
-export function deleteQuestion(id){
-  const db = readRaw();
-  db.questions = db.questions.filter(q=>q.id!==id);
-  write(db);
-}
-
-/* Users / history */
-export function saveUserResult(result){
-  const db = readRaw();
-  db.users = db.users || [];
-  db.users.push(result);
-  write(db);
-}
-
-/* Import / Export */
-export function exportJSON(){
-  const db = readRaw();
-  return JSON.stringify(db, null, 2);
-}
-export function importJSON(jsonString){
-  try{
-    const parsed = JSON.parse(jsonString);
-    // naive validation
-    if(!parsed.subjects || !parsed.questions) throw new Error('Invalid DB');
-    localStorage.setItem(DB_KEY, JSON.stringify(parsed));
-    return true;
-  }catch(e){
-    console.error('Import failed', e);
-    return false;
+  function save(db){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
   }
-}
 
-/* Simple CSV helpers (basic) */
-export function exportQuestionsCSV(){
-  const db = readRaw();
-  const rows = [['id','subject','topic','text','choices','answerIndex','image']];
-  db.questions.forEach(q=>{
-    const subj = (db.subjects.find(s=>s.id===q.subjectId)||{}).name || '';
-    const topic = (db.topics.find(t=>t.id===q.topicId)||{}).name || '';
-    rows.push([
-      q.id,
-      subj,
-      topic,
-      q.text.replace(/\n/g,'\\n'),
-      JSON.stringify(q.choices).replace(/"/g,'""'),
-      q.answerIndex,
-      q.image ? q.image : ''
-    ]);
-  });
-  return rows.map(r=>r.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n');
-}
+  // Public API
+  const DB = {
+    _db: load(),
+
+    getSubjects(){
+      return [...DB._db.subjects];
+    },
+    getTopics(subjectId){
+      if(!subjectId) return [...DB._db.topics];
+      return DB._db.topics.filter(t => t.subjectId === subjectId);
+    },
+    getQuestions({subjectId, topicId} = {}){
+      let q = DB._db.questions;
+      if(subjectId) q = q.filter(x => x.subjectId === subjectId);
+      if(topicId) q = q.filter(x => x.topicId === topicId);
+      return q.map(clone);
+    },
+    getQuestionById(id){
+      return clone(DB._db.questions.find(x => x.id === id));
+    },
+    addSubject(s){
+      s.id = s.id || uid('s');
+      DB._db.subjects.push(s);
+      save(DB._db);
+      return s;
+    },
+    updateSubject(id, patch){
+      const idx = DB._db.subjects.findIndex(s=>s.id===id);
+      if(idx>=0) Object.assign(DB._db.subjects[idx], patch), save(DB._db), true;
+      return DB._db.subjects[idx];
+    },
+    removeSubject(id){
+      DB._db.subjects = DB._db.subjects.filter(s=>s.id!==id);
+      DB._db.topics = DB._db.topics.filter(t=>t.subjectId!==id);
+      DB._db.questions = DB._db.questions.filter(q=>q.subjectId!==id);
+      save(DB._db);
+    },
+    addTopic(t){
+      t.id = t.id || uid('t');
+      DB._db.topics.push(t);
+      save(DB._db);
+      return t;
+    },
+    updateTopic(id, patch){
+      const idx = DB._db.topics.findIndex(s=>s.id===id);
+      if(idx>=0) Object.assign(DB._db.topics[idx], patch), save(DB._db), true;
+      return DB._db.topics[idx];
+    },
+    removeTopic(id){
+      DB._db.topics = DB._db.topics.filter(t=>t.id!==id);
+      DB._db.questions = DB._db.questions.filter(q=>q.topicId!==id);
+      save(DB._db);
+    },
+    addQuestion(q){
+      q.id = q.id || uid('q');
+      DB._db.questions.push(q);
+      save(DB._db);
+      return q;
+    },
+    updateQuestion(id, patch){
+      const idx = DB._db.questions.findIndex(s=>s.id===id);
+      if(idx>=0) Object.assign(DB._db.questions[idx], patch), save(DB._db), true;
+      return DB._db.questions[idx];
+    },
+    removeQuestion(id){
+      DB._db.questions = DB._db.questions.filter(q=>q.id!==id);
+      save(DB._db);
+    },
+    pushHistory(entry){
+      entry.id = uid('h'); entry.timestamp = new Date().toISOString();
+      DB._db.history.unshift(entry);
+      // keep last 200
+      DB._db.history = DB._db.history.slice(0,200);
+      save(DB._db);
+      return entry;
+    },
+    getHistory(){
+      return [...DB._db.history];
+    },
+    adminLogin(user, pw){
+      return user === DB._db.admin.user && btoa(pw) === DB._db.admin.pwHash;
+    },
+    setAdminPassword(newPw){
+      DB._db.admin.pwHash = btoa(newPw);
+      save(DB._db);
+    },
+    exportJSON(){
+      return JSON.stringify(DB._db, null, 2);
+    },
+    importJSON(jsonStr){
+      try{
+        const parsed = JSON.parse(jsonStr);
+        // basic validation
+        if(!parsed.subjects || !parsed.topics || !parsed.questions) throw new Error('Invalid structure');
+        DB._db = parsed;
+        save(DB._db);
+        return true;
+      }catch(e){
+        console.error(e);
+        return false;
+      }
+    },
+    exportCSV(){
+      // produce a CSV of questions for portability
+      const rows = [['id','subjectId','topicId','text','choices','answerIds','imageUrl','tags','difficulty']];
+      DB._db.questions.forEach(q=>{
+        rows.push([
+          q.id,
+          q.subjectId,
+          q.topicId,
+          `"${q.text.replace(/"/g,'""')}"`,
+          `"${q.choices.map(c=>c.text).join('|||').replace(/"/g,'""')}"`,
+          `"${q.answerIds.join('|')}"`,
+          `"${q.imageUrl||''}"`,
+          `"${(q.tags||[]).join('|')}"`,
+          q.difficulty || ''
+        ]);
+      });
+      return rows.map(r=>r.join(',')).join('\n');
+    },
+    importCSV(csvText){
+      const lines = csvText.split(/\r?\n/).filter(Boolean);
+      const header = lines.shift().split(',');
+      // naive parse for the format we export
+      lines.forEach(line=>{
+        // split by commas but handle quoted text - simple parser:
+        const parts = parseCSVLine(line);
+        const [id, subjectId, topicId, text, choices, answerIds, imageUrl, tags, difficulty] = parts;
+        const q = {
+          id: id || uid('q'),
+          subjectId,
+          topicId,
+          text: (text||'').replace(/^"|"$/g,'').replace(/""/g,'"'),
+          choices: (choices||'').replace(/^"|"$/g,'').split('|||').map((t,i)=>({ id: uid('c'), text: t })),
+          answerIds: (answerIds||'').replace(/^"|"$/g,'').split('|').filter(Boolean),
+          imageUrl: (imageUrl||'').replace(/^"|"$/g,''),
+          tags: (tags||'').replace(/^"|"$/g,'').split('|').filter(Boolean),
+          difficulty: difficulty || ''
+        };
+        DB._db.questions.push(q);
+      });
+      save(DB._db);
+    }
+  };
+
+  // small helpers
+  function clone(x){ return JSON.parse(JSON.stringify(x)); }
+
+  function parseCSVLine(line){
+    const result = [];
+    let cur = '', inQuote=false;
+    for(let i=0;i<line.length;i++){
+      const ch = line[i];
+      if(ch === '"' && line[i+1]==='"'){ cur += '"'; i++; continue; }
+      if(ch === '"'){ inQuote = !inQuote; continue; }
+      if(ch === ',' && !inQuote){ result.push(cur); cur=''; continue; }
+      cur += ch;
+    }
+    result.push(cur);
+    return result;
+  }
+
+  // expose
+  global.DB = DB;
+
+})(window);

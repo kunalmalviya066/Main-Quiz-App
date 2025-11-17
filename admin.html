@@ -3,56 +3,89 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>QuizLab Admin</title>
+  <title>Admin — Quiz & Mock Test</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="container topbar-inner">
-      <h1 class="brand">QuizLab Admin</h1>
-      <nav class="top-actions">
-        <a class="btn ghost" href="index.html">Back to App</a>
+    <div class="container">
+      <h1 class="brand">Admin Dashboard</h1>
+      <nav>
+        <button id="back-home" class="btn subtle">Back</button>
       </nav>
     </div>
   </header>
 
-  <main class="container admin-grid">
-    <section class="card" id="login-card">
-      <h2>Admin Login</h2>
-      <div class="form-row">
-        <label>Username</label>
-        <input id="admin-user" type="text" />
-      </div>
-      <div class="form-row">
-        <label>Password</label>
-        <input id="admin-pass" type="password" />
-      </div>
-      <div class="form-row">
-        <button id="admin-login" class="btn primary">Login</button>
-      </div>
-      <div id="login-msg"></div>
-    </section>
+  <main class="container main-grid">
+    <aside class="panel sidebar">
+      <section class="card" id="login-card">
+        <h3>Admin Login</h3>
+        <label>User <input id="admin-user" value="admin"></label>
+        <label>Password <input id="admin-pw" type="password"></label>
+        <button id="admin-login" class="btn block">Login</button>
+        <div id="login-msg" class="muted small mt"></div>
+      </section>
 
-    <section class="hidden card" id="admin-dashboard">
-      <div class="admin-header">
+      <section class="card mt" id="import-export" style="display:none">
+        <h3>Import / Export</h3>
+        <button id="export-json" class="btn block">Export DB (JSON)</button>
+        <a id="download-json" style="display:none"></a>
+        <button id="export-csv" class="btn block mt">Export Questions (CSV)</button>
+        <input id="import-json-file" type="file" accept="application/json" class="mt" />
+        <input id="import-csv-file" type="file" accept=".csv,text/csv" class="mt" />
+      </section>
+
+      <section class="card mt" id="quick-add" style="display:none">
+        <h3>Quick Add</h3>
+        <label>Subject <input id="qa-subject"></label>
+        <label>Topic <input id="qa-topic"></label>
+        <label>Question Text <textarea id="qa-text"></textarea></label>
+        <label>Choices (one per line) <textarea id="qa-choices"></textarea></label>
+        <label>Answer index (1-based, comma separated for multi) <input id="qa-answer" /></label>
+        <label>Image file (optional) <input id="qa-image" type="file" accept="image/*" /></label>
+        <button id="qa-add" class="btn block">Add Question</button>
+        <div id="qa-msg" class="muted small mt"></div>
+      </section>
+
+    </aside>
+
+    <section class="panel content-area card" id="admin-area" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center">
         <h2>Dashboard</h2>
         <div>
-          <button id="btn-logout" class="btn">Logout</button>
+          <button id="new-subject" class="btn subtle">New Subject</button>
+          <button id="new-topic" class="btn subtle">New Topic</button>
+          <button id="new-question" class="btn">New Question</button>
         </div>
       </div>
 
-      <div class="admin-actions">
-        <button id="open-subjects" class="btn">Subjects</button>
-        <button id="open-topics" class="btn">Topics</button>
-        <button id="open-questions" class="btn primary">Questions</button>
-        <button id="export-json" class="btn">Export DB</button>
-        <button id="import-json" class="btn">Import DB</button>
+      <div class="mt" id="dashboard-grid">
+        <div class="card">
+          <h3>Subjects</h3>
+          <div id="subjects-admin"></div>
+        </div>
+        <div class="card mt">
+          <h3>Topics</h3>
+          <div id="topics-admin"></div>
+        </div>
+        <div class="card mt">
+          <h3>Questions</h3>
+          <div id="questions-admin" style="max-height:400px;overflow:auto"></div>
+        </div>
+        <div class="card mt">
+          <h3>History</h3>
+          <div id="history-admin" style="max-height:200px;overflow:auto"></div>
+        </div>
       </div>
-
-      <div id="admin-main-area"></div>
     </section>
+
   </main>
 
-  <script type="module" src="admin.js"></script>
+  <footer class="footer">
+    <div class="container muted small">Admin panel • Changes sync to localStorage immediately</div>
+  </footer>
+
+  <script src="db.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>

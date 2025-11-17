@@ -1,500 +1,89 @@
-/***********************************************
- GLOBAL THEME
-************************************************/
-:root {
-  --bg: #f4f7fb;
+:root{
+  --bg: #f7f8fb;
   --card: #ffffff;
-  --text: #1f2937;
   --muted: #6b7280;
-  --primary: #2563eb;
-  --danger: #dc2626;
-
-  --radius: 12px;
-  --shadow: 0 3px 10px rgba(0,0,0,0.06);
-
-  font-family: "Inter", system-ui, sans-serif;
+  --accent: #3b82f6;
+  --danger: #ef4444;
+  --shadow: 0 6px 18px rgba(16,24,40,0.06);
+  --glass: rgba(255,255,255,0.6);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color-scheme: light;
 }
 
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#f5f7fc 0%,var(--bg) 100%);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.4;
 }
 
-html, body {
-  padding: 0;
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
+.container{max-width:1100px;margin:0 auto;padding:18px}
+
+.topbar{
+  background:var(--card);
+  border-bottom:1px solid #eef2ff;
+  position:sticky;top:0;z-index:60;
+  box-shadow:var(--shadow);
 }
+.topbar .container{display:flex;align-items:center;justify-content:space-between}
+.brand{margin:12px 0;font-size:20px;letter-spacing:0.4px}
 
-/***********************************************
- HEADER
-************************************************/
-.topbar {
-  background: #ffffffcc;
-  backdrop-filter: blur(6px);
-  padding: 14px 0;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+.btn{
+  background:var(--accent);color:white;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600;
 }
-
-.topbar-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.brand {
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-/***********************************************
- BUTTONS
-************************************************/
-.btn {
-  padding: 8px 14px;
-  border-radius: var(--radius);
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-  cursor: pointer;
-  transition: 0.15s;
-}
-
-.btn:hover {
-  background: #f3f4f6;
-}
-
-.btn.primary {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-}
-
-.btn.primary:hover {
-  background: #1e4fd9;
-}
-
-.btn.danger {
-  background: var(--danger);
-  color: #fff;
-  border: none;
-}
-
-.btn.ghost {
-  background: transparent;
-  border: 1px solid #d1d5db;
-}
-
-/***********************************************
- LAYOUT GRID
-************************************************/
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
-.main-grid {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 18px;
-  align-items: flex-start;
-  margin-top: 18px;
-}
-
-@media (max-width: 900px) {
-  .main-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/***********************************************
- CARDS
-************************************************/
-.card {
-  background: var(--card);
-  padding: 16px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-/***********************************************
- SIDEBAR
-************************************************/
-.sidepanel {
-  position: relative;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 8px 0;
-}
-
-.list li {
-  padding: 8px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: 0.1s;
-}
-
-.list li:hover {
-  background: #f3f4f6;
-}
-
-.list li.active {
-  background: #e0e7ff;
-  font-weight: 600;
-}
-
-/***********************************************
- CONTENT AREA
-************************************************/
-.content {
-  min-height: 550px;
-}
-
-.hidden {
-  display: none !important;
-}
-
-/***********************************************
- GRID CARDS (HOME)
-************************************************/
-.grid-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
-  gap: 16px;
-  margin-top: 18px;
-}
-
-/***********************************************
- QUIZ ENGINE
-************************************************/
-.quiz-body {
-  display: flex;
-  gap: 18px;
-}
-
-@media (max-width: 900px) {
-  .quiz-body {
-    flex-direction: column;
-  }
-}
-
-.quiz-left {
-  flex: 1;
-}
-
-.question-card h3 {
-  margin-top: 0;
-}
-
-.options {
-  list-style: none;
-  padding: 0;
-  margin-top: 14px;
-}
-
-.options li {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  margin-bottom: 8px;
-  cursor: pointer;
-}
-
-.options li:hover {
-  background: #f3f4f6;
-}
-
-.options li.selected {
-  background: #e0efff;
-  border-color: var(--primary);
-}
-
-.options li.correct {
-  border-color: green;
-  background: #eaffea;
-}
-
-.options li.wrong {
-  border-color: var(--danger);
-  background: #ffe8e8;
-}
-
-/* Navigator */
-.navigator {
-  width: 220px;
-}
-
-@media (max-width: 900px) {
-  .navigator {
-    width: 100%;
-  }
-}
-
-.navigator-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 6px;
-}
-
-.navigator-grid button {
-  padding: 6px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: #fff;
-}
-
-.navigator-grid button.answered {
-  background: #d9fdd6;
-}
-
-.navigator-grid button.marked {
-  background: #fff3cd;
-}
-
-/***********************************************
- TIMER + TOOLBAR
-************************************************/
-.quiz-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 10px;
-  margin-bottom: 14px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.timer {
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 6px 10px;
-  background: var(--primary);
-  color: white;
-  border-radius: 6px;
-}
-
-/***********************************************
- ADMIN PANEL
-************************************************/
-.admin-grid {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 20px;
-}
-
-@media (max-width: 900px) {
-  .admin-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.admin-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.admin-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 12px 0;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 12px;
-}
-
-.form-row input,
-.form-row select,
-textarea {
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-}
-
-/***********************************************
- FOOTER
-************************************************/
-.footer {
-  padding: 28px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-/***********************************************
- UTILITIES
-************************************************/
-.muted {
-  color: var(--muted);
-}
-/***************************************************
- MOBILE OPTIMIZED ENHANCEMENTS
-***************************************************/
-@media (max-width: 900px) {
-
-  /* General layout spacing */
-  .container {
-    padding: 14px;
-  }
-
-  .topbar-inner {
-    padding: 0 14px;
-  }
-
-  /* Single-column layout */
-  .main-grid {
-    grid-template-columns: 1fr !important;
-    gap: 14px;
-  }
-
-  /* Sidebar improvements */
-  .sidepanel {
-    width: 100%;
-  }
-
-  .list li {
-    padding: 12px;
-    font-size: 1.05rem;
-  }
-
-  /* Content area spacing */
-  .content {
-    padding: 10px;
-  }
-
-  /* Subject cards - single column on narrow screens */
-  .grid-cards {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
-    gap: 12px;
-  }
-
-  .card {
-    padding: 14px;
-  }
-
-  /* Quiz Toolbar on mobile → stacked vertically */
-  .quiz-toolbar {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  /* Timer bigger for mobile */
-  .timer {
-    font-size: 1.3rem;
-    padding: 8px 14px;
-  }
-
-  /* Quiz body stacked */
-  .quiz-body {
-    flex-direction: column !important;
-  }
-
-  /* Navigator full width */
-  .navigator {
-    width: 100% !important;
-  }
-
-  .navigator-grid {
-    grid-template-columns: repeat(8, 1fr);
-    gap: 6px;
-  }
-
-  /* Buttons larger for touch */
-  .btn {
-    padding: 10px 16px;
-    font-size: 1rem;
-  }
-  .btn.primary, .btn.danger {
-    padding: 12px 18px;
-    font-size: 1rem;
-  }
-
-  /* Options easier to tap */
-  .options li {
-    padding: 12px;
-    font-size: 1.05rem;
-  }
-
-  /* Question text spacing */
-  .question-card h3 {
-    font-size: 1.1rem;
-    line-height: 1.4;
-  }
-
-  /* Review cards */
-  #review-area .card {
-    padding: 14px;
-  }
-
-  /* Admin panel: single column */
-  .admin-grid {
-    grid-template-columns: 1fr !important;
-    gap: 14px;
-  }
-
-  /* Admin cards spacing */
-  .admin-actions {
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .admin-actions .btn {
-    width: 48%;
-    margin: 0;
-  }
-
-  /* Form fields bigger */
-  input, select, textarea {
-    padding: 12px !important;
-    font-size: 1rem !important;
-  }
-
-  /* Subject/Topic selector spacing */
-  #builder-controls {
-    margin-bottom: 16px;
-  }
-}
-
-/***************************************************
- EXTRA SMALL PHONES (max-width: 480px)
-***************************************************/
-@media (max-width: 480px) {
-
-  .navigator-grid {
-    grid-template-columns: repeat(5, 1fr) !important;
-  }
-
-  .grid-cards {
-    grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  .btn.primary, .btn.danger {
-    width: 100%;
-  }
-
-  .quiz-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .quiz-controls .btn {
-    width: 100%;
-  }
+.btn.subtle{background:transparent;color:var(--accent);border:1px solid rgba(59,130,246,0.12);font-weight:600}
+.btn.block{display:block;width:100%}
+.btn.danger{background:var(--danger)}
+
+.main-grid{display:grid;grid-template-columns:300px 1fr;gap:18px;padding-top:18px}
+.panel{min-height:400px}
+.sidebar .card{padding:12px}
+.card{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);}
+
+.list{list-style:none;padding:0;margin:8px 0}
+.list li{padding:8px;border-radius:8px;cursor:pointer}
+.list li:hover{background:#f1f7ff}
+
+.mt{margin-top:12px}
+.small{font-size:13px}
+.muted{color:var(--muted)}
+
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.topic-card{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);cursor:pointer}
+.topic-card h4{margin:0 0 8px 0}
+.topic-card p{margin:0;color:var(--muted);font-size:13px}
+
+.landing{padding:8px}
+.hidden{display:none}
+
+.quiz-top{display:flex;justify-content:space-between;align-items:center}
+.quiz-body{display:flex;gap:12px;margin-top:12px}
+.question{flex:1;padding:16px}
+.navigator{width:260px}
+.nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:8px;padding:8px}
+.nav-item{padding:8px;border-radius:6px;text-align:center;cursor:pointer;border:1px dashed rgba(16,24,40,0.04)}
+.nav-item.answered{background:#e6fffb;border-style:solid}
+.nav-item.marked{outline:2px solid rgba(250,204,21,0.3)}
+
+.q-text{font-size:18px;margin:12px 0}
+.q-image img{max-width:100%;max-height:320px;border-radius:8px;display:block;margin:8px 0}
+
+.choices{display:flex;flex-direction:column;gap:8px}
+.choice{padding:10px;border-radius:8px;border:1px solid #eef2ff;cursor:pointer}
+.choice.selected{background:#ecfeff;border-color:#34d399}
+.choice.correct{background:#dcfce7;border-color:#10b981}
+.choice.wrong{background:#fee2e2;border-color:#ef4444}
+
+.q-actions{display:flex;justify-content:space-between;margin-top:12px}
+.quiz-footer{display:flex;justify-content:flex-end;padding:12px 0;color:var(--muted)}
+
+.footer{padding:10px 0;text-align:center;color:var(--muted)}
+
+@media (max-width:900px){
+  .main-grid{grid-template-columns:1fr}
+  .navigator{display:none}
 }
