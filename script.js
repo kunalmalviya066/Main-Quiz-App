@@ -1,505 +1,486 @@
-/* script.js
-   Handles user-facing UI: subject/topic selection, test builder, quiz engine, daily quiz, results, and history.
-   Depends on db.js (QA_DB).
-*/
-
+/* script.js - main application logic */
 (function(){
-  // --- Helpers ---
-  const $ = sel => document.querySelector(sel);
-  const $$ = sel => Array.from(document.querySelectorAll(sel));
-  function el(tag, cls, html){ const e = document.createElement(tag); if(cls) e.className = cls; if(html!==undefined) e.innerHTML = html; return e; }
-  function fmtTime(s){
-    const hh = String(Math.floor(s/3600)).padStart(2,'0');
-    const mm = String(Math.floor((s%3600)/60)).padStart(2,'0');
-    const ss = String(s%60).padStart(2,'0');
-    return `${hh}:${mm}:${ss}`;
-  }
-
-  // --- App State ---
-  const state = {
-    selectedSubjects: [],
-    selectedTopics: [],
-    currentTest: null, // {questions:[], answers:[], flags:[], meta:{title,...}, timerSecs, remaining, paused, startTime}
-    antiCheat: { tabSwitches: 0, blockedActions: 0 }
-  };
-
-  // --- DOM nodes ---
-  const sections = {
-    home: $('#home'),
-    subjectSelection: $('#subject-selection'),
-    topicSelection: $('#topic-selection'),
-    builder: $('#builder'),
-    quizArea: $('#quiz-area'),
-    results: $('#results'),
-    history: $('#history'),
-    help: $('#help')
-  };
-
-  // Nav
-  $('#nav-home').addEventListener('click', ()=>showSection('home'));
-  $('#nav-subjects').addEventListener('click', ()=>showSection('subjectSelection'));
-  $('#nav-topics').addEventListener('click', ()=>showSection('topicSelection'));
-  $('#nav-daily').addEventListener('click', startDailyQuiz);
-  $('#nav-fullmock').addEventListener('click', ()=>{ showSection('subjectSelection'); });
-  $('#nav-help').addEventListener('click', ()=>showSection('help'));
-
-  $('#start-practice').addEventListener('click', ()=>showSection('subjectSelection'));
-  $('#try-daily').addEventListener('click', startDailyQuiz);
-  $('#back-home').addEventListener('click', ()=>showSection('home'));
-  $('#help-home').addEventListener('click', ()=>showSection('home'));
-
-  // subject selection
-  function renderSubjects(){
-    const list = $('#subject-list');
-    list.innerHTML = '';
-    const subjects = QA_DB.getSubjects();
-    subjects.forEach(s=>{
-      const card = el('label','card subject-card');
-      card.innerHTML = `<input type="checkbox" data-id="${s.id}" /> <strong>${s.name}</strong><div class="muted">${s.desc||''}</div>`;
-      card.querySelector('input').addEventListener('change', (ev)=>{
-        const id = ev.target.dataset.id;
-        if(ev.target.checked){
-          if(!state.selectedSubjects.includes(id)) state.selectedSubjects.push(id);
-        } else {
-          state.selectedSubjects = state.selectedSubjects.filter(x=>x!==id);
-        }
-      });
-      list.appendChild(card);
-    });
-  }
-
-  $('#to-topic-select').addEventListener('click', ()=>{
-    if(state.selectedSubjects.length===0){
-      // auto-select all if none chosen
-      state.selectedSubjects = QA_DB.getSubjects().map(s=>s.id);
-    }
-    renderTopics();
-    showSection('topicSelection');
-  });
-
-  $('#back-to-subjects').addEventListener('click', ()=>{ showSection('subjectSelection'); });
-
-  function renderTopics(){
-    const list = $('#topic-list');
-    list.innerHTML = '';
-    const topics = QA_DB.getTopics();
-    // Preselect topics that belong to selectedSubjects
-    topics.forEach(t=>{
-      const shouldShow = state.selectedSubjects.length===0 || state.selectedSubjects.includes(t.subjectId);
-      if(!shouldShow) return;
-      const card = el('label','card topic-card');
-      card.innerHTML = `<input type="checkbox" data-id="${t.id}" /> <strong>${t.name}</strong> <div class="muted">Subject: ${QA_DB.findSubject(t.subjectId).name}</div>`;
-      card.querySelector('input').addEventListener('change',(ev)=>{
-        const id = ev.target.dataset.id;
-        if(ev.target.checked){
-          if(!state.selectedTopics.includes(id)) state.selectedTopics.push(id);
-        } else {
-          state.selectedTopics = state.selectedTopics.filter(x=>x!==id);
-        }
-      });
-      list.appendChild(card);
-    });
-  }
-
-  // builder actions
-  $('#to-builder').addEventListener('click', ()=>{
-    // if no topics selected => select all for chosen subjects
-    if(state.selectedTopics.length===0){
-      const topics = QA_DB.getTopics();
-      state.selectedTopics = topics.filter(t=>state.selectedSubjects.includes(t.subjectId)).map(t=>t.id);
-    }
-    showSection('builder');
-  });
-
-  $('#builder-back').addEventListener('click', ()=>showSection('topicSelection'));
-  $('#start-custom-test').addEventListener('click', startCustomTest);
-
-  // --- Daily quiz logic ---
-  function startDailyQuiz(){
-    // Daily key by date
-    const today = (new Date()).toISOString().slice(0,10);
-    const key = 'quizlab_daily_' + today;
-    let saved = localStorage.getItem(key);
-    if(saved){
-      const test = JSON.parse(saved);
-      startTestFromPreset(test);
-      return;
-    }
-    // generate 10 random questions from selected or all
-    const allQ = QA_DB.getQuestions();
-    const pool = allQ.slice();
-    QA_DB.shuffleArray(pool);
-    const chosen = pool.slice(0,10);
-    const test = {
-      title: `Daily Quiz — ${today}`,
-      questions: chosen,
-      timerSecs: 10*60
-    };
-    localStorage.setItem(key, JSON.stringify(test));
-    startTestFromPreset(test);
-  }
-
-  // --- Custom test builder start ---
-  function startCustomTest(){
-    const num = parseInt($('#num-questions').value,10) || 10;
-    const minutes = parseInt($('#timer-minutes').value,10) || 30;
-    const shuffleChoices = $('#shuffle-choices').checked;
-
-    // build pool based on selected subjects/topics
-    const subjectIds = state.selectedSubjects.length ? state.selectedSubjects : QA_DB.getSubjects().map(s=>s.id);
-    const topicIds = state.selectedTopics.length ? state.selectedTopics : QA_DB.getTopics().filter(t=>subjectIds.includes(t.subjectId)).map(t=>t.id);
-
-    let pool = QA_DB.getQuestions({subjectIds, topicIds});
-    if(pool.length===0){
-      alert('No questions available for selected subjects/topics. Visit Admin to add questions.');
-      return;
-    }
-    QA_DB.shuffleArray(pool);
-    const chosen = pool.slice(0, Math.min(num, pool.length)).map(q=>{
-      // copy and maybe shuffle choices
-      const copy = JSON.parse(JSON.stringify(q));
-      if(shuffleChoices){
-        const mapping = copy.choices.map((c,i)=>i);
-        QA_DB.shuffleArray(mapping);
-        copy._choiceOrder = mapping; // store mapping of new order indices
-        copy.choices = mapping.map(i=>copy.choices[i]);
-        // remap answer index to new index
-        copy.answer = mapping.indexOf(q.answer);
-      }
-      return copy;
-    });
-
-    const test = {
-      title: `Custom Test (${chosen.length} q)`,
-      questions: chosen,
-      timerSecs: minutes*60
-    };
-    startTestFromPreset(test);
-  }
-
-  // --- Start test common flow ---
-  function startTestFromPreset(preset){
-    const questions = preset.questions.map(q=>({ ...q }));
-    const answers = new Array(questions.length).fill(null);
-    const flags = new Array(questions.length).fill(false);
-    state.currentTest = {
-      questions,
-      answers,
-      flags,
-      meta: { title: preset.title || 'Test' },
-      timerSecs: preset.timerSecs || 0,
-      remaining: preset.timerSecs || 0,
+  // basic app state
+  const App = {
+    state: {
+      selectedSubjects: [],
+      selectedTopics: [],
+      questionPool: [],
+      quiz: null,
+      currentIdx: 0,
+      timerSecLeft: 0,
+      timerInterval: null,
       paused: false,
-      startTime: Date.now(),
-      violations: 0
-    };
-    renderQuiz();
-    showSection('quizArea');
-    initAntiCheat();
+      antiCheatEnabled: true,
+      visibilitySwitches: 0
+    }
+  };
+
+  // element refs
+  const qViews = {};
+  function $id(id){ return document.getElementById(id); }
+
+  function init(){
+    // map views
+    document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', navClick));
+    document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
+    document.querySelectorAll('[data-action]').forEach(b => b.addEventListener('click', navAction));
+
+    $id('start-practice').addEventListener('click', ()=> showView('subjects'));
+    $id('daily-quick').addEventListener('click', startDaily);
+    $id('btn-back-home').addEventListener('click', ()=> showView('home'));
+    $id('btn-start-quiz').addEventListener('click', startSelectedQuiz);
+    $id('btn-start-custom').addEventListener('click', startCustomMock);
+    $id('btn-prev').addEventListener('click', prevQuestion);
+    $id('btn-next').addEventListener('click', nextQuestion);
+    $id('btn-mark').addEventListener('click', toggleMark);
+    $id('btn-pause').addEventListener('click', togglePause);
+    $id('btn-submit').addEventListener('click', submitQuiz);
+    $id('btn-fullscreen').addEventListener('click', toggleFullScreen);
+    $id('btn-review-home').addEventListener('click', ()=> showView('home'));
+    $id('btn-download-history').addEventListener('click', ()=> utils.downloadJSON('history.json', DB.getHistory()));
+    $id('btn-clear-history').addEventListener('click', ()=> { DB.clearHistory(); renderHistory(); });
+    $id('btn-export-history').addEventListener('click', ()=> utils.downloadJSON('history.json', DB.getHistory()));
+
+    // nav helper
+    document.getElementById('nav-daily').addEventListener('click', startDaily);
+
+    // initial render
+    renderFeaturedSubjects();
+    renderSubjectsList();
+    renderCustomSubjects();
+    renderHistory();
+
+    // anti-cheat handlers
+    document.addEventListener('contextmenu', e => { if (App.state.antiCheatEnabled) e.preventDefault(); });
+    document.addEventListener('copy', e => { if (App.state.antiCheatEnabled) e.preventDefault(); });
+    document.addEventListener('paste', e => { if (App.state.antiCheatEnabled) e.preventDefault(); });
+
+    document.addEventListener('visibilitychange', ()=>{
+      if (document.hidden && App.state.quiz && App.state.antiCheatEnabled){
+        App.state.visibilitySwitches++;
+        pauseForReason('Tab hidden — quiz paused');
+      }
+    });
   }
 
-  // --- Quiz rendering & navigation ---
-  let currentIndex = 0;
-  let timerInterval = null;
+  function navClick(ev){
+    const v = ev.target.dataset.view;
+    if (v) showView(v);
+  }
+  function navAction(ev){
+    const a = ev.target.dataset.action;
+    if (a === 'daily') startDaily();
+  }
 
+  // Views
+  function showView(viewId){
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    const v = $id('view-' + viewId);
+    if (v) v.classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  // Subjects listing
+  function renderFeaturedSubjects(){
+    const container = $id('featured-subjects');
+    container.innerHTML = '';
+    const subs = DB.getSubjects();
+    subs.forEach(s => {
+      const el = document.createElement('div');
+      el.className = 'subject-card card';
+      el.innerHTML = `<div class="title">${s.name}</div><div class="desc">${s.description||''}</div>
+        <div><button class="btn" data-sub="${s.id}">Practice</button></div>`;
+      el.querySelector('button').addEventListener('click', ()=>{
+        App.state.selectedSubjects = [s.id];
+        showView('subjects');
+        renderSubjectsList();
+        expandTopicsFor([s.id]);
+      });
+      container.appendChild(el);
+    });
+  }
+
+  function renderSubjectsList(){
+    const list = $id('subjects-list');
+    list.innerHTML = '';
+    const subs = DB.getSubjects();
+    subs.forEach(s => {
+      const el = document.createElement('div');
+      el.className = 'card subject-item';
+      el.innerHTML = `<div><strong>${s.name}</strong></div><div class="muted">${s.description||''}</div>
+        <div style="margin-top:8px"><button class="btn select-sub" data-sub="${s.id}">Select</button></div>`;
+      el.querySelector('.select-sub').addEventListener('click', ()=>{
+        // toggle selection
+        const idx = App.state.selectedSubjects.indexOf(s.id);
+        if (idx === -1) App.state.selectedSubjects.push(s.id); else App.state.selectedSubjects.splice(idx,1);
+        renderSubjectsList();
+        renderTopicsArea();
+      });
+      if (App.state.selectedSubjects.includes(s.id)){
+        el.style.border = `2px solid ${getComputedStyle(document.documentElement).getPropertyValue('--accent')}`;
+      }
+      list.appendChild(el);
+    });
+
+    renderTopicsArea();
+  }
+
+  function expandTopicsFor(subjectIds){
+    App.state.selectedSubjects = subjectIds.slice();
+    renderSubjectsList();
+    renderTopicsArea();
+  }
+
+  function renderTopicsArea(){
+    const topicsArea = $id('topics-area');
+    const topicsList = $id('topics-list');
+    if (!App.state.selectedSubjects.length){
+      topicsArea.style.display = 'none'; return;
+    }
+    topicsArea.style.display = 'block';
+    const topics = DB.findTopicsBySubjects(App.state.selectedSubjects);
+    topicsList.innerHTML = '';
+    topics.forEach(t => {
+      const btn = document.createElement('button');
+      btn.className = 'topic-chip';
+      btn.textContent = t.name;
+      if (App.state.selectedTopics.includes(t.id)) btn.classList.add('selected');
+      btn.addEventListener('click', ()=>{
+        const idx = App.state.selectedTopics.indexOf(t.id);
+        if (idx === -1) App.state.selectedTopics.push(t.id); else App.state.selectedTopics.splice(idx,1);
+        renderTopicsArea();
+      });
+      topicsList.appendChild(btn);
+    });
+  }
+
+  // Custom subjects list
+  function renderCustomSubjects(){
+    const sel = $id('custom-subjects');
+    sel.innerHTML = '';
+    DB.getSubjects().forEach(s=>{
+      const opt = document.createElement('option');
+      opt.value = s.id; opt.textContent = s.name;
+      sel.appendChild(opt);
+    });
+  }
+
+  // Start flows
+  function startDaily(){
+    const questions = DB.getDailyQuiz(10);
+    startQuizFromQuestions({ questions, meta: { type: 'daily', title: 'Daily Quiz' } });
+  }
+
+  function startSelectedQuiz(){
+    const num = parseInt($id('num-questions').value,10) || 10;
+    const timerMin = parseInt($id('timer-min').value,10) || 0;
+    const shuffleChoices = $id('shuffle-choices').checked;
+    const antiCheat = $id('anti-cheat').checked;
+    App.state.antiCheatEnabled = antiCheat;
+
+    // pick pool
+    const pool = DB.questionsByFilter({ subjectIds: App.state.selectedSubjects, topicIds: App.state.selectedTopics });
+    if (!pool.length){
+      alert('No questions match your selection. Try selecting more topics/subjects.');
+      return;
+    }
+    if (pool.length < num){
+      if (!confirm(`Only ${pool.length} questions available but you asked for ${num}. Start with ${pool.length}?`)) return;
+    }
+    const qcount = Math.min(num, pool.length);
+    const shuffled = utils.shuffle(pool);
+    const selected = shuffled.slice(0, qcount);
+    startQuizFromQuestions({questions: selected, meta: {type:'custom', title:'Practice'} , timerMin, shuffleChoices});
+  }
+
+  function startCustomMock(){
+    const subs = Array.from($id('custom-subjects').selectedOptions).map(o=>o.value);
+    const num = parseInt($id('custom-num').value,10) || 10;
+    const timerMin = parseInt($id('custom-timer').value,10) || 0;
+    if (!subs.length){ alert('Select at least one subject'); return; }
+    const pool = DB.questionsByFilter({ subjectIds: subs, topicIds: []});
+    if (!pool.length){ alert('No questions for selected subjects'); return; }
+    const qcount = Math.min(num, pool.length);
+    const selected = utils.shuffle(pool).slice(0,qcount);
+    startQuizFromQuestions({ questions: selected, meta:{type:'mock', title:'Full Mock'}, timerMin, shuffleChoices:true });
+  }
+
+  // Core: prepare quiz object and render quiz view
+  function startQuizFromQuestions({questions, meta={}, timerMin=0, shuffleChoices=true}){
+    // build quiz structure
+    const quiz = {
+      id: utils.uid('attempt'),
+      meta,
+      questions: questions.map(q => {
+        const choices = shuffleChoices ? utils.shuffle(q.choices) : q.choices.slice();
+        // map correct index to value (text)
+        const correctText = q.choices[q.correctIndex];
+        const mappedCorrectIndex = choices.indexOf(correctText);
+        return {
+          qId: q.id,
+          subjectId: q.subjectId,
+          topicId: q.topicId,
+          question: q.question,
+          image: q.image || null,
+          choices,
+          correctIndex: mappedCorrectIndex,
+          explanation: q.explanation || '',
+          createdAt: q.createdAt
+        };
+      }),
+      answers: [], // {selectedIndex, timeTaken, marked}
+      startTime: Date.now(),
+      endTime: null,
+      durationSec: 0,
+      visibilitySwitches: 0
+    };
+
+    // init answers
+    quiz.questions.forEach(()=> quiz.answers.push({selectedIndex: null, timeTaken:0, marked:false}));
+
+    App.state.quiz = quiz;
+    App.state.currentIdx = 0;
+    App.state.timerSecLeft = (timerMin>0) ? timerMin*60 : 0;
+    App.state.paused = false;
+    App.state.visibilitySwitches = 0;
+    // start timer if needed
+    startTimerIfNeeded();
+
+    showView('quiz');
+    renderQuiz();
+  }
+
+  function startTimerIfNeeded(){
+    clearInterval(App.state.timerInterval);
+    if (App.state.timerSecLeft > 0){
+      $id('hud-timer').textContent = utils.formatTime(App.state.timerSecLeft);
+      App.state.timerInterval = setInterval(()=>{
+        if (App.state.paused) return;
+        App.state.timerSecLeft--;
+        if (App.state.timerSecLeft <= 0){
+          clearInterval(App.state.timerInterval);
+          submitQuiz();
+        }
+        $id('hud-timer').textContent = utils.formatTime(App.state.timerSecLeft);
+      },1000);
+    } else {
+      $id('hud-timer').textContent = '--:--';
+    }
+  }
+
+  // Render the quiz UI
   function renderQuiz(){
-    if(!state.currentTest) return;
-    currentIndex = 0;
-    $('#quiz-title').textContent = state.currentTest.meta.title;
-    $('#quiz-meta').textContent = `${state.currentTest.questions.length} questions • Timer: ${Math.ceil(state.currentTest.timerSecs/60)} min`;
+    const quiz = App.state.quiz;
+    if (!quiz) return;
+    const idx = App.state.currentIdx;
+    const qObj = quiz.questions[idx];
+    $id('hud-qnum').textContent = idx+1;
+    $id('hud-total').textContent = quiz.questions.length;
+    $id('q-subject').textContent = (DB.getSubjects().find(s=>s.id===qObj.subjectId)||{}).name || '';
+    $id('q-topic').textContent = (DB.getTopics().find(t=>t.id===qObj.topicId)||{}).name || '';
+    $id('question-text').textContent = qObj.question;
+
+    // render image if present
+    const qImg = $id('question-image');
+    qImg.innerHTML = '';
+    if (qObj.image){
+      const img = document.createElement('img');
+      img.src = qObj.image;
+      img.style.maxWidth = '100%';
+      qImg.appendChild(img);
+    }
+
+    // choices
+    const choicesDiv = $id('choices');
+    choicesDiv.innerHTML = '';
+    qObj.choices.forEach((c, ci)=>{
+      const btn = document.createElement('div');
+      btn.className = 'choice';
+      btn.textContent = c;
+      if (quiz.answers[idx].selectedIndex === ci) btn.classList.add('selected');
+      btn.addEventListener('click', ()=>{
+        quiz.answers[idx].selectedIndex = ci;
+        renderQuiz();
+      });
+      choicesDiv.appendChild(btn);
+    });
+
     renderNavigator();
-    renderQuestion(currentIndex);
-    startTimer();
+    updateHUDTimeTaken();
   }
 
   function renderNavigator(){
-    const grid = $('#nav-grid');
-    grid.innerHTML = '';
-    state.currentTest.questions.forEach((q, idx)=>{
-      const btn = document.createElement('button');
-      btn.textContent = idx+1;
-      if(state.currentTest.answers[idx] !== null) btn.classList.add('answered');
-      if(state.currentTest.flags[idx]) btn.classList.add('marked');
-      if(idx === currentIndex) btn.classList.add('current');
-      btn.addEventListener('click', ()=>{ goToQuestion(idx); });
-      grid.appendChild(btn);
+    const nav = $id('navigator-grid');
+    nav.innerHTML = '';
+    const quiz = App.state.quiz;
+    quiz.questions.forEach((q, i)=>{
+      const b = document.createElement('button');
+      b.textContent = i+1;
+      b.className = '';
+      const ans = quiz.answers[i];
+      if (ans.selectedIndex !== null) b.style.background = '#fff8f9';
+      if (ans.marked) b.style.border = '2px solid #ff7b90';
+      b.addEventListener('click', ()=> { App.state.currentIdx = i; renderQuiz(); });
+      nav.appendChild(b);
     });
-    $('#nav-summary').textContent = `${state.currentTest.answers.filter(a=>a!==null).length} / ${state.currentTest.questions.length}`;
   }
 
-  function renderQuestion(i){
-    currentIndex = i;
-    const q = state.currentTest.questions[i];
-    const container = $('#question-card');
-    container.innerHTML = '';
-    const qnum = el('div','question',`<strong>Q${i+1}.</strong> ${q.text}`);
-    container.appendChild(qnum);
-    if(q.image){
-      const img = el('img','',null);
-      img.src = q.image;
-      container.appendChild(img);
-    }
-    const choices = el('div','choices');
-    q.choices.forEach((choice, cidx)=>{
-      const ch = el('div','choice', choice);
-      ch.dataset.index = cidx;
-      if(state.currentTest.answers[i] === cidx) ch.classList.add('selected');
-      ch.addEventListener('click', ()=>{
-        state.currentTest.answers[i] = cidx;
-        renderNavigator();
-        renderQuestion(i); // re-render to update selection
-      });
-      choices.appendChild(ch);
-    });
-    container.appendChild(choices);
-
-    // footer
-    const footer = el('div','question-footer');
-    const status = el('div','muted', `Marked: ${state.currentTest.flags[i] ? 'Yes' : 'No'}`);
-    const qinfo = el('div','muted', `Question ${i+1} of ${state.currentTest.questions.length}`);
-    footer.appendChild(status);
-    footer.appendChild(qinfo);
-    container.appendChild(footer);
-
-    // update nav highlight
-    $$('#nav-grid button').forEach((b,idx)=> b.classList.toggle('current', idx===i));
+  function updateHUDTimeTaken(){
+    // compute total time taken so far
+    const quiz = App.state.quiz;
+    const taken = quiz.answers.reduce((s,a)=> s + (a.timeTaken||0), 0);
+    $id('hud-time-taken').textContent = `Time: ${taken}s`;
   }
 
-  function goToQuestion(idx){
-    if(idx<0 || idx>= state.currentTest.questions.length) return;
-    renderQuestion(idx);
-  }
+  // navigation
+  function prevQuestion(){ if (!App.state.quiz) return; if (App.state.currentIdx>0){ saveTimeForCurrent(); App.state.currentIdx--; renderQuiz(); } }
+  function nextQuestion(){ if (!App.state.quiz) return; if (App.state.currentIdx < App.state.quiz.questions.length-1){ saveTimeForCurrent(); App.state.currentIdx++; renderQuiz(); } }
 
-  $('#next-q').addEventListener('click', ()=> {
-    if(currentIndex < state.currentTest.questions.length - 1) {
-      goToQuestion(currentIndex + 1);
-    }
-  });
-  $('#prev-q').addEventListener('click', ()=> {
-    if(currentIndex > 0) goToQuestion(currentIndex - 1);
-  });
-
-  $('#mark-review').addEventListener('click', ()=>{
-    state.currentTest.flags[currentIndex] = !state.currentTest.flags[currentIndex];
+  // mark for review
+  function toggleMark(){
+    const quiz = App.state.quiz; const idx = App.state.currentIdx;
+    quiz.answers[idx].marked = !quiz.answers[idx].marked;
     renderNavigator();
-    renderQuestion(currentIndex);
-  });
+  }
 
-  $('#clear-answer').addEventListener('click', ()=>{
-    state.currentTest.answers[currentIndex] = null;
-    renderNavigator();
-    renderQuestion(currentIndex);
-  });
+  // timing per question: increment timeTaken every second for visible question
+  let perQuestionTimer = null;
+  function saveTimeForCurrent(){
+    // nothing fancy: called when navigating away; we maintain per-question times with interval
+  }
 
-  // --- Timer and pause/resume ---
-  function startTimer(){
-    stopTimer();
-    if(state.currentTest.timerSecs <= 0) {
-      $('#timer').textContent = 'No timer';
-      return;
+  // pause/resume
+  function togglePause(){
+    if (!App.state.quiz) return;
+    App.state.paused = !App.state.paused;
+    $id('btn-pause').textContent = App.state.paused ? 'Resume' : 'Pause';
+  }
+
+  function pauseForReason(msg){
+    App.state.paused = true;
+    $id('btn-pause').textContent = 'Resume';
+    alert(msg || 'Quiz paused');
+  }
+
+  // Fullscreen
+  function toggleFullScreen(){
+    if (!document.fullscreenElement){
+      document.documentElement.requestFullscreen().catch(()=>{});
+    } else {
+      document.exitFullscreen().catch(()=>{});
     }
-    state.currentTest.remaining = state.currentTest.remaining || state.currentTest.timerSecs;
-    updateTimerUI();
-    timerInterval = setInterval(()=>{
-      if(!state.currentTest || state.currentTest.paused) return;
-      if(state.currentTest.remaining > 0){
-        state.currentTest.remaining--;
-        updateTimerUI();
-        if(state.currentTest.remaining === 0){
-          finishTest('timeup');
-        }
-      }
-    }, 1000);
   }
-  function stopTimer(){ if(timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
-  function updateTimerUI(){
-    $('#timer').textContent = fmtTime(state.currentTest.remaining);
-  }
-  $('#pause-resume').addEventListener('click', ()=>{
-    if(!state.currentTest) return;
-    state.currentTest.paused = !state.currentTest.paused;
-    $('#pause-resume').textContent = state.currentTest.paused ? 'Resume' : 'Pause';
-    if(!state.currentTest.paused) startTimer();
-  });
 
-  // --- Fullscreen ---
-  $('#toggle-fullscreen').addEventListener('click', ()=>{
-    const el = document.documentElement;
-    if(!document.fullscreenElement) el.requestFullscreen().catch(()=>{});
-    else document.exitFullscreen();
-  });
+  // submit & results
+  function submitQuiz(){
+    if (!App.state.quiz) return;
+    clearInterval(App.state.timerInterval);
 
-  // --- End/Finsih test ---
-  $('#end-test').addEventListener('click', ()=>{
-    if(confirm('End this test and submit?')) finishTest('user');
-  });
+    const quiz = App.state.quiz;
+    quiz.endTime = Date.now();
+    quiz.durationSec = Math.round((quiz.endTime - quiz.startTime)/1000);
+    quiz.visibilitySwitches = App.state.visibilitySwitches;
 
-  function finishTest(reason){
-    stopTimer();
-    const test = state.currentTest;
-    const total = test.questions.length;
+    // compute score
     let correct = 0, attempted = 0;
-    const review = [];
-    test.questions.forEach((q, i)=>{
-      const ans = test.answers[i];
-      if(ans !== null && ans !== undefined) attempted++;
-      const isCorrect = ans === q.answer;
-      if(isCorrect) correct++;
-      review.push({
-        index: i+1,
-        question: q,
-        selected: ans,
-        correct: q.answer,
-        isCorrect
-      });
+    quiz.questions.forEach((q,i)=>{
+      const ans = quiz.answers[i];
+      if (ans.selectedIndex !== null) attempted++;
+      if (ans.selectedIndex === q.correctIndex) correct++;
     });
-    const score = Math.round((correct/total)*100);
-    const accuracy = attempted ? Math.round((correct/attempted)*100) : 0;
-    const timeTaken = Math.max(0, Math.round((Date.now() - test.startTime)/1000));
-    const record = {
-      id: 'att_' + Date.now(),
-      title: test.meta.title,
-      timestamp: (new Date()).toISOString(),
+    const total = quiz.questions.length;
+    const accuracy = total? Math.round((correct/total)*100):0;
+    const attemptedCount = attempted;
+
+    const attemptRecord = {
+      id: quiz.id,
+      meta: quiz.meta,
       total,
       correct,
-      attempted,
-      score,
       accuracy,
-      timeTaken,
-      review
+      attempted: attemptedCount,
+      startTime: quiz.startTime,
+      endTime: quiz.endTime,
+      durationSec: quiz.durationSec,
+      visibilitySwitches: quiz.visibilitySwitches,
+      questions: quiz.questions,
+      answers: quiz.answers
     };
-    QA_DB.saveAttempt(record);
-    renderResults(record);
-    state.currentTest = null;
-    currentIndex = 0;
-    stopAntiCheat();
-    showSection('results');
+
+    DB.saveAttempt(attemptRecord);
+    renderResults(attemptRecord);
+    App.state.quiz = null;
+    showView('results');
+    renderHistory();
   }
 
-  // render results
+  // results rendering
   function renderResults(record){
-    const sum = $('#result-summary');
-    sum.innerHTML = `
-      <h3>${record.title}</h3>
-      <p class="muted">Taken: ${new Date(record.timestamp).toLocaleString()}</p>
-      <div class="stack">
-        <div class="card"><strong>Score:</strong> ${record.score}% (${record.correct}/${record.total})</div>
-        <div class="card"><strong>Attempted:</strong> ${record.attempted}/${record.total}</div>
-        <div class="card"><strong>Accuracy:</strong> ${record.accuracy}%</div>
-        <div class="card"><strong>Time taken:</strong> ${fmtTime(record.timeTaken)}</div>
-      </div>
+    const out = $id('results-summary');
+    out.innerHTML = `
+      <div><strong>Score</strong><div style="font-size:28px">${record.correct} / ${record.total}</div></div>
+      <div><strong>Accuracy</strong><div style="font-size:20px">${record.accuracy}%</div></div>
+      <div><strong>Attempted</strong><div>${record.attempted}</div></div>
+      <div><strong>Time</strong><div>${record.durationSec}s</div></div>
+      <div><strong>Tab switches</strong><div>${record.visibilitySwitches}</div></div>
     `;
-    const reviewList = $('#review-list');
-    reviewList.innerHTML = '<h3>Question-by-question review</h3>';
-    record.review.forEach(r=>{
-      const card = el('div','card');
-      const qtxt = `<strong>Q${r.index}.</strong> ${r.question.text}`;
-      let choicesHtml = '<div class="choices">';
-      r.question.choices.forEach((c,idx)=>{
-        const cls = idx === r.correct ? 'choice correct' : (idx === r.selected ? 'choice wrong' : 'choice');
-        choicesHtml += `<div class="${cls}">${c}</div>`;
-      });
-      choicesHtml += '</div>';
-      card.innerHTML = `${qtxt}${r.question.image ? `<img src="${r.question.image}" />` : ''}${choicesHtml}<div class="muted">Selected: ${r.selected===null? 'None': r.question.choices[r.selected]} | Correct: ${r.question.choices[r.correct]}</div>`;
-      reviewList.appendChild(card);
+
+    const reviewList = $id('review-list');
+    reviewList.innerHTML = '';
+    record.questions.forEach((q,i)=>{
+      const ans = record.answers[i];
+      const div = document.createElement('div');
+      div.className = 'card';
+      const chosen = ans.selectedIndex !== null ? q.choices[ans.selectedIndex] : '(unattempted)';
+      const correct = q.choices[q.correctIndex];
+      div.innerHTML = `
+        <div style="display:flex; justify-content:space-between;align-items:center">
+          <div><strong>Q${i+1}.</strong> ${q.question}</div>
+          <div style="text-align:right"><small>Time: ${ans.timeTaken||0}s</small></div>
+        </div>
+        <div style="margin-top:8px"><strong>Your answer:</strong> ${chosen}</div>
+        <div><strong>Correct:</strong> ${correct}</div>
+        <div style="margin-top:8px"><em>${q.explanation || ''}</em></div>
+      `;
+      reviewList.appendChild(div);
     });
   }
-
-  $('#results-home').addEventListener('click', ()=> showSection('home'));
-  $('#results-history').addEventListener('click', ()=> showHistory());
 
   // history
-  function showHistory(){
-    const arr = QA_DB.getHistory().reverse();
-    const list = $('#history-list');
+  function renderHistory(){
+    const list = $id('history-list');
     list.innerHTML = '';
-    if(arr.length===0) list.innerHTML = '<div class="muted">No prior attempts</div>';
-    arr.forEach(a=>{
-      const card = el('div','card');
-      card.innerHTML = `<strong>${a.title}</strong><div class="muted">${new Date(a.timestamp).toLocaleString()}</div>
-        <div>Score: ${a.score}% • ${a.correct}/${a.total} • Time: ${fmtTime(a.timeTaken)}</div>
-        <div style="margin-top:8px"><button class="btn view" data-id="${a.id}">View</button></div>`;
-      card.querySelector('.view').addEventListener('click', ()=> renderResults(a) || showSection('results'));
-      list.appendChild(card);
+    const history = DB.getHistory();
+    if (!history.length){ list.textContent = 'No attempts yet.'; return; }
+    history.forEach(h=>{
+      const el = document.createElement('div');
+      el.className = 'card';
+      const date = new Date(h.startTime).toLocaleString();
+      el.innerHTML = `<div style="display:flex;justify-content:space-between">
+        <div><strong>${h.meta.title || h.meta.type}</strong><div class="muted">${date}</div></div>
+        <div style="text-align:right"><div>${h.correct}/${h.total}</div><div class="muted">${h.accuracy}%</div></div>
+      </div>
+      <div style="margin-top:8px"><button class="btn view-attempt" data-id="${h.id}">View</button> <button class="btn" data-export="${h.id}">Export</button></div>`;
+      el.querySelector('.view-attempt').addEventListener('click', ()=>{
+        renderResults(h); showView('results');
+      });
+      el.querySelector('[data-export]').addEventListener('click', ()=>{
+        utils.downloadJSON('attempt_' + h.id + '.json', h);
+      });
+      list.appendChild(el);
     });
-    showSection('history');
   }
-  $('#history-home').addEventListener('click', ()=> showSection('home'));
 
-  // --- Anti-cheat ---
-  let visibilityHandler = null;
-  let blurHandler = null;
-  function initAntiCheat(){
-    // block copy/paste & right-click
-    document.addEventListener('copy', preventAction);
-    document.addEventListener('paste', preventAction);
-    document.addEventListener('contextmenu', preventAction);
-    // detect tab switching
-    visibilityHandler = ()=>{
-      if(document.hidden){
-        state.antiCheat.tabSwitches++;
-        state.currentTest && (state.currentTest.violations = (state.currentTest.violations||0)+1);
-        if(state.currentTest && state.currentTest.violations >= 3){
-          alert('Too many tab switches detected. Test will be submitted for integrity.');
-          finishTest('anti-cheat');
-        }
-      }
-    };
-    document.addEventListener('visibilitychange', visibilityHandler);
-    // blur detection (window)
-    blurHandler = ()=>{
-      state.antiCheat.tabSwitches++;
-      if(state.currentTest && state.currentTest.violations >= 3){
-        alert('Too many switches. Ending test.');
-        finishTest('anti-cheat');
-      }
-    };
-    window.addEventListener('blur', blurHandler);
-    // beforeunload
-    window.addEventListener('beforeunload', beforeUnloadHandler);
-  }
-  function stopAntiCheat(){
-    document.removeEventListener('copy', preventAction);
-    document.removeEventListener('paste', preventAction);
-    document.removeEventListener('contextmenu', preventAction);
-    if(visibilityHandler) document.removeEventListener('visibilitychange', visibilityHandler);
-    if(blurHandler) window.removeEventListener('blur', blurHandler);
-    window.removeEventListener('beforeunload', beforeUnloadHandler);
-  }
-  function preventAction(e){
-    e.preventDefault();
-    state.antiCheat.blockedActions++;
-    if(state.currentTest){
-      state.currentTest.violations = (state.currentTest.violations||0)+1;
-      if(state.currentTest.violations >= 5){
-        alert('Too many suspicious actions detected. Test submitted.');
-        finishTest('anti-cheat');
-      }
+  // occasionally increment timeTaken for currently visible question
+  setInterval(()=>{
+    if (App.state.quiz && !App.state.paused){
+      const idx = App.state.currentIdx;
+      const ans = App.state.quiz.answers[idx];
+      if (ans) { ans.timeTaken = (ans.timeTaken || 0) + 1; updateHUDTimeTaken(); }
     }
-    return false;
-  }
-  function beforeUnloadHandler(e){
-    if(state.currentTest){
-      e.preventDefault();
-      e.returnValue = 'Test running — leaving will submit progress.'; // show warning
-      return e.returnValue;
-    }
-  }
+  },1000);
 
-  // --- UI routing ---
-  function showSection(name){
-    Object.keys(sections).forEach(k=>{
-      if(k === name) sections[k].classList.remove('hidden');
-      else sections[k].classList.add('hidden');
-    });
-    window.scrollTo(0,0);
-    if(name === 'subjectSelection') renderSubjects();
-  }
-
-  // init
-  showSection('home');
-
-  // Expose minimal debug to console
-  window.QuizLabState = state;
-
+  // boot
+  window.addEventListener('DOMContentLoaded', init);
 })();
