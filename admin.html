@@ -1,91 +1,93 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Admin — Quiz & Mock Test</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin - Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="db.js"></script>
+  <script src="utils.js"></script>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container">
-      <h1 class="brand">Admin Dashboard</h1>
-      <nav>
-        <button id="back-home" class="btn subtle">Back</button>
-      </nav>
-    </div>
+  <header>
+    <h2>Quiz Admin</h2>
+    <nav>
+      <a href="index.html">Back to App</a>
+    </nav>
   </header>
+  <div class="container" id="adminRoot">
+    <div class="card admin-card" id="loginCard">
+      <h3>Admin Login</h3>
+      <label>Username</label>
+      <input id="admUser" value="admin">
+      <label>Password</label>
+      <input id="admPass" type="password">
+      <div style="margin-top:0.8rem;">
+        <button class="btn" id="admLogin">Login</button>
+        <button class="btn btn-light" id="admResetSeed">Reset DB to Seed</button>
+      </div>
+      <p id="admMsg" style="margin-top:0.8rem;color:#b33"></p>
+    </div>
 
-  <main class="container main-grid">
-    <aside class="panel sidebar">
-      <section class="card" id="login-card">
-        <h3>Admin Login</h3>
-        <label>User <input id="admin-user" value="admin"></label>
-        <label>Password <input id="admin-pw" type="password"></label>
-        <button id="admin-login" class="btn block">Login</button>
-        <div id="login-msg" class="muted small mt"></div>
-      </section>
+    <div id="dashboard" style="display:none;">
+      <div class="grid grid-2">
+        <div class="admin-card card">
+          <h3>Manage Subjects</h3>
+          <div>
+            <input id="newSubjectName" placeholder="New subject name">
+            <button class="btn" id="addSubjectBtn">Add Subject</button>
+          </div>
+          <table class="admin-table" id="subjectsTable"></table>
+        </div>
 
-      <section class="card mt" id="import-export" style="display:none">
-        <h3>Import / Export</h3>
-        <button id="export-json" class="btn block">Export DB (JSON)</button>
-        <a id="download-json" style="display:none"></a>
-        <button id="export-csv" class="btn block mt">Export Questions (CSV)</button>
-        <input id="import-json-file" type="file" accept="application/json" class="mt" />
-        <input id="import-csv-file" type="file" accept=".csv,text/csv" class="mt" />
-      </section>
-
-      <section class="card mt" id="quick-add" style="display:none">
-        <h3>Quick Add</h3>
-        <label>Subject <input id="qa-subject"></label>
-        <label>Topic <input id="qa-topic"></label>
-        <label>Question Text <textarea id="qa-text"></textarea></label>
-        <label>Choices (one per line) <textarea id="qa-choices"></textarea></label>
-        <label>Answer index (1-based, comma separated for multi) <input id="qa-answer" /></label>
-        <label>Image file (optional) <input id="qa-image" type="file" accept="image/*" /></label>
-        <button id="qa-add" class="btn block">Add Question</button>
-        <div id="qa-msg" class="muted small mt"></div>
-      </section>
-
-    </aside>
-
-    <section class="panel content-area card" id="admin-area" style="display:none">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <h2>Dashboard</h2>
-        <div>
-          <button id="new-subject" class="btn subtle">New Subject</button>
-          <button id="new-topic" class="btn subtle">New Topic</button>
-          <button id="new-question" class="btn">New Question</button>
+        <div class="admin-card card">
+          <h3>Manage Topics</h3>
+          <div>
+            <select id="topicSubjectSelect"></select>
+            <input id="newTopicName" placeholder="New topic name">
+            <button class="btn" id="addTopicBtn">Add Topic</button>
+          </div>
+          <table class="admin-table" id="topicsTable"></table>
         </div>
       </div>
 
-      <div class="mt" id="dashboard-grid">
-        <div class="card">
-          <h3>Subjects</h3>
-          <div id="subjects-admin"></div>
+      <div class="card admin-card" style="margin-top:1.2rem;">
+        <h3>Manage Questions</h3>
+        <div style="display:flex;gap:0.6rem;align-items:center;">
+          <select id="qSubjectSelect"></select>
+          <select id="qTopicSelect"></select>
+          <button class="btn" id="newQBtn">Add Question</button>
+          <input type="file" id="csvUpload" accept=".csv">
+          <button class="btn btn-light" id="importCsvBtn">Import CSV</button>
+          <button class="btn" id="exportJsonBtn">Export JSON</button>
+          <button class="btn btn-light" id="exportCsvBtn">Export CSV</button>
         </div>
-        <div class="card mt">
-          <h3>Topics</h3>
-          <div id="topics-admin"></div>
+        <table class="admin-table" id="questionsTable"></table>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:1rem;">
+        <div class="card admin-card">
+          <h3>Settings</h3>
+          <label>Change Password</label>
+          <input id="currPwd" type="password" placeholder="Current password">
+          <input id="newPwd" type="password" placeholder="New password">
+          <button class="btn" id="changePwdBtn">Change Password</button>
+          <p id="pwdMsg" style="color:#b33"></p>
         </div>
-        <div class="card mt">
-          <h3>Questions</h3>
-          <div id="questions-admin" style="max-height:400px;overflow:auto"></div>
-        </div>
-        <div class="card mt">
-          <h3>History</h3>
-          <div id="history-admin" style="max-height:200px;overflow:auto"></div>
+
+        <div class="card admin-card">
+          <h3>Data Management</h3>
+          <button class="btn" id="exportDbBtn">Download Full JSON</button>
+          <button class="btn btn-light" id="clearDbBtn">Clear DB (danger)</button>
         </div>
       </div>
-    </section>
 
-  </main>
+      <div style="margin-top:1rem;">
+        <button class="btn" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </div>
 
-  <footer class="footer">
-    <div class="container muted small">Admin panel • Changes sync to localStorage immediately</div>
-  </footer>
-
-  <script src="db.js"></script>
   <script src="admin.js"></script>
 </body>
 </html>
