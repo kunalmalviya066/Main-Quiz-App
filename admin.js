@@ -231,8 +231,9 @@
 
   newQBtn.onclick = () => openQuestionEditor(null);
 
-  function openQuestionEditor(qid) {
-    const existing = qid ? DB.listQuestions({}).find(q => q.id === qid) : null;
+  // Full question editor modal (create/edit)
+  async function openQuestionEditor(qid) {
+    const existing = qid ? DB.listQuestions().find(q => q.id === qid) : null;
     const subs = DB.listSubjects();
     const tops = DB.listTopics();
 
@@ -255,4 +256,144 @@
         <label>Question</label>
         <textarea id="qText">${existing ? existing.question : ''}</textarea>
 
-        <label>Choices (one per line)</
+        <label>Choices (one per line)</label>
+        <textarea id="qChoices">${existing ? existing.choices.join('\n') : 'Option 1\nOption 2\nOption 3\nOption 4'}</textarea>
+
+        <label>Answer Index (0-based)</label>
+        <input id="qAnswer" value="${existing ? existing.answerIndex : 0}">
+
+        <label>Explanation</label>
+        <textarea id="qExpl">${existing ? existing.explanation : ''}</textarea>
+
+        <label>Image (URL or upload base64)</label>
+        <input id="qImageUrl" placeholder="Image URL" value="${existing && existing.image ? existing.image : ''}">
+        <input type="file" id="qImageFile" accept="image/*">
+
+        <div style="margin-top:1rem;display:flex;gap:0.6rem;">
+          <button class="btn" id="saveQ">Save</button>
+          ${qid ? '<button class="btn btn-light" id="delQModal">Delete</button>' : ''}
+          <button class="btn btn-light" id="closeModal">Close</button>
+        </div>
+      </div>`;
+
+    document.body.appendChild(modal);
+
+    // wire up file -> base64
+    document.getElementById('qImageFile').onchange = async (e) => {
+      const f = e.target.files[0];
+      if (!f) return;
+      try {
+        const b64 = await Utils.fileToBase64(f);
+        document.getElementById('qImageUrl').value = b64; // store data URL
+      } catch (err) {
+        alert('Failed to read image');
+      }
+    };
+
+    document.getElementById('closeModal').onclick = () => { document.body.removeChild(modal); };
+
+    if (qid) document.getElementById('delQModal').onclick = () => {
+      if (confirm('Delete this question?')) {
+        DB.deleteQuestion(qid);
+        document.body.removeChild(modal);
+        loadDashboard();
+      }
+    };
+
+    document.getElementById('saveQ').onclick = () => {
+      const payload = {
+        subjectId: document.getElementById('qSubSel').value,
+        topicId: document.getElementById('qTopSel').value,
+        question: document.getElementById('qText').value.trim(),
+        choices: document.getElementById('qChoices').value.split('\n').map(s => s.trim()).filter(Boolean),
+        answerIndex: Number(document.getElementById('qAnswer').value) || 0,
+        explanation: document.getElementById('qExpl').value.trim(),
+        image: document.getElementById('qImageUrl').value.trim() || null
+      };
+
+      try {
+        if (qid) DB.updateQuestion(qid, payload);
+        else DB.addQuestion(payload);
+        document.body.removeChild(modal);
+        loadDashboard();
+      } catch (err) {
+        alert('Save failed: ' + err.message);
+      }
+    };
+
+    // close modal on background click
+    modal.onclick = (e) => { if (e.target === modal) document.body.removeChild(modal); };
+  }
+
+  // ---------------- CSV / JSON Import Export ----------------
+  importCsvBtn.onclick = async () => {
+    const file = csvUpload.files[0];
+    if (!file) return alert('Select a CSV file first');
+    try {
+      const text = await Utils.readFileText(file);
+      DB.importQuestionsFromCSV(text);
+      alert('CSV imported');
+      loadDashboard();
+    } catch (err) {
+      alert('Import failed: ' + err.message);
+    }
+  };
+
+  exportJsonBtn.onclick = () => {
+    const json = DB.exportJSON();
+    Utils.downloadText('quiz_db.json', json);
+  };
+
+  exportCsvBtn.onclick = () => {
+    const csv = DB.exportQuestionsToCSV();
+    Utils.downloadText('questions_export.csv', csv);
+  };
+
+  // ---------------- Settings: change password ----------------
+  changePwdBtn.onclick = async () => {
+    pwdMsg.textContent = '';
+    const curr = currPwd.value.trim();
+    const nw = newPwd.value.trim();
+    if (!curr || !nw) return pwdMsg.textContent = 'Provide both fields';
+    try {
+      await DB.setAdminPassword(curr, nw);
+      pwdMsg.style.color = 'green';
+      pwdMsg.textContent = 'Password changed';
+      currPwd.value = '';
+      newPwd.value = '';
+    } catch (err) {
+      pwdMsg.style.color = '#b33';
+      pwdMsg.textContent = err.message || 'Failed to change';
+    }
+  };
+
+  // ---------------- DB export / clear ----------------
+  exportDbBtn.onclick = () => {
+    const json = DB.exportJSON();
+    Utils.downloadText('quiz_db_full.json', json);
+  };
+
+  clearDbBtn.onclick = () => {
+    if (!confirm('Clear local database (this removes ALL data)?')) return;
+    DB.clearDB();
+    alert('DB cleared. The app will reinitialize to seed on next load.');
+    location.reload();
+  };
+
+  // ---------------- Logout ----------------
+  logoutBtn.onclick = () => {
+    dash.style.display = 'none';
+    loginCard.style.display = 'block';
+    admPass.value = '';
+  };
+
+  // ---------------- Storage sync (reflect changes across tabs)
+  window.addEventListener('quiz_db_updated', () => {
+    // refresh dashboard if visible
+    if (dash.style.display !== 'none') loadDashboard();
+  });
+
+  // initial focus
+  admUser.focus();
+
+})();
