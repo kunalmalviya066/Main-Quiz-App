@@ -73,7 +73,7 @@
       }
     ],
     settings: {
-      adminPasswordHash: sha256('admin123'), // initial admin password (hashed)
+      adminPasswordHash: sha256('admin'), // initial admin password (hashed)
       adminLock: { attempts: 0, lockedUntil: null }
     }
   };
