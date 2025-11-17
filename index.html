@@ -1,122 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Quiz & Mock Test — Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz & Mock Test App</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="db.js"></script>
+  <script src="utils.js"></script>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container">
-      <h1 class="brand">Quiz & Mock Test</h1>
-      <nav>
-        <button id="open-admin" class="btn subtle">Admin</button>
-        <button id="open-fullscreen" class="btn">Fullscreen</button>
-      </nav>
-    </div>
+  <header>
+    <h2>Quiz App</h2>
+    <nav>
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#subjects" class="nav-link">Subjects</a>
+      <a href="#topics" class="nav-link">Topics</a>
+      <a href="#daily" class="nav-link">Daily Quiz</a>
+      <a href="#mock" class="nav-link">Mock Test</a>
+      <a href="#help" class="nav-link">Help</a>
+      <a href="admin.html">Admin</a>
+    </nav>
   </header>
 
-  <main class="container main-grid">
-    <aside class="panel sidebar">
-      <section class="card">
-        <h3>Subjects</h3>
-        <ul id="subject-list" class="list"></ul>
-        <div class="muted small">Select a subject to see topics & quizzes</div>
-      </section>
+  <div class="container" id="app">
+    <!-- Dynamic content injected by script.js -->
+  </div>
 
-      <section class="card mt">
-        <h3>Daily Quiz</h3>
-        <button id="daily-quiz-btn" class="btn block">Start Today's Quiz</button>
-        <div id="daily-info" class="muted small mt"></div>
-      </section>
-
-      <section class="card mt">
-        <h3>Test Builder</h3>
-        <label>Topic
-          <select id="builder-topic"></select>
-        </label>
-        <label>Number of Questions
-          <input id="builder-count" type="number" min="1" max="200" value="10" />
-        </label>
-        <label>Total Timer (minutes)
-          <input id="builder-timer" type="number" min="1" value="10" />
-        </label>
-        <label><input id="builder-shuffle" type="checkbox" /> Shuffle choices</label>
-        <button id="build-test" class="btn block">Build & Start</button>
-      </section>
-
-      <section class="card mt">
-        <h3>History</h3>
-        <div id="history-list" class="list small muted"></div>
-      </section>
-    </aside>
-
-    <section class="panel content-area card">
-      <div id="landing" class="landing">
-        <h2>Welcome</h2>
-        <p class="muted">Choose a subject on the left or create a custom test. Questions support images (URL or base64). Anti-cheat active: copying, pasting, right-click and leaving tab are monitored.</p>
-
-        <div id="topic-cards" class="grid-cards mt"></div>
-      </div>
-
-      <div id="quiz-screen" class="hidden">
-        <div class="quiz-top">
-          <div>
-            <h3 id="quiz-title">Quiz</h3>
-            <div id="quiz-meta" class="muted small"></div>
-          </div>
-          <div class="quiz-controls">
-            <button id="pause-resume" class="btn subtle">Pause</button>
-            <button id="toggle-navigator" class="btn subtle">Navigator</button>
-            <button id="mark-review" class="btn subtle">Mark</button>
-            <button id="end-quiz" class="btn danger">End</button>
-          </div>
-        </div>
-
-        <div class="quiz-body">
-          <aside id="navigator" class="navigator hidden card">
-            <div class="nav-head">
-              <strong>Navigator</strong>
-              <button id="nav-close" class="btn subtle">Close</button>
-            </div>
-            <div id="navigator-panel" class="nav-grid"></div>
-          </aside>
-
-          <article id="question-area" class="question card">
-            <div id="q-progress" class="muted small">Q <span id="q-index">1</span> / <span id="q-total">1</span></div>
-            <div id="q-text" class="q-text"></div>
-            <div id="q-image" class="q-image"></div>
-            <div id="choices" class="choices"></div>
-
-            <div class="q-actions">
-              <button id="prev-q" class="btn subtle">Previous</button>
-              <button id="next-q" class="btn subtle">Next</button>
-            </div>
-          </article>
-        </div>
-
-        <div class="quiz-footer">
-          <div class="muted small">Time left: <span id="time-left">00:00</span></div>
-        </div>
-      </div>
-
-      <div id="result-screen" class="hidden card">
-        <h2>Results</h2>
-        <div id="result-summary" class="mt"></div>
-        <div id="result-details" class="mt"></div>
-        <button id="review-answers" class="btn">Review Q-by-Q</button>
-        <button id="restart" class="btn subtle">Back to Home</button>
-      </div>
-
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container muted small">Made with ❤️ • Client-side only • localStorage DB</div>
-  </footer>
-
-  <script src="db.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
