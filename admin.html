@@ -1,93 +1,251 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Admin - Quiz App</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="db.js"></script>
-  <script src="utils.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QuizLab Admin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Admin-specific adjustments */
+    .admin-container { max-width: 1100px; margin:20px auto; padding:16px; }
+    .admin-nav { display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+    .admin-nav button { padding:10px 16px; border-radius:8px; cursor:pointer; }
+    .hidden { display:none !important; }
+
+    .table { width:100%; border-collapse:collapse; }
+    .table th, .table td { padding:8px; border-bottom:1px solid #eee; }
+    .table tr:hover { background:#fff4f6; }
+
+    .modal-backdrop {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+    .modal {
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      width:90%;
+      max-width:500px;
+      box-shadow:var(--shadow);
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h2>Quiz Admin</h2>
-    <nav>
+
+  <header class="topbar">
+    <div class="logo">QuizLab Admin</div>
+    <nav class="nav">
       <a href="index.html">Back to App</a>
     </nav>
   </header>
-  <div class="container" id="adminRoot">
-    <div class="card admin-card" id="loginCard">
-      <h3>Admin Login</h3>
-      <label>Username</label>
-      <input id="admUser" value="admin">
-      <label>Password</label>
-      <input id="admPass" type="password">
-      <div style="margin-top:0.8rem;">
-        <button class="btn" id="admLogin">Login</button>
-        <button class="btn btn-light" id="admResetSeed">Reset DB to Seed</button>
-      </div>
-      <p id="admMsg" style="margin-top:0.8rem;color:#b33"></p>
-    </div>
 
-    <div id="dashboard" style="display:none;">
-      <div class="grid grid-2">
-        <div class="admin-card card">
-          <h3>Manage Subjects</h3>
-          <div>
-            <input id="newSubjectName" placeholder="New subject name">
-            <button class="btn" id="addSubjectBtn">Add Subject</button>
-          </div>
-          <table class="admin-table" id="subjectsTable"></table>
+  <div class="admin-container">
+
+    <!-- ---------------- LOGIN SCREEN ---------------- -->
+    <section id="admin-login-section">
+      <div class="card">
+        <h2>Admin Login</h2>
+        <p class="muted">Restricted area — enter admin credentials.</p>
+
+        <label>Password:
+          <input type="password" id="admin-password" autocomplete="current-password" />
+        </label>
+
+        <div style="margin-top:12px;">
+          <button class="btn primary" id="admin-login-btn">Login</button>
         </div>
 
-        <div class="admin-card card">
-          <h3>Manage Topics</h3>
-          <div>
-            <select id="topicSubjectSelect"></select>
-            <input id="newTopicName" placeholder="New topic name">
-            <button class="btn" id="addTopicBtn">Add Topic</button>
-          </div>
-          <table class="admin-table" id="topicsTable"></table>
-        </div>
+        <div id="admin-login-error" class="muted" style="color:red; margin-top:8px;"></div>
+      </div>
+    </section>
+
+    <!-- ---------------- LOCKOUT SCREEN ---------------- -->
+    <section id="admin-lockout-section" class="hidden">
+      <div class="card">
+        <h2>Locked Out</h2>
+        <p>You have exceeded the maximum number of login attempts.</p>
+        <p>Please wait <span id="lockout-timer">10:00</span> before trying again.</p>
+      </div>
+    </section>
+
+    <!-- ---------------- DASHBOARD ---------------- -->
+    <section id="admin-dashboard" class="hidden">
+
+      <h2>Admin Dashboard</h2>
+      <p class="muted">Manage subjects, topics, questions, and system settings.</p>
+
+      <div class="admin-nav">
+        <button class="btn" data-target="panel-subjects">Subjects</button>
+        <button class="btn" data-target="panel-topics">Topics</button>
+        <button class="btn" data-target="panel-questions">Questions</button>
+        <button class="btn" data-target="panel-csv">CSV Import/Export</button>
+        <button class="btn" data-target="panel-export">Full DB Export</button>
+        <button class="btn" data-target="panel-settings">Settings</button>
+        <button class="btn" data-target="panel-history">User History</button>
+        <button class="btn" id="admin-logout">Logout</button>
       </div>
 
-      <div class="card admin-card" style="margin-top:1.2rem;">
+      <!-- ---------- SUBJECTS PANEL ---------- -->
+      <div id="panel-subjects" class="card hidden admin-panel">
+        <h3>Manage Subjects</h3>
+        <input type="text" id="search-subjects" placeholder="Search subjects..." class="card" />
+
+        <table class="table" id="subjects-table"></table>
+
+        <button class="btn primary" id="add-subject-btn">+ Add Subject</button>
+      </div>
+
+      <!-- ---------- TOPICS PANEL ---------- -->
+      <div id="panel-topics" class="card hidden admin-panel">
+        <h3>Manage Topics</h3>
+        <input type="text" id="search-topics" placeholder="Search topics..." class="card" />
+
+        <table class="table" id="topics-table"></table>
+
+        <button class="btn primary" id="add-topic-btn">+ Add Topic</button>
+      </div>
+
+      <!-- ---------- QUESTIONS PANEL ---------- -->
+      <div id="panel-questions" class="card hidden admin-panel">
         <h3>Manage Questions</h3>
-        <div style="display:flex;gap:0.6rem;align-items:center;">
-          <select id="qSubjectSelect"></select>
-          <select id="qTopicSelect"></select>
-          <button class="btn" id="newQBtn">Add Question</button>
-          <input type="file" id="csvUpload" accept=".csv">
-          <button class="btn btn-light" id="importCsvBtn">Import CSV</button>
-          <button class="btn" id="exportJsonBtn">Export JSON</button>
-          <button class="btn btn-light" id="exportCsvBtn">Export CSV</button>
+
+        <div class="form-row">
+          <select id="filter-question-subject"></select>
+          <select id="filter-question-topic"></select>
+          <button class="btn" id="filter-question-btn">Filter</button>
         </div>
-        <table class="admin-table" id="questionsTable"></table>
+
+        <table class="table" id="questions-table"></table>
+
+        <button class="btn primary" id="add-question-btn">+ Add Question</button>
       </div>
 
-      <div class="grid grid-2" style="margin-top:1rem;">
-        <div class="card admin-card">
-          <h3>Settings</h3>
-          <label>Change Password</label>
-          <input id="currPwd" type="password" placeholder="Current password">
-          <input id="newPwd" type="password" placeholder="New password">
-          <button class="btn" id="changePwdBtn">Change Password</button>
-          <p id="pwdMsg" style="color:#b33"></p>
-        </div>
+      <!-- ---------- CSV IMPORT/EXPORT PANEL ---------- -->
+      <div id="panel-csv" class="card hidden admin-panel">
+        <h3>CSV Import / Export</h3>
 
-        <div class="card admin-card">
-          <h3>Data Management</h3>
-          <button class="btn" id="exportDbBtn">Download Full JSON</button>
-          <button class="btn btn-light" id="clearDbBtn">Clear DB (danger)</button>
-        </div>
+        <p>Import CSV (columns: subjectId, topicId, text, choice1..choiceX, answerIndex)</p>
+        <input type="file" id="csv-file" accept=".csv" />
+        <button class="btn primary" id="import-csv-btn">Import CSV</button>
+
+        <hr />
+        <button class="btn" id="export-csv-btn">Export All Questions as CSV</button>
       </div>
 
-      <div style="margin-top:1rem;">
-        <button class="btn" id="logoutBtn">Logout</button>
+      <!-- ---------- FULL DB EXPORT PANEL ---------- -->
+      <div id="panel-export" class="card hidden admin-panel">
+        <h3>Export Full Database</h3>
+        <p>Download JSON backup of all subjects, topics, questions, and settings.</p>
+        <button class="btn primary" id="export-json-btn">Download JSON</button>
+      </div>
+
+      <!-- ---------- SETTINGS PANEL ---------- -->
+      <div id="panel-settings" class="card hidden admin-panel">
+        <h3>Admin Settings</h3>
+
+        <label>Current Password:
+          <input type="password" id="current-admin-pass" />
+        </label>
+        <label>New Password:
+          <input type="password" id="new-admin-pass" />
+        </label>
+
+        <button class="btn primary" id="change-password-btn">Change Password</button>
+
+        <div id="settings-msg" style="margin-top:8px;"></div>
+      </div>
+
+      <!-- ---------- USER HISTORY PANEL ---------- -->
+      <div id="panel-history" class="card hidden admin-panel">
+        <h3>User Test History</h3>
+
+        <div id="admin-history-list" class="stack"></div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- -------------- MODALS -------------- -->
+
+  <!-- Add/Edit Subject Modal -->
+  <div id="modal-subject" class="modal-backdrop hidden">
+    <div class="modal">
+      <h3 id="modal-subject-title"></h3>
+      <label>Name:
+        <input type="text" id="modal-subject-name" />
+      </label>
+      <label>Description:
+        <input type="text" id="modal-subject-desc" />
+      </label>
+      <div class="form-row">
+        <button class="btn" id="close-modal-subject">Cancel</button>
+        <button class="btn primary" id="save-modal-subject">Save</button>
       </div>
     </div>
   </div>
 
+  <!-- Add/Edit Topic Modal -->
+  <div id="modal-topic" class="modal-backdrop hidden">
+    <div class="modal">
+      <h3 id="modal-topic-title"></h3>
+
+      <label>Subject:
+        <select id="modal-topic-subject"></select>
+      </label>
+
+      <label>Name:
+        <input type="text" id="modal-topic-name" />
+      </label>
+
+      <div class="form-row">
+        <button class="btn" id="close-modal-topic">Cancel</button>
+        <button class="btn primary" id="save-modal-topic">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Question Modal -->
+  <div id="modal-question" class="modal-backdrop hidden">
+    <div class="modal">
+      <h3 id="modal-question-title"></h3>
+
+      <label>Subject:
+        <select id="modal-question-subject"></select>
+      </label>
+
+      <label>Topic:
+        <select id="modal-question-topic"></select>
+      </label>
+
+      <label>Question Text:
+        <textarea id="modal-question-text" rows="3"></textarea>
+      </label>
+
+      <label>Choices:
+        <textarea id="modal-question-choices" rows="3" placeholder="One choice per line"></textarea>
+      </label>
+
+      <label>Correct Answer Index:
+        <input type="number" id="modal-question-answer" min="0" />
+      </label>
+
+      <label>Image (Base64 or URL):
+        <textarea id="modal-question-image" rows="2"></textarea>
+      </label>
+
+      <div class="form-row">
+        <button class="btn" id="close-modal-question">Cancel</button>
+        <button class="btn primary" id="save-modal-question">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="db.js"></script>
   <script src="admin.js"></script>
 </body>
 </html>
