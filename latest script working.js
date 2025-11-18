@@ -1,14 +1,14 @@
 /*
  * ============================================
- * FILE: script.js (FINAL - Includes Newline Feature Fix)
- * DESCRIPTION: Core application logic with persistent authentication and question formatting.
+ * FILE: script.js (FINAL - No Login Prompt on Refresh)
+ * DESCRIPTION: Core application logic with persistent authentication fix.
  * ============================================
  */
 
 // --- 0. SECURITY & CONFIGURATION ---
 const MASTER_PASSWORD = "BankMock"; 
 const ADMIN_PASSWORD = "Admin@123"; // New Admin Password
-const AUTH_KEY = "quizAppAuthenticated"; // Key for localStorage flag
+const AUTH_KEY = "quizAppAuthenticated";
 
 // --- 1. APPLICATION STATE MANAGEMENT ---
 const appState = {
@@ -45,6 +45,7 @@ const DOM = {
     adminLoginError: document.getElementById('admin-login-error'),
     adminNavLink: document.getElementById('nav-admin'),
     
+    // ... (in const DOM)
     // Admin Panel
     adminPanel: document.getElementById('admin-panel'),
     adminControlsGrid: document.getElementById('admin-controls-grid'),
@@ -52,6 +53,7 @@ const DOM = {
     showQuestionListBtn: document.getElementById('show-question-list'),
     clearHistoryAdminBtn: document.getElementById('clear-history-admin'),
     adminContentArea: document.getElementById('admin-content-area'),
+// ...
     
     // Setup Screens
     subjectSelect: document.getElementById('subject-select'),
@@ -292,10 +294,7 @@ function renderQuestion(index) {
     document.getElementById('quiz-topic-info').textContent = `Topic: ${appState.currentQuiz.topic}`;
     
     DOM.qNumberDisplay.textContent = `Question ${q.quizIndex} of ${appState.currentQuiz.totalQuestions}`;
-    
-    // FIX: Handle newline characters (\n) for formatting multiline question text
-    const formattedQuestionText = q.question.replace(/\n/g, '<br>');
-    DOM.questionText.innerHTML = formattedQuestionText; // Use innerHTML to render <br>
+    DOM.questionText.textContent = q.question;
 
     DOM.questionImageContainer.innerHTML = q.image 
         ? `<img src="${q.image}" alt="Question Image" />`
@@ -537,10 +536,6 @@ function renderResultDetails(id) {
         const userAnswerText = result.userAnswer || 'N/A';
         const userClass = result.isCorrect ? 'correct-answer' : 'user-answer';
 
-        // FIX: Format question and explanation text for review screen
-        const formattedQuestionText = result.questionText.replace(/\n/g, '<br>');
-        const formattedExplanation = result.explanation ? result.explanation.replace(/\n/g, '<br>') : 'No explanation provided.';
-
         const card = document.createElement('div');
         card.className = 'review-question-card';
         card.innerHTML = `
@@ -548,7 +543,7 @@ function renderResultDetails(id) {
                 <h4>Question ${result.qIndex + 1}</h4>
                 <span class="review-status ${statusClass}">${statusText}</span>
             </div>
-            <p>${formattedQuestionText}</p>
+            <p>${result.questionText}</p>
             
             <div class="review-answers">
                 <p>Your Answer: <span class="${userClass}">${userAnswerText}</span></p>
@@ -557,7 +552,7 @@ function renderResultDetails(id) {
             
             <div class="explanation-box">
                 <strong>Explanation:</strong>
-                <p>${formattedExplanation}</p>
+                <p>${result.explanation}</p>
             </div>
         `;
         DOM.questionReviewList.appendChild(card);
@@ -607,7 +602,9 @@ function setupEventListeners() {
     DOM.passwordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleLogin();
     });
-    
+     
+     
+     
     // General Navigation
     DOM.navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -711,7 +708,7 @@ function setupEventListeners() {
         DOM.adminNavLink.classList.remove('hidden');
     }
 }
-// --- 10. ADMIN PANEL FUNCTIONS ---
+// --- 9. ADMIN PANEL FUNCTIONS ---
 
 /**
  * Handles clearing all quiz history from localStorage.
@@ -860,6 +857,8 @@ function handleAddQuestionSubmit(e) {
 
 /**
  * Renders the full list of all questions (Read function).
+ * NOTE: Edit and Delete functionality require extensive DOM manipulation 
+ * which is omitted here for brevity, focusing on the essential View.
  */
 function renderQuestionList() {
     DOM.adminContentArea.innerHTML = '<h3>All Questions in Database</h3><div id="question-list-container"></div>';
@@ -885,15 +884,12 @@ function renderQuestionList() {
         Object.entries(subData).forEach(([topic, topicArray]) => {
             topicArray.forEach(q => {
                 questionCount++;
-                // FIX: Escape question text for table display
-                const snippet = q.question.replace(/\n/g, ' ').substring(0, 50) + '...';
-
                 tableHTML += `
                     <tr>
                         <td>${q.id}</td>
                         <td>${subject}</td>
                         <td>${topic}</td>
-                        <td>${snippet}</td>
+                        <td>${q.question.substring(0, 50)}...</td>
                         <td>${q.answer}</td>
                     </tr>
                 `;
@@ -905,7 +901,8 @@ function renderQuestionList() {
     listContainer.innerHTML = tableHTML;
 }
 
-// --- 11. APPLICATION STARTUP ---
+// Ensure you also add the necessary CSS to style the admin table and controls.
+// --- 10. APPLICATION STARTUP ---
 
 function initApp() {
     initializeSetupScreens();
