@@ -1,172 +1,212 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MockQuiz — Local Practice App</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GovExams Practice App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header class="app-header">
-    <div class="brand">MockQuiz</div>
-    <nav class="main-nav" aria-label="Main navigation">
-      <button data-nav="home" class="nav-item">Home</button>
-      <button data-nav="subject" class="nav-item">Subject</button>
-      <button data-nav="daily" class="nav-item">Daily Quiz</button>
-      <button data-nav="fullmock" class="nav-item">Full Mock</button>
-      <button data-nav="results" class="nav-item">Result Summary</button>
-      <button data-nav="help" class="nav-item">Help</button>
-    </nav>
-    <div class="header-controls">
-      <span id="active-quiz-indicator" aria-live="polite"></span>
+
+    <header class="main-header">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i> GovExams Mock
+        </div>
+        <nav>
+            <a href="#" id="nav-home" class="nav-link active" data-view="home">Home</a>
+            <a href="#" id="nav-subject" class="nav-link" data-view="subject-setup">Subject Practice</a>
+            <a href="#" id="nav-daily" class="nav-link" data-view="daily-setup">Daily Quiz</a>
+            <a href="#" id="nav-fullmock" class="nav-link" data-view="mock-setup">Full Mock</a>
+            <a href="#" id="nav-results" class="nav-link" data-view="result-summary">Result Summary</a>
+            <a href="#" id="nav-help" class="nav-link" data-view="help">Help</a>
+        </nav>
+    </header>
+
+    <main id="app-container">
+        
+        <section id="home" class="view active">
+            <h2>Welcome to GovExams Practice Platform!</h2>
+            <p>Select an option below to start your practice session.</p>
+            <div class="home-options-grid">
+                <button class="home-option-card" data-view-target="subject-setup">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Subject Practice</h3>
+                    <p>Select a subject and specific topics.</p>
+                </button>
+                <button class="home-option-card" data-view-target="daily-setup">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>Daily Quiz</h3>
+                    <p>Random questions across all topics.</p>
+                </button>
+                <button class="home-option-card" data-view-target="mock-setup">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Full Mock</h3>
+                    <p>Subject-wise simulated exam.</p>
+                </button>
+                <button class="home-option-card" data-view-target="result-summary">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Result Summary</h3>
+                    <p>Review history and performance analysis.</p>
+                </button>
+            </div>
+        </section>
+
+        <section id="subject-setup" class="view hidden">
+            <h2 class="view-title"><i class="fas fa-list-alt"></i> Subject & Topic Selection</h2>
+            <div class="setup-form-container">
+                <div class="setup-step">
+                    <h4>Step 1: Choose Subject</h4>
+                    <select id="subject-select"></select>
+                </div>
+                <div class="setup-step">
+                    <h4>Step 2: Select Topics</h4>
+                    <div id="topics-checkbox-container" class="topic-list">
+                        <p class="placeholder">Select a subject first.</p>
+                    </div>
+                </div>
+                <div class="setup-step-options">
+                    <label for="num-questions">Number of Questions:</label>
+                    <input type="number" id="num-questions" value="10" min="5" max="100">
+
+                    <label for="timer-minutes">Time Limit (Minutes):</label>
+                    <input type="number" id="timer-minutes" value="10" min="1">
+                </div>
+                <button id="start-subject-quiz" class="start-button"><i class="fas fa-play"></i> Start Subject Quiz</button>
+            </div>
+        </section>
+
+        <section id="daily-setup" class="view hidden">
+            <h2 class="view-title"><i class="fas fa-calendar-day"></i> Daily Quiz Setup</h2>
+            <div class="setup-form-container">
+                <p>Randomly selected questions from all subjects/topics.</p>
+                <div class="setup-step-options">
+                    <label for="daily-num-questions">Number of Questions:</label>
+                    <input type="number" id="daily-num-questions" value="15" min="5" max="100">
+
+                    <label for="daily-timer-minutes">Time Limit (Minutes):</label>
+                    <input type="number" id="daily-timer-minutes" value="15" min="1">
+                </div>
+                <button id="start-daily-quiz" class="start-button"><i class="fas fa-play"></i> Start Daily Quiz</button>
+            </div>
+        </section>
+        
+        <section id="mock-setup" class="view hidden">
+            <h2 class="view-title"><i class="fas fa-clipboard-check"></i> Full Mock Setup</h2>
+            <div class="setup-form-container">
+                <div class="setup-step">
+                    <h4>Select Subject for Mock</h4>
+                    <select id="mock-subject-select"></select>
+                </div>
+                <div class="setup-step-options">
+                    <label for="mock-num-questions">Number of Questions:</label>
+                    <input type="number" id="mock-num-questions" value="50" min="10" max="200">
+
+                    <label for="mock-timer-minutes">Time Limit (Minutes):</label>
+                    <input type="number" id="mock-timer-minutes" value="60" min="1">
+                </div>
+                <button id="start-mock-quiz" class="start-button"><i class="fas fa-play"></i> Start Full Mock</button>
+            </div>
+        </section>
+
+        <section id="active-quiz" class="view quiz-layout hidden">
+            <div class="quiz-area">
+                <div class="quiz-top-bar">
+                    <div class="quiz-info">
+                        <span id="quiz-subject-info">Subject: General Knowledge</span> | 
+                        <span id="quiz-topic-info">Topic: Indian History</span>
+                    </div>
+                    <div class="quiz-timer">
+                        <i class="far fa-clock"></i> Time Left: <span id="timer-display">00:00</span>
+                    </div>
+                    <button id="pause-resume-btn" class="control-btn pause"><i class="fas fa-pause"></i> Pause</button>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-header">
+                        <span id="q-number-display">Question 1 of 10</span>
+                    </div>
+                    <p id="question-text">Question text will be loaded here...</p>
+                    <div id="question-image-container">
+                        </div>
+                    <div id="options-container" class="options-list">
+                        </div>
+                </div>
+
+                <div class="quiz-controls-bar">
+                    <button id="prev-question-btn" class="control-btn"><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button id="clear-answer-btn" class="control-btn secondary"><i class="fas fa-eraser"></i> Clear Answer</button>
+                    <button id="mark-review-btn" class="control-btn review"><i class="fas fa-bookmark"></i> Mark for Review</button>
+                    <button id="next-question-btn" class="control-btn next"><i class="fas fa-chevron-right"></i> Next</button>
+                    <button id="finish-quiz-btn" class="control-btn finish hidden"><i class="fas fa-check-circle"></i> Finish & Submit</button>
+                </div>
+            </div>
+
+            <div class="quiz-navigator-panel">
+                <h4>Question Navigation</h4>
+                <div id="question-navigator-grid" class="navigator-grid">
+                    </div>
+                <div class="navigator-key">
+                    <span class="key attempted">Attempted</span>
+                    <span class="key unattempted">Unattempted</span>
+                    <span class="key marked">Marked</span>
+                </div>
+                <button id="navigator-finish-btn" class="start-button full-width mt-10"><i class="fas fa-paper-plane"></i> Submit Quiz</button>
+            </div>
+        </section>
+
+        <section id="result-summary" class="view hidden">
+            <h2 class="view-title"><i class="fas fa-chart-line"></i> Performance History</h2>
+            <div id="history-list" class="history-container">
+                <p id="no-history-message" class="info-message">No quiz history found. Start a practice session!</p>
+            </div>
+        </section>
+
+        <section id="result-details" class="view hidden">
+            <h2 class="view-title"><i class="fas fa-trophy"></i> Quiz Results & Review</h2>
+            <div id="result-summary-metrics" class="metrics-card-grid">
+                </div>
+            
+            <div class="review-controls">
+                <h3>Question Review</h3>
+                <button id="back-to-summary-btn" class="control-btn secondary"><i class="fas fa-arrow-left"></i> Back to History</button>
+            </div>
+            
+            <div id="question-review-list" class="review-list">
+                </div>
+        </section>
+
+        <section id="help" class="view hidden">
+            <h2 class="view-title"><i class="fas fa-question-circle"></i> Help & Instructions</h2>
+            <div class="help-content">
+                <p>Detailed instructions on how to use the app, scoring rules, and feature explanations.</p>
+                </div>
+        </section>
+
+    </main>
+
+    <div id="quiz-restriction-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Active Quiz Alert</h3>
+            <p id="restriction-message">A quiz is currently active. Moving to a new section will cancel your current session without saving progress.</p>
+            <div class="modal-actions">
+                <button id="cancel-quiz-btn" class="control-btn danger"><i class="fas fa-times-circle"></i> Cancel Current Quiz</button>
+                <button id="stay-quiz-btn" class="control-btn primary">Stay on Quiz</button>
+            </div>
+        </div>
     </div>
-  </header>
-
-  <main id="app-main">
-    <!-- HOME -->
-    <section id="view-home" class="view">
-      <h1>Welcome to MockQuiz</h1>
-      <p>Practice for government exams locally — all data stays in your browser.</p>
-      <ul class="home-links">
-        <li><button data-nav="subject" class="link-btn">Subjects</button></li>
-        <li><button data-nav="daily" class="link-btn">Daily Quiz</button></li>
-        <li><button data-nav="fullmock" class="link-btn">Full Mock</button></li>
-        <li><button data-nav="results" class="link-btn">Result Summary</button></li>
-        <li><button data-nav="help" class="link-btn">Help</button></li>
-      </ul>
-    </section>
-
-    <!-- SUBJECT SELECTION -->
-    <section id="view-subject" class="view hidden">
-      <h2>Select Subject</h2>
-      <div id="subjects-list" class="cards-grid" aria-live="polite">
-        <!-- populated by script.js -->
-      </div>
-
-      <div id="subject-topics" class="hidden">
-        <h3 id="selected-subject-name"></h3>
-        <div id="topics-list" class="cards-grid">
-          <!-- populated by script.js -->
-        </div>
-
-        <div class="setup-panel">
-          <label>Number of questions: <input type="number" id="subject-numq" min="1" value="10"></label>
-          <label>Time (minutes): <input type="number" id="subject-timemin" min="1" value="20"></label>
-          <div class="setup-actions">
-            <button id="subject-start">Start Quiz</button>
-            <button id="subject-cancel">Cancel</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DAILY QUIZ -->
-    <section id="view-daily" class="view hidden">
-      <h2>Daily Quiz</h2>
-      <p>Random questions automatically selected from the database.</p>
-      <div class="setup-panel">
-        <label>Number of questions: <input type="number" id="daily-numq" min="1" value="10"></label>
-        <label>Time (minutes): <input type="number" id="daily-timemin" min="1" value="20"></label>
-        <div class="setup-actions">
-          <button id="daily-start">Start Daily Quiz</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- FULL MOCK -->
-    <section id="view-fullmock" class="view hidden">
-      <h2>Full Mock</h2>
-      <p>Take a full mock exam subject-wise (no topic selection).</p>
-      <div id="fullmock-subjects" class="cards-grid"></div>
-
-      <div id="fullmock-setup" class="hidden setup-panel">
-        <h3 id="fullmock-subject-name"></h3>
-        <label>Number of questions: <input type="number" id="fullmock-numq" min="1" value="50"></label>
-        <label>Time (minutes): <input type="number" id="fullmock-timemin" min="1" value="120"></label>
-        <div class="setup-actions">
-          <button id="fullmock-start">Start Full Mock</button>
-          <button id="fullmock-cancel">Cancel</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- QUIZ VIEW -->
-    <section id="view-quiz" class="view hidden">
-      <header class="quiz-header">
-        <div class="quiz-meta">
-          <div id="quiz-title"></div>
-          <div id="quiz-subtitle"></div>
-        </div>
-        <div class="quiz-timer">
-          <span id="timer-display">00:00</span>
-          <button id="timer-pause">Pause</button>
-          <button id="timer-resume" class="hidden">Resume</button>
-        </div>
-      </header>
-
-      <div class="quiz-body">
-        <aside class="quiz-left">
-          <div id="question-area">
-            <!-- question rendered here -->
-          </div>
-
-          <div class="question-actions">
-            <button id="prev-q">Prev</button>
-            <button id="next-q">Next</button>
-            <button id="mark-review">Mark for Review</button>
-            <button id="clear-answer">Clear Answer</button>
-            <button id="finish-quiz">Finish / Submit</button>
-          </div>
-        </aside>
-
-        <aside class="quiz-right">
-          <div id="navigator-grid" class="navigator-grid">
-            <!-- question navigator cells -->
-          </div>
-        </aside>
-      </div>
-
-      <!-- pause overlay / anti-cheat -->
-      <div id="pause-overlay" class="overlay hidden">
+    
+    <div id="pause-screen-overlay" class="overlay hidden">
         <div class="overlay-content">
-          <h3>Quiz paused</h3>
-          <p>The quiz is paused. Click Resume to continue.</p>
-          <button id="overlay-resume">Resume</button>
+            <i class="fas fa-exclamation-circle"></i>
+            <h3>Quiz Paused - Attention Required</h3>
+            <p>Please click 'Resume' below to continue the test. Switching tabs or windows while paused is not allowed in a real exam environment.</p>
+            <button id="resume-from-overlay-btn" class="start-button"><i class="fas fa-play"></i> Resume Quiz</button>
         </div>
-      </div>
-    </section>
+    </div>
 
-    <!-- RESULT / HISTORY -->
-    <section id="view-results" class="view hidden">
-      <h2>Result Summary & History</h2>
-      <div id="history-controls">
-        <button id="clear-history">Clear All History</button>
-      </div>
-      <div id="history-list">
-        <!-- populated by script.js -->
-      </div>
 
-      <div id="result-detail" class="hidden">
-        <!-- detailed attempt view -->
-      </div>
-    </section>
-
-    <!-- HELP -->
-    <section id="view-help" class="view hidden">
-      <h2>Help</h2>
-      <p>Instructions and tips for using the MockQuiz app.</p>
-      <ul>
-        <li>Use the Subject, Daily and Full Mock flows to create quizzes.</li>
-        <li>During a quiz you cannot switch sections without pausing/cancelling the quiz.</li>
-        <li>Results are stored locally in your browser's storage.</li>
-      </ul>
-    </section>
-  </main>
-
-  <!-- Generic modals -->
-  <div id="modal-root"></div>
-
-  <script src="db.js" defer></script>
-  <script src="script.js" defer></script>
+    <script src="db.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

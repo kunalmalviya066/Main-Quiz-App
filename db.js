@@ -1,121 +1,86 @@
-/* Owner-editable database for MockQuiz */
-/* Add/Edit subjects, topics, questions here */
+/*
+ * ============================================
+ * FILE: db.js
+ * DESCRIPTION: Stores all subject, topic, and question data.
+ * ============================================
+ */
 
-const QUIZ_DB = {
-  subjects: [
-    {
-      id: "gs",
-      name: "General Studies",
-      topics: [
-        {
-          id: "gs-hist",
-          name: "History",
-          questions: [
+const quizDB = {
+    // --- GENERAL KNOWLEDGE ---
+    "General Knowledge": {
+        "Indian History": [
             {
-              id: "q1",
-              type: "mcq-single",
-              text: "Who was the first Governor-General of India?",
-              image: null,
-              options: [
-                "Lord Canning",
-                "Lord Mountbatten",
-                "Warren Hastings",
-                "Robert Clive"
-              ],
-              answer: 2,
-              explanation: "Warren Hastings served as the first Governor-General from 1773 to 1785."
+                id: 101,
+                question: "Who was the first Governor-General of independent India?",
+                image: null, // Set to 'path/to/image.jpg' if an image is needed
+                options: ["Lord Mountbatten", "C. Rajagopalachari", "Jawaharlal Nehru", "Dr. Rajendra Prasad"],
+                answer: "C. Rajagopalachari",
+                explanation: "Chakravarti Rajagopalachari (CR) was the only Indian and the last Governor-General of India.",
             },
             {
-              id: "q2",
-              type: "mcq-single",
-              text: "In which year did the Battle of Plassey occur?",
-              image: null,
-              options: ["1757", "1857", "1764", "1748"],
-              answer: 0,
-              explanation: "The Battle of Plassey was fought in 1757 between the British and Siraj-ud-Daulah."
-            }
-          ]
-        },
-        {
-          id: "gs-geog",
-          name: "Geography",
-          questions: [
+                id: 102,
+                question: "The famous 'Dandi March' was associated with which movement?",
+                image: null,
+                options: ["Non-Cooperation Movement", "Civil Disobedience Movement", "Quit India Movement", "Swadeshi Movement"],
+                answer: "Civil Disobedience Movement",
+                explanation: "The Dandi March (or Salt Satyagraha) was an act of nonviolent civil disobedience in colonial India led by Mahatma Gandhi.",
+            },
+        ],
+        "Indian Polity": [
             {
-              id: "q3",
-              type: "mcq-single",
-              text: "Which is the largest desert in the world?",
-              image: null,
-              options: ["Sahara", "Gobi", "Arabian", "Antarctic Desert"],
-              answer: 3,
-              explanation: "Antarctic Desert is the largest desert by area."
+                id: 201,
+                question: "Which part of the Indian Constitution deals with Fundamental Rights?",
+                image: null,
+                options: ["Part I", "Part II", "Part III", "Part IV"],
+                answer: "Part III",
+                explanation: "Part III (Articles 12-35) of the Constitution of India deals with Fundamental Rights.",
             },
             {
-              id: "q4",
-              type: "mcq-single",
-              text: "The Tropic of Cancer passes through how many Indian states?",
-              image: null,
-              options: ["6", "8", "5", "7"],
-              answer: 1,
-              explanation: "Tropic of Cancer passes through 8 Indian states."
-            }
-          ]
-        }
-      ]
+                id: 202,
+                question: "How many schedules are there in the Constitution of India?",
+                image: null,
+                options: ["10", "12", "8", "14"],
+                answer: "12",
+                explanation: "Originally, the Constitution had 8 schedules. Currently, there are 12 schedules.",
+            },
+        ],
     },
 
-    {
-      id: "apt",
-      name: "Aptitude",
-      topics: [
-        {
-          id: "apt-math",
-          name: "Quantitative Aptitude",
-          questions: [
+    // --- QUANTITATIVE APTITUDE ---
+    "Quantitative Aptitude": {
+        "Number System": [
             {
-              id: "q5",
-              type: "mcq-single",
-              text: "What is 25% of 240?",
-              image: null,
-              options: ["50", "60", "55", "65"],
-              answer: 1,
-              explanation: "25% of 240 = 240 × 0.25 = 60."
+                id: 301,
+                question: "If 10 men can complete a piece of work in 7 days, how many men are required to complete the same work in 10 days?",
+                image: null,
+                options: ["7", "10", "12", "15"],
+                answer: "7",
+                explanation: "Using the formula M1*D1 = M2*D2. (10 * 7) = (M2 * 10). M2 = 70/10 = 7 men.",
             },
+        ],
+        "Averages": [
             {
-              id: "q6",
-              type: "mcq-single",
-              text: "A train of 120m length crosses a pole in 6 seconds. What is its speed?",
-              image: null,
-              options: ["20 m/s", "15 m/s", "25 m/s", "12 m/s"],
-              answer: 0,
-              explanation: "Speed = Distance/Time = 120/6 = 20 m/s."
-            }
-          ]
-        },
-        {
-          id: "apt-reas",
-          name: "Reasoning",
-          questions: [
-            {
-              id: "q7",
-              type: "mcq-single",
-              text: "Which shape is different from the other three?",
-              image: "images/sample_shape.png", // example image path
-              options: ["Circle", "Triangle", "Square", "Cylinder"],
-              answer: 3,
-              explanation: "Cylinder is 3D whereas others are 2D shapes."
+                id: 401,
+                question: "The average age of 5 students is 15 years. If a new student is added, the average age becomes 16 years. What is the age of the new student?",
+                image: null,
+                options: ["18 years", "21 years", "20 years", "22 years"],
+                answer: "21 years",
+                explanation: "Total age of 5 students: 5 * 15 = 75. Total age of 6 students: 6 * 16 = 96. Age of new student: 96 - 75 = 21 years.",
             },
+        ],
+    },
+
+    // --- REASONING EXAMPLE (WITH IMAGE) ---
+    "Reasoning": {
+        "Non-Verbal Reasoning": [
             {
-              id: "q8",
-              type: "mcq-single",
-              text: "Find the odd one out: Apple, Mango, Orange, Carrot",
-              image: null,
-              options: ["Apple", "Mango", "Orange", "Carrot"],
-              answer: 3,
-              explanation: "Carrot is a vegetable; others are fruits."
-            }
-          ]
-        }
-      ]
+                id: 501,
+                question: "Identify the next figure in the series.",
+                image: 'images/figure_series_1.png', // Placeholder path for an image
+                options: ["Figure A", "Figure B", "Figure C", "Figure D"],
+                answer: "Figure C",
+                explanation: "The figure rotates 90 degrees clockwise at each step.",
+            },
+        ]
     }
-  ]
 };
