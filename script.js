@@ -1,7 +1,7 @@
 /*
  * ============================================
- * FILE: script.js (FINAL - Includes Persistent Login, Fixed History, and Quiz Logic)
- * DESCRIPTION: Core application logic for routing, state, quiz, timer, and history.
+ * FILE: script.js (FINAL - No Login Prompt on Refresh)
+ * DESCRIPTION: Core application logic with persistent authentication fix.
  * ============================================
  */
 
@@ -11,8 +11,9 @@ const AUTH_KEY = "quizAppAuthenticated"; // Key for localStorage flag
 
 // --- 1. APPLICATION STATE MANAGEMENT ---
 const appState = {
+    // FIX: Read authentication status on load. This determines the initial flow.
+    isAuthenticated: localStorage.getItem(AUTH_KEY) === 'true', 
     currentView: 'login-gate', 
-    isAuthenticated: localStorage.getItem(AUTH_KEY) === 'true', // CHECK LOCAL STORAGE
     isQuizActive: false,
     currentQuiz: {
         type: null, subject: null, topic: null, questions: [], totalQuestions: 0,
@@ -85,6 +86,7 @@ let currentQIndex = 0;
  * Changes the active view in the SPA.
  */
 function navigateTo(viewId, forceChange = false) {
+    // Ensure navigation always redirects to login if not authenticated, unless explicitly going to login.
     if (!appState.isAuthenticated && viewId !== 'login-gate') {
         viewId = 'login-gate';
     }
@@ -104,7 +106,8 @@ function navigateTo(viewId, forceChange = false) {
 
     DOM.navLinks.forEach(link => {
         link.classList.remove('active');
-        link.classList.toggle('hidden', viewId === 'login-gate');
+        // Hide nav links if not authenticated
+        link.classList.toggle('hidden', !appState.isAuthenticated);
         if (link.dataset.view === viewId) {
             link.classList.add('active');
         }
@@ -115,7 +118,7 @@ function navigateTo(viewId, forceChange = false) {
     }
 }
 
-// --- 4. LOGIN HANDLER (UPDATED) ---
+// --- 4. LOGIN HANDLER ---
 
 function handleLogin() {
     const enteredPassword = DOM.passwordInput.value;
@@ -416,6 +419,7 @@ function finishQuiz(isTimeUp = false) {
 // --- 8. HISTORY & RESULTS RENDERING ---
 
 function renderHistorySummary() {
+    // FIX: Ensure history is refreshed from storage when viewing the summary.
     appState.history = JSON.parse(localStorage.getItem('quizHistory')) || [];
 
     DOM.historyList.innerHTML = '';
@@ -656,13 +660,13 @@ function setupEventListeners() {
     });
 }
 
-// --- 10. APPLICATION STARTUP (UPDATED) ---
+// --- 10. APPLICATION STARTUP ---
 
 function initApp() {
     initializeSetupScreens();
     setupEventListeners();
     
-    // CHECK FOR PERSISTENT AUTHENTICATION
+    // STARTUP FIX: Navigate directly to 'home' if authenticated, otherwise go to 'login-gate'.
     const initialView = appState.isAuthenticated ? 'home' : 'login-gate';
     navigateTo(initialView, true);
 }
