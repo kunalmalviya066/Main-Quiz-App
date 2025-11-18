@@ -1,333 +1,247 @@
-/* --------------------------------------------------
-   GLOBAL + RESET
--------------------------------------------------- */
+/* Light Pink Theme Styles */
 :root {
-  --bg: #fff7fb;
-  --card: #ffffff;
-  --accent: #ff9fb1;      /* main pink */
-  --accent-light: #ffe3ea; /* softer background pink */
-  --muted: #7a6b6f;
-  --text: #2b2b2b;
-  --shadow: 0 6px 18px rgba(200,150,160,0.12);
-  --radius: 14px;
-  --gap: 16px;
-
-  font-family: Inter, system-ui, sans-serif;
+  --bg: #ffeef3;
+  --bg-light: #fff5f8;
+  --pink: #ffb6c9;
+  --pink-dark: #ff82a3;
+  --text: #333;
+  --border: #ffcdda;
+  --shadow: rgba(255, 182, 201, 0.4);
 }
 
-* {
-  box-sizing: border-box;
+body {
   margin: 0;
-  padding: 0;
-}
-
-html, body {
-  width: 100%;
-  min-height: 100%;
+  font-family: Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  -webkit-font-smoothing: antialiased;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
+.hidden { display: none; }
+
+/* HEADER */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 2px 6px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand { font-weight: bold; font-size: 1.4rem; }
+
+.main-nav .nav-item {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.main-nav .nav-item:hover {
+  background: var(--pink-dark);
+  border-radius: 6px;
+}
+
+/* GENERAL LAYOUT */
+.view {
   padding: 20px;
 }
 
-/* --------------------------------------------------
-   VIEW SWITCHING (FIXED)
--------------------------------------------------- */
-.view {
-  display: none;
-}
-
-.view.active {
-  display: block;
-}
-
-/* --------------------------------------------------
-   HEADER
--------------------------------------------------- */
-.site-header {
-  padding: 14px 0;
-  background: transparent;
-  border-bottom: 1px solid #ffe0eb;
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.brand h1 {
-  margin: 0;
-  font-size: 22px;
-  color: var(--accent);
-}
-
-.nav .nav-btn {
-  background: none;
-  border: none;
-  padding: 8px 12px;
-  margin-left: 6px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.nav .nav-btn:hover {
-  background: var(--accent-light);
-}
-
-/* --------------------------------------------------
-   HERO SECTION
--------------------------------------------------- */
-.hero {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 25px;
-  text-align: left;
-}
-
-.hero h2 {
-  font-size: 24px;
-}
-
-.hero p {
-  color: var(--muted);
-}
-
-.hero-ctas {
-  display: flex;
-  gap: 10px;
-}
-
-/* --------------------------------------------------
-   CARDS
--------------------------------------------------- */
-.card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: var(--shadow);
-  margin-bottom: 16px;
-}
-
-.card.small {
-  padding: 12px;
-}
-
-/* --------------------------------------------------
-   BUTTONS
--------------------------------------------------- */
-.btn {
-  border: none;
-  padding: 10px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  background: transparent;
-  color: var(--text);
-}
-
-.btn.primary {
-  background: var(--accent);
-  color: white;
-}
-
-.btn:hover {
-  opacity: 0.95;
-}
-
-/* --------------------------------------------------
-   GRIDS
--------------------------------------------------- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-  margin-top: 14px;
-}
-
-.subjects-grid {
+.cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
+  gap: 15px;
+  margin-top: 15px;
 }
 
-.topics-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-/* --------------------------------------------------
-   SUBJECT CARDS
--------------------------------------------------- */
-.subject-card {
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.cards-grid button,
+.link-btn {
+  padding: 15px;
+  background: var(--bg-light);
+  border: 2px solid var(--border);
+  border-radius: 10px;
   cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 2px 4px var(--shadow);
 }
 
-.subject-card .title {
-  font-weight: 700;
+.cards-grid button:hover,
+.link-btn:hover {
+  background: var(--pink);
+  color: #fff;
 }
 
-.subject-card .desc {
-  color: var(--muted);
-  font-size: 14px;
+/* SETUP PANELS */
+.setup-panel {
+  margin-top: 20px;
+  background: var(--bg-light);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px var(--shadow);
+  border: 2px solid var(--border);
 }
 
-/* --------------------------------------------------
-   TOPIC SELECT CHIPS
--------------------------------------------------- */
-.topic-chip {
-  padding: 8px 12px;
-  border-radius: 20px;
-  border: 1px solid #ffd2df;
-  background: #fff;
+.setup-panel label {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.setup-actions button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  border: none;
   cursor: pointer;
+  background: var(--pink-dark);
+  color: #fff;
+  border-radius: 6px;
+}
+.setup-actions button:hover {
+  background: var(--pink);
 }
 
-.topic-chip.selected {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
-}
-
-/* --------------------------------------------------
-   FORM ROWS
--------------------------------------------------- */
-.form-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-top: 12px;
-  flex-wrap: wrap;
-}
-
-form label {
-  font-weight: 600;
-}
-
-/* --------------------------------------------------
-   QUIZ LAYOUT
--------------------------------------------------- */
-.quiz-shell {
-  display: flex;
-  gap: 12px;
-}
-
-.quiz-side {
-  width: 280px;
-}
-
-.quiz-main {
-  flex: 1;
-}
-
-.quiz-hud {
+/* QUIZ VIEW */
+.quiz-header {
   display: flex;
   justify-content: space-between;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.navigator .nav-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 6px;
-}
-
-.nav-grid button {
-  padding: 8px;
+  align-items: center;
+  background: var(--pink);
+  padding: 10px;
+  color: #fff;
   border-radius: 6px;
-  border: 1px solid #f4c2cc;
-  background: transparent;
-  cursor: pointer;
 }
 
-.nav-grid button:hover {
-  background: var(--accent-light);
-}
-
-/* --------------------------------------------------
-   CHOICES
--------------------------------------------------- */
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.choice {
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #efd6db;
-  cursor: pointer;
-  background: #fff;
-}
-
-.choice.selected {
-  background: #ffe8f0;
-  border-color: var(--accent);
-}
-
-.choice.correct {
-  background: #eaffed;
-  border-color: #3cc452;
-}
-
-.choice.wrong {
-  background: #ffe5e5;
-  border-color: #ff7c7c;
-}
-
-.question-image img {
-  max-width: 100%;
-  margin-top: 10px;
-}
-
-/* --------------------------------------------------
-   RESULTS
--------------------------------------------------- */
-.results-summary {
+.quiz-body {
   display: flex;
   gap: 20px;
+  margin-top: 20px;
+}
+
+.quiz-left {
+  width: 60%;
+  background: var(--bg-light);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--shadow);
+  border: 2px solid var(--border);
+}
+
+.quiz-right {
+  width: 40%;
+  background: var(--bg-light);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--shadow);
+  border: 2px solid var(--border);
+}
+
+.navigator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 8px;
+}
+
+.navigator-grid button {
+  padding: 10px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.navigator-grid button.current {
+  background: var(--pink-dark);
+  color: #fff;
+}
+.navigator-grid button.answered {
+  background: #ffd3df;
+}
+.navigator-grid button.marked {
+  border: 2px dashed var(--pink-dark);
+}
+
+/* QUESTION ACTIONS */
+.question-actions {
+  margin-top: 20px;
+  display: flex;
   flex-wrap: wrap;
+  gap: 10px;
+}
+.question-actions button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  background: var(--pink);
+  color: #fff;
+  cursor: pointer;
+}
+.question-actions button:hover {
+  background: var(--pink-dark);
 }
 
-/* --------------------------------------------------
-   FOOTER
--------------------------------------------------- */
-.site-footer {
-  margin-top: 40px;
-  padding: 20px;
+/* OVERLAY (PAUSE) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-content {
+  background: var(--bg-light);
+  padding: 25px;
+  border-radius: 10px;
   text-align: center;
-  color: var(--muted);
-  font-size: 14px;
+  color: var(--text);
+  box-shadow: 0 2px 6px var(--shadow);
+}
+.overlay-content button {
+  margin-top: 15px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--pink);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+.overlay-content button:hover {
+  background: var(--pink-dark);
 }
 
-/* --------------------------------------------------
-   RESPONSIVE FIXES
--------------------------------------------------- */
-@media (max-width: 900px) {
-  .quiz-shell {
-    flex-direction: column;
-  }
-  .quiz-side {
-    width: 100%;
-  }
-  .nav-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
+/* HISTORY */
+#history-list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+}
+
+.history-card {
+  background: var(--bg-light);
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.history-card button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: var(--pink-dark);
+  color: #fff;
+  cursor: pointer;
+}
+.history-card button:hover {
+  background: var(--pink);
 }
