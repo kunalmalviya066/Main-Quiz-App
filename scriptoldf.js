@@ -1,6 +1,6 @@
 /*
  * ============================================
- * FILE: script.js (FIXED - History Event Delegation)
+ * FILE: script.js
  * DESCRIPTION: Core application logic for routing, state, quiz, timer, and history.
  * ============================================
  */
@@ -242,8 +242,6 @@ function startQuiz(type, params) {
         questions: questions,
         totalQuestions: questions.length,
         timerId: null,
-        // Ensure that the timer value is retrieved correctly from params
-        timer: params.timer, 
         timeLeftSeconds: parseInt(params.timer) * 60,
         paused: false,
         userAnswers: questions.map(q => ({ 
@@ -270,18 +268,12 @@ function startQuiz(type, params) {
 function renderQuestion(index) {
     currentQIndex = index;
     const q = appState.currentQuiz.questions[index];
-    // Find the full question object (including original subject/topic) if not present
-    const fullQuestion = quizDB[appState.currentQuiz.subject] 
-        ? Object.values(quizDB[appState.currentQuiz.subject]).flat().find(item => item.id === q.id)
-        : q; // Use q if full context isn't easily found (like in daily quiz)
-
     const userAnswer = appState.currentQuiz.userAnswers[index].answer;
     const isMarked = appState.currentQuiz.userAnswers[index].markedForReview;
 
     // 1. Update Header Info
-    // Use stored quiz subject/topic for display
-    document.getElementById('quiz-subject-info').textContent = `Subject: ${appState.currentQuiz.subject}`;
-    document.getElementById('quiz-topic-info').textContent = `Topic: ${appState.currentQuiz.topic}`;
+    document.getElementById('quiz-subject-info').textContent = `Subject: ${q.subject || appState.currentQuiz.subject}`;
+    document.getElementById('quiz-topic-info').textContent = `Topic: ${q.topic || appState.currentQuiz.topic}`;
     
     // 2. Update Question Text
     DOM.qNumberDisplay.textContent = `Question ${q.quizIndex} of ${appState.currentQuiz.totalQuestions}`;
@@ -295,6 +287,7 @@ function renderQuestion(index) {
     // 4. Render Options
     DOM.optionsContainer.innerHTML = '';
     q.options.forEach((option, idx) => {
+        const optionId = `q${q.id}-opt${idx}`;
         const checked = option === userAnswer ? 'checked' : '';
 
         DOM.optionsContainer.innerHTML += `
@@ -409,23 +402,18 @@ function finishQuiz(isTimeUp = false) {
     
     const detailedResults = appState.currentQuiz.userAnswers.map((userA, index) => {
         const q = appState.currentQuiz.questions[index];
-        
-        // Find the correct answer and explanation in the original question data.
-        // This is necessary because questions in daily/mock quizzes might lose their original context
-        const originalQ = appState.currentQuiz.questions.find(item => item.id === userA.id);
-
         const isAttempted = userA.answer !== null;
-        const isCorrect = isAttempted && userA.answer === originalQ.answer;
+        const isCorrect = isAttempted && userA.answer === q.answer;
         
         if (isAttempted) attemptedCount++;
         if (isCorrect) correctCount++;
 
         return {
             qIndex: index,
-            questionText: originalQ.question,
-            correctAnswer: originalQ.answer,
+            questionText: q.question,
+            correctAnswer: q.answer,
             userAnswer: userA.answer,
-            explanation: originalQ.explanation,
+            explanation: q.explanation,
             isCorrect: isCorrect,
             isAttempted: isAttempted,
             markedForReview: userA.markedForReview,
@@ -434,9 +422,7 @@ function finishQuiz(isTimeUp = false) {
 
     const accuracy = attemptedCount > 0 ? ((correctCount / attemptedCount) * 100).toFixed(2) : '0.00';
     const score = `${correctCount}/${totalQuestions}`;
-    // Correctly calculate time taken by subtracting time left from total allocated time
-    const totalAllocatedTime = parseInt(appState.currentQuiz.timer) * 60;
-    const timeTakenSeconds = totalAllocatedTime - appState.currentQuiz.timeLeftSeconds;
+    const timeTaken = (parseInt(appState.currentQuiz.timer) * 60) - appState.currentQuiz.timeLeftSeconds;
     
     const newHistoryEntry = {
         id: Date.now(),
@@ -451,13 +437,12 @@ function finishQuiz(isTimeUp = false) {
         attempted: attemptedCount,
         total: totalQuestions,
         accuracy: accuracy,
-        timeTakenSeconds: timeTakenSeconds,
-        timeTakenFormatted: `${String(Math.floor(timeTakenSeconds / 60)).padStart(2, '0')}:${String(timeTakenSeconds % 60).padStart(2, '0')}`,
+        timeTakenSeconds: timeTaken,
+        timeTakenFormatted: `${String(Math.floor(timeTaken / 60)).padStart(2, '0')}:${String(timeTaken % 60).padStart(2, '0')}`,
         results: detailedResults,
     };
 
     // 2. Save History
-    // Update appState.history and localStorage
     appState.history.unshift(newHistoryEntry);
     localStorage.setItem('quizHistory', JSON.stringify(appState.history));
 
@@ -467,7 +452,6 @@ function finishQuiz(isTimeUp = false) {
     appState.pausedByTabSwitch = false;
 
     // 4. Show Results
-    // The history is now updated in appState.history, so renderResultDetails will work
     renderResultDetails(newHistoryEntry.id);
     navigateTo('result-details', true);
 }
@@ -479,18 +463,13 @@ function finishQuiz(isTimeUp = false) {
  * Renders the list of all past quiz attempts.
  */
 function renderHistorySummary() {
-    // Reload history from localStorage just in case another window/tab updated it
-    appState.history = JSON.parse(localStorage.getItem('quizHistory')) || [];
-
     DOM.historyList.innerHTML = '';
     
-    const noHistoryMessage = document.getElementById('no-history-message');
-    
     if (appState.history.length === 0) {
-        if (noHistoryMessage) noHistoryMessage.classList.remove('hidden');
+        document.getElementById('no-history-message').classList.remove('hidden');
         return;
     }
-    if (noHistoryMessage) noHistoryMessage.classList.add('hidden');
+    document.getElementById('no-history-message').classList.add('hidden');
 
     appState.history.forEach(item => {
         const historyItemDiv = document.createElement('div');
@@ -505,10 +484,10 @@ function renderHistorySummary() {
             <div class="history-score">${item.correct}/${item.total}</div>
             <div class="history-actions">
                 <button class="control-btn primary view-details-btn" data-id="${item.id}">
-                    <i class="fas fa-search" data-id="${item.id}"></i> View Details
+                    <i class="fas fa-search"></i> View Details
                 </button>
                 <button class="control-btn danger delete-history-btn" data-id="${item.id}">
-                    <i class="fas fa-trash-alt" data-id="${item.id}"></i> Delete
+                    <i class="fas fa-trash-alt"></i> Delete
                 </button>
             </div>
         `;
@@ -524,7 +503,7 @@ function deleteHistoryEntry(id) {
     if (confirm("Are you sure you want to permanently delete this quiz history?")) {
         appState.history = appState.history.filter(item => item.id !== id);
         localStorage.setItem('quizHistory', JSON.stringify(appState.history));
-        renderHistorySummary(); // RE-RENDER to update the list immediately
+        renderHistorySummary();
     }
 }
 
@@ -535,22 +514,22 @@ function deleteHistoryEntry(id) {
 function renderResultDetails(id) {
     const historyEntry = appState.history.find(item => item.id === id);
     if (!historyEntry) {
-        alert('Result not found. History may have been cleared.');
+        alert('Result not found.');
         navigateTo('result-summary', true);
         return;
     }
 
     // 1. Render Summary Metrics
     DOM.resultSummaryMetrics.innerHTML = `
-        <div class="metric-card correct">
+        <div class="metric-card">
             <span class="value">${historyEntry.correct}</span>
             <span class="label">Correct</span>
         </div>
-        <div class="metric-card wrong">
+        <div class="metric-card">
             <span class="value">${historyEntry.wrong}</span>
             <span class="label">Wrong</span>
         </div>
-        <div class="metric-card unattempted">
+        <div class="metric-card">
             <span class="value">${historyEntry.unattempted}</span>
             <span class="label">Unattempted</span>
         </div>
@@ -625,14 +604,11 @@ function initializeSetupScreens() {
 
         const topics = Object.keys(quizDB[selectedSubject]);
         topics.forEach(topic => {
-            // Check if subject exists before accessing its properties
-            const questionCount = quizDB[selectedSubject] && quizDB[selectedSubject][topic] ? quizDB[selectedSubject][topic].length : 0;
-            
             DOM.topicsContainer.innerHTML += `
                 <div class="topic-item">
                     <label>
                         <input type="checkbox" name="topic" value="${topic}"> 
-                        ${topic} (${questionCount} Qs)
+                        ${topic} (${quizDB[selectedSubject][topic].length} Qs)
                     </label>
                 </div>
             `;
@@ -648,8 +624,7 @@ function setupEventListeners() {
     DOM.navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            // Use e.currentTarget to safely get data-view from the <a> tag
-            navigateTo(e.currentTarget.dataset.view);
+            navigateTo(e.target.dataset.view);
         });
     });
     DOM.homeOptions.forEach(card => {
@@ -670,34 +645,47 @@ function setupEventListeners() {
         appState.pausedByTabSwitch = false;
         
         // Find the view that was attempted to navigate to
-        // NOTE: This logic assumes a single link was clicked before the modal appeared.
-        // A more robust solution stores the clicked viewId in a temporary state variable.
-        const targetViewId = DOM.navLinks.find(link => !link.classList.contains('active'))?.dataset.view || 'home';
+        const targetViewId = DOM.navLinks.find(link => !link.classList.contains('active')).dataset.view;
         DOM.restrictionModal.classList.add('hidden');
         navigateTo(targetViewId, true);
     });
 
-    // Start Quiz Buttons (Simplified for brevity, assuming original logic is correct)
+    // Start Quiz Buttons
     DOM.startSubjectQuiz.addEventListener('click', () => {
         const selectedTopics = Array.from(DOM.topicsContainer.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
         if (!DOM.subjectSelect.value || selectedTopics.length === 0) {
             alert('Please select a Subject and at least one Topic.');
             return;
         }
-        startQuiz('subject', { subject: DOM.subjectSelect.value, topics: selectedTopics, numQ: DOM.numQuestions.value, timer: DOM.timerMinutes.value });
+        startQuiz('subject', {
+            subject: DOM.subjectSelect.value,
+            topics: selectedTopics,
+            numQ: DOM.numQuestions.value,
+            timer: DOM.timerMinutes.value
+        });
     });
     DOM.startDailyQuiz.addEventListener('click', () => {
-         startQuiz('daily', { subject: 'Mixed', topics: null, numQ: document.getElementById('daily-num-questions').value, timer: document.getElementById('daily-timer-minutes').value });
+         startQuiz('daily', {
+            subject: null,
+            topics: null,
+            numQ: document.getElementById('daily-num-questions').value,
+            timer: document.getElementById('daily-timer-minutes').value
+        });
     });
     DOM.startMockQuiz.addEventListener('click', () => {
         if (!DOM.mockSubjectSelect.value) {
             alert('Please select a Subject for the Full Mock.');
             return;
         }
-        startQuiz('mock', { subject: DOM.mockSubjectSelect.value, topics: null, numQ: document.getElementById('mock-num-questions').value, timer: document.getElementById('mock-timer-minutes').value });
+        startQuiz('mock', {
+            subject: DOM.mockSubjectSelect.value,
+            topics: null,
+            numQ: document.getElementById('mock-num-questions').value,
+            timer: document.getElementById('mock-timer-minutes').value
+        });
     });
 
-    // Active Quiz Controls (Unchanged)
+    // Active Quiz Controls
     DOM.optionsContainer.addEventListener('change', handleOptionSelect);
     DOM.prevBtn.addEventListener('click', () => renderQuestion(currentQIndex - 1));
     DOM.nextBtn.addEventListener('click', () => renderQuestion(currentQIndex + 1));
@@ -711,7 +699,7 @@ function setupEventListeners() {
     DOM.finishQuizBtn.addEventListener('click', () => finishQuiz(false));
     DOM.navigatorFinishBtn.addEventListener('click', () => finishQuiz(false));
     
-    // Pause/Resume Logic (Unchanged)
+    // Pause/Resume Logic
     DOM.pauseResumeBtn.addEventListener('click', () => {
         if (appState.currentQuiz.paused) {
             startTimer();
@@ -719,36 +707,34 @@ function setupEventListeners() {
             pauseTimer(false); // Manual pause, not tab switch
         }
     });
+    
+    // Tab Switching/Cheating Constraint
     document.addEventListener('visibilitychange', () => {
-        if (appState.isQuizActive && !appState.currentQuiz.paused && document.hidden) {
-            pauseTimer(true); // Tab switched away -> Pause + Black Screen
+        if (appState.isQuizActive && !appState.currentQuiz.paused) {
+            if (document.hidden) {
+                pauseTimer(true); // Tab switched away -> Pause + Black Screen
+            }
+        } else if (appState.isQuizActive && appState.currentQuiz.paused && document.visibilityState === 'visible') {
+            // User came back to the tab, but still paused, no automatic resume here.
         }
     });
+
     DOM.resumeOverlayBtn.addEventListener('click', () => {
         appState.pausedByTabSwitch = false;
         DOM.pauseOverlay.classList.add('hidden');
         startTimer();
     });
 
-    // ------------------------------------------------------------------
-    // HISTORY AND RESULTS ACTIONS (FIXED EVENT DELEGATION)
-    // ------------------------------------------------------------------
+    // History and Results Actions
     DOM.historyList.addEventListener('click', (e) => {
-        // Use .closest() to find the relevant button element (or its icon/text child)
-        const viewButton = e.target.closest('.view-details-btn');
-        const deleteButton = e.target.closest('.delete-history-btn');
-        
-        if (viewButton) {
-            const id = parseInt(viewButton.dataset.id);
+        const id = parseInt(e.target.dataset.id);
+        if (e.target.classList.contains('view-details-btn')) {
             renderResultDetails(id);
             navigateTo('result-details', true);
-        } else if (deleteButton) {
-            const id = parseInt(deleteButton.dataset.id);
+        } else if (e.target.classList.contains('delete-history-btn')) {
             deleteHistoryEntry(id);
         }
     });
-    // ------------------------------------------------------------------
-    
     DOM.backToSummaryBtn.addEventListener('click', () => {
         navigateTo('result-summary', true);
     });
