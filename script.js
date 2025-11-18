@@ -6,8 +6,9 @@
  */
 
 // --- 0. SECURITY & CONFIGURATION ---
-const MASTER_PASSWORD = "BankMock"; 
-const AUTH_KEY = "quizAppAuthenticated"; // Key for localStorage flag
+const MASTER_PASSWORD = "govuser123"; 
+const ADMIN_PASSWORD = "adminpass"; // New Admin Password
+const AUTH_KEY = "quizAppAuthenticated";
 
 // --- 1. APPLICATION STATE MANAGEMENT ---
 const appState = {
@@ -36,7 +37,24 @@ const DOM = {
     passwordInput: document.getElementById('password-input'),
     loginButton: document.getElementById('login-button'),
     loginError: document.getElementById('login-error'),
-
+    
+    // Admin Gate
+    adminGate: document.getElementById('admin-gate'),
+    adminPasswordInput: document.getElementById('admin-password-input'),
+    adminLoginButton: document.getElementById('admin-login-button'),
+    adminLoginError: document.getElementById('admin-login-error'),
+    adminNavLink: document.getElementById('nav-admin'),
+    
+    // ... (in const DOM)
+    // Admin Panel
+    adminPanel: document.getElementById('admin-panel'),
+    adminControlsGrid: document.getElementById('admin-controls-grid'),
+    showAddQuestionBtn: document.getElementById('show-add-question'),
+    showQuestionListBtn: document.getElementById('show-question-list'),
+    clearHistoryAdminBtn: document.getElementById('clear-history-admin'),
+    adminContentArea: document.getElementById('admin-content-area'),
+// ...
+    
     // Setup Screens
     subjectSelect: document.getElementById('subject-select'),
     mockSubjectSelect: document.getElementById('mock-subject-select'),
@@ -135,7 +153,20 @@ function handleLogin() {
         DOM.passwordInput.value = '';
     }
 }
-
+function handleAdminLogin() {
+    const enteredPassword = DOM.adminPasswordInput.value;
+    DOM.adminLoginError.classList.add('hidden');
+    
+    if (enteredPassword === ADMIN_PASSWORD) {
+        // Successful Admin Login
+        DOM.adminPasswordInput.value = '';
+        navigateTo('admin-panel', true);
+    } else {
+        DOM.adminLoginError.textContent = 'Invalid Admin Password.';
+        DOM.adminLoginError.classList.remove('hidden');
+        DOM.adminPasswordInput.value = '';
+    }
+}
 // --- 5. TIMER LOGIC ---
 
 function startTimer() {
@@ -571,7 +602,9 @@ function setupEventListeners() {
     DOM.passwordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleLogin();
     });
-
+     
+     
+     
     // General Navigation
     DOM.navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -658,8 +691,217 @@ function setupEventListeners() {
     DOM.backToSummaryBtn.addEventListener('click', () => {
         navigateTo('result-summary', true);
     });
+    
+    // --- ADMIN GATE LISTENERS ---
+    DOM.adminLoginButton.addEventListener('click', handleAdminLogin);
+    DOM.adminPasswordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleAdminLogin();
+    });
+
+    // --- ADMIN PANEL LISTENERS ---
+    DOM.showAddQuestionBtn.addEventListener('click', renderAddQuestionForm);
+    DOM.showQuestionListBtn.addEventListener('click', renderQuestionList);
+    DOM.clearHistoryAdminBtn.addEventListener('click', handleClearHistoryAdmin);
+    
+    // Show admin link only if authenticated (superficial check)
+    if (appState.isAuthenticated) {
+        DOM.adminNavLink.classList.remove('hidden');
+    }
+}
+// --- 9. ADMIN PANEL FUNCTIONS ---
+
+/**
+ * Handles clearing all quiz history from localStorage.
+ */
+function handleClearHistoryAdmin() {
+    if (confirm("WARNING: Are you sure you want to PERMANENTLY delete ALL user quiz history? This cannot be undone.")) {
+        localStorage.removeItem('quizHistory');
+        appState.history = [];
+        DOM.adminContentArea.innerHTML = '<p class="info-message" style="color:var(--success-color); font-weight:bold;">All user quiz history has been cleared successfully.</p>';
+    }
 }
 
+/**
+ * Renders the form to add a new question.
+ */
+function renderAddQuestionForm() {
+    const subjects = Object.keys(quizDB);
+    if (subjects.length === 0) {
+        DOM.adminContentArea.innerHTML = '<p class="error-message">Cannot add questions. Please define subjects/topics in db.js first.</p>';
+        return;
+    }
+    
+    let subjectOptions = subjects.map(s => `<option value="${s}">${s}</option>`).join('');
+
+    DOM.adminContentArea.innerHTML = `
+        <h3>Add New Question</h3>
+        <form id="add-question-form" class="setup-form-container">
+            <div class="setup-step">
+                <label for="new-q-subject">Subject:</label>
+                <select id="new-q-subject" required>
+                    <option value="">-- Select Subject --</option>
+                    ${subjectOptions}
+                </select>
+            </div>
+
+            <div class="setup-step">
+                <label for="new-q-topic">Topic:</label>
+                <select id="new-q-topic" required>
+                    <option value="">-- Select Topic --</option>
+                </select>
+            </div>
+
+            <label for="new-q-text">Question Text:</label>
+            <textarea id="new-q-text" required></textarea>
+
+            <label>Options (A, B, C, D):</label>
+            <input type="text" id="opt-a" placeholder="Option A" required>
+            <input type="text" id="opt-b" placeholder="Option B" required>
+            <input type="text" id="opt-c" placeholder="Option C" required>
+            <input type="text" id="opt-d" placeholder="Option D" required>
+
+            <label for="new-q-answer">Correct Answer (Must match one option):</label>
+            <input type="text" id="new-q-answer" required>
+
+            <label for="new-q-explanation">Explanation:</label>
+            <textarea id="new-q-explanation" rows="3" required></textarea>
+            
+            <label for="new-q-image">Image URL/Path (Optional):</label>
+            <input type="text" id="new-q-image" placeholder="e.g., images/my_chart.png">
+
+            <button type="submit" class="start-button">Save Question</button>
+            <p id="question-save-status" class="error-message hidden"></p>
+        </form>
+    `;
+
+    // Dynamic Topic Loading for Admin Form
+    const subjectSelect = document.getElementById('new-q-subject');
+    const topicSelect = document.getElementById('new-q-topic');
+    subjectSelect.addEventListener('change', () => {
+        const selectedSubject = subjectSelect.value;
+        topicSelect.innerHTML = '<option value="">-- Select Topic --</option>';
+        if (selectedSubject && quizDB[selectedSubject]) {
+            const topics = Object.keys(quizDB[selectedSubject]);
+            topics.forEach(t => {
+                topicSelect.innerHTML += `<option value="${t}">${t}</option>`;
+            });
+        }
+    });
+
+    // Handle Form Submission
+    document.getElementById('add-question-form').addEventListener('submit', handleAddQuestionSubmit);
+}
+
+/**
+ * Processes the form submission for adding a new question.
+ */
+function handleAddQuestionSubmit(e) {
+    e.preventDefault();
+    const statusDiv = document.getElementById('question-save-status');
+    statusDiv.classList.add('hidden');
+    
+    const subject = document.getElementById('new-q-subject').value;
+    const topic = document.getElementById('new-q-topic').value;
+    const question = document.getElementById('new-q-text').value;
+    const answer = document.getElementById('new-q-answer').value;
+    const explanation = document.getElementById('new-q-explanation').value;
+    const image = document.getElementById('new-q-image').value || null;
+    
+    const options = [
+        document.getElementById('opt-a').value,
+        document.getElementById('opt-b').value,
+        document.getElementById('opt-c').value,
+        document.getElementById('opt-d').value
+    ];
+
+    if (!options.includes(answer)) {
+        statusDiv.textContent = "Error: Correct Answer must match one of the options (A, B, C, or D).";
+        statusDiv.classList.remove('hidden');
+        return;
+    }
+
+    // Find the current max ID in the entire database (simple way to ensure uniqueness)
+    let maxId = 0;
+    Object.values(quizDB).forEach(subData => {
+        Object.values(subData).forEach(topicArray => {
+            topicArray.forEach(q => {
+                if (q.id > maxId) maxId = q.id;
+            });
+        });
+    });
+
+    const newQuestion = {
+        id: maxId + 1,
+        question: question,
+        image: image,
+        options: options,
+        answer: answer,
+        explanation: explanation,
+    };
+
+    // Add question to the in-memory database object
+    if (quizDB[subject] && quizDB[subject][topic]) {
+        quizDB[subject][topic].push(newQuestion);
+        
+        // Success message and reset form (or you could just show success)
+        document.getElementById('add-question-form').reset();
+        statusDiv.textContent = `Success! Question ID ${newQuestion.id} added to ${subject} - ${topic}. (NOTE: Refresh required for changes to take full effect)`;
+        statusDiv.style.color = 'var(--success-color)';
+        statusDiv.classList.remove('hidden');
+    } else {
+        statusDiv.textContent = "Error: Subject or Topic structure not found in db.js.";
+        statusDiv.style.color = 'var(--danger-color)';
+        statusDiv.classList.remove('hidden');
+    }
+}
+
+/**
+ * Renders the full list of all questions (Read function).
+ * NOTE: Edit and Delete functionality require extensive DOM manipulation 
+ * which is omitted here for brevity, focusing on the essential View.
+ */
+function renderQuestionList() {
+    DOM.adminContentArea.innerHTML = '<h3>All Questions in Database</h3><div id="question-list-container"></div>';
+    const listContainer = document.getElementById('question-list-container');
+    listContainer.innerHTML = '<p class="info-message">Displaying the list of questions for review and editing (edit/delete buttons not yet functional in this simple version).</p>';
+    
+    let questionCount = 0;
+    let tableHTML = `
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Subject</th>
+                    <th>Topic</th>
+                    <th>Question (Snippet)</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    Object.entries(quizDB).forEach(([subject, subData]) => {
+        Object.entries(subData).forEach(([topic, topicArray]) => {
+            topicArray.forEach(q => {
+                questionCount++;
+                tableHTML += `
+                    <tr>
+                        <td>${q.id}</td>
+                        <td>${subject}</td>
+                        <td>${topic}</td>
+                        <td>${q.question.substring(0, 50)}...</td>
+                        <td>${q.answer}</td>
+                    </tr>
+                `;
+            });
+        });
+    });
+
+    tableHTML += `</tbody></table><p>Total Questions Loaded: <strong>${questionCount}</strong></p>`;
+    listContainer.innerHTML = tableHTML;
+}
+
+// Ensure you also add the necessary CSS to style the admin table and controls.
 // --- 10. APPLICATION STARTUP ---
 
 function initApp() {

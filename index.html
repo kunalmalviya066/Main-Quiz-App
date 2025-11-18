@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GovExams Practice App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -28,6 +28,7 @@
             <a href="#" id="nav-daily" class="nav-link" data-view="daily-setup">Daily Quiz</a>
             <a href="#" id="nav-fullmock" class="nav-link" data-view="mock-setup">Full Mock</a>
             <a href="#" id="nav-results" class="nav-link" data-view="result-summary">Result Summary</a>
+            <a href="#" id="nav-admin" class="nav-link hidden" data-view="admin-gate">Admin Panel</a>
             <a href="#" id="nav-help" class="nav-link" data-view="help">Help</a>
         </nav>
     </header>
@@ -184,7 +185,28 @@
             <div id="question-review-list" class="review-list">
                 </div>
         </section>
+<section id="admin-gate" class="view hidden">
+    <div class="login-container">
+        <h2><i class="fas fa-user-shield"></i> Admin Login</h2>
+        <p>Enter the admin password to manage content.</p>
+        <input type="password" id="admin-password-input" placeholder="Admin Password" required>
+        <p id="admin-login-error" class="error-message hidden"></p>
+        <button id="admin-login-button" class="start-button">Login</button>
+    </div>
+</section>
+<section id="admin-panel" class="view hidden">
+        <h2 class="view-title"><i class="fas fa-tools"></i> Admin Content Management</h2>
+        
+        <div class="admin-controls-grid">
+            <button id="show-add-question" class="control-btn primary"><i class="fas fa-plus-circle"></i> Add New Question</button>
+            <button id="show-question-list" class="control-btn secondary"><i class="fas fa-list"></i> View/Edit All Questions</button>
+            <button id="clear-history-admin" class="control-btn danger"><i class="fas fa-history"></i> Clear All User History</button>
+        </div>
 
+        <div id="admin-content-area">
+            </div>
+
+    </section>
         <section id="help" class="view hidden">
     <h2 class="view-title"><i class="fas fa-question-circle"></i> Help & Instructions</h2>
     <div class="help-content">
