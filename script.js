@@ -5,7 +5,10 @@ let currentView = "home";
 let quizState = null; // active quiz data
 let quizTimer = null;
 let remainingSeconds = 0;
-let history = JSON.parse(localStorage.getItem("mockquiz_history") || "[]");
+$1
+
+let quizStartTimeStamp = 0; // used to ignore immediate visibility glitches after starting a quiz
+
 
 /* ------------------- VIEW HANDLING ------------------- */
 function showView(id) {
@@ -158,7 +161,9 @@ function startQuiz(pool, count, seconds, subject, topics) {
     timeAllowed: seconds
   };
 
-  remainingSeconds = seconds;
+  $1
+  quizStartTimeStamp = Date.now();
+
   renderQuiz();
   showView("quiz");
   startTimer();
@@ -297,7 +302,11 @@ function resumeQuiz() {
 
 /* TAB SWITCH AUTO-PAUSE */
 document.addEventListener("visibilitychange", () => {
-  if (document.hidden && quizState) pauseQuiz();
+  if (!quizState) return;
+  // Ignore visibility change events that happen immediately after starting a quiz
+  if (Date.now() - quizStartTimeStamp < 1000) return;
+
+  if (document.hidden) pauseQuiz();
 });
 
 /* ------------------- SUBMIT & RESULTS ------------------- */
