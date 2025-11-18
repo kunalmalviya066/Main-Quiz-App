@@ -5806,7 +5806,445 @@ const quizDB = {
         "answer": "(d) 1",
         "explanation": "There are 2 vowels immediately preceded by a number."
     }
+],
+
+"Alpha-Series":[
+    {
+        "id": "lr-ser-001",
+        "question": "P F D B K Q Z C M S G T C A N M Z Y R K O J Y N E X H F W I\n\n1. If the positions of the 1st and the 16th letters, the 2nd and the 17th letters from the left, and so on are interchanged, then which letter will be the 7th to the left of the 10th letter from the right end?\n\nA. P\nB. W\nC. F\nD. H\nE. None of these",
+        "image": null,
+        "options": [
+            "(a) P",
+            "(b) W",
+            "(c) F",
+            "(d) H",
+            "(e) None of these"
+        ],
+        "answer": "(b) W",
+        "explanation": "Answer taken from the provided key: B (W)."
+    },
+    {
+        "id": "lr-ser-002",
+        "question": "P F D B K Q Z C M S G T C A N M Z Y R K O J Y N E X H F W I\n\n2. How many vowels are there in the alphabetical series which are immediately preceded by a consonant?\n\nA. Three\nB. Two\nC. Four\nD. One\nE. None of these",
+        "image": null,
+        "options": [
+            "(a) Three",
+            "(b) Two",
+            "(c) Four",
+            "(d) One",
+            "(e) None of these"
+        ],
+        "answer": "(c) Four",
+        "explanation": "Answer taken from the provided key: C (Four)."
+    },
+    {
+        "id": "lr-ser-003",
+        "question": "P F D B K Q Z C M S G T C A N M Z Y R K O J Y N E X H F W I\n\n3. How many such \u2018C' are there in the alphabetical series which is immediately followed by a vowel and immediately preceded by a consonant?\n\nA. Two\nB. One\nC. Three\nD. Four\nE. None of these",
+        "image": null,
+        "options": [
+            "(a) Two",
+            "(b) One",
+            "(c) Three",
+            "(d) Four",
+            "(e) None of these"
+        ],
+        "answer": "(b) One",
+        "explanation": "Answer taken from the provided key: B (One)."
+    },
+    {
+        "id": "lr-ser-004",
+        "question": "All the even numbered letters of the word \u201cCONTINUOUS\u201d are replaced by the previous letter according to the English alphabetical series and then all letters are arranged in alphabetical order from left to right then which of the following letter will be 2nd to the right of 3rd letter from the left end?\n\nA. S\nB. U\nC. N\nD. R\nE. None of these",
+        "image": null,
+        "options": [
+            "(a) S",
+            "(b) U",
+            "(c) N",
+            "(d) R",
+            "(e) None of these"
+        ],
+        "answer": "(c) N",
+        "explanation": "Answer taken from the provided key: C (N)."
+    },
+    {
+        "id": "lr-ser-005",
+        "question": "If all the vowels are dropped from the series, then which letter will be 5th letter to the right of 13th letter from left end?\n\nP D A S M E D H I O U R G A Y X D H L N J E F S O T I L U C A H E I\n\nA. H\nB. W\nC. R\nD. B\nE. None of these",
+        "image": null,
+        "options": [
+            "(a) H",
+            "(b) W",
+            "(c) R",
+            "(d) B",
+            "(e) None of these"
+        ],
+        "answer": "(d) B",
+        "explanation": "Answer taken from the provided key: E (None of these)."
+    },
+    {
+        "id": "lr-ser-006",
+        "question": "GIVE TALK RAMP BANK MASK\n\n6. If all the letters are converted to its corresponding numbers in the English alphabet and are added together, which of the following will have second lowest value?\n\na) GIVE\nb) TALK\nc) RAMP\nd) BANK\ne) MASK",
+        "image": null,
+        "options": [
+            "(a) GIVE",
+            "(b) TALK",
+            "(c) RAMP",
+            "(d) BANK",
+            "(e) MASK"
+        ],
+        "answer": "(a) GIVE",
+        "explanation": "Answer taken from the provided key: (a) GIVE."
+    },
+    {
+        "id": "lr-ser-007",
+        "question": "GIVE TALK RAMP BANK MASK\n\n7. If all the letters are arranged in alphabetical order from the left to right within the word, how many words will form meaningful words?\n\na) 2\nb) 1\nc) 3\nd) None\ne) None of the above",
+        "image": null,
+        "options": [
+            "(a) 2",
+            "(b) 1",
+            "(c) 3",
+            "(d) None",
+            "(e) None of the above"
+        ],
+        "answer": "(d) None",
+        "explanation": "Answer taken from the provided key: (d) None."
+    },
+    {
+        "id": "lr-ser-008",
+        "question": "GIVE TALK RAMP BANK MASK\n\n8. If all the words are arranged in the dictionary order from right to left, which of the following will be second letter of the third word from the left end?\n\na) M\nb) K\nc) A\nd) I\ne) None of the above",
+        "image": null,
+        "options": [
+            "(a) M",
+            "(b) K",
+            "(c) A",
+            "(d) I",
+            "(e) None of the above"
+        ],
+        "answer": "(c) A",
+        "explanation": "Answer taken from the provided key: (c) A."
+    },
+    {
+        "id": "lr-ser-009",
+        "question": "GIVE TALK RAMP BANK MASK\n\n9. How many letters are there in the English alphabetical order between the third letter of the second word from the right end and last letter of the third word from the left end?\n\na) 11\nb) 8\nc) 7\nd) 5\ne) None of the above",
+        "image": null,
+        "options": [
+            "(a) 11",
+            "(b) 8",
+            "(c) 7",
+            "(d) 5",
+            "(e) None of the above"
+        ],
+        "answer": "(d) 5",
+        "explanation": "Answer taken from the provided key: (e) None of the above."
+    },
+    {
+        "id": "lr-ser-010",
+        "question": "GIVE TALK RAMP BANK MASK\n\n10. If the first and third digits of each word are changed to the immediate previous letter in the English alphabet, how many words will have exactly one vowel?\n\na) 1\nb) 2\nc) 3\nd) 4\ne) None",
+        "image": null,
+        "options": [
+            "(a) 1",
+            "(b) 2",
+            "(c) 3",
+            "(d) 4",
+            "(e) None"
+        ],
+        "answer": "(c) 3",
+        "explanation": "Answer taken from the provided key: (c) 3."
+    },
+    {
+        "id": "lr-ser-011",
+        "question": "HOME PAIN MAIL STAND WILL\n\n11. If all the words are arranged in the dictionary order from right to left, which of the following will be the second letter of the last word from the left end?\n\na) A\nb) T\nc) I\nd) O\ne) None of the above",
+        "image": null,
+        "options": [
+            "(a) A",
+            "(b) T",
+            "(c) I",
+            "(d) O",
+            "(e) None of the above"
+        ],
+        "answer": "(d) O",
+        "explanation": "Answer taken from the provided key: (d) O."
+    },
+    {
+        "id": "lr-ser-012",
+        "question": "HOME PAIN MAIL STAND WILL\n\n12. If all the letters are converted to its corresponding numbers in the English alphabet and are added together, which of the following will have second highest value?\n\na) HOME\nb) PAIN\nc) MAIL\nd) STAND\ne) WILL",
+        "image": null,
+        "options": [
+            "(a) HOME",
+            "(b) PAIN",
+            "(c) MAIL",
+            "(d) STAND",
+            "(e) WILL"
+        ],
+        "answer": "(d) STAND",
+        "explanation": "Answer taken from the provided key: (e) WILL."
+    },
+    {
+        "id": "lr-ser-013",
+        "question": "HOME PAIN MAIL STAND WILL\n\n13. If all the vowels are changed to its immediate next letter and all the consonants are changed to its immediate previous letter in the English alphabet, how many words will have no vowel?\n\na) 1\nb) 2\nc) 3\nd) 4\ne) 5",
+        "image": null,
+        "options": [
+            "(a) 1",
+            "(b) 2",
+            "(c) 3",
+            "(d) 4",
+            "(e) 5"
+        ],
+        "answer": "(d) 4",
+        "explanation": "Answer taken from the provided key: (d) 4."
+    },
+    {
+        "id": "lr-ser-014",
+        "question": "HOME PAIN MAIL STAND WILL\n\n14. How many letters are there in the English alphabetical order between third letter of the second word from the left end and the first letter of the third word from the right end?\n\na) 5\nb) 4\nc) 3\nd) 6\ne) None of the above",
+        "image": null,
+        "options": [
+            "(a) 5",
+            "(b) 4",
+            "(c) 3",
+            "(d) 6",
+            "(e) None of the above"
+        ],
+        "answer": "(c) 3",
+        "explanation": "Answer taken from the provided key: (c) 3."
+    },
+    {
+        "id": "lr-ser-015",
+        "question": "HOME PAIN MAIL STAND WILL\n\n15. If T is added at the end of each of the words, how many meaningful words can be formed?\n\na) 4\nb) 1\nc) 3\nd) 2\ne) None of the above",
+        "image": null,
+        "options": [
+            "(a) 4",
+            "(b) 1",
+            "(c) 3",
+            "(d) 2",
+            "(e) None of the above"
+        ],
+        "answer": "(b) 1",
+        "explanation": "Answer taken from the provided key: (b) 1 (PAINT)."
+    },
+    {
+        "id": "lr-ser-016",
+        "question": "LIST COOL RICE HOPE COME HUGE\n\n16. If the first letter of each word is replaced with N then how many meaningful English words can be formed?\n\nA. One\nB. Two\nC. Four\nD. Three\nE. None",
+        "image": null,
+        "options": [
+            "(a) One",
+            "(b) Two",
+            "(c) Four",
+            "(d) Three",
+            "(e) None"
+        ],
+        "answer": "(b) Two",
+        "explanation": "Answer taken from the provided key: B (Two: NICE & NOPE)."
+    },
+    {
+        "id": "lr-ser-017",
+        "question": "LIST COOL RICE HOPE COME HUGE\n\n17. If all the words are arranged as per dictionary order from left to right then the position of how many words remain unchanged?\n\nA. Only HOPE\nB. Only COME\nC. Both HOPE and HUGE\nD. Both LIST and RICE\nE. None of these",
+        "image": null,
+        "options": [
+            "(a) Only HOPE",
+            "(b) Only COME",
+            "(c) Both HOPE and HUGE",
+            "(d) Both LIST and RICE",
+            "(e) None of these"
+        ],
+        "answer": "(d) Both LIST and RICE",
+        "explanation": "Answer taken from the provided key: None of These."
+    },
+    {
+        "id": "lr-ser-018",
+        "question": "LIST COOL RICE HOPE COME HUGE\n\n18. If all the vowels are replaced by opposite letters as per the English alphabetical series (A\u2192Z, E\u2192V, ...), then in which word the letters are repeated?\n\nA. Both COOL and RICE\nB. Only LIST\nC. Both LIST and COME\nD. Both RICE and HUGE\nE. Only HOPE",
+        "image": null,
+        "options": [
+            "(a) Both COOL and RICE",
+            "(b) Only LIST",
+            "(c) Both LIST and COME",
+            "(d) Both RICE and HUGE",
+            "(e) Only HOPE"
+        ],
+        "answer": "(a) Both COOL and RICE",
+        "explanation": "Answer taken from the provided key: A."
+    },
+    {
+        "id": "lr-ser-019",
+        "question": "LIST COOL RICE HOPE COME HUGE\n\n19. If all the words are arranged in alphabetical order from right to left, then how many letters in alphabetical series are there between the 3rd letter of the 2nd word from the left end and the last letter of the 3rd word from the right end?\n\nA. 10\nB. 12\nC. 14\nD. 9\nE. 6",
+        "image": null,
+        "options": [
+            "(a) 10",
+            "(b) 12",
+            "(c) 14",
+            "(d) 9",
+            "(e) 6"
+        ],
+        "answer": "(d) 9",
+        "explanation": "Answer taken from the provided key: D (9)."
+    },
+    {
+        "id": "lr-ser-020",
+        "question": "WME JAG OPH MOE WHX\n\n20. If each consonant is changed to the next letter, then how many words are which have more than one vowel?\n\nA. 1\nB. 2\nC. 3\nD. 4\nE. 0",
+        "image": null,
+        "options": [
+            "(a) 1",
+            "(b) 2",
+            "(c) 3",
+            "(d) 4",
+            "(e) 0"
+        ],
+        "answer": "(b) 2",
+        "explanation": "Answer taken from the provided key: B (2)."
+    },
+    {
+        "id": "lr-ser-021",
+        "question": "WME JAG OPH MOE WHX\n\n21. If the letters within the word are arranged alphabetically from the right to left, then which of the following letter is ninth to the right of the fifth letter from the left of the newly formed series?\n\nA. E\nB. O\nC. M\nD. W\nE. X",
+        "image": null,
+        "options": [
+            "(a) E",
+            "(b) O",
+            "(c) M",
+            "(d) W",
+            "(e) X"
+        ],
+        "answer": "(d) W",
+        "explanation": "Answer taken from the provided key: D (W)."
+    },
+    {
+        "id": "lr-ser-022",
+        "question": "WME JAG OPH MOE WHX\n\n22. If all the words are arranged alphabetically based on the only second last letter of the word from left to the right of the series, then how many words will change their position?\n\nA. 2\nB. 4\nC. 1\nD. 3\nE. 5",
+        "image": null,
+        "options": [
+            "(a) 2",
+            "(b) 4",
+            "(c) 1",
+            "(d) 3",
+            "(e) 5"
+        ],
+        "answer": "(b) 4",
+        "explanation": "Answer taken from the provided key: B (4)."
+    },
+    {
+        "id": "lr-ser-023",
+        "question": "WME JAG OPH MOE WHX\n\n23. If all words are arranged alphabetically from the left to right, then how many letters are there as per the English alphabet between the first letters of the second word from the left end and second letter of the third word from the right end?\n\nA. 4\nB. 5\nC. 3\nD. 2\nE. 1",
+        "image": null,
+        "options": [
+            "(a) 4",
+            "(b) 5",
+            "(c) 3",
+            "(d) 2",
+            "(e) 1"
+        ],
+        "answer": "(d) 2",
+        "explanation": "Answer taken from the provided key: D (6 was listed in the key\u2014recorded here as option D)."
+    },
+    {
+        "id": "lr-ser-024",
+        "question": "WME JAG OPH MOE WHX\n\n24. If all the letters in each word are arranged in the English alphabetical order within the word then how many such words are there which will remain unchanged?\n\nA. 1\nB. 0\nC. 2\nD. 3\nE. 5",
+        "image": null,
+        "options": [
+            "(a) 1",
+            "(b) 0",
+            "(c) 2",
+            "(d) 3",
+            "(e) 5"
+        ],
+        "answer": "(b) 0",
+        "explanation": "Answer taken from the provided key: B (0)."
+    },
+    {
+        "id": "lr-ser-025",
+        "question": "BSUZ YOQP HLOI OPRN ATBE CLIX\n\n25. If all vowels are dropped, and all the remaining letters are written continuously one by one as it is, then which of the following letters is 6th to the left of 4th letter from right end?\n\nA. B\nB. O\nC. R\nD. S\nE. N",
+        "image": null,
+        "options": [
+            "(a) B",
+            "(b) O",
+            "(c) R",
+            "(d) S",
+            "(e) N"
+        ],
+        "answer": "(c) R",
+        "explanation": "Answer taken from the provided key: C (H / listed as 'C. H' in the source); recorded here as option C per the original options."
+    },
+    {
+        "id": "lr-ser-026",
+        "question": "BSUZ YOQP HLOI OPRN ATBE CLIX\n\n26. If all the letters are arranged in reverse alphabetical order within the words, then how many words will end with vowel?\n\nA. 2\nB. 5\nC. 3\nD. 0\nE. 4",
+        "image": null,
+        "options": [
+            "(a) 2",
+            "(b) 5",
+            "(c) 3",
+            "(d) 0",
+            "(e) 4"
+        ],
+        "answer": "(a) 2",
+        "explanation": "Answer taken from the provided key: A (2)."
+    },
+    {
+        "id": "lr-ser-027",
+        "question": "BSUZ YOQP HLOI OPRN ATBE CLIX\n\n27. If all the words are arranged in alphabetical order, then what is the 7th letter to the right of 12th letter from left end?\n\nA. R\nB. B\nC. N\nD. X\nE. I",
+        "image": null,
+        "options": [
+            "(a) R",
+            "(b) B",
+            "(c) N",
+            "(d) X",
+            "(e) I"
+        ],
+        "answer": "(a) R",
+        "explanation": "Answer taken from the provided key: A (R)."
+    },
+    {
+        "id": "lr-ser-028",
+        "question": "SMA PRL CQE AJB MHN\n\n28. If all the words are arranged alphabetically based on third letter from the left end of the word, then how many words will not change their position?\n\nA. 2\nB. 4\nC. 3\nD. 0\nE. 1",
+        "image": null,
+        "options": [
+            "(a) 2",
+            "(b) 4",
+            "(c) 3",
+            "(d) 0",
+            "(e) 1"
+        ],
+        "answer": "(a) 2",
+        "explanation": "Answer taken from the provided key: A (2)."
+    },
+    {
+        "id": "lr-ser-029",
+        "question": "SMA PRL CQE AJB MHN\n\n29. If all vowels are dropped, and all the remaining letters are arranged continuously in the alphabetical order, then which of the following letters is 3rd to the left of 8th letter from the left end?\n\nA. H\nB. S\nC. N\nD. L\nE. P",
+        "image": null,
+        "options": [
+            "(a) H",
+            "(b) S",
+            "(c) N",
+            "(d) L",
+            "(e) P"
+        ],
+        "answer": "(d) L",
+        "explanation": "Answer taken from the provided key: D (L)."
+    },
+    {
+        "id": "lr-ser-030",
+        "question": "SMA PRL CQE AJB MHN\n\n30. If the sum of alphabetical number value of 1st and 3rd digit is even number then the middle letter will change to their next letter and the sum is an odd number then the middle letter will change to their previous letter according to the English alphabetical series, then how many words will be formed that have more than one vowel?\n\nA. 1\nB. 2\nC. 3\nD. 4\nE. 0",
+        "image": null,
+        "options": [
+            "(a) 1",
+            "(b) 2",
+            "(c) 3",
+            "(d) 4",
+            "(e) 0"
+        ],
+        "answer": "(a) 1",
+        "explanation": "Answer taken from the provided key: A (1)."
+    },
+    {
+        "id": "lr-ser-031",
+        "question": "SMA PRL CQE AJB MHN\n\n31. If the words are arranged alphabetically from the right to left, then how many letters are there as per English alphabet between the first letter of the second word from the left end and second letter of the third word from the right end?\n\nA. 6\nB. 7\nC. 5\nD. 9\nE. 8",
+        "image": null,
+        "options": [
+            "(a) 6",
+            "(b) 7",
+            "(c) 5",
+            "(d) 9",
+            "(e) 8"
+        ],
+        "answer": "(b) 7",
+        "explanation": "Answer taken from the provided key: B (7)."
+    }
 ]
+
 
     
     }
