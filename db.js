@@ -3771,6 +3771,1212 @@ const quizDB = {
 },
 
 
+        ],
+
+        "Coded-Inequality":[
+    {
+        "id": "logic-451",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: 53 + 68 * K; 53 \u2013 L \u2013 S; H % 68; S + 42\nConclusions:\nI. H \u2013 L\nII. K \u2013 S\nIII. 68 % 42",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(a) Both conclusions I and II follow",
+        "explanation": "From the given statements, both H \u2013 L and K \u2013 S can be definitively established, but 68 % 42 cannot."
+    },
+    {
+        "id": "logic-452",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: L & T; Q * H; D + L; X + Q; T * X\nConclusions:\nI. H * D\nII. H \u2013 D\nIII. D \u2013 Q",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "From the statements, only conclusion II (H \u2013 D) can be definitively established."
+    },
+    {
+        "id": "logic-453",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: M % E; C % V; Z % N; V & Z; E \u2013 C\nConclusions:\nI. E \u2013 Z\nII. Z \u2013 C\nIII. M \u2013 N",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(c) Both conclusions I and III follow",
+        "explanation": "From the statements, E \u2013 Z and M \u2013 N can be definitively established; Z \u2013 C cannot."
+    },
+    {
+        "id": "logic-454",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: H \u2013 Y + N * C; D * T + Y; D % B \u2013 I\nConclusions:\nI. H \u2013 I\nII. B * C\nIII. H \u2013 D",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(a) Both conclusions I and II follow",
+        "explanation": "From the statements, H \u2013 I and B * C can be definitively concluded; H \u2013 D cannot."
+    },
+    {
+        "id": "logic-455",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: R + N * Z; K & R + Y % S; Y + F * J; Y \u2013 U % T\nConclusions:\nI. J \u2013 T\nII. K * Z\nIII. U + N",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "From the statements, only conclusion II (K * Z) can be definitively established; the others cannot."
+    },
+    {
+        "id": "logic-446",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: E % T # L ^ I # J % K; R ^ S & G # B @ K\nConclusions:\nI. T # S\nII. K @ E\nIII. S % I",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "From the given statements, only K @ E can be definitively established. Other conclusions cannot be concluded."
+    },
+    {
+        "id": "logic-447",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: Y # S ^ G @ M # O; M % J @ I % N; U % V ^ T & I\nConclusions:\nI. M @ V\nII. O & T\nIII. V & O",
+        "image": null,
+        "options": [
+            "(a) None follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) None follows",
+        "explanation": "None of the conclusions can be definitively established from the given statements."
+    },
+    {
+        "id": "logic-448",
+        "question": "Direction: Statements given:\nI. Z \u2265 H > V = M < E \u2265 T > F = S\nII. P < G > M < F < Z > T \u2265 V \u2264 S\nIII. V = F < S \u2264 F > T = M = P \u2264 G\nConclusions: Choose which are definitely true.",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) None follows",
+            "(c) Only conclusion I follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "After analyzing the inequalities, only conclusion II can be definitively confirmed."
+    },
+    {
+        "id": "logic-449",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: H % Z $ G; G & F; F @ S; S $ O; K % J; J # F $ L; L & Q\nConclusions:\nI. K % G\nII. H % J\nIII. O & K",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion I follows",
+        "explanation": "Only K % G can be definitely determined. Others cannot be established from the given statements."
+    },
+    {
+        "id": "logic-450",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: S @ T; Q & S; P $ Q; R % Q; G # R\nConclusions:\nI. T % P\nII. G % Q\nIII. R @ S",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(b) Both conclusions I and II follow",
+        "explanation": "From the statements, both T % P and G % Q can be definitely established."
+    },
+    {
+        "id": "logic-440",
+        "question": "Direction: Symbols meanings:\nY % Z means Y is not greater than Z\nY @ Z means Y is not smaller than Z\nY $ Z means Y is neither greater than nor equal to Z\nY \u20ac Z means Y is neither smaller than nor equal to Z\nY * Z means Y is equal to Z\n\nStatement: C \u20ac O @ S * P $ F % L $ N * T % X\nConclusions:\nI. C $ F\nII. P @ L\nIII. S $ T\nIV. N % X\nV. C \u20ac P",
+        "image": null,
+        "options": [
+            "(a) Only I, II, and III",
+            "(b) Only II, IV and V",
+            "(c) Only III, IV and V",
+            "(d) Only II, IV and V",
+            "(e) All are true"
+        ],
+        "answer": "(c) Only III, IV and V",
+        "explanation": "Analyzing the chain of relations, only III (S $ T), IV (N % X), and V (C \u20ac P) can be definitely established; other conclusions cannot be confirmed."
+    },
+    {
+        "id": "logic-441",
+        "question": "Direction: Which of the following expression will be definitely true if the expression \u2018I \u2265 O > G \u2265 C\u2019 is true?\nOptions:\na) C \u2264 I\nb) I = G\nc) C < I\nd) O \u2265 C\ne) None of these",
+        "image": null,
+        "options": [
+            "(a) C \u2264 I",
+            "(b) I = G",
+            "(c) C < I",
+            "(d) O \u2265 C",
+            "(e) None of these"
+        ],
+        "answer": "(c) C < I",
+        "explanation": "From I \u2265 O > G \u2265 C, it is clear that C < I is definitely true."
+    },
+    {
+        "id": "logic-442",
+        "question": "Direction: Statements: L = V > K \u2265 J, D < V \u2264 M = N, M = H = O\nConclusions:\nI. L = O\nII. L < O",
+        "image": null,
+        "options": [
+            "(a) Either conclusion I or II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "From the statements, L = O can be definitely established. L < O is not true."
+    },
+    {
+        "id": "logic-443",
+        "question": "Direction: Statements: W > $ < G, $ \u2264 T \u2264 % < #, % > N = M, M \u2265 K\nConclusions:\nI. % > W\nII. K < #",
+        "image": null,
+        "options": [
+            "(a) C < I",
+            "(b) If either conclusion I or conclusion II is true",
+            "(c) Only conclusion II is true"
+        ],
+        "answer": "(c) Only conclusion II is true",
+        "explanation": "Analyzing the inequalities, only conclusion II (K < #) can be definitely confirmed."
+    },
+    {
+        "id": "logic-444",
+        "question": "Direction: In the question below, some statements are followed by two conclusions based on the statement, where '+' and '-' denote addition and subtraction operations respectively. Number adjoining letters represents repeated addition, for example 2A = A + A, 3A = A + A + A.\n\nStatements: I. S + A > B + C \u2013 S < R II. C > T + S > A\nConclusions:\nI. B < R \u2013 T\nII. A > B + T \u2013 S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II is true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(a) Both conclusion I and II is true",
+        "explanation": "By calculating the inequalities from the statements, both conclusions I and II can be definitely established."
+    },
+    {
+        "id": "logic-445",
+        "question": "Direction: In the question below, some statements is followed by two conclusions based on the statement where '+' and ' - ' denotes the operations of addition and subtraction respectively.\n\nStatements: P \u2013 Q > R > Q + S > T\nConclusions:\nI. Q < P \u2013 T \u2013 Q\nII. R > S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II is true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "Only conclusion I follows from the inequalities; conclusion II cannot be definitely determined."
+    },
+    {
+        "id": "logic-435",
+        "question": "Direction: In the following questions, symbols are used with the following meaning:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: 53 + 68 * K; 53 \u2013 L \u2013 S; H % 68; S + 42\nConclusions:\nI. H \u2013 L\nII. K \u2013 S\nIII. 68 % 42",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(a) Both conclusions I and II follow",
+        "explanation": "Analyzing the given statements, both H \u2013 L and K \u2013 S can be definitely established; 68 % 42 cannot be concluded."
+    },
+    {
+        "id": "logic-436",
+        "question": "Direction: In the following questions, symbols are used with the following meaning:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: L & T; Q * H; D + L; X + Q; T * X\nConclusions:\nI. H * D\nII. H \u2013 D\nIII. D \u2013 Q",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "From the statements, only H \u2013 D can be definitely established. Others cannot be concluded."
+    },
+    {
+        "id": "logic-437",
+        "question": "Direction: In the following questions, symbols are used with the following meaning:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: M % E; C % V; Z % N; V & Z; E \u2013 C\nConclusions:\nI. E \u2013 Z\nII. Z \u2013 C\nIII. M \u2013 N",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(d) Both conclusions I and III follow",
+        "explanation": "Only E \u2013 Z can be definitely concluded; other comparisons are not definitively established."
+    },
+    {
+        "id": "logic-438",
+        "question": "Direction: In the following questions, symbols are used with the following meaning:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: H \u2013 Y + N * C; D * T + Y; D % B \u2013 I\nConclusions:\nI. H \u2013 I\nII. B * C\nIII. H \u2013 D",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "From the statements, only B * C can be definitely established; other conclusions cannot be confirmed."
+    },
+    {
+        "id": "logic-439",
+        "question": "Direction: In the following questions, symbols are used with the following meaning:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: R + N * Z; K & R + Y % S; Y + F * J; Y \u2013 U % T\nConclusions:\nI. J \u2013 T\nII. K * Z\nIII. U + N",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "From the given statements, only K * Z can be definitely concluded; other conclusions cannot be confirmed."
+    },
+    {
+        "id": "logic-430",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: E % T # L ^ I # J % K; R ^ S & G # B @ K\nConclusions:\nI. T # S\nII. K @ E\nIII. S % I",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "From the statements, only K @ E can be definitively concluded. Others cannot be established."
+    },
+    {
+        "id": "logic-431",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: Y # S ^ G @ M # O; M % J @ I % N; U % V ^ T & I\nConclusions:\nI. M @ V\nII. O & T\nIII. V & O",
+        "image": null,
+        "options": [
+            "(a) None follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) None follows",
+        "explanation": "None of the conclusions can be definitively established from the given statements."
+    },
+    {
+        "id": "logic-432",
+        "question": "Direction: Statements given:\nI. Z \u2265 H > V = M < E \u2265 T > F = S\nII. P < G > M < F < Z > T \u2265 V \u2264 S\nIII. V = F < S \u2264 F > T = M = P \u2264 G\nConclusions: Choose which are definitely true.",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) None follows",
+            "(c) Only conclusion I follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "After analyzing the inequalities, only conclusion II can be definitively confirmed."
+    },
+    {
+        "id": "logic-433",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: H % Z $ G; G & F; F @ S; S $ O; K % J; J # F $ L; L & Q\nConclusions:\nI. K % G\nII. H % J\nIII. O & K",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion I follows",
+        "explanation": "Only K % G can be definitely established. Other conclusions cannot be confirmed."
+    },
+    {
+        "id": "logic-434",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: S @ T; Q & S; P $ Q; R % Q; G # R\nConclusions:\nI. T % P\nII. G % Q\nIII. R @ S",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(b) Both conclusions I and II follow",
+        "explanation": "From the statements, both T % P and G % Q can be definitely established."
+    },
+    {
+        "id": "logic-425",
+        "question": "Direction: Which of the following expression will be definitely true if the expression \u2018I \u2265 O > G \u2265 C\u2019 is true?\nOptions:\na) C \u2264 I\nb) I = G\nc) C < I\nd) O \u2265 C\ne) None of these",
+        "image": null,
+        "options": [
+            "(a) C \u2264 I",
+            "(b) I = G",
+            "(c) C < I",
+            "(d) O \u2265 C",
+            "(e) None of these"
+        ],
+        "answer": "(c) C < I",
+        "explanation": "From I \u2265 O > G \u2265 C, clearly C < I is definitely true."
+    },
+    {
+        "id": "logic-426",
+        "question": "Direction: Statements: L = V > K \u2265 J, D < V \u2264 M = N, M = H = O\nConclusions:\nI. L = O\nII. L < O",
+        "image": null,
+        "options": [
+            "(a) Either conclusion I or II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "From the statements, L = O can be definitely established. L < O is not true."
+    },
+    {
+        "id": "logic-427",
+        "question": "Direction: Statements: W > $ < G, $ \u2264 T \u2264 % < #, % > N = M, M \u2265 K\nConclusions:\nI. % > W\nII. K < #",
+        "image": null,
+        "options": [
+            "(a) C < I",
+            "(b) If either conclusion I or conclusion II is true",
+            "(c) Only conclusion II is true"
+        ],
+        "answer": "(c) Only conclusion II is true",
+        "explanation": "Analyzing the inequalities, only conclusion II (K < #) can be definitely confirmed."
+    },
+    {
+        "id": "logic-428",
+        "question": "Direction: In the question below, some statements is followed by two conclusions based on the statement where '+' and '-' denotes the operations of addition and subtraction respectively. Number adjoining letters represent repeated addition, for example 2A = A + A, 3A = A + A + A. Study the conclusions and select the correct option.\n\nStatements: I. S + A > B + C \u2013 S < R II. C > T + S > A\nConclusions:\nI. B < R \u2013 T\nII. A > B + T \u2013 S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II is true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "Only conclusion I follows after evaluating the inequalities; conclusion II cannot be definitively concluded."
+    },
+    {
+        "id": "logic-429",
+        "question": "Direction: In the question below, some statements is followed by two conclusions based on the statement where '+' and '-' denotes the operations of addition and subtraction respectively. Number adjoining letters represent repeated addition, for example 2A = A + A, 3A = A + A + A. Study the conclusions and select the correct option.\n\nStatements: P \u2013 Q > R > Q + S > T\nConclusions:\nI. Q < P \u2013 T \u2013 Q\nII. R > S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II is true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "Only conclusion I can be definitely established; conclusion II cannot be concluded from the given inequalities."
+    },
+    {
+        "id": "logic-420",
+        "question": "Direction: In the question below, some statements are followed by two conclusions based on the statement, where '+' and '-' denote the operations of addition and subtraction respectively. Number adjoining letters represents repeated addition, for example 2A = A + A, 3A = A + A + A. Study the conclusions and select the correct option.\n\nStatements: P \u2013 Q > R > Q + S > T\nConclusions:\nI. Q < P \u2013 T \u2013 Q\nII. R > S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II is true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "Only conclusion I follows from the inequalities; conclusion II cannot be definitely determined."
+    },
+    {
+        "id": "logic-421",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: E % T # L ^ I # J % K; R ^ S & G # B @ K\nConclusions:\nI. T # S\nII. K @ E\nIII. S % I",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "From the given statements, only K @ E can be definitively established. Other conclusions cannot be concluded."
+    },
+    {
+        "id": "logic-422",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: Y # S ^ G @ M # O; M % J @ I % N; U % V ^ T & I\nConclusions:\nI. M @ V\nII. O & T\nIII. V & O",
+        "image": null,
+        "options": [
+            "(a) None follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) None follows",
+        "explanation": "None of the conclusions can be definitively established from the given statements."
+    },
+    {
+        "id": "logic-423",
+        "question": "Direction: Statements given:\nI. Z \u2265 H > V = M < E \u2265 T > F = S\nII. P < G > M < F < Z > T \u2265 V \u2264 S\nIII. V = F < S \u2264 F > T = M = P \u2264 G\nConclusions: Choose which are definitely true.",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) None follows",
+            "(c) Only conclusion I follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "After analyzing the inequalities, only conclusion II can be definitively confirmed."
+    },
+    {
+        "id": "logic-424",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: S @ T; Q & S; P $ Q; R % Q; G # R\nConclusions:\nI. T % P\nII. G % Q\nIII. R @ S",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(b) Both conclusions I and II follow",
+        "explanation": "From the statements, both T % P and G % Q can be definitely established."
+    },
+    {
+        "id": "logic-414",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: H % Z $ G; G & F; F @ S; S $ O; K % J; J # F $ L; L & Q\nConclusions:\nI. K % G\nII. H % J\nIII. O & K",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion I follows",
+        "explanation": "Only K % G can be definitely determined. Others cannot be established from the given statements."
+    },
+    {
+        "id": "logic-415",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: S @ T; Q & S; P $ Q; R % Q; G # R\nConclusions:\nI. T % P\nII. G % Q\nIII. R @ S",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(b) Both conclusions I and II follow",
+        "explanation": "From the statements, both T % P and G % Q can be definitely established."
+    },
+    {
+        "id": "logic-416",
+        "question": "Direction: Which of the following expression will be definitely true if the expression \u2018I \u2265 O > G \u2265 C\u2019 is true?\nOptions:\na) C \u2264 I\nb) I = G\nc) C < I\nd) O \u2265 C\ne) None of these",
+        "image": null,
+        "options": [
+            "(a) C \u2264 I",
+            "(b) I = G",
+            "(c) C < I",
+            "(d) O \u2265 C",
+            "(e) None of these"
+        ],
+        "answer": "(c) C < I",
+        "explanation": "From I \u2265 O > G \u2265 C, clearly C < I is definitely true."
+    },
+    {
+        "id": "logic-417",
+        "question": "Direction: Statements: L = V > K \u2265 J, D < V \u2264 M = N, M = H = O\nConclusions:\nI. L = O\nII. L < O",
+        "image": null,
+        "options": [
+            "(a) Either conclusion I or II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "From the statements, L = O can be definitely established. L < O is not true."
+    },
+    {
+        "id": "logic-418",
+        "question": "Direction: Statements: W > $ < G, $ \u2264 T \u2264 % < #, % > N = M, M \u2265 K\nConclusions:\nI. % > W\nII. K < #",
+        "image": null,
+        "options": [
+            "(a) C < I",
+            "(b) If either conclusion I or conclusion II is true",
+            "(c) Only conclusion II is true"
+        ],
+        "answer": "(c) Only conclusion II is true",
+        "explanation": "Analyzing the inequalities, only conclusion II (K < #) can be definitely confirmed."
+    },
+    {
+        "id": "logic-419",
+        "question": "Direction: In the question below, some statements are followed by two conclusions based on the statement, where '+' and '-' denote the operations of addition and subtraction respectively. Number adjoining letters represents repeated addition, for example 2A = A + A, 3A = A + A + A. Study the conclusions and select the correct option as the answer.\n\nStatements: I. S + A > B + C \u2013 S < R II. C > T + S > A\nConclusions:\nI. B < R \u2013 T\nII. A > B + T \u2013 S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II is true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(a) Both conclusion I and II is true",
+        "explanation": "By calculating the inequalities from the statements, both conclusions I and II can be definitely established."
+    },
+    {
+        "id": "logic-406",
+        "question": "Direction: Y % Z means Y is not greater than Z\nY @ Z means Y is not smaller than Z\nY $ Z means Y is neither greater than nor equal to Z\nY \u20ac Z means Y is neither smaller than nor equal to Z\nY * Z means Y is equal to Z\n\nStatement: C \u20ac O @ S * P $ F % L $ N * T % X\nConclusions:\nI. C $ F\nII. P @ L\nIII. S $ T\nIV. N % X\nV. C \u20ac P",
+        "image": null,
+        "options": [
+            "(a) Only I, II, and III",
+            "(b) Only II, IV, and V",
+            "(c) Only III, IV, and V",
+            "(d) Only II, IV, and V",
+            "(e) All are true"
+        ],
+        "answer": "(c) Only III, IV, and V",
+        "explanation": "Analyzing the compound statements, only conclusions III, IV, and V can be definitively established."
+    },
+    {
+        "id": "logic-407",
+        "question": "Direction: Which of the following expression will be definitely true if the expression \u2018I \u2265 O > G \u2265 C\u2019 is true?\nOptions:\na) C \u2264 I\nb) I = G\nc) C < I\nd) O \u2265 C\ne) None of these",
+        "image": null,
+        "options": [
+            "(a) C \u2264 I",
+            "(b) I = G",
+            "(c) C < I",
+            "(d) O \u2265 C",
+            "(e) None of these"
+        ],
+        "answer": "(c) C < I",
+        "explanation": "From I \u2265 O > G \u2265 C, clearly C < I is definitely true."
+    },
+    {
+        "id": "logic-408",
+        "question": "Direction: Statements: L = V > K \u2265 J, D < V \u2264 M = N, M = H = O\nConclusions:\nI. L = O\nII. L < O",
+        "image": null,
+        "options": [
+            "(a) Either conclusion I or II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "From the statements, L = O can be definitely established. L < O is not true."
+    },
+    {
+        "id": "logic-409",
+        "question": "Direction: Statements: W > $ < G, $ \u2264 T \u2264 % < #, % > N = M, M \u2265 K\nConclusions:\nI. % > W\nII. K < #",
+        "image": null,
+        "options": [
+            "(a) C < I",
+            "(b) If either conclusion I or conclusion II is true",
+            "(c) Only conclusion II is true"
+        ],
+        "answer": "(c) Only conclusion II is true",
+        "explanation": "Analyzing the inequalities, only conclusion II (K < #) can be definitely confirmed."
+    },
+    {
+        "id": "logic-410",
+        "question": "Direction: In the question below, some statements are followed by two conclusions based on the statement, where '+' and '-' denote the operations of addition and subtraction respectively. Number adjoining letters represents repeated addition, for example 2A = A + A, 3A = A + A + A. Study the conclusions and select the correct option as the answer.\n\nStatements: I. S + A > B + C \u2013 S < R II. C > T + S > A\nConclusions:\nI. B < R \u2013 T\nII. A > B + T \u2013 S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II is true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(a) Both conclusion I and II is true",
+        "explanation": "By calculating the inequalities from the statements, both conclusions I and II can be definitely established."
+    },
+    {
+        "id": "logic-411",
+        "question": "Direction: In the question below, some statements is followed by two conclusions based on the statement where '+' and '-' denotes the operations of addition and subtraction respectively. Number adjoining letters represent repeated addition, for example 2A = A + A, 3A = A + A + A. Study the conclusions and select the correct option as the answer.\n\nStatements: P \u2013 Q > R > Q + S > T\nConclusions:\nI. Q < P \u2013 T \u2013 Q\nII. R > S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II is true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "Only conclusion I follows from the inequalities; conclusion II cannot be definitely determined."
+    },
+    {
+        "id": "logic-412",
+        "question": "Direction: A @ B means \u2018A is greater than B \u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: E % T # L ^ I # J % K; R ^ S & G # B @ K\nConclusions:\nI. T # S\nII. K @ E\nIII. S % I",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "From the given statements, only K @ E can be definitively established. Other conclusions cannot be concluded."
+    },
+    {
+        "id": "logic-413",
+        "question": "Direction: A @ B means \u2018A is greater than B \u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: Y # S ^ G @ M # O; M % J @ I % N; U % V ^ T & I\nConclusions:\nI. M @ V\nII. O & T\nIII. V & O",
+        "image": null,
+        "options": [
+            "(a) None follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) None follows",
+        "explanation": "None of the conclusions can be definitively established from the given statements."
+    },
+    {
+        "id": "logic-401",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: 53 + 68 * K; 53 \u2013 L \u2013 S; H % 68; S + 42\nConclusions:\nI. H \u2013 L\nII. K \u2013 S\nIII. 68 % 42",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(a) Both conclusions I and II follow",
+        "explanation": "From the statements, H \u2013 L and K \u2013 S can be definitively concluded, but 68 % 42 cannot be established. Hence conclusions I and II follow."
+    },
+    {
+        "id": "logic-402",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: L & T; Q * H; D + L; X + Q; T * X\nConclusions:\nI. H * D\nII. H \u2013 D\nIII. D \u2013 Q",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "Only conclusion II (H \u2013 D) can be definitively concluded. Others cannot be confirmed."
+    },
+    {
+        "id": "logic-403",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: M % E; C % V; Z % N; V & Z; E \u2013 C\nConclusions:\nI. E \u2013 Z\nII. Z \u2013 C\nIII. M \u2013 N",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(c) Both conclusions I and III follow",
+        "explanation": "E \u2013 Z and M \u2013 N can be established, but Z \u2013 C cannot be confirmed. Hence conclusions I and III follow."
+    },
+    {
+        "id": "logic-404",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: H \u2013 Y + N * C; D * T + Y; D % B \u2013 I\nConclusions:\nI. H \u2013 I\nII. B * C\nIII. H \u2013 D",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(d) Both conclusions I and III follow",
+        "explanation": "From the statements, only conclusion I (H \u2013 I) can be definitively concluded."
+    },
+    {
+        "id": "logic-405",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: R + N * Z; K & R + Y % S; Y + F * J; Y \u2013 U % T\nConclusions:\nI. J \u2013 T\nII. K * Z\nIII. U + N",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "From the statements, only conclusion II (K * Z) can be definitively concluded."
+    },
+    {
+        "id": "logic-315",
+        "question": "Direction: In the question below, some statements are followed by two conclusions based on the statement, where '+' and '-' denote addition and subtraction operations respectively. Number adjoining letters represents repeated addition, for example 2A = A + A, 3A = A + A + A. Study the conclusions and select the correct option.\n\nStatements: I. S + A > B + C \u2013 S < R II. C > T + S > A\nConclusions:\nI. B < R \u2013 T\nII. A > B + T \u2013 S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II are true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(a) Both conclusion I and II are true",
+        "explanation": "By calculating the inequalities from the statements, both conclusions I and II can be definitely established."
+    },
+    {
+        "id": "logic-316",
+        "question": "Direction: In the question below, some statements are followed by two conclusions based on the statement, where '+' and '-' denote addition and subtraction operations respectively. Number adjoining letters represents repeated addition, for example 2A = A + A, 3A = A + A + A. Study the conclusions and select the correct option.\n\nStatements: P \u2013 Q > R > Q + S > T\nConclusions:\nI. Q < P \u2013 T \u2013 Q\nII. R > S",
+        "image": null,
+        "options": [
+            "(a) Both conclusion I and II are true",
+            "(b) Only conclusion I is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "Only conclusion I follows from the inequalities; conclusion II cannot be definitely determined."
+    },
+    {
+        "id": "logic-317",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: E % T # L ^ I # J % K; R ^ S & G # B @ K\nConclusions:\nI. T # S\nII. K @ E\nIII. S % I",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "From the given statements, only K @ E can be definitively established. Other conclusions cannot be concluded."
+    },
+    {
+        "id": "logic-318",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: Y # S ^ G @ M # O; M % J @ I % N; U % V ^ T & I\nConclusions:\nI. M @ V\nII. O & T\nIII. V & O",
+        "image": null,
+        "options": [
+            "(a) None follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) None follows",
+        "explanation": "None of the conclusions can be definitively established from the given statements."
+    },
+    {
+        "id": "logic-319",
+        "question": "Direction: Statements given:\nI. Z \u2265 H > V = M < E \u2265 T > F = S\nII. P < G > M < F < Z > T \u2265 V \u2264 S\nIII. V = F < S \u2264 F > T = M = P \u2264 G\nConclusions: Choose which are definitely true.",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) None follows",
+            "(c) Only conclusion I follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "After analyzing the inequalities, only conclusion II can be definitively confirmed."
+    },
+    {
+        "id": "logic-306",
+        "question": "Direction: In the following questions, symbols &, *, #, +, and % are used with the meanings given below:\nP & Q means P is neither smaller than nor greater than Q\nP * Q means P is neither smaller than nor equal to Q\nP # Q means P is not greater than Q\nP + Q means P is not smaller than Q\nP % Q means P is neither greater than nor equal to Q\nIn each of the following questions, assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: P # Q, Q # R, R + S\nConclusions:\nI. P % S\nII. S & Q",
+        "image": null,
+        "options": [
+            "(a) Neither conclusion I nor II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true",
+            "(d) Either conclusion I or conclusion II is true",
+            "(e) Both conclusions I and II are true"
+        ],
+        "answer": "(a) Neither conclusion I nor II is true",
+        "explanation": "P \u2264 Q \u2264 R and R \u2265 S. No definite relation exists between P and S or S and Q. Hence neither conclusion follows."
+    },
+    {
+        "id": "logic-307",
+        "question": "Direction: In the following questions, symbols &, *, #, +, and % are used with the meanings given below:\nP & Q means P is neither smaller than nor greater than Q\nP * Q means P is neither smaller than nor equal to Q\nP # Q means P is not greater than Q\nP + Q means P is not smaller than Q\nP % Q means P is neither greater than nor equal to Q\nIn each of the following questions, assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: S # T % U, T + V + W\nConclusions:\nI. U * W\nII. S * V",
+        "image": null,
+        "options": [
+            "(a) Neither conclusion I nor II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true",
+            "(d) Either conclusion I or conclusion II is true",
+            "(e) Both conclusions I and II are true"
+        ],
+        "answer": "(a) Neither conclusion I nor II is true",
+        "explanation": "S \u2264 T < U, T \u2265 V \u2265 W. There is no definite relation between U and W or S and V. Hence neither conclusion follows."
+    },
+    {
+        "id": "logic-308",
+        "question": "Direction: In the following questions, symbols &, *, #, +, and % are used with the meanings given below:\nP & Q means P is neither smaller than nor greater than Q\nP * Q means P is neither smaller than nor equal to Q\nP # Q means P is not greater than Q\nP + Q means P is not smaller than Q\nP % Q means P is neither greater than nor equal to Q\nIn each of the following questions, assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: O & P # Q, Q % R + S\nConclusions:\nI. P % S\nII. O % R",
+        "image": null,
+        "options": [
+            "(a) Neither conclusion I nor II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true",
+            "(d) Either conclusion I or conclusion II is true",
+            "(e) Both conclusions I and II are true"
+        ],
+        "answer": "(a) Neither conclusion I nor II is true",
+        "explanation": "O = P, P \u2264 Q, Q < R, R \u2265 S. No definite relation can be drawn between P and S or O and R. Hence neither conclusion follows."
+    },
+    {
+        "id": "logic-309",
+        "question": "Direction: In the following questions, symbols &, *, #, +, and % are used with the meanings given below:\nP & Q means P is neither smaller than nor greater than Q\nP * Q means P is neither smaller than nor equal to Q\nP # Q means P is not greater than Q\nP + Q means P is not smaller than Q\nP % Q means P is neither greater than nor equal to Q\nIn each of the following questions, assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: A & B, B + C, C % D & E\nConclusions:\nI. E * C\nII. B & C",
+        "image": null,
+        "options": [
+            "(a) Neither conclusion I nor II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true",
+            "(d) Either conclusion I or conclusion II is true",
+            "(e) Both conclusions I and II are true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "B \u2265 C, C < D = E implies E > C. B & C is not definitely true. Hence only conclusion I follows."
+    },
+    {
+        "id": "logic-310",
+        "question": "Direction: In the following questions, symbols &, *, #, +, and % are used with the meanings given below:\nP & Q means P is neither smaller than nor greater than Q\nP * Q means P is neither smaller than nor equal to Q\nP # Q means P is not greater than Q\nP + Q means P is not smaller than Q\nP % Q means P is neither greater than nor equal to Q\nIn each of the following questions, assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: U # V, V # W, W + X\nConclusions:\nI. U % W\nII. V # X",
+        "image": null,
+        "options": [
+            "(a) Neither conclusion I nor II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true",
+            "(d) Either conclusion I or conclusion II is true",
+            "(e) Both conclusions I and II are true"
+        ],
+        "answer": "(a) Neither conclusion I nor II is true",
+        "explanation": "U \u2264 V \u2264 W, W \u2265 X. No definite relation exists between U and W or V and X. Hence neither conclusion follows."
+    },
+    {
+        "id": "logic-311",
+        "question": "Direction: A ^ B means that \u2018A is not smaller than B\u2019\nA @ B means \u2018A is not greater than B\u2019\nA # B means that \u2018A is neither smaller than nor equal to B\u2019\nA & B means that \u2018A is neither greater than nor equal to B\u2019\nA * B means \u2018A is neither greater than nor smaller than B\u2019\nIn each of the following questions, assuming the given statements to be true, find out which of the three conclusions is/are definitely true.\n\nStatements: H @ G ^ Q * 40 # W * 52 & 22 @ 16 & R ^ 58 # D * E\nConclusions:\nI. W & R\nII. G # 22\nIII. 16 ^ E",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) None follows",
+            "(c) Only conclusion III follows",
+            "(d) Both conclusion I and III follow"
+        ],
+        "answer": "(a) Only conclusion I follows",
+        "explanation": "From the given complex relations, only W & R can be definitively established. Others cannot be concluded."
+    },
+    {
+        "id": "logic-312",
+        "question": "Direction: A ^ B means that \u2018A is not smaller than B\u2019\nA @ B means \u2018A is not greater than B\u2019\nA # B means that \u2018A is neither smaller than nor equal to B\u2019\nA & B means that \u2018A is neither greater than nor equal to B\u2019\nA * B means \u2018A is neither greater than nor smaller than B\u2019\nIn each of the following questions, assuming the given statements to be true, find out which of the three conclusions is/are definitely true.\n\nStatements: U ^ W @ C & 22 # V & 46 * A @ T ^ X & Y # 28\nConclusions:\nI. A # C\nII. W * 46\nIII. 28 ^ T",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) None follows",
+            "(c) Only conclusion III follows",
+            "(d) Both conclusion I and III follow"
+        ],
+        "answer": "(b) None follows",
+        "explanation": "None of the conclusions can be definitely established from the given statements."
+    },
+    {
+        "id": "logic-313",
+        "question": "Direction: In the following questions, symbols are used as follows:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: H % Z $ G; G & F; F @ S; S $ O; K % J; J # F $ L; L & Q\nConclusions:\nI. K % G\nII. H % J\nIII. O & K",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion I follows",
+        "explanation": "Only K % G can be definitely determined. Others cannot be established from the given statements."
+    },
+    {
+        "id": "logic-314",
+        "question": "Direction: In the following questions, symbols are used as follows:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: S @ T; Q & S; P $ Q; R % Q; G # R\nConclusions:\nI. T % P\nII. G % Q\nIII. R @ S",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(b) Both conclusions I and II follow",
+        "explanation": "From the statements, both T % P and G % Q can be definitely established."
+    },
+    {
+        "id": "logic-301",
+        "question": "Direction: In the following questions symbols @, #, %, $, and * are used with different meanings as follows:\nP % Q means P is neither smaller than nor greater than Q\nP # Q means P is neither smaller than nor equal to Q\nP $ Q means P is not greater than Q\nP @ Q means P is not smaller than Q\nP * Q means P is neither greater than nor equal to Q\nIn each of the following questions assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: A # C @ D, C % B\nConclusions:\nI. D * A\nII. B * A",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II are true",
+            "(b) Only conclusion I is true",
+            "(c) Either conclusion I or conclusion II is true",
+            "(d) Neither conclusion I nor II is true",
+            "(e) Only conclusion II is true"
+        ],
+        "answer": "(d) Neither conclusion I nor II is true",
+        "explanation": "Given A # C @ D and C % B, no definite relationship can be established between D and A or B and A. Hence neither conclusion follows."
+    },
+    {
+        "id": "logic-302",
+        "question": "Direction: In the following questions symbols @, #, %, $, and * are used with different meanings as follows:\nP % Q means P is neither smaller than nor greater than Q\nP # Q means P is neither smaller than nor equal to Q\nP $ Q means P is not greater than Q\nP @ Q means P is not smaller than Q\nP * Q means P is neither greater than nor equal to Q\nIn each of the following questions assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: B * H, H % K, K # Z\nConclusions:\nI. B * H\nII. H * Z",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II are true",
+            "(b) Only conclusion I is true",
+            "(c) Either conclusion I or conclusion II is true",
+            "(d) Neither conclusion I nor II is true",
+            "(e) Only conclusion II is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "B * H is true by definition, but H % K and K # Z do not give a definite comparison between H and Z. Only conclusion I follows."
+    },
+    {
+        "id": "logic-303",
+        "question": "Direction: In the following questions symbols @, #, %, $, and * are used with different meanings as follows:\nP % Q means P is neither smaller than nor greater than Q\nP # Q means P is neither smaller than nor equal to Q\nP $ Q means P is not greater than Q\nP @ Q means P is not smaller than Q\nP * Q means P is neither greater than nor equal to Q\nIn each of the following questions assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: A @ B, B $ C, C % D\nConclusions:\nI. B * D\nII. B % D",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II are true",
+            "(b) Only conclusion I is true",
+            "(c) Either conclusion I or conclusion II is true",
+            "(d) Neither conclusion I nor II is true",
+            "(e) Only conclusion II is true"
+        ],
+        "answer": "(d) Neither conclusion I nor II is true",
+        "explanation": "A @ B (A \u2265 B), B $ C (B \u2264 C), and C % D (C = D) imply B = D. Hence only conclusion II follows."
+    },
+    {
+        "id": "logic-304",
+        "question": "Direction: In the following questions symbols @, #, %, $, and * are used with different meanings as follows:\nP % Q means P is neither smaller than nor greater than Q\nP # Q means P is neither smaller than nor equal to Q\nP $ Q means P is not greater than Q\nP @ Q means P is not smaller than Q\nP * Q means P is neither greater than nor equal to Q\nIn each of the following questions assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: H * I $ J # K, J * M\nConclusions:\nI. I # M\nII. H * K",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II are true",
+            "(b) Only conclusion I is true",
+            "(c) Either conclusion I or conclusion II is true",
+            "(d) Neither conclusion I nor II is true",
+            "(e) Only conclusion II is true"
+        ],
+        "answer": "(d) Neither conclusion I nor II is true",
+        "explanation": "From H * I $ J # K and J * M, no definite comparison can be made between I and M or H and K. Neither conclusion follows."
+    },
+    {
+        "id": "logic-305",
+        "question": "Direction: In the following questions symbols @, #, %, $, and * are used with different meanings as follows:\nP % Q means P is neither smaller than nor greater than Q\nP # Q means P is neither smaller than nor equal to Q\nP $ Q means P is not greater than Q\nP @ Q means P is not smaller than Q\nP * Q means P is neither greater than nor equal to Q\nIn each of the following questions assuming the given statements to be true, find out which of the two conclusions I and II given below them is/are definitely true.\n\nStatements: S # T, T % U, U @ W * X\nConclusions:\nI. X # T\nII. U * S",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II are true",
+            "(b) Only conclusion I is true",
+            "(c) Either conclusion I or conclusion II is true",
+            "(d) Neither conclusion I nor II is true",
+            "(e) Only conclusion II is true"
+        ],
+        "answer": "(d) Neither conclusion I nor II is true",
+        "explanation": "S # T, T % U, and U @ W * X do not establish a definite relation between X and T or U and S. Hence neither conclusion follows."
+    },
+    {
+        "id": "logic-325",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: M @ 58 # I, J * T @ 52 * P ^ I, T # C & N\nConclusions:\nI. M & 52\nII. 58 @ J\nIII. P # C",
+        "image": null,
+        "options": [
+            "(a) Only conclusion III follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion II follows",
+            "(d) Both conclusions I and III follow"
+        ],
+        "answer": "(a) Only conclusion III follows",
+        "explanation": "From the given statements, only P # C can be definitively concluded. Other conclusions cannot be established."
+    },
+    {
+        "id": "logic-326",
+        "question": "Direction: Symbols meanings:\nA @ B means \u2018A is greater than B\u2019\nA % B means \u2018A is not greater than B\u2019\nA # B means \u2018A is smaller than B\u2019\nA & B means \u2018A is not smaller than B\u2019\nA ^ B means \u2018A is neither greater nor smaller than B\u2019\n\nStatements: V ^ K @ N * O # B; Q & R @ B # S; A @ V * G\nConclusions:\nI. K & A\nII. V ^ R\nIII. N # S",
+        "image": null,
+        "options": [
+            "(a) Only conclusion III follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion II follows",
+            "(d) Both conclusion I and III follow"
+        ],
+        "answer": "(a) Only conclusion III follows",
+        "explanation": "From the statements, only N # S can be definitively established. Others cannot be concluded."
+    },
+    {
+        "id": "logic-327",
+        "question": "Direction: In the following questions, symbols are used with the meanings as illustrated:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: E % T # L ^ I # J % K; R ^ S & G # B @ K\nConclusions:\nI. T # S\nII. K @ E\nIII. S % I",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "From the statements, only K @ E can be definitively concluded. Others cannot be established."
+    },
+    {
+        "id": "logic-328",
+        "question": "Direction: In the following questions, symbols are used with the meanings as illustrated:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: Y # S ^ G @ M # O; M % J @ I % N; U % V ^ T & I\nConclusions:\nI. M @ V\nII. O & T\nIII. V & O",
+        "image": null,
+        "options": [
+            "(a) None follows",
+            "(b) Only conclusion I follows",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) None follows",
+        "explanation": "None of the conclusions can be definitively established from the given statements."
+    },
+    {
+        "id": "logic-329",
+        "question": "Direction: Statements given:\nI. Z \u2265 H > V = M < E \u2265 T > F = S\nII. P < G > M < F < Z > T \u2265 V \u2264 S\nIII. V = F < S \u2264 F > T = M = P \u2264 G\nConclusions: Choose which are definitely true.",
+        "image": null,
+        "options": [
+            "(a) Only conclusion II follows",
+            "(b) None follows",
+            "(c) Only conclusion I follows"
+        ],
+        "answer": "(a) Only conclusion II follows",
+        "explanation": "After analyzing the inequalities, only conclusion II can be definitively confirmed."
+    },
+    {
+        "id": "logic-320",
+        "question": "Direction: Symbols used in the following questions:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: H % Z $ G; G & F; F @ S; S $ O; K % J; J # F $ L; L & Q\nConclusions:\nI. K % G\nII. H % J\nIII. O & K",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(a) Only conclusion I follows",
+        "explanation": "Only K % G can be definitely established. Other conclusions cannot be confirmed."
+    },
+    {
+        "id": "logic-321",
+        "question": "Direction: Symbols used in the following questions:\nX & Y means \u2018Y is neither smaller than nor equal to X\u2019\nX % Y means \u2018Y is neither greater than nor equal to X\u2019\nX # Y means \u2018Y is not greater than X\u2019\nX @ Y means \u2018Y is not smaller than X\u2019\nX $ Y means \u2018X is neither greater nor smaller than Y\u2019\n\nStatements: S @ T; Q & S; P $ Q; R % Q; G # R\nConclusions:\nI. T % P\nII. G % Q\nIII. R @ S",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Both conclusions I and II follow",
+            "(c) Only conclusion II follows",
+            "(d) Only conclusion III follows"
+        ],
+        "answer": "(b) Both conclusions I and II follow",
+        "explanation": "From the statements, both T % P and G % Q can be definitely established."
+    },
+    {
+        "id": "logic-322",
+        "question": "Direction: Which of the following expressions will be definitely true if the expression \u2018I \u2265 O > G \u2265 C\u2019 is true?\nOptions:\na) C \u2264 I\nb) I = G\nc) C < I\nd) O \u2265 C\ne) None of these",
+        "image": null,
+        "options": [
+            "(a) C \u2264 I",
+            "(b) I = G",
+            "(c) C < I",
+            "(d) O \u2265 C",
+            "(e) None of these"
+        ],
+        "answer": "(c) C < I",
+        "explanation": "From I \u2265 O > G \u2265 C, clearly C < I is definitely true."
+    },
+    {
+        "id": "logic-323",
+        "question": "Direction: Statements: L = V > K \u2265 J, D < V \u2264 M = N, M = H = O\nConclusions:\nI. L = O\nII. L < O",
+        "image": null,
+        "options": [
+            "(a) Either conclusion I or II is true",
+            "(b) Only conclusion I is true",
+            "(c) Only conclusion II is true"
+        ],
+        "answer": "(b) Only conclusion I is true",
+        "explanation": "From the statements, L = O can be definitely established. L < O is not true."
+    },
+    {
+        "id": "logic-324",
+        "question": "Direction: Statements: W > $ < G, $ \u2264 T \u2264 % < #, % > N = M, M \u2265 K\nConclusions:\nI. % > W\nII. K < #",
+        "image": null,
+        "options": [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions follow",
+            "(d) Neither conclusion follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "Analyzing the inequalities, only conclusion II (K < #) can be definitely confirmed."
+    },
+    {
+        "id": "logic-331",
+        "question": "Direction: In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: C \u20ac O @ S * P $ F % L $ N * T % X\nConclusions:\nI. C $ F\nII. P @ L\nIII. S $ T\nIV. N % X\nV. C \u20ac P",
+        "image": null,
+        "options": [
+            "(a) Only I, II, and III",
+            "(b) Only II, IV and V",
+            "(c) Only III, IV and V",
+            "(d) Only II, IV and V",
+            "(e) All are true"
+        ],
+        "answer": "(c) Only III, IV and V",
+        "explanation": "From the given statement, the relations S $ T, N % X, and C \u20ac P can be definitely established. Other conclusions cannot be definitely concluded."
+    },
+    {
+        "id": "logic-332",
+        "question": "Direction: Which of the following expressions will be definitely true if the expression \u2018I \u2265 O > G \u2265 C\u2019 is true?\nOptions:\na) C \u2264 I\nb) I = G\nc) C < I\nd) O \u2265 C\ne) None of these",
+        "image": null,
+        "options": [
+            "(a) C \u2264 I",
+            "(b) I = G",
+            "(c) C < I",
+            "(d) O \u2265 C",
+            "(e) None of these"
+        ],
+        "answer": "(c) C < I",
+        "explanation": "From I \u2265 O > G \u2265 C, clearly C < I is definitely true."
+    },
+    {
+        "id": "logic-330",
+        "question": "In the following questions, the symbols are used with the following meaning as illustrated below:\nY + Z means \u2018Y is neither greater than nor equal to Z\u2019\nY \u2013 Z means \u2018Y is neither smaller than nor equal to Z\u2019\nY * Z means \u2018Y is not greater than Z\u2019\nY % Z means \u2018Y is not smaller than Z\u2019\nY & Z means \u2018Y is neither greater nor smaller than Z\u2019\n\nStatements: 53 + 68 * K; 53 \u2013 L \u2013 S; H % 68; S + 42\nConclusions:\nI. H \u2013 L\nII. K \u2013 S\nIII. 68 % 42",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(c) Both conclusions I and III follow",
+        "explanation": "From the statements, H \u2013 L and 68 % 42 can be established. K \u2013 S cannot be definitely concluded."
+    },
+    {
+        "id": "logic-331",
+        "question": "Statements: L & T; Q * H; D + L; X + Q; T * X\nConclusions:\nI. H * D\nII. H \u2013 D\nIII. D \u2013 Q",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "Only conclusion II (H \u2013 D) can be definitely established. Others cannot be concluded."
+    },
+    {
+        "id": "logic-332",
+        "question": "Statements: M % E; C % V; Z % N; V & Z; E \u2013 C\nConclusions:\nI. E \u2013 Z\nII. Z \u2013 C\nIII. M \u2013 N",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(d) Both conclusions I and III follow",
+        "explanation": "Only conclusion I (E \u2013 Z) can be definitely concluded. Others cannot be confirmed."
+    },
+    {
+        "id": "logic-333",
+        "question": "Statements: H \u2013 Y + N * C; D * T + Y; D % B \u2013 I\nConclusions:\nI. H \u2013 I\nII. B * C\nIII. H \u2013 D",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(a) Both conclusions I and II follow",
+        "explanation": "H \u2013 I and B * C can be established. H \u2013 D cannot be definitely concluded."
+    },
+    {
+        "id": "logic-334",
+        "question": "Statements: R + N * Z; K & R + Y % S; Y + F * J; Y \u2013 U % T\nConclusions:\nI. J \u2013 T\nII. K * Z\nIII. U + N",
+        "image": null,
+        "options": [
+            "(a) Both conclusions I and II follow",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and III follow",
+            "(d) Both conclusions I and III follow",
+            "(e) Only conclusion I follows"
+        ],
+        "answer": "(b) Only conclusion II follows",
+        "explanation": "Only conclusion II (K * Z) can be definitely established. Others cannot be concluded."
+    },
+    {
+        "id": "logic-335",
+        "question": "Y % Z means Y is not greater than Z\nY @ Z means Y is not smaller than Z\nY $ Z means Y is neither greater than nor equal to Z\nY \u20ac Z means Y is neither smaller than nor equal to Z\nY * Z means Y is equal to Z\n\nNow in each of the following questions assuming the given statement to be true, find which of the conclusions given below is/are definitely true.\n\nIf \u2018C \u20ac O @ S * P $ F % L $ N * T % X\u2019 is true then which of the following conclusions are definitely true?\nI. C $ F\nII. P @ L\nIII. S $ T\nIV. N % X\nV. C \u20ac P",
+        "image": null,
+        "options": [
+            "(a) Only I, II, and III",
+            "(b) Only II, IV and V",
+            "(c) Only III, IV and V",
+            "(d) Only II, IV and V",
+            "(e) All are true"
+        ],
+        "answer": "(c) Only III, IV and V",
+        "explanation": "From the given coded inequalities, only III (S $ T), IV (N % X), and V (C \u20ac P) can be definitively concluded."
+    },
+
+
+
+
+
+
+
         ]
     }
 };
