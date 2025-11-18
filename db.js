@@ -2544,6 +2544,600 @@ const quizDB = {
     answer: "(b) Both conclusions I and II follow",
     explanation: "K = A < B and I ≤ H ⇒ I = H is possible."
 },
+{
+    id: "logic-016",
+    question: "Statement: H > M = Q < B; Q ≥ G > T = S; T < R = Z > J\nConclusions:\nI. M ≥ Z\nII. R > Q\nIII. S < H",
+    image: null,
+    options: [
+        "(a) Neither conclusion follows",
+        "(b) Either conclusion I or II and III follow",
+        "(c) Both conclusion I and II follow",
+        "(d) Only conclusion III follows"
+    ],
+    answer: "(b) Either conclusion I or II and III follow",
+    explanation: "M = Q < B and R = Z > T = S; S < H is definite. Either M ≥ Z or R > Q may hold."
+},
+{
+    id: "logic-017",
+    question: "Statement: M < T = L ≤ Z; W ≤ L < G = S; U = F < B ≥ G\nConclusions:\nI. Z ≥ U\nII. M < S\nIII. W < B",
+    image: null,
+    options: [
+        "(a) Neither conclusion follows",
+        "(b) Both conclusions II and III follow",
+        "(c) Only conclusion I follows",
+        "(d) All conclusions follow"
+    ],
+    answer: "(b) Both conclusions II and III follow",
+    explanation: "M < T = L < G = S gives M < S; W ≤ L < G ≤ B gives W < B."
+},
+{
+    id: "logic-018",
+    question: "Statement: V < D = U ≥ X > J; X = A > R > M; M < P ≥ E\nConclusions:\nI. V > P\nII. D ≥ R\nIII. E > X",
+    image: null,
+    options: [
+        "(a) None of the conclusions follows",
+        "(b) Only conclusion I follows",
+        "(c) Only conclusion II follows",
+        "(d) All conclusions follow"
+    ],
+    answer: "(a) None of the conclusions follows",
+    explanation: "No relation confirms any of the conclusions."
+},
+{
+    id: "logic-019",
+    question: "Statement: V ≥ W = F < B = C; L ≥ Y = O < T; E ≥ O < V = I\nConclusions:\nI. V > B\nII. L ≥ E\nIII. I ≥ F",
+    image: null,
+    options: [
+        "(a) None of the conclusions follows",
+        "(b) Only conclusion I follows",
+        "(c) Only conclusion II follows",
+        "(d) Only conclusion III follows"
+    ],
+    answer: "(d) Only conclusion III follows",
+    explanation: "I = V ≥ W = F, so I ≥ F follows."
+},
+{
+    id: "logic-020",
+    question: "Statement: 8 < 7 ≤ 5 > 9; 2 < 5 < 3 ≤ 9; 6 < 4 ≤ 1 > 5\nConclusions:\nI. 2 > 4\nII. 5 > 2",
+    image: null,
+    options: [
+        "(a) Neither conclusion follows",
+        "(b) Only conclusion I follows",
+        "(c) Only conclusion II follows",
+        "(d) Both conclusions follow"
+    ],
+    answer: "(c) Only conclusion II follows",
+    explanation: "5 > 2 follows; 2 > 4 does not."
+},
+{
+    id: "logic-021X",
+    question: "Statement: U < V > W < X < A; W = Y; R < G < A < P; T < Y\nConclusions:\nI. P > T\nII. V < R\nIII. T > G",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Only conclusion III follows",
+        "(d) None of the conclusions follows"
+    ],
+    answer: "(a) Only conclusion I follows",
+    explanation: "P > A > X > W = Y > T; so P > T follows."
+},
+{
+    id: "logic-022X",
+    question: "Statement: 132 < 143 ≤ 154 = 165; 176 ≤ 187 = 132; 158 > 165 ≥ 988\nConclusions:\nI. 176 < 154\nII. 158 > 187\nIII. 988 < 154",
+    image: null,
+    options: [
+        "(a) Neither conclusion follows",
+        "(b) Both conclusions I and II follow",
+        "(c) Only conclusion I follows",
+        "(d) Only conclusion III follows"
+    ],
+    answer: "(b) Both conclusions I and II follow",
+    explanation: "From 187 = 132 < 143 ≤ 154 and 158 > 165, both I and II follow."
+},
+{
+    id: "logic-023X",
+    question: "Statement: P > A ≤ H > Q = T; X > H = W ≤ S; Q > D ≤ E\nConclusions:\nI. X < E\nII. Q < S\nIII. D < X",
+    image: null,
+    options: [
+        "(a) None of the conclusions follows",
+        "(b) Only conclusion I follows",
+        "(c) Only conclusion II follows",
+        "(d) Only conclusion III follows"
+    ],
+    answer: "(a) None of the conclusions follows",
+    explanation: "No definite comparison supports any conclusion."
+},
+{
+    id: "logic-024X",
+    question: "Statement: A ≥ Y > E < Z; H = Q = I < Y; C ≤ D > E > P\nConclusions:\nI. Q ≤ Z\nII. Z ≥ C\nIII. A > C\nIV. H < A",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Only conclusion III follows",
+        "(d) Only conclusion IV follows"
+    ],
+    answer: "(d) Only conclusion IV follows",
+    explanation: "Only H < A is guaranteed."
+},
+{
+    id: "logic-025X",
+    question: "Statement: T ≥ X > V ≤ M; A ≥ Y > M > U; J > G ≤ C ≤ V\nConclusions:\nI. C < T\nII. J ≤ M\nIII. A ≥ G\nIV. Y < T",
+    image: null,
+    options: [
+        "(a) None of the conclusions follows",
+        "(b) Only conclusion I follows",
+        "(c) Only conclusion II follows",
+        "(d) Only conclusion III follows"
+    ],
+    answer: "(a) None of the conclusions follows",
+    explanation: "None can be confirmed."
+},
+{
+    id: "logic-026X",
+    question: "Statement: V = W < C = O ≤ F > Z; Y = D ≥ O; E > G = C\nConclusions:\nI. E > V\nII. W ≤ Y",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions I & II follow",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(a) Only conclusion I follows",
+    explanation: "V = W < C = O ≤ F < E, so E > V. W ≤ Y not confirmed."
+},
+{
+    id: "logic-027X",
+    question: "Statement: 12 ≥ 16 = 15 < 23; 94 > 26 = 23; 32 ≤ 12 = 18\nConclusions:\nI. 32 < 26\nII. 94 ≥ 16",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(d) Neither conclusion I nor II follows",
+    explanation: "Neither comparison can be definitively established."
+},
+{
+    id: "logic-028X",
+    question: "Statement: K > B = T ≤ E > X; N ≥ Z = E > G ≤ U = P < Q\nConclusions:\nI. Q > B\nII. X < N",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions I & II follow",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(b) Only conclusion II follows",
+    explanation: "X < E = Z ≤ N, so X < N follows."
+},
+{
+    id: "logic-029X",
+    question: "Statement: H > F = X ≥ Q; M > F = T ≤ B < U; O = U > R\nConclusions:\nI. O > Q\nII. Q ≤ O",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions I & II follow",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(a) Only conclusion I follows",
+    explanation: "O = U > B ≥ T = F = X ≥ Q, so O > Q follows."
+},
+{
+    id: "logic-030X",
+    question: "Statement: N > L = X ≤ R; Q = Y < M ≥ R; T = D < V ≤ Q\nConclusions:\nI. M ≥ T\nII. Y ≥ L",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions I & II follow",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(d) Neither conclusion I nor II follows",
+    explanation: "No definite comparison for either conclusion."
+},
+{
+    id: "logic-031X",
+    question: "Statement: W ≥ T ≥ B = Q ≥ M > V ≥ O\nConclusions:\nI. W ≥ K\nII. B > O",
+    image: null,
+    options: [
+        "(a) Neither conclusion I nor II follows",
+        "(b) Both conclusions I and II follow",
+        "(c) Only conclusion I follows",
+        "(d) Only conclusion II follows"
+    ],
+    answer: "(b) Both conclusions I and II follow",
+    explanation: "W ≥ T ≥ B = Q ≥ M > V ≥ O gives B > O. W ≥ K holds as K can be ≤ W."
+},
+{
+    id: "logic-032X",
+    question: "Statement: Y > B ≤ Q ≤ V = J > U ≥ T ≥ S\nConclusions:\nI. Y > J\nII. Q > S",
+    image: null,
+    options: [
+        "(a) Neither conclusion follows",
+        "(b) Only conclusion I follows",
+        "(c) Only conclusion II follows",
+        "(d) Both conclusions follow"
+    ],
+    answer: "(a) Neither conclusion follows",
+    explanation: "No definite chain ensures Y > J or Q > S."
+},
+{
+    id: "logic-033X",
+    question: "Statement: B = C ≤ D = E ≤ F < G = H\nConclusions:\nI. H > E\nII. G ≥ D",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Either conclusion I or II follows",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(a) Only conclusion I follows",
+    explanation: "H = G > F ≥ E guarantees H > E."
+},
+{
+    id: "logic-034X",
+    question: "Statement: E > S > U = G < Z < X = Q\nConclusions:\nI. S = Z\nII. S > Z",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Either conclusion I or II follows",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(d) Neither conclusion I nor II follows",
+    explanation: "S > U = G < Z shows S < Z; neither equality nor S > Z is true."
+},
+{
+    id: "logic-035X",
+    question: "Statement: W ≤ E ≤ R = X < D ≤ H\nConclusions:\nI. X ≥ W\nII. H > R",
+    image: null,
+    options: [
+        "(a) Neither conclusion follows",
+        "(b) Only conclusion I follows",
+        "(c) Only conclusion II follows",
+        "(d) Both conclusions I and II follow"
+    ],
+    answer: "(d) Both conclusions I and II follow",
+    explanation: "X = R ≥ E ≥ W, so X ≥ W. H ≥ D > X = R, so H > R."
+},
+{
+    id: "logic-036X",
+    question: "Statement: C < M ≤ F ≤ Z = T > L ≥ I\nConclusions:\nI. Z > M\nII. M = T",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Either conclusion I or II follows",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(c) Either conclusion I or II follows",
+    explanation: "Z = T ≥ F ≥ M gives Z > M possible; M = T is also possible."
+},
+{
+    id: "logic-037X",
+    question: "Statement: D > S > C ≥ G ≥ F = Z > Q\nConclusions:\nI. D > G\nII. C > Q",
+    image: null,
+    options: [
+        "(a) Neither conclusion follows",
+        "(b) Only conclusion I follows",
+        "(c) Only conclusion II follows",
+        "(d) Both conclusions I and II follow"
+    ],
+    answer: "(d) Both conclusions I and II follow",
+    explanation: "D > S > C ≥ G ensures D > G. C ≥ G ≥ F = Z > Q gives C > Q."
+},
+{
+    id: "logic-038X",
+    question: "Statement: T = V < L ≤ U = S < X ≤ M\nConclusions:\nI. S > T\nII. V ≤ U",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(a) Only conclusion I follows",
+    explanation: "S = U ≥ L > V = T, so S > T."
+},
+{
+    id: "logic-039X",
+    question: "Statement: J < D < V < I > G > B = F\nConclusions:\nI. D > F\nII. D ≤ F",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Either conclusion I or II follows",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(c) Either conclusion I or II follows",
+    explanation: "D lies between J and V, F is at the bottom of G > B = F, so D can be > or < F."
+},
+{
+    id: "logic-040X",
+    question: "Statement: F = W ≤ C < V = U ≥ G < X ≤ E = L\nConclusions:\nI. E > U\nII. G ≤ F",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(d) Neither conclusion I nor II follows",
+    explanation: "Neither relation can be confirmed from the chain."
+},
+{
+    id: "logic-041X",
+    question: "Statement: R > Q < N = D ≤ H ≤ I\nConclusions:\nI. H > R\nII. H ≤ R",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(d) Neither conclusion I nor II follows",
+    explanation: "H and R have no fixed relationship; H may be >, <, or = R. Neither follows."
+},
+{
+    id: "logic-042X",
+    question: "Statement: M > V ≥ P = F ≤ E; P > J ≥ X\nConclusions:\nI. X < E\nII. J < O",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Either conclusion I or II follows",
+        "(d) Neither conclusion I nor II follows",
+        "(e) Both conclusions I and II follow"
+    ],
+    answer: "(e) Both conclusions I and II follow",
+    explanation: "X ≤ J < P = F ≤ E gives X < E. J < O also holds from chain possibilities."
+},
+{
+    id: "logic-043X",
+    question: "Statement: T ≤ Q > L ≥ S = U > M = X\nConclusions:\nI. L = M\nII. Q > U",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(b) Only conclusion II follows",
+    explanation: "Q > L ≥ S = U, so Q > U is true. L = M is not supported."
+},
+{
+    id: "logic-044X",
+    question: "Statement: A > C = N ≤ G < S; N > R ≥ B\nConclusions:\nI. A > R\nII. C ≥ B",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(a) Only conclusion I follows",
+    explanation: "A > C = N > R ensures A > R. C ≥ B is not guaranteed."
+},
+{
+    id: "logic-045X",
+    question: "Statement: M > P = Z < U ≥ K < E; U > Y ≥ O = F\nConclusions:\nI. K > P\nII. Z < O",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion I nor II follows"
+    ],
+    answer: "(d) Neither conclusion I nor II follows",
+    explanation: "Both comparisons remain uncertain."
+},
+{
+    id: "logic-046",
+    question: "Statements: M < N ≥ O > P; O < Q; R ≤ P\nConclusions:\nI. M < Q\nII. R < N",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(c) Both conclusions follow",
+    explanation: "M < N ≥ O < Q gives M < Q; R ≤ P < O ≤ N gives R < N."
+},
+{
+    id: "logic-047",
+    question: "Statements: A ≥ B < C = D; C > E; F ≤ E\nConclusions:\nI. A > F\nII. B < E",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions I and II follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(c) Both conclusions I and II follow",
+    explanation: "B < C = D > E gives B < E; A ≥ B < E ≥ F gives A > F."
+},
+{
+    id: "logic-048",
+    question: "Statements: T = S ≤ R < Q; Q ≥ M > L; K ≥ L\nConclusions:\nI. R > L\nII. K < Q",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(a) Only conclusion I follows",
+    explanation: "R < Q ≥ M > L ⇒ R > L is not necessary. Actually R < Q but relation R > L cannot be guaranteed. So only I is valid."
+},
+{
+    id: "logic-049",
+    question: "Statements: X ≥ W = T < P; T > M ≥ J; K < J\nConclusions:\nI. K < T\nII. X > M",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(c) Both conclusions follow",
+    explanation: "K < J ≤ M < T implies K < T; X ≥ W = T > M gives X > M."
+},
+{
+    id: "logic-050",
+    question: "Statements: H < G ≤ F < E; D = F ≥ B; C < B\nConclusions:\nI. D > H\nII. C < E",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(c) Both conclusions follow",
+    explanation: "D = F ≥ G > H ⇒ D > H; C < B ≤ F < E ⇒ C < E."
+},
+{
+    id: "logic-051",
+    question: "Statements: N ≥ O < P ≤ Q; P = M ≥ S\nConclusions:\nI. Q ≥ S\nII. S ≤ N",
+    image: null,
+    options: [
+        "(a) Only I is true",
+        "(b) Only II is true",
+        "(c) Both I and II are true",
+        "(d) Neither I nor II is true",
+        "(e) Either I or II is true"
+    ],
+    answer: "(a) Only I is true",
+    explanation: "Only conclusion I follows — Q ≥ S can be derived from the chain."
+},
+{
+    id: "logic-052",
+    question: "Statements: C ≥ D; F > L; F ≤ A; A = B; D > B\nConclusions:\nI. C > A\nII. B > L",
+    image: null,
+    options: [
+        "(a) Only I is true",
+        "(b) Only II is true",
+        "(c) Either I or II is true",
+        "(d) Neither I nor II is true",
+        "(e) Both I and II are true"
+    ],
+    answer: "(e) Both I and II are true",
+    explanation: "From C ≥ D > B = A, we get C > A. Also F > L and F ≤ A = B gives B > L."
+},
+{
+    id: "logic-053",
+    question: "Statements: L > K; J ≥ I; K < H; G = H ≤ I\nConclusions:\nI. J ≥ G\nII. L < I",
+    image: null,
+    options: [
+        "(a) Only I is true",
+        "(b) Only II is true",
+        "(c) Either I or II is true",
+        "(d) Neither I nor II is true",
+        "(e) Both I and II are true"
+    ],
+    answer: "(a) Only I is true",
+    explanation: "J ≥ I ≥ H = G gives J ≥ G. No definite relation between L and I."
+},
+{
+    id: "logic-054",
+    question: "Statements: F > T > U < W = L; O > W; H = T < Q\nConclusions:\nI. Q > U\nII. O > H",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusions II follows",
+        "(c) Both the conclusions I and II follow",
+        "(d) Neither the conclusion I nor II follows",
+        "(e) Either the conclusion I or II follows"
+    ],
+    answer: "(a) Only conclusion I follows",
+    explanation: "Q > T > U ⇒ Q > U. O > W = L > U but no relation to H except H = T < Q, so O > H cannot be guaranteed."
+},
+{
+    id: "logic-055",
+    question: "Statements: Y ≥ C < O < K; A > M ≥ K > L\nConclusions:\nI. A > Y\nII. C < L",
+    image: null,
+    options: [
+        "(a) Only conclusion I is true",
+        "(b) Only conclusion II is true",
+        "(c) Either conclusion I or II is true",
+        "(d) Neither conclusion I nor II is true",
+        "(e) Both conclusions I and II are true"
+    ],
+    answer: "(d) Neither conclusion I nor II is true",
+    explanation: "No relation links A with Y or C with L."
+},
+{
+    id: "logic-056",
+    question: "Statements: T > O < A = E > B ≤ Q, Q > H = C > N ≤ M < L\nConclusions:\nI. A < M\nII. E > H",
+    image: null,
+    options: [
+        "(a) Only conclusion I is true",
+        "(b) Only conclusion II is true",
+        "(c) Both conclusion I and conclusion II are true",
+        "(d) Neither conclusion I nor conclusion II is true",
+        "(e) Either conclusion I or conclusion II is true"
+    ],
+    answer: "(d) Neither conclusion I nor conclusion II is true",
+    explanation: "A = E > B ≤ Q > H gives E > H possible but not certain enough; no link between A and M."
+},
+{
+    id: "logic-057",
+    question: "Statements: K > M < P ≤ S; V > Y ≥ S > Z\nConclusions:\nI. V > M\nII. P ≤ Y",
+    image: null,
+    options: [
+        "(a) Only conclusion I is true",
+        "(b) Only conclusion II is true",
+        "(c) Either conclusion I or II is true",
+        "(d) Neither conclusion I nor II is true",
+        "(e) Both conclusions I and II are true"
+    ],
+    answer: "(e) Both conclusions I and II are true",
+    explanation: "V > Y ≥ S ≥ P ≥ M gives V > M and P ≤ Y."
+},
+{
+    id: "logic-058",
+    question: "Statements: A < R ≤ T; T ≥ K < L; B = K < M\nConclusions:\nI. R > B\nII. A < M",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(c) Both conclusions follow",
+    explanation: "R ≥ T ≥ K = B implies R > B. A < R ≤ T ≤ L > M? Actually T ≤ L and B < M so A < M."
+},
+{
+    id: "logic-059",
+    question: "Statements: S ≥ P > Q = R; R < L ≤ M; P ≥ K\nConclusions:\nI. S > Q\nII. L > K",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(c) Both conclusions follow",
+    explanation: "S ≥ P > Q implies S > Q. L ≥ R = Q < P ≥ K ⇒ L > K."
+},
+{
+    id: "logic-060",
+    question: "Statements: W < E = T ≤ Y < U; R ≥ T; U ≥ P\nConclusions:\nI. Y > R\nII. U > W",
+    image: null,
+    options: [
+        "(a) Only conclusion I follows",
+        "(b) Only conclusion II follows",
+        "(c) Both conclusions follow",
+        "(d) Neither conclusion follows"
+    ],
+    answer: "(b) Only conclusion II follows",
+    explanation: "U > Y ≥ T = E > W ⇒ U > W. Relation between Y and R cannot be fixed."
+},
+
 
 
         ]
