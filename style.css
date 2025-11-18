@@ -609,3 +609,69 @@ select, input[type="number"] {
     font-size: 1.1em;
     cursor: pointer;
 }
+/*
+ * ============================================
+ * SECTION: 10. OPTION SELECTION OVERRIDES
+ * DESCRIPTION: Improves visual feedback for checked options.
+ * ============================================
+ */
+
+/* Target the option label when the hidden radio input is checked */
+.option-input:checked + .option-text {
+    /* The original implementation applied styling to .option-text span. */
+    /* Let's redefine the styling to apply to the parent .option-label for better visual coverage. */
+}
+
+/* * OVERRIDE: Apply the primary style directly to the parent label 
+ * when the nested radio input is checked.
+ */
+.option-input:checked + .option-text-wrapper {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white; /* Ensure text is white for contrast */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+    transform: scale(1.01); /* Subtle lift on selection */
+}
+
+/* * IMPORTANT: We need to modify the structure of the option rendering in index.html/script.js 
+ * or specifically target the parent of the input element that gets selected.
+ * * Assuming the original HTML structure is:
+ * <label class="option-label">
+ * <input type="radio" class="option-input" ...>
+ * <span class="option-text">Option text</span> 
+ * </label>
+ * * The following CSS targets the parent label directly for the biggest impact:
+ */
+
+.option-label {
+    /* Added transition for smooth hover/check effect */
+    transition: all 0.25s ease-out;
+}
+
+.option-input:checked ~ .option-text {
+    /* If your script uses the adjacent sibling selector (~) targeting .option-text: */
+    background-color: var(--primary-color); 
+    border-color: var(--primary-color);
+    color: white; 
+    font-weight: 500;
+}
+
+/* **Recommended Approach (Targets the label):** */
+.option-label:has(.option-input:checked) {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white; 
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+    transform: scale(1.005);
+}
+
+/* Ensure the text within the label is white when the label is checked */
+.option-label:has(.option-input:checked) .option-text {
+    color: white;
+}
+
+/* Reset hover effect for the checked state */
+.option-label:has(.option-input:checked):hover {
+    background-color: var(--primary-color); /* No color shift on hover when checked */
+    border-color: var(--primary-color);
+}
