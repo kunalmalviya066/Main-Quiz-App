@@ -7,7 +7,7 @@
 
 // --- 0. SECURITY & CONFIGURATION ---
 const MASTER_PASSWORD = "BankMock"; 
-const ADMIN_PASSWORD = "MalviyaInternational@987654321#12345"; // New Admin Password
+const ADMIN_PASSWORD = "Admin@123"; // New Admin Password
 const AUTH_KEY = "quizAppAuthenticated";
 
 // --- 1. APPLICATION STATE MANAGEMENT ---
