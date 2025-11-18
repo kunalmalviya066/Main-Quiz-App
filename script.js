@@ -6,7 +6,7 @@
  */
 
 // --- 0. SECURITY & CONFIGURATION ---
-const MASTER_PASSWORD = "govuser123"; 
+const MASTER_PASSWORD = "BankMock"; 
 const AUTH_KEY = "quizAppAuthenticated"; // Key for localStorage flag
 
 // --- 1. APPLICATION STATE MANAGEMENT ---
@@ -130,7 +130,7 @@ function handleLogin() {
         localStorage.setItem(AUTH_KEY, 'true'); 
         navigateTo('home', true);
     } else {
-        DOM.loginError.textContent = 'Invalid Password. Please try again.';
+        DOM.loginError.textContent = 'Invalid Password. Please try again.(or contact owner)';
         DOM.loginError.classList.remove('hidden');
         DOM.passwordInput.value = '';
     }
