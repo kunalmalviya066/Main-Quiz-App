@@ -262,38 +262,53 @@ document.getElementById("finish-quiz").onclick = () => {
 
 /* ------------------- TIMER ------------------- */
 function startTimer() {
-  clearInterval(quizTimer);
-  quizTimer = setInterval(() => {
-    remainingSeconds--;
-    updateTimer();
-    if (remainingSeconds <= 0) submitQuiz();
-  }, 1000);
+clearInterval(quizTimer);
+quizTimer = setInterval(() => {
+remainingSeconds--;
+updateTimer();
+if (remainingSeconds <= 0) submitQuiz();
+}, 1000);
 }
 
+
 function updateTimer() {
-  const mm = Math.floor(remainingSeconds / 60).toString().padStart(2, "0");
-  const ss = (remainingSeconds % 60).toString().padStart(2, "0");
-  document.getElementById("timer-display").textContent = `${mm}:${ss}`;
+const mm = Math.floor(remainingSeconds / 60).toString().padStart(2, "0");
+const ss = (remainingSeconds % 60).toString().padStart(2, "0");
+document.getElementById("timer-display").textContent = `${mm}:${ss}`;
 }
+
 
 /* PAUSE/RESUME */
 document.getElementById("timer-pause").onclick = () => pauseQuiz();
 document.getElementById("timer-resume").onclick = () => resumeQuiz();
 document.getElementById("overlay-resume").onclick = () => resumeQuiz();
 
+
 function pauseQuiz() {
-  clearInterval(quizTimer);
-  document.getElementById("pause-overlay").classList.remove("hidden");
-  document.getElementById("timer-pause").classList.add("hidden");
-  document.getElementById("timer-resume").classList.remove("hidden");
+clearInterval(quizTimer);
+document.getElementById("pause-overlay").classList.remove("hidden");
+document.getElementById("timer-pause").classList.add("hidden");
+document.getElementById("timer-resume").classList.remove("hidden");
 }
 
+
 function resumeQuiz() {
-  document.getElementById("pause-overlay").classList.add("hidden");
-  document.getElementById("timer-pause").classList.remove("hidden");
-  document.getElementById("timer-resume").classList.add("hidden");
-  startTimer();
+document.getElementById("pause-overlay").classList.add("hidden");
+document.getElementById("timer-pause").classList.remove("hidden");
+document.getElementById("timer-resume").classList.add("hidden");
+startTimer();
 }
+
+
+/* TAB SWITCH AUTO-PAUSE */
+document.addEventListener("visibilitychange", () => {
+if (!quizState) return;
+// Ignore visibility change events that happen immediately after starting a quiz
+if (Date.now() - quizStartTimeStamp < 1000) return;
+
+
+if (document.hidden) pauseQuiz();
+});
 
 /* TAB SWITCH AUTO-PAUSE */
 document.addEventListener("visibilitychange", () => {
