@@ -186,81 +186,102 @@
         </section>
 
         <section id="help" class="view hidden">
-            <h2 class="view-title"><i class="fas fa-question-circle"></i> Help & Instructions</h2>
-            <div class="help-content">
-                <p>🎯 Key Features and Selling Points
-1. Zero Downtime & Local Storage 💾
-Offline Mode: Practice anytime, anywhere. All questions and logic are stored locally on your device.
+    <h2 class="view-title"><i class="fas fa-question-circle"></i> Help & Instructions</h2>
+    <div class="help-content">
 
-Persistent History: All your quiz results, detailed scores, and review data are saved securely in your browser's Local Storage, ensuring your progress is never lost.
+        <h3>🎯 Key Features and Selling Points</h3>
+        <ol class="feature-list">
+            <li>
+                <h4>Zero Downtime & Local Storage 💾</h4>
+                <ul>
+                    <li>**Offline Mode:** Practice anytime, anywhere. All questions and logic are stored locally on your device.</li>
+                    <li>**Persistent History:** All your quiz results, detailed scores, and review data are saved securely in your browser's **Local Storage**, ensuring your progress is never lost.</li>
+                </ul>
+            </li>
 
-2. Flexible Practice Modes 📚
-The app offers three distinct practice modes tailored to different stages of preparation:
+            <li>
+                <h4>Flexible Practice Modes 📚</h4>
+                <p>The app offers three distinct practice modes tailored to different stages of preparation:</p>
+                <ul>
+                    <li>**Subject Practice:** Focus on specific areas. Users can select a **Subject** (e.g., *History*), choose precise **Topics** (e.g., *Mughal Empire*), and set a custom number of questions and time limit.</li>
+                    <li>**Daily Quiz:** Perfect for quick revision. This mode selects a random mix of questions across all subjects and topics from the database.</li>
+                    <li>**Full Mock Test:** Simulates the actual exam experience subject-wise, pulling a large, randomized set of questions from all topics within a chosen subject.</li>
+                </ul>
+            </li>
 
-Subject Practice: Focus on specific areas. Users can select a Subject (e.g., History), choose precise Topics (e.g., Mughal Empire), and set a custom number of questions and time limit.
+            <li>
+                <h4>Authentic Exam Interface & Controls 📝</h4>
+                <ul>
+                    <li>**Split-Screen UI:** The active quiz interface is divided into two intuitive sections: **Question Area** (for reading the question and selecting options) and **Question Navigator** (for quick jumping between questions).</li>
+                    <li>**Standard Controls:** Includes **Previous/Next** navigation, **Mark for Review**, and a **Clear Answer** option to reset a selection.</li>
+                    <li>**Live Timer:** A visible timer keeps track of the time remaining, with **Pause** and **Resume** functionality.</li>
+                </ul>
+            </li>
 
-Daily Quiz: Perfect for quick revision. This mode selects a random mix of questions across all subjects and topics from the database.
+            <li>
+                <h4>Anti-Cheating Measures 🛑</h4>
+                <ul>
+                    <li>**Focus Constraint:** If a user attempts to pause the quiz and switch tabs or minimize the window, the application displays a full-screen **"black screen" overlay**. The user must click **Resume** to regain focus and continue the quiz, simulating the strict environment of a physical exam.</li>
+                </ul>
+            </li>
 
-Full Mock Test: Simulates the actual exam experience subject-wise, pulling a large, randomized set of questions from all topics within a chosen subject.
+            <li>
+                <h4>Comprehensive Analysis & Review 📊</h4>
+                <ul>
+                    <li>**Detailed Scorecard:** Upon submission, receive a breakdown of your score, including **Correct, Wrong, Attempted, Unattempted** questions, and **Accuracy** (calculated only on attempted questions).</li>
+                    <li>**In-depth Review:** View every question after the quiz with the following details:
+                        <ol type="a">
+                            <li>Your Selected Answer vs. the Correct Answer.</li>
+                            <li>A Detailed Explanation for the correct solution.</li>
+                        </ol>
+                    </li>
+                    <li>**History Management:** The **Result Summary** section allows you to **View Details** (re-open the detailed review) and **Delete** individual past attempts.</li>
+                </ul>
+            </li>
+        </ol>
 
-3. Authentic Exam Interface & Controls 📝
-Split-Screen UI: The active quiz interface is divided into two intuitive sections: Question Area (for reading the question and selecting options) and Question Navigator (for quick jumping between questions).
+        <hr>
 
-Standard Controls: Includes Previous/Next navigation, Mark for Review, and a Clear Answer option to reset a selection.
+        <h3>📖 Instructions for Use</h3>
 
-Live Timer: A visible timer keeps track of the time remaining, with Pause and Resume functionality.
+        <h4>A. Accessing the Application</h4>
+        <ul>
+            <li>**Security Gate:** Since this is a restricted practice tool, you must pass a simple client-side **Password Gate** on launch.
+                <ul>
+                    <li>**Master Password:** <code>govuser123</code> (Note: This access persists in your browser; you won't need to enter it again until you clear your browser data.)</li>
+                </ul>
+            </li>
+            <li>**Navigation:** Use the links in the header (Subject Practice, Daily Quiz, Full Mock) or the corresponding cards on the Home screen to navigate.</li>
+        </ul>
 
-4. Anti-Cheating Measures 🛑
-Focus Constraint: If a user attempts to pause the quiz and switch tabs or minimize the window, the application displays a full-screen "black screen" overlay. The user must click Resume to regain focus and continue the quiz, simulating the strict environment of a physical exam.
+        <h4>B. Starting a Quiz Session</h4>
+        <ol>
+            <li>**Select Mode:** Go to the desired section (e.g., Subject Practice).</li>
+            <li>**Configure:** Use the dropdowns to select your **Subject** and check the boxes for the desired **Topics**.</li>
+            <li>**Set Parameters:** Input the **Number of Questions** and the **Time Limit (in minutes)**.</li>
+            <li>**Start:** Click the **Start [Mode Name] Quiz** button.</li>
+        </ol>
 
-5. Comprehensive Analysis & Review 📊
-Detailed Scorecard: Upon submission, receive a breakdown of your score, including Correct, Wrong, Attempted, Unattempted questions, and Accuracy (calculated only on attempted questions).
+        <h4>C. During the Quiz</h4>
+        <ul>
+            <li>**Answering:** Click on the radio button next to your chosen option.</li>
+            <li>**Navigation:** Use the **Next** and **Previous** buttons at the bottom, or click any numbered button in the **Question Navigator** panel on the right.</li>
+            <li>**Reviewing:** Click **Mark for Review** to flag a question. This highlights the question number in the navigator for easy return later.</li>
+            <li>**Exiting:** To finish, click **Finish & Submit** (available on the last question) or the **Submit Quiz** button in the navigator panel. **Warning:** Attempting to navigate away or close the app while the quiz is active will prompt you to **Cancel the quiz**, losing all current progress.</li>
+        </ul>
 
-In-depth Review: View every question after the quiz with the following details:
+        <hr>
 
-Your Selected Answer vs. the Correct Answer.
+        <h3>📞 Support & Feedback</h3>
+        <p>If you encounter any issues, have suggestions for new features, or need assistance, please contact us!</p>
+        <ul>
+            <li>**Support Email:** <a href="mailto:support@govquizapp.com">support@govquizapp.com</a></li>
+            <li>**Help Documentation:** [Link to Online Documentation (if created)]</li>
+            <li>**Project GitHub/Source Code Link:** [Link to Project Repository (if available)]</li>
+        </ul>
 
-A Detailed Explanation for the correct solution.
-
-History Management: The Result Summary section allows you to View Details (re-open the detailed review) and Delete individual past attempts.
-
-📖 Instructions for Use
-A. Accessing the Application
-Security Gate: Since this is a restricted practice tool, you must pass a simple client-side Password Gate on launch.
-
-Master Password: govuser123 (Note: This access persists in your browser; you won't need to enter it again until you clear your browser data.)
-
-Navigation: Use the links in the header (Subject Practice, Daily Quiz, Full Mock) or the corresponding cards on the Home screen to navigate.
-
-B. Starting a Quiz Session
-Select Mode: Go to the desired section (e.g., Subject Practice).
-
-Configure: Use the dropdowns to select your Subject and check the boxes for the desired Topics.
-
-Set Parameters: Input the Number of Questions and the Time Limit (in minutes).
-
-Start: Click the Start [Mode Name] Quiz button.
-
-C. During the Quiz
-Answering: Click on the radio button next to your chosen option.
-
-Navigation: Use the Next and Previous buttons at the bottom, or click any numbered button in the Question Navigator panel on the right.
-
-Reviewing: Click Mark for Review to flag a question. This highlights the question number in the navigator for easy return later.
-
-Exiting: To finish, click Finish & Submit (available on the last question) or the Submit Quiz button in the navigator panel. Warning: Attempting to navigate away or close the app while the quiz is active will prompt you to Cancel the quiz, losing all current progress.
-
-📞 Support & Feedback
-If you encounter any issues, have suggestions for new features, or need assistance, please contact us!
-
-Support Email: support@govquizapp.com
-
-Help Documentation: [Link to Online Documentation (if created)]
-
-Project GitHub/Source Code Link: [Link to Project Repository (if available)]</p>
-                </div>
-        </section>
-
+    </div>
+</section>
     </main>
 
     <div id="quiz-restriction-modal" class="modal hidden">
