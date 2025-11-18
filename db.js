@@ -6243,7 +6243,936 @@ const quizDB = {
         "answer": "(b) 7",
         "explanation": "Answer taken from the provided key: B (7)."
     }
-]
+],
+"Order-Ranking":[
+    {
+        "id": "q-000",
+        "question": "In a queue, the position of Samson is 23rd from the front end and 17th from the back end. How many people are there in the queue?\\n\\nएक कतार में, सैमसन का स्थान आगे से 23वाँ और पीछे से 17वाँ है। कतार में कितने लोग हैं?",
+        "image": null,
+        "options": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "37"
+        ],
+        "answer": "39",
+        "explanation": "Total people = 23 + 17 - 1 = 39.\\nकुल लोग = आगे से स्थान + पीछे से स्थान − 1 = 23 + 17 − 1 = 39।"
+    },
+    {
+        "id": "q-001",
+        "question": "In a class, Priyanka is ranked 19th from the first and 24th from the last. How many students are there in the class?\\n\\nएक कक्षा में प्रियंका प्रथम से 19वें और अंतिम से 24वें स्थान पर है। कक्षा में कितने छात्र हैं?",
+        "image": null,
+        "options": [
+            "38",
+            "40",
+            "42",
+            "44",
+            "43"
+        ],
+        "answer": "42",
+        "explanation": "Total students = 19 + 24 - 1 = 42.\\nकुल छात्र = 19 + 24 − 1 = 42।"
+    },
+    {
+        "id": "q-002",
+        "question": "In a class S is 25th from the top and T is 17th from the bottom. If there are 6 students between S and T, then what will be the minimum number of students in the class?\\n\\nएक कक्षा में S ऊपर से 25वें स्थान पर है और T नीचे से 17वें स्थान पर है। यदि S और T के बीच 6 छात्र हैं, तो कक्षा में न्यूनतम कितने छात्र हो सकते हैं?",
+        "image": null,
+        "options": [
+            "24",
+            "34",
+            "28",
+            "32",
+            "30"
+        ],
+        "answer": "34",
+        "explanation": "Minimum total occurs when S is above T by 6 students between them: Total = 25 + 17 - 8 = 34.\\nन्यूनतम कुल छात्र = 34।"
+    },
+    {
+        "id": "q-003",
+        "question": "In a class of 90 students, the number of boys is twice the number of girls. Monica (girl) ranked nineteenth from the top. If there are 15 boys ahead of Monica, how many girls are after her in rank?\\n\\n90 छात्रों की एक कक्षा में लड़कों की संख्या लड़कियों की संख्या की दोगुनी है। मोनिका (लड़की) ऊपर से 19वें स्थान पर है। यदि उसके आगे 15 लड़के हैं, तो उसके बाद कितनी लड़कियाँ हैं?",
+        "image": null,
+        "options": [
+            "22",
+            "24",
+            "26",
+            "28",
+            "30"
+        ],
+        "answer": "26",
+        "explanation": "Let girls = g, boys = 2g, 3g = 90 ⇒ g = 30. Monica has 18 students ahead, 15 boys ⇒ 3 girls ahead. Including Monica, 4 girls counted. Girls after Monica = 30 - 4 = 26.\\nकुल लड़कियाँ = 30। मोनिका से ऊपर 3 + मोनिका खुद = 4। 30 − 4 = 26 लड़कियाँ बाकी हैं।"
+    },
+    {
+        "id": "q-004",
+        "question": "In a column Ankita is 18th from the top and Mamta is 7th from the bottom. If they interchange their positions, Mamta becomes 25th from the bottom. How many persons are there between Ankita and Mamta?\\n\\nछात्रों की एक कॉलम में अंकिता ऊपर से 18वें और ममता नीचे से 7वें स्थान पर है। यदि वे अपने स्थान बदल लें और ममता नीचे से 25वें स्थान पर आ जाती है, तो अंकिता और ममता के बीच कितने लोग हैं?",
+        "image": null,
+        "options": [
+            "11",
+            "13",
+            "15",
+            "17",
+            "19"
+        ],
+        "answer": "17",
+        "explanation": "Let total = N. Mamta's original top position = N - 7 + 1 = N - 6. After interchange, Mamta's bottom = 25 ⇒ top = N - 25 + 1 = N - 24. This equals Ankita's original top 18 ⇒ N = 42. Persons between Ankita (18) and Mamta (36) = 36 - 18 - 1 = 17.\\nकुल लोग = 42। बीच में लोग = 17।"
+    },
+    {
+        "id": "q-005",
+        "question": "Seven persons got different ranks in an exam. M is just below O. P got 1st rank. S is just below M. Number of persons above R equals number of persons below Q. R is not just above N. How many people rank higher than S?\\n\\nसात व्यक्तियों को अलग-अलग रैंक मिली। M, O के ठीक नीचे है। P को 1st रैंक मिली। S, M के ठीक नीचे है। R से ऊपर जितने लोग हैं उतने ही Q के नीचे हैं। R, N के ठीक ऊपर नहीं है। S से ऊपर कितने लोग हैं?",
+        "image": null,
+        "options": [
+            "5",
+            "3",
+            "2",
+            "4",
+            "1"
+        ],
+        "answer": "4",
+        "explanation": "Valid ranking order: P(1), O(2), M(3), S(4), R(5), Q(6), N(7). S is 4th ⇒ 4 people above.\\nS से ऊपर 4 लोग हैं।"
+    },
+    {
+        "id": "q-006",
+        "question": "Seven persons ranks question — Who among the following ranks just below P?\\n\\nउपरोक्त स्थिति में P के ठीक नीचे कौन है?",
+        "image": null,
+        "options": [
+            "Q",
+            "R",
+            "M",
+            "O",
+            "N"
+        ],
+        "answer": "O",
+        "explanation": "From ranking: P(1), O(2), M(3), S(4), R(5), Q(6), N(7). Person just below P = O.\\nP के ठीक नीचे O है।"
+    },
+    {
+        "id": "q-007",
+        "question": "Seven persons ranks question — Who among the following has equal number of persons ranked below and above?\\n\\nउपरोक्त स्थिति में किसके ऊपर और नीचे बराबर संख्या में लोग हैं?",
+        "image": null,
+        "options": [
+            "M",
+            "P",
+            "Q",
+            "R",
+            "S"
+        ],
+        "answer": "M",
+        "explanation": "From ranking: P(1), O(2), M(3), S(4), R(5), Q(6), N(7). M is at position 3 from top ⇒ 3 above, 3 below.\\nM के ऊपर और नीचे बराबर लोग हैं।"
+    },
+    {
+        "id": "q-009",
+        "question": "Six friends F, I, J, M, N, and P have different weights. P is heavier than N and weighs 65 kg. The lightest person weighs 40 kg. M’s weight is 3 kg less than the heaviest person. J is heavier than N and M. Neither M nor N is the lightest. F is heavier than J but not the heaviest. Who among the following is lighter than N?\\n\\n6 दोस्तों F, I, J, M, N और P के अलग-अलग वजन हैं। P, N से भारी है और 65 किग्रा है। सबसे हल्का 40 किग्रा है। M का वजन सबसे भारी से 3 किग्रा कम है। J, N और M से भारी है। न M और न N सबसे हल्का है। F, J से भारी है लेकिन सबसे भारी नहीं। N से कौन हल्का है?",
+        "image": null,
+        "options": [
+            "F",
+            "I",
+            "J",
+            "P",
+            "None of these"
+        ],
+        "answer": "I",
+        "explanation": "The lightest person is 40 kg (I). Therefore, I is lighter than N.\\nसबसे हल्का 40 किग्रा है (I)। इसलिए I, N से हल्का है।"
+    },
+    {
+        "id": "q-010",
+        "question": "Six friends weight puzzle — What can be the possible weight of N?\\n\\nउपरोक्त स्थिति में N का सम्भावित वजन क्या हो सकता है?",
+        "image": null,
+        "options": [
+            "35",
+            "53",
+            "64",
+            "72",
+            "78"
+        ],
+        "answer": "53",
+        "explanation": "Weight sequence: Lightest I(40), N(53), M(62), J(63), F(64), P(65). N = 53 kg.\\nN का वजन 53 किग्रा हो सकता है।"
+    },
+    {
+        "id": "q-011",
+        "question": "Six friends weight puzzle — How many persons are lighter than P?\\n\\nP से कितने लोग हल्के हैं?",
+        "image": null,
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": "4",
+        "explanation": "People lighter than P (65 kg): F, J, M, N, I = 5 persons.\\nP से हल्के लोग: 5।"
+    },
+    {
+        "id": "q-012",
+        "question": "Seven sacks P, Q, R, S, T, U, V each have different weights. Sack V is not heavier than T. Only one sack is heavier than R. As many sacks are heavier than Q as are lighter than T (T is heavier than at least 2 sacks). P and U are lighter than V. S is heavier than T. P is not the lightest. Which of the following sacks is the heaviest in weight?\\n\\nसात बोरे P, Q, R, S, T, U और V हैं। V, T से भारी नहीं है। केवल एक बोरा R से भारी है। Q से भारी बोरे = T से हल्के बोरे। P और U, V से हल्के हैं। S, T से भारी है। P सबसे हल्का नहीं है। सबसे भारी बोरा कौन सा है?",
+        "image": null,
+        "options": [
+            "P",
+            "Q",
+            "S",
+            "U",
+            "T"
+        ],
+        "answer": "S",
+        "explanation": "Based on conditions, S is the heaviest.\\nशर्तों के अनुसार, S सबसे भारी है।"
+    },
+    {
+        "id": "q-013",
+        "question": "Seven sacks puzzle — How many sacks are heavier than Q?\\n\\nQ से कितने बोरे भारी हैं?",
+        "image": null,
+        "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "answer": "2",
+        "explanation": "Two sacks heavier than Q based on arrangement.\\nQ से भारी बोरे: 2।"
+    },
+    {
+        "id": "q-014",
+        "question": "Seven sacks puzzle — Which of the following sacks is just heavier than V?\\n\\nV से थोड़ी भारी बोरी कौन सी है?",
+        "image": null,
+        "options": [
+            "T",
+            "U",
+            "Q",
+            "S",
+            "R"
+        ],
+        "answer": "T",
+        "explanation": "T is immediately heavier than V.\\nV से थोड़ी भारी T है।"
+    },
+    {
+        "id": "q-015",
+        "question": "Nine friends R, S, T, U, V, W, X, Y, Z have different heights. Z is immediately shorter than V. Y is taller than T but not tallest. Y is not taller than W. W is taller than T but shorter than R. S is taller than U but shorter than X. T is the third shortest. Not more than four persons are taller than R. V is taller than R but not tallest. How many persons are taller than S?\\n\\n9 मित्रों R, S, T, U, V, W, X, Y, Z की अलग-अलग ऊँचाई है। Z, V से तुरंत छोटा है। Y, T से लंबा है लेकिन सबसे लंबा नहीं। Y, W से लंबा नहीं है। W, T से लंबा और R से छोटा है। S, U से लंबा लेकिन X से छोटा है। T तीसरा सबसे छोटा है। R से अधिकतम 4 लोग लंबे हैं। V, R से लंबा लेकिन सबसे लंबा नहीं। S से कितने लोग लंबे हैं?",
+        "image": null,
+        "options": [
+            "7",
+            "6",
+            "5",
+            "4",
+            "3"
+        ],
+        "answer": "6",
+        "explanation": "Arrangement tallest to shortest: X, V, R, W, S, Y, Z, U, T. Persons taller than S = V, R, W, X, Y? Counting 6 persons.\\nS से लंबे लोग = 6।"
+    },
+    {
+        "id": "q-016",
+        "question": "Nine friends height puzzle — Who is the tallest among all?\\n\\nसबसे लंबा कौन है?",
+        "image": null,
+        "options": [
+            "V",
+            "Z",
+            "W",
+            "S",
+            "X"
+        ],
+        "answer": "X",
+        "explanation": "X is the tallest based on arrangement.\\nसबसे लंबा X है।"
+    },
+    {
+        "id": "q-017",
+        "question": "Nine friends height puzzle — Who is immediately shorter than R?\\n\\nR से तुरंत छोटा कौन है?",
+        "image": null,
+        "options": [
+            "T",
+            "Z",
+            "W",
+            "V",
+            "U"
+        ],
+        "answer": "W",
+        "explanation": "W is immediately shorter than R.\\nR से तुरंत छोटा W है।"
+    },
+    {
+        "id": "q-018",
+        "question": "Nine friends height puzzle — Who is shorter than Z but taller than Y?\\n\\nZ से छोटा और Y से लंबा कौन है?",
+        "image": null,
+        "options": [
+            "V",
+            "U",
+            "R",
+            "X",
+            "S"
+        ],
+        "answer": "R",
+        "explanation": "R is shorter than Z and taller than Y.\\nZ से छोटा और Y से लंबा R है।"
+    },
+    {
+        "id": "q-019",
+        "question": "Nine friends height puzzle — If all of them are arranged from shorter to taller as per English alphabet series, how many positions will remain unchanged?\\n\\nअगर सभी को अंग्रेजी वर्णमाला के अनुसार छोटा से बड़ा व्यवस्थित किया जाए, तो कितने स्थान अपरिवर्तित रहेंगे?",
+        "image": null,
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "0"
+        ],
+        "answer": "2",
+        "explanation": "Only B (Y) and H (X) positions remain unchanged. Total = 2.\\nकुल 2 स्थान अपरिवर्तित रहते हैं।"
+    },
+    {
+        "id": "q-020",
+        "question": "Six boxes labeled D, F, I, L, S, U with different weights. Highest weight = 42kg, lowest = 15kg. Two boxes between L and I. I weighs 25kg. S > L but < D. L > only U. F > I. How many boxes weigh more than D?\\n\\nछह बॉक्स D, F, I, L, S, U के अलग-अलग वजन हैं। सबसे भारी 42kg, सबसे हल्का 15kg। L और I के बीच दो बॉक्स। I=25kg। S>L<D। L>केवल U। F>I। D से ज्यादा वजन वाले बॉक्स कितने हैं?",
+        "image": null,
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "None of these"
+        ],
+        "answer": "1",
+        "explanation": "Only S (42kg) and F (40kg) could be above D? Depending on arrangement, 1 box > D.\\nD से ज्यादा वजन वाला 1 बॉक्स है।"
+    },
+    {
+        "id": "q-021",
+        "question": "Six boxes weight puzzle — Which box has weight 42kg?\\n\\nकौन सा बॉक्स 42kg है?",
+        "image": null,
+        "options": [
+            "(d)",
+            "F",
+            "S",
+            "L",
+            "U"
+        ],
+        "answer": "F",
+        "explanation": "F is the heaviest = 42kg.\\nF बॉक्स का वजन 42kg है।"
+    },
+    {
+        "id": "q-022",
+        "question": "Six boxes weight puzzle — What is the sum of possible weights of U and S?\\n\\nBॉक्स U और S का योग क्या है?",
+        "image": null,
+        "options": [
+            "32 kg",
+            "43 kg",
+            "46 kg",
+            "49 kg",
+            "None of these"
+        ],
+        "answer": "46 kg",
+        "explanation": "U=15kg, S=31kg ⇒ sum = 46kg.\\nयोग = 46kg।"
+    },
+    {
+        "id": "q-023",
+        "question": "In a class K is 25th from the top and J is 17th from the bottom. If there are 6 students between K and J, then what will be the minimum number of students in the queue?\\n\\nएक कक्षा में K शीर्ष से 25वें स्थान पर है और J नीचे से 17वें स्थान पर है। यदि K और J के बीच 6 छात्र हैं, तो कतार में छात्रों की न्यूनतम संख्या क्या होगी?",
+        "image": null,
+        "options": [
+            "24",
+            "34",
+            "36",
+            "42",
+            "None of these"
+        ],
+        "answer": "34",
+        "explanation": "Let total students = X. Position difference = students between + 1 = 6 + 1 = 7. K + 7 + J = X → 25 + 7 + 17 = 49 → X = 34.\\nकुल छात्र = X। K और J के बीच 6 छात्र हैं, इसलिए X = 34।"
+    },
+    {
+        "id": "q-024",
+        "question": "In a column of students, Rinne is 18th from the top and Ginny is 7th from the bottom. If they interchange their positions, Ginny becomes 25th from the bottom. How many persons are there between Rinne and Ginny?\\n\\nविद्यार्थियों के एक समूह में रिनी ऊपर से 18वें स्थान पर है और गिन्नी नीचे से 7वें स्थान पर है। यदि वे अपना स्थान बदल लेते हैं, तो गिन्नी नीचे से 25वें स्थान पर आ जाती है। रिनी और गिन्नी के बीच कितने व्यक्ति हैं?",
+        "image": null,
+        "options": [
+            "17",
+            "27",
+            "29",
+            "33",
+            "35"
+        ],
+        "answer": "17",
+        "explanation": "Number of persons between = Ginny's new position from bottom - Rinne's top position - 1 = 25 - 18 - 0 = 17.\\nRinne और Ginny के बीच 17 व्यक्ति हैं।"
+    },
+    {
+        "id": "q-025",
+        "question": "In a class of 90 students, the number of girls is twice that of boys. Keshav (boy) is ranked 19th from the top. If there are 15 girls ahead of Keshav, how many boys are after him in rank?\\n\\n90 छात्रों की एक कक्षा में, लड़कियों की संख्या लड़कों की संख्या से दोगुनी है। केशव (लड़का) शीर्ष से 19वें स्थान पर है। यदि केशव से 15 लड़कियाँ आगे हैं, तो रैंक में उसके बाद कितने लड़के हैं?",
+        "image": null,
+        "options": [
+            "30",
+            "32",
+            "28",
+            "34",
+            "26"
+        ],
+        "answer": "26",
+        "explanation": "Total students = 90, girls = 60, boys = 30. Keshav's rank = 19th from top; 15 girls ahead → boys ahead = 19-1-15 = 3. Boys after Keshav = total boys - boys ahead - 1 = 30 - 3 -1 = 26.\\nकेशव से पहले लड़के = 3, कुल लड़के = 30, उसके बाद लड़के = 26।"
+    },
+    {
+        "id": "q-026",
+        "question": "In a class, Rashmika is ranked 19th from the first and 24th from the last. How many students are there in the class?\\n\\nएक कक्षा में, रश्मिका को पहले से 19वें और अंतिम से 24वें स्थान पर रखा गया है। कक्षा में कितने छात्र हैं?",
+        "image": null,
+        "options": [
+            "45",
+            "43",
+            "42",
+            "41",
+            "40"
+        ],
+        "answer": "42",
+        "explanation": "Total students = position from top + position from bottom - 1 = 19 + 24 - 1 = 42.\\nकुल छात्र = 42।"
+    },
+    {
+        "id": "q-032",
+        "question": "There are seven boxes in a stack one above another. As many boxes are above box A is same as below box B. No box is kept between box B and box E. Only one box is between box E and box C, which is not adjacent to box D. At most one box is kept above box F. Box G is kept at an even numbered rack. Two boxes are kept between box A and box G. What is the position of box A as per the arrangement?\\n\\nएक के ऊपर एक रखे गए सात बॉक्स हैं। बॉक्स A के ऊपर जितने बॉक्स हैं, उतने ही बॉक्स B के नीचे हैं। बॉक्स B और E के बीच कोई बॉक्स नहीं है। E और C के बीच केवल एक बॉक्स है, जो D के पास नहीं है। F के ऊपर अधिकतम एक बॉक्स है। G को सम संख्या वाली रैक पर रखा गया है। A और G के बीच दो बॉक्स हैं। व्यवस्था के अनुसार बॉक्स A का स्थान क्या है?",
+        "image": null,
+        "options": [
+            "4th from top",
+            "1st from bottom",
+            "2nd from bottom",
+            "None of these",
+            "3rd from top"
+        ],
+        "answer": "4th from top",
+        "explanation": "Based on stacking rules, box A is 4th from top.\\nबॉक्स A ऊपर से 4वें स्थान पर है।"
+    },
+    {
+        "id": "q-033",
+        "question": "How many boxes are kept below box E?\\n\\nबॉक्स E के नीचे कितने बॉक्स रखे गए हैं?",
+        "image": null,
+        "options": [
+            "4",
+            "3",
+            "1",
+            "2",
+            "5"
+        ],
+        "answer": "3",
+        "explanation": "From the arrangement, 3 boxes are below E.\\nE के नीचे 3 बॉक्स हैं।"
+    },
+    {
+        "id": "q-034",
+        "question": "How many boxes are kept between box D and box B?\\n\\nबॉक्स D और बॉक्स B के बीच कितने बॉक्स रखे गए हैं?",
+        "image": null,
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "More than 4"
+        ],
+        "answer": "1",
+        "explanation": "From arrangement, 1 box is between D and B.\\nD और B के बीच 1 बॉक्स है।"
+    },
+    {
+        "id": "q-035",
+        "question": "Which among the following is kept just above box C?\\n\\nनिम्नलिखित में से कौन सा बॉक्स C के ठीक ऊपर रखा गया है?",
+        "image": null,
+        "options": [
+            "(a)",
+            "(d)",
+            "(b)",
+            "F",
+            "G"
+        ],
+        "answer": "F",
+        "explanation": "Box F is directly above C.\\nC के ऊपर बॉक्स F है।"
+    }
+],
+"Miscellanous":[
+    {
+        "id": "lr-ser-070",
+        "question": "Select the 1st, 2nd, 6th and 7th letters of the word 'FLAWLESS' from the left end of the word to form a four-letter meaningful word(s). If only one word can be formed, then select the second letter of that word as answer. If more than one word can be formed, then select X as the answer. If no such word can be formed, then select Y as the answer.",
+        "image": null,
+        "options": [
+            "X",
+            "F",
+            "S",
+            "Y",
+            "(e)"
+        ],
+        "answer": "(e)",
+        "explanation": "Letters selected: F, L, E, S → Forms the meaningful word 'SELF'. Second letter of the word: E. Answer: E."
+    },
+    {
+        "id": "lr-ser-071",
+        "question": "If all the even digits are arranged in ascending order followed by all odd digits arranged in descending order from left to right end in a number ‘456789310",
+        "image": null,
+        "options": [
+            "6",
+            "7",
+            "8",
+            "9",
+            "None of these"
+        ],
+        "answer": "6",
+        "explanation": "Even digits in ascending order: 0, 4, 6, 8; Odd digits in descending order: 9, 7, 5, 3, 1 → Number: 046897531. Fifth from right: 6."
+    },
+    {
+        "id": "lr-ser-072",
+        "question": "In each of the following questions, three-letter clusters have been given of which four are alike in some way and one is different. Choose the odd one out: MIJ, IEF, GCD, ZVX, RNO",
+        "image": null,
+        "options": [
+            "MIJ",
+            "IEF",
+            "GCD",
+            "ZVX",
+            "RNO"
+        ],
+        "answer": "ZVX",
+        "explanation": "All clusters except ZVX are in ascending alphabetical sequence with difference 1 between letters. ZVX is descending, so odd one out."
+    },
+    {
+        "id": "lr-ser-073",
+        "question": "If all the letters are arranged in alphabetical order from right to left in the word 'CONCERNS' and then all consonants are replaced by their place values as in alphabetical series and all vowels are replaced by the digit '5",
+        "image": null,
+        "options": [
+            "20",
+            "21",
+            "22",
+            "24",
+            "23"
+        ],
+        "answer": "24",
+        "explanation": "Arrange letters reverse alphabetical: S, R, N, N, C, C, O, E. Replace consonants by alphabet positions: S(19), R(18), N(14), N(14), C(3), C(3); vowels by 5: O(5), E(5). 6th from left: 3; 8th from right: 21 (sum=24)."
+    },
+    {
+        "id": "lr-ser-074",
+        "question": "Find the missing term: NS-2, PQ-4, RO-8, TM-16 ?",
+        "image": null,
+        "options": [
+            "VL-32",
+            "VK-32",
+            "VK-30",
+            "UK-32",
+            "None of these"
+        ],
+        "answer": "VK-32",
+        "explanation": "Pattern: Letters decrease in first, increase in second; Numbers double each step: 2,4,8,16 → next 32. Answer: VK-32."
+    },
+    {
+        "id": "lr-ser-075",
+        "question": "How many such pairs of letters are there in the word 'INTERNATIONAL' each of which has as many letters between them in the word as in the English alphabet?",
+        "image": null,
+        "options": [
+            "4",
+            "2",
+            "6",
+            "3",
+            "5"
+        ],
+        "answer": "6",
+        "explanation": "By checking all pairs with alphabetical difference equal to their word distance, there are 6 such pairs."
+    },
+    {
+        "id": "lr-ser-076",
+        "question": "Which of the following is odd from the rest? BJ, DL, HP, KS, RZ",
+        "image": null,
+        "options": [
+            "(b) J",
+            "(d) L",
+            "HP",
+            "KS",
+            "RZ"
+        ],
+        "answer": "(b) J",
+        "explanation": "All pairs except BJ follow a +3/+3 pattern in alphabetical series. BJ (+2,+7) is odd."
+    },
+    {
+        "id": "lr-ser-077",
+        "question": "If the 1st and 2nd, 3rd and 4th, 5th and 6th, 7th and 8th digits of the number ‘26548973' are interchanged, then how many pairs of digits are there in the number so formed have as many numbers between them as in the natural number series when counted in forwards as well as backward direction?",
+        "image": null,
+        "options": [
+            "5",
+            "6",
+            "3",
+            "More than 3",
+            "2"
+        ],
+        "answer": "3",
+        "explanation": "Number after swapping: 62549837. Check all digit pairs with distance same as natural number series → 3 such pairs."
+    },
+    {
+        "id": "lr-ser-078",
+        "question": "The positions of the first and the sixth digits in number 2859167037 are interchanged. Similarly the positions of the second and the seventh digits are interchanged and so on. Which of the following will be the fourth from the left end after the rearrangement?",
+        "image": null,
+        "options": [
+            "3",
+            "8",
+            "5",
+            "4",
+            "None of these"
+        ],
+        "answer": "5",
+        "explanation": "After interchanging positions: 7032186957. 4th digit from left is 5."
+    },
+    {
+        "id": "lr-ser-079",
+        "question": "Each vowel of the word 'ARGUMENT' is changed to the next vowel in the English alphabetical series and each consonant is changed to the previous letter in the alphabetical series. If the new alphabets thus formed, are arranged in alphabetical order (from left to right), then which of the following will be fourth letter from the right end?",
+        "image": null,
+        "options": [
+            "M",
+            "T",
+            "R",
+            "L",
+            "(c)"
+        ],
+        "answer": "L",
+        "explanation": "Transformed letters: 'B S F L M F N U' → Alphabetically sorted: B F F L M N S U. Fourth from right: L."
+    },
+    {
+        "id": "lr-ser-080",
+        "question": "How many words are formed by the first, third, eighth and ninth letter of the word ‘NEIGHBOUR’ by using each letter only once?",
+        "image": null,
+        "options": [
+            "2",
+            "3",
+            "1",
+            "5",
+            "4"
+        ],
+        "answer": "2",
+        "explanation": "Letters: N (1st), I (3rd), U (8th), R (9th) → Formable words: 'RUNI"
+    },
+    {
+        "id": "lr-ser-081",
+        "question": "How many pairs of letters are there in the word 'NETWORK' which has as many letters between them as we have in the English alphabetical series (from both forward and backward direction)?",
+        "image": null,
+        "options": [
+            "1",
+            "2",
+            "3",
+            "None",
+            "None of these"
+        ],
+        "answer": "None",
+        "explanation": "Checking all pairs, no such pair satisfies the condition → Answer: None."
+    },
+    {
+        "id": "lr-ser-082",
+        "question": "Five persons live in a five-storey building. The ground floor is numbered 1, the floor just above it is 2 and so on till 5. T lives immediately below Q. Q does not live on the topmost floor. Only two persons live between Q and P. V lives above S, but not immediately above S. Which person lives on which floor?",
+        "image": null,
+        "options": [
+            "P-1, S-2, T-3, Q-4, V-5",
+            "T-1, S-2, P-3, Q-4, V-5",
+            "S-1, P-2, T-3, V-4, Q-5",
+            "Q-1, P-2, S-3, T-4, V-5",
+            "V-1, Q-2, T-3, S-4, P-5"
+        ],
+        "answer": "P-1, S-2, T-3, Q-4, V-5",
+        "explanation": "By analyzing given constraints and floors 1-5, assign floors: P-1, S-2, T-3, Q-4, V-5."
+    },
+    {
+        "id": "lr-ser-083",
+        "question": "Seven boys sit in a linear row. Some of them face north and some face south. F sits third to the right of X. Two boys sit between X and Q. I is not an immediate neighbor of Q. Both B and T are sitting immediate right to each other. Q and I face opposite directions. I faces north. L sits immediately left of F. X sits second to the right of L. B sits third to the left of I. Who sits where?",
+        "image": null,
+        "options": [
+            "L-X-F-Q-I-B-T",
+            "X-F-L-B-I-T-Q",
+            "Q-I-L-X-F-B-T",
+            "I-B-T-L-F-X-Q",
+            "(b) T-I-Q-F-L-X"
+        ],
+        "answer": "L-X-F-Q-I-B-T",
+        "explanation": "Arrange row stepwise using the given positional and directional constraints for all seven boys."
+    },
+    {
+        "id": "lr-ser-084",
+        "question": "Ten persons K, L, M, N, O, P, Q, R, S and T are sitting in a row such that all are facing north. O is an immediate neighbor of T. Only two persons sit between Q and R. R is an immediate neighbor of S. S sits third to the left of K. P sits on the left of L, but not at the end of the row. More than one person sits between N and L. Only three persons sit between N and M. T sits second to the right of M. Q sits third to the left of O. Determine the seating order from left to right.",
+        "image": null,
+        "options": [
+            "P-L-M-T-O-Q-R-S-K-N",
+            "L-P-M-Q-T-O-R-N-S-K",
+            "K-L-M-N-O-P-Q-R-S-T",
+            "M-N-P-L-T-O-Q-R-S-K",
+            "O-T-M-L-P-Q-R-S-K-N"
+        ],
+        "answer": "P-L-M-T-O-Q-R-S-K-N",
+        "explanation": "Use all given constraints systematically to assign each person a position in the row."
+    },
+    {
+        "id": "q-101",
+        "question": "If all the vowels in the word 'CALLIPYGIAN' are changed to the next letter in the English alphabet and all consonants are changed to the previous letter, how many letters appear more than once?",
+        "image": null,
+        "options": [
+            "2",
+            "1",
+            "4",
+            "3",
+            "None"
+        ],
+        "answer": "3",
+        "explanation": "After transformation: C→B, A→B, L→K, L→K, I→J, P→O, Y→X, G→F, I→J, A→B, N→M. Letters appearing more than once: B, K, J → total 3."
+    },
+    {
+        "id": "q-102",
+        "question": "How many pairs of letters in the word 'CREATIVE' have as many letters between them in the word as in the English alphabetical series?",
+        "image": null,
+        "options": [
+            "4",
+            "3",
+            "5",
+            "1",
+            "2"
+        ],
+        "answer": "3",
+        "explanation": "Pairs matching the condition: C-P, E-R, A-N → 3 pairs."
+    },
+    {
+        "id": "q-103",
+        "question": "In a code language, SMILE is written as OQRGJ. How is FRESH written in that code?",
+        "image": null,
+        "options": [
+            "TDJQV",
+            "TDQJV",
+            "TDVJQ",
+            "TDQVJ",
+            "None of these"
+        ],
+        "answer": "TDQVJ",
+        "explanation": "Mapping letters according to the code: F→T, R→D, E→V, S→J, H→Q. So, FRESH → TDVJQ."
+    },
+    {
+        "id": "q-104",
+        "question": "Each consonant of 'EXAMINATION' is changed to the previous letter and each vowel to the next letter. If the resulting letters are arranged alphabetically from right to left, what is the 7th letter from the right end?",
+        "image": null,
+        "options": [
+            "P",
+            "(e)",
+            "(d)",
+            "J",
+            "T"
+        ],
+        "answer": "T",
+        "explanation": "Transformed letters: E→F, X→W, A→B, M→L, I→J, N→M, A→B, T→S, I→J, O→P, N→M. Arranged right to left alphabetically, the 7th letter = J."
+    },
+    {
+        "id": "q-105",
+        "question": "In the number '7593267834",
+        "image": null,
+        "options": [
+            "3",
+            "4",
+            "5",
+            "6",
+            "More than 7"
+        ],
+        "answer": "5",
+        "explanation": "Analyzing all digit pairs, there are more than 7 pairs satisfying the condition."
+    },
+    {
+        "id": "q-106",
+        "question": "How many meaningful English words can be formed using the 2nd, 5th, 7th, and 9th letters of 'ACCESSIBLE'?",
+        "image": null,
+        "options": [
+            "3",
+            "4",
+            "2",
+            "5",
+            "None of these"
+        ],
+        "answer": "5",
+        "explanation": "Letters: C, S, I, L. No meaningful English word can be formed using each letter once. Answer: None of these."
+    },
+    {
+        "id": "q-107",
+        "question": "If in 1847152637, 1 is subtracted from the first five digits and 1 is added to the last five digits, then digits less than 5 are removed and remaining digits arranged in descending order, which is the 3rd digit from the right?",
+        "image": null,
+        "options": [
+            "8",
+            "7",
+            "5",
+            "6",
+            "9"
+        ],
+        "answer": "5",
+        "explanation": "Transformed digits: 0736043748 → remove <5 → 7,6,6,8,7,7 → descending: 8,7,7,7,6,6 → 3rd from right = 7."
+    },
+    {
+        "id": "q-108",
+        "question": "If the words 'Hacked",
+        "image": null,
+        "options": [
+            "Hacked",
+            "Hackie",
+            "Habile",
+            "Habits",
+            "Haboob"
+        ],
+        "answer": "Hacked",
+        "explanation": "Alphabetical order: Haboob, Habile, Habits, Hackie, Hacked → 2nd from right = Hacked."
+    },
+    {
+        "id": "q-109",
+        "question": "If in 'LITERATURE' each consonant is changed to the previous letter and each vowel to the next letter, and letters are arranged alphabetically from right to left, what is the 6th letter from the left?",
+        "image": null,
+        "options": [
+            "P",
+            "S",
+            "M",
+            "J",
+            "U"
+        ],
+        "answer": "J",
+        "explanation": "Transformed letters: L→K, I→J, T→S, E→F, R→Q, A→B, T→S, U→V, R→Q, E→F → sorted right to left alphabetically → 6th letter from left = M."
+    },
+    {
+        "id": "q-110",
+        "question": "How many pairs of letters in 'GRATITUDE' have the same position difference as in the English alphabet (both directions)?",
+        "image": null,
+        "options": [
+            "None",
+            "One",
+            "Two",
+            "Three",
+            "None of these"
+        ],
+        "answer": "5",
+        "explanation": "No such pairs exist. Answer: None of these."
+    },
+    {
+        "id": "q-111",
+        "question": "How many pairs of letters in 'PERSEVERANCE' have as many letters between them in the word as in the English alphabet (both directions)?",
+        "image": null,
+        "options": [
+            "2",
+            "3",
+            "1",
+            "4",
+            "6"
+        ],
+        "answer": "3",
+        "explanation": "Valid pairs are calculated to be 2."
+    },
+    {
+        "id": "q-112",
+        "question": "Using 2nd, 4th, 8th, and 9th letters of 'CONFIDENT' to form a meaningful word, what is the 4th letter from the left? If multiple words possible, mark 'X'; if none, mark 'Y'.",
+        "image": null,
+        "options": [
+            "T",
+            "O",
+            "N",
+            "X",
+            "Y"
+        ],
+        "answer": "X",
+        "explanation": "Letters: O, F, E, N → meaningful word: NONE → 4th letter from left = N."
+    },
+    {
+        "id": "q-113",
+        "question": "Using 1st, 4th, 6th, and 11th letters of 'NANOPARTICLE' to form a meaningful word, which is the 2nd letter from the right? If no word, mark 'X'; if multiple, 'Y'.",
+        "image": null,
+        "options": [
+            "Y",
+            "X",
+            "N",
+            "(a)",
+            "None"
+        ],
+        "answer": "(a)",
+        "explanation": "Letters: N, O, P, A → meaningful word: PANO → 2nd from right = A."
+    },
+    {
+        "id": "q-114",
+        "question": "How many pairs of letters in 'ADVENTURE' have as many letters between them in the word as in the English alphabet (both directions)?",
+        "image": null,
+        "options": [
+            "5",
+            "2",
+            "3",
+            "4",
+            "None"
+        ],
+        "answer": "2",
+        "explanation": "Pairs satisfying the condition: 2."
+    },
+    {
+        "id": "q-115",
+        "question": "If all letters in 'MANAGEMENT' are rearranged alphabetically, how many letters remain in the same position?",
+        "image": null,
+        "options": [
+            "1",
+            "2",
+            "3",
+            "None of these",
+            "None"
+        ],
+        "answer": "None",
+        "explanation": "No letters remain in their original position → Answer: None of these."
+    },
+    {
+        "id": "q-116",
+        "question": "Using 3rd, 4th, 8th, and 9th letters of 'HOUSEWIFE' to form a meaningful word, what is the 2nd letter from the left? If multiple words possible, mark 'N'; if none, 'M'.",
+        "image": null,
+        "options": [
+            "M",
+            "N",
+            "F",
+            "(e)",
+            "U"
+        ],
+        "answer": "U",
+        "explanation": "Letters: U, S, I, E → meaningful word: USEI → 2nd letter = U."
+    },
+    {
+        "id": "q-117",
+        "question": "In 'DRIVING",
+        "image": null,
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "None"
+        ],
+        "answer": "2",
+        "explanation": "Only 1 pair satisfies the backward condition."
+    },
+    {
+        "id": "q-118",
+        "question": "How many meaningful words can be formed using 2nd, 3rd, 6th, and 8th letters of 'CONSISTENTLY",
+        "image": null,
+        "options": [
+            "2",
+            "3",
+            "1",
+            "4",
+            "5"
+        ],
+        "answer": "3",
+        "explanation": "Letters: O, N, S, E → one meaningful word can be formed: NOSE."
+    },
+    {
+        "id": "q-119",
+        "question": "In 'PLEASURE",
+        "image": null,
+        "options": [
+            "G",
+            "(e)",
+            "S",
+            "R",
+            "N"
+        ],
+        "answer": "R",
+        "explanation": "After rearrangement: A, E, E, U, L, P, R, S → 4th from left = U → 4th to right = S."
+    },
+    {
+        "id": "q-120",
+        "question": "In 'ADVENTUROUS",
+        "image": null,
+        "options": [
+            "3",
+            "2",
+            "1",
+            "4",
+            "None"
+        ],
+        "answer": "1",
+        "explanation": "Only 2 such pairs exist."
+    },
+    {
+        "id": "q-121",
+        "question": "How many pairs of letters in 'INDUSTRIAL' have as many letters between them in the word as in the English alphabet backward but not forward?",
+        "image": null,
+        "options": [
+            "1",
+            "2",
+            "5",
+            "3",
+            "4"
+        ],
+        "answer": "5",
+        "explanation": "Pairs satisfying backward but not forward condition: 2."
+    }
+],
+
 
 
     
