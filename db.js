@@ -935,6 +935,144 @@ const quizDB = {
     },
 
 
+        ],
+
+        "Inequality": [
+
+
+    {
+        id: "logic-061",
+        question: "Statement: A @ B means A > B, A # B means A = B, A $ B means A < B.\nGiven: P @ Q # R $ S\nConclusions:\nI. P > R\nII. R < S",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(c) Both conclusions I and II follow",
+        explanation: "P @ Q ⇒ P > Q; Q # R ⇒ Q = R ⇒ P > R; R $ S ⇒ R < S. Hence both conclusions follow."
+    },
+    {
+        id: "logic-062",
+        question: "Statement: X $ Y means X < Y, X @ Y means X > Y, X # Y means X = Y.\nGiven: M $ N @ O # P\nConclusions:\nI. M < O\nII. O = P",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(c) Both conclusions I and II follow",
+        explanation: "M < N and N > O ⇒ M < O; O = P. Hence both follow."
+    },
+    {
+        id: "logic-063",
+        question: "Statement: R % S means R ≥ S; R * S means R ≤ S; R @ S means R > S.\nGiven: A % B @ C * D\nConclusions:\nI. A > C\nII. C ≤ D",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(c) Both conclusions I and II follow",
+        explanation: "A ≥ B and B > C ⇒ A > C; C ≤ D. Both conclusions follow."
+    },
+    {
+        id: "logic-064",
+        question: "Statement: P # Q means P = Q, P @ Q means P > Q, P $ Q means P < Q.\nGiven: L $ M # N @ O\nConclusions:\nI. L < N\nII. N > O",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(c) Both conclusions I and II follow",
+        explanation: "L < M, M = N ⇒ L < N; N > O. Both follow."
+    },
+    {
+        id: "logic-065",
+        question: "Statement: A % B means A ≥ B; A & B means A = B; A $ B means A < B.\nGiven: X & Y $ Z % W\nConclusions:\nI. Y < W\nII. X = Y",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(c) Both conclusions I and II follow",
+        explanation: "Y < Z ≤ W ⇒ Y < W; X = Y. Both follow."
+    },
+    {
+        id: "logic-066",
+        question: "Statement: P @ Q means P > Q, P $ Q means P < Q, P # Q means P = Q.\nGiven: M @ N $ O # P\nConclusions:\nI. M > O\nII. O = P",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(b) Only conclusion II follows",
+        explanation: "M > N and N < O does not confirm M > O; O = P. So only II follows."
+    },
+    {
+        id: "logic-067",
+        question: "Statement: A @ B means A > B; A # B means A = B; A $ B means A < B.\nGiven: Q $ R @ S # T\nConclusions:\nI. Q < S\nII. S = T",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(b) Only conclusion II follows",
+        explanation: "Q < R and R > S does NOT guarantee Q < S. S = T. Only II follows."
+    },
+    {
+        id: "logic-068",
+        question: "Statement: X % Y means X ≥ Y, X * Y means X ≤ Y, X @ Y means X > Y.\nGiven: A @ B % C * D\nConclusions:\nI. A > C\nII. C ≤ D",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(c) Both conclusions I and II follow",
+        explanation: "A > B ≥ C ⇒ A > C; C ≤ D. Both follow."
+    },
+    {
+        id: "logic-069",
+        question: "Statement: M @ N means M > N; M $ N means M < N; M # N means M = N.\nGiven: P $ Q @ R # S\nConclusions:\nI. P < R\nII. R = S",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(b) Only conclusion II follows",
+        explanation: "P < Q and Q > R does NOT ensure P < R. R = S. Only II follows."
+    },
+    {
+        id: "logic-070",
+        question: "Statement: A % B means A ≥ B; A $ B means A < B; A & B means A = B.\nGiven: X & Y $ Z % W\nConclusions:\nI. X = Y\nII. Y < W",
+        image: null,
+        options: [
+            "(a) Only conclusion I follows",
+            "(b) Only conclusion II follows",
+            "(c) Both conclusions I and II follow",
+            "(d) Neither conclusion I nor II follows"
+        ],
+        answer: "(c) Both conclusions I and II follow",
+        explanation: "X = Y; Y < Z ≤ W ⇒ Y < W. Both follow."
+    },
+
+
+
         ]
     }
 };
