@@ -9159,7 +9159,2562 @@ const quizDB = {
         "explanation": "Coordinates give Δx = ?, Δy = ?, distance = √(Δx² + Δy²) = 12 m."
     }
 ],
-
+"Syllogism":[
+    {
+        "id": "lr-ser-018",
+        "question": "Statements:\\nOnly laptop are mouse.\\nSome laptop are not monitor.\\nConclusions:\\nI. Some monitor can be mouse.\\nII. All monitor can be laptop.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows since all monitors can be laptops as per the logic."
+    },
+    {
+        "id": "lr-ser-019",
+        "question": "Statements:\\nSome white are red.\\nOnly a few white are green.\\nConclusions:\\nI. Some green are red.\\nII. All white can be green.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Neither I nor II",
+        "explanation": "Neither conclusion I nor II follows."
+    },
+    {
+        "id": "lr-ser-020",
+        "question": "Statements:\\nAll mobile is camera.\\nAll camera is laptop.\\nNo laptop is fan.\\nConclusions:\\nI. Some camera is mobile.\\nII. Some fan is not mobile.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(b) oth I and II",
+        "explanation": "Both conclusions I and II follow from the given statements."
+    },
+    {
+        "id": "lr-ser-021",
+        "question": "Statements:\\nSome printer are chair.\\nNo chair is fax.\\nNo fax is computer.\\nConclusions:\\nI. No chair is computer.\\nII. Some chair is computer.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "(e) ither I or II",
+            "Neither I nor II"
+        ],
+        "answer": "(e) ither I or II",
+        "explanation": "Either conclusion I or II follows."
+    },
+    {
+        "id": "lr-ser-022",
+        "question": "Statements:\\nSome printer are chair.\\nNo chair is fax.\\nNo fax is computer.\\nConclusions:\\nI. Some printer are not computer.\\nII. Some printer are not bean bag.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-023",
+        "question": "Statements:\\nNo battery is speaker.\\nAll speakers are radio.\\nSome radio is Tablet.\\nConclusions:\\nI. Some radio is speaker.\\nII. At least some Tablet is battery.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only I",
+        "explanation": "Only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-024",
+        "question": "Statements:\\nSome Z are Y.\\nAll K are Y.\\nNo Z are W.\\nConclusions:\\nI. Some Y are not W.\\nII. Some K are W is a possibility.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(b) oth I and II",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-025",
+        "question": "Statements:\\nSome rectangle are circle.\\nSome circle are not area.\\nConclusions:\\nI. Some rectangle are area is a possibility.\\nII. Some area are not circle.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only I",
+        "explanation": "Only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-026",
+        "question": "Statements:\\nAll J are S.\\nAll S are U.\\nSome S are P.\\nConclusions:\\nI. Some J are P.\\nII. Some P can be J.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-027",
+        "question": "Statements:\\nAll grapes are cherry.\\nSome cherry are apricot.\\nConclusions:\\nI. All apricot can be grapes.\\nII. Some grapes are not apricot is a possibility.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(b) oth I and II",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-028",
+        "question": "Statements:\\nSome mango are peach.\\nSome peach are not pear.\\nConclusions:\\nI. All peach are mango.\\nII. Some mango can be pear.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-029",
+        "question": "Statements:\\nFew knife are fork.\\nOnly a few fork are grill.\\nAll grill are oven.\\nConclusions:\\nI. Some fork are oven is a possibility.\\nII. Some knife can be grill.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-030",
+        "question": "Statements:\\nSome spatula are Tongs.\\nNo Tongs is blender.\\nAll blender are Container.\\nConclusions:\\nI. Some spatula are not Container.\\nII. Some spatula are Container.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "(e) ither I or II",
+            "Neither I nor II"
+        ],
+        "answer": "(e) ither I or II",
+        "explanation": "Either conclusion I or II follows."
+    },
+    {
+        "id": "lr-ser-031",
+        "question": "Statements:\\nSome cold are hot.\\nOnly a few hot are soft.\\nNo soft is hard.\\nConclusions:\\nI. Some hot are not hard.\\nII. Some cold can be soft.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(b) oth I and II",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-032",
+        "question": "Statements:\\nSome mobile are not charger.\\nAll charger are holder.\\nOnly a few pin are holder.\\nConclusions:\\nI. All pin can be charger.\\nII. Some mobile are not holder.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Neither I nor II",
+        "explanation": "Neither conclusion I nor II follows."
+    },
+    {
+        "id": "lr-ser-033",
+        "question": "Statements:\\nFew grater are mixer.\\nNo mixer is whisk.\\nSome grater are bowls.\\nConclusions:\\nI. Some grater are not whisk.\\nII. All bowls are whisk is a possibility.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(b) oth I and II",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-001",
+        "question": "Statements:\\nNo Nagpur is Patna.\\nNo Patna is Raipur.\\nConclusions:\\nI. Some Patna is Nagpur.\\nII. All Raipur is Nagpur.",
+        "image": null,
+        "options": [
+            "Neither I nor II",
+            "Only II",
+            "Only I",
+            "(b) oth I and II",
+            "(e) ither I or II"
+        ],
+        "answer": "Neither I nor II",
+        "explanation": "Neither conclusion I nor conclusion II follows from the given statements."
+    },
+    {
+        "id": "lr-ser-002",
+        "question": "Statements:\\nAll Rectangle is Pentagon.\\nAll Pentagon is Line.\\nConclusions:\\nI. Some Lines are not Rectangle.\\nII. All Rectangle are Line.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows, as all rectangles being pentagons implies they are also lines."
+    },
+    {
+        "id": "lr-ser-003",
+        "question": "Statements:\\nNo Fruit is Vegetable.\\nAll Fruit is Egg.\\nConclusions:\\nI. Some Vegetable is Fruit.\\nII. Some Egg is Fruit.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows since all fruits are eggs implies some eggs are fruits."
+    },
+    {
+        "id": "lr-ser-004",
+        "question": "Statements:\\nOnly a few Water is Petrol.\\nNo Petrol is Diesel.\\nConclusions:\\nI. Some Water is not Diesel.\\nII. All Water being Petrol is a possibility.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(b) oth I and II",
+        "explanation": "Both conclusions I and II follow from the given statements."
+    },
+    {
+        "id": "lr-ser-005",
+        "question": "Statements:\\nNo Cycle is Scooter.\\nOnly a few Scooty are Cycle.\\nConclusions:\\nI. All Scooty are Scooter.\\nII. Some Scooter is Scooty.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only I",
+        "explanation": "Neither conclusion I nor conclusion II follows."
+    },
+    {
+        "id": "lr-ser-006",
+        "question": "Statements:\\nAll stapler are comforter.\\nSome comforter are not scissors.\\nConclusions:\\nI. Some scissors are not comforter.\\nII. Some scissors are stapler.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II",
+            "(e) ither I or II"
+        ],
+        "answer": "Neither I nor II",
+        "explanation": "Neither conclusion I nor II follows as the given statements do not establish these relations."
+    },
+    {
+        "id": "lr-ser-007",
+        "question": "Statements:\\nSome Backpack are Binders.\\nNo Binders is Calculator.\\nConclusions:\\nI. No Calculator is Backpack.\\nII. Some Backpack are not Calculator.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-008",
+        "question": "Statements:\\nAll Y are S.\\nSome S are P.\\nConclusions:\\nI. Some Y are P is a possibility.\\nII. All P can be S.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(b) oth I and II",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-009",
+        "question": "Statements:\\nAll laptop are pen.\\nSome pen are not paperclips.\\nConclusions:\\nI. Some laptop can be paperclips.\\nII. All paperclips are pen is a possibility.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(b) oth I and II",
+        "explanation": "Both conclusions I and II follow from the given statements."
+    },
+    {
+        "id": "lr-ser-010",
+        "question": "Statements:\\nSome folder are pillow.\\nAll pillow are planner.\\nSome planner are not pencil.\\nConclusions:\\nI. All pencil are folder is a possibility.\\nII. Some planner can be folder.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only I",
+        "explanation": "Only conclusion I follows as per the logical relation among the statements."
+    },
+    {
+        "id": "lr-ser-011",
+        "question": "Statements:\\nSome Z are Y.\\nOnly Y are W.\\nConclusions:\\nI. Some Z can be W.\\nII. All Z can be Y.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows since ‘only Y are W’ implies all Z can be Y."
+    },
+    {
+        "id": "lr-ser-012",
+        "question": "Statements:\\nSome Banana are not Orange.\\nOnly Orange are Pear.\\nConclusions:\\nI. Some Orange are not Banana.\\nII. Some Banana can be Pear.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Neither I nor II",
+        "explanation": "Neither conclusion I nor II follows."
+    },
+    {
+        "id": "lr-ser-013",
+        "question": "Statements:\\nNo ship is tyre.\\nSome tyre are tube.\\nConclusions:\\nI. Some ship are tube.\\nII. No ship is tube.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(e) ither I or II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(e) ither I or II",
+        "explanation": "Either conclusion I or II follows."
+    },
+    {
+        "id": "lr-ser-014",
+        "question": "Statements:\\nAll penguin are Swifts.\\nSome parrot are penguin.\\nConclusions:\\nI. Some parrot are Swifts.\\nII. All parrot are penguin.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only I",
+        "explanation": "Only conclusion I follows since some parrots being penguins implies they are Swifts."
+    },
+    {
+        "id": "lr-ser-015",
+        "question": "Statements:\\nSome Dustbin are not Shelf.\\nAll Dustbin are Brush.\\nConclusions:\\nI. All Shelf can be Brush.\\nII. All Shelf can be Dustbin.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "(b) oth I and II",
+        "explanation": "Both conclusions I and II follow from the given statements."
+    },
+    {
+        "id": "lr-ser-016",
+        "question": "Statements:\\nOnly river are Ganga.\\nSome pond are river.\\nConclusions:\\nI. At least some pond are Ganga.\\nII. All pond can be river.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows as per the logical relation of ‘only river are Ganga’."
+    },
+    {
+        "id": "lr-ser-017",
+        "question": "Statements:\\nSome station are not Bus stand.\\nOnly a few parking are station.\\nConclusions:\\nI. All parking can be station.\\nII. At least some Bus stand are parking.",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(b) oth I and II",
+            "Neither I nor II"
+        ],
+        "answer": "Neither I nor II",
+        "explanation": "Neither conclusion I nor II follows from the given statements."
+    },
+    {
+        "id": "lr-ser-044",
+        "question": "Statements:\\nSome A are B.\\nOnly B are D.\\nConclusions:\\nI. Some A can be D.\\nII. All A can be B.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-045",
+        "question": "Statements:\\nSome apple are not grape.\\nOnly grape are guava.\\nConclusions:\\nI. Some grape are not apple.\\nII. Some apple can be guava.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Neither I nor II follow",
+        "explanation": "Neither conclusion I nor II follows."
+    },
+    {
+        "id": "lr-ser-046",
+        "question": "Statements:\\nNo train is bus.\\nSome bus are taxi.\\nConclusions:\\nI. Some train are taxi.\\nII. No train is taxi.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "(e) ither I or II follows",
+        "explanation": "Either conclusion I or II follows."
+    },
+    {
+        "id": "lr-ser-047",
+        "question": "Statements:\\nAll owl are peacock.\\nSome crow are owl.\\nConclusions:\\nI. Some crow are peacock.\\nII. Some crow are not peacock.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "Only I follows",
+        "explanation": "Only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-048",
+        "question": "Statements:\\nSome bucket are not mug.\\nAll bucket are jug.\\nConclusions:\\nI. All mug can be jug.\\nII. All mug can be bucket.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-049",
+        "question": "Statements:\\nAll hills are mountain.\\nAll highs are hills.\\nConclusions:\\nI. Some mountain are high.\\nII. Some hills are not high.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only I follows",
+        "explanation": "Only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-050",
+        "question": "Statements:\\nSome road are not street.\\nAll road are clean.\\nConclusions:\\nI. Some street can be clean.\\nII. Some clean are not street.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-051",
+        "question": "Statements:\\nOnly a few true are correct.\\nNo correct is false.\\nConclusions:\\nI. Some true are not false.\\nII. At least some correct are true.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-052",
+        "question": "Statements:\\nSome word are number.\\nOnly a few number are large.\\nConclusions:\\nI. At least some word are large.\\nII. Some word are not large.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "(e) ither I or II follows",
+        "explanation": "Either conclusion I or II follows."
+    },
+    {
+        "id": "lr-ser-053",
+        "question": "Statements:\\nSome state are not country.\\nAll state are district.\\nConclusions:\\nI. Some country can be district.\\nII. Some district are not country.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-034",
+        "question": "Statements:\\nSome A are B.\\nAll P are B.\\nNo A are D.\\nConclusions:\\nI. Some B are not D.\\nII. Some P are D is a possibility.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-035",
+        "question": "Statements:\\nSome cubes are square.\\nSome square are not area.\\nConclusions:\\nI. Some cubes are area is a possibility.\\nII. Some area are not square.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "Only I follows",
+        "explanation": "Only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-036",
+        "question": "Statements:\\nAll Q are H.\\nAll H are F.\\nSome H are K.\\nConclusions:\\nI. Some Q are K.\\nII. Some K can be Q.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-037",
+        "question": "Statements:\\nAll alarm are clock.\\nSome clock are time.\\nConclusions:\\nI. All time can be alarm.\\nII. Some alarm are not time is a possibility.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-038",
+        "question": "Statements:\\nSome tea are coffee.\\nSome coffee are not hot.\\nConclusions:\\nI. All coffee are tea.\\nII. Some tea can be hot.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-039",
+        "question": "Statements:\\nSome word are number.\\nOnly a few alphabet are number.\\nConclusions:\\nI. All alphabet are number.\\nII. Some word are alphabet.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Neither I nor II follow",
+        "explanation": "Neither conclusion I nor II follows."
+    },
+    {
+        "id": "lr-ser-040",
+        "question": "Statements:\\nSome mobile are laptop.\\nSome laptop are not desktop.\\nConclusions:\\nI. Some desktop are mobile is a possibility.\\nII. Some desktop can be laptop.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-041",
+        "question": "Statements:\\nAll false are true.\\nSome true are not correct.\\nConclusions:\\nI. Some false are correct.\\nII. All true can be correct.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Neither I nor II follow",
+        "explanation": "Neither conclusion I nor II follows."
+    },
+    {
+        "id": "lr-ser-042",
+        "question": "Statements:\\nOnly sky is blue.\\nSome sky are not water.\\nConclusions:\\nI. Some water can be blue.\\nII. Some water can be sky.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-043",
+        "question": "Statements:\\nSome K are not T.\\nOnly a few V are T.\\nConclusions:\\nI. Some T are V is a possibility.\\nII. All K can be V.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-054",
+        "question": "Statements:\\nSome P are Q.\\nAll Q are R.\\nSome R are S.\\nConclusions:\\nI. Some P are R.\\nII. Some S are P.\\nIII. Some C are Q.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "Only III follows",
+            "(b) oth I and II follow",
+            "Neither I nor II nor III follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-055",
+        "question": "Statements:\\nAll Pear are Guava.\\nSome Guava are Lemon.\\nAll Lemon are Oranges.\\nConclusions:\\nI. Some Pear are Oranges.\\nII. Some Oranges are Guava.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-056",
+        "question": "Statements:\\nSome Mobile are Laptop.\\nAll Laptop are Charger.\\nNo Charger is an Earphone.\\nConclusions:\\nI. No Earphone is a Copy.\\nII. All Charger are Mobile.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Neither I nor II follow",
+        "explanation": "Neither conclusion I nor II follows."
+    },
+    {
+        "id": "lr-ser-057",
+        "question": "Statements:\\nSome Ball are Bat.\\nSome Bat are Gloves.\\nAll Bat are Wicket.\\nConclusions:\\nI. Some Wicket are not Gloves.\\nII. Some Gloves are Ball.\\nIII. No Kite is a Glove.",
+        "image": null,
+        "options": [
+            "Only I and III follow",
+            "Only II follows",
+            "Neither I nor II follow",
+            "(e) ither II or III follows"
+        ],
+        "answer": "Only I and III follow",
+        "explanation": "Both conclusions I and III follow."
+    },
+    {
+        "id": "lr-ser-058",
+        "question": "Statements:\\nSome Boy are Men.\\nSome Men are Student.\\nSome Student are Teacher.\\nConclusions:\\nI. No Teacher is a Man.\\nII. Some Boy are Student.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Neither I nor II follow",
+        "explanation": "Neither conclusion I nor II follows."
+    },
+    {
+        "id": "lr-ser-059",
+        "question": "Statements:\\nNo Cement is a Wood.\\nSome Wood are Bricks.\\nSome Bricks are Glass.\\nConclusions:\\nI. All Bricks being Cement is a possibility.\\nII. No Wood is Cement.\\nIII. All Glass being Cement is a possibility.",
+        "image": null,
+        "options": [
+            "Only I and II follow",
+            "Only II and III follow",
+            "Only I follows",
+            "None follows"
+        ],
+        "answer": "Only II and III follow",
+        "explanation": "Both conclusions II and III follow."
+    },
+    {
+        "id": "lr-ser-060",
+        "question": "Statements:\\nSome Metal are Plastic.\\nSome Plastic are Stone.\\nAll Stone are Clay.\\nConclusions:\\nI. All Plastic are Stone.\\nII. Some Plastic are not Stone.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "(e) ither I or II follows",
+        "explanation": "Either conclusion I or II follows."
+    },
+    {
+        "id": "lr-ser-061",
+        "question": "Statements:\\nAll Circle are Rectangle.\\nSome Rectangle are Square.\\nNo Square is Triangle.\\nAll Triangle are Pentagon.\\nConclusions:\\nI. All Rectangle being Square is a possibility.\\nII. All Pentagon being Circle is a possibility.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-062",
+        "question": "Statements:\\nAll Circle are Rectangle.\\nSome Rectangle are Square.\\nNo Square is Triangle.\\nAll Triangle are Pentagon.\\nConclusions:\\nI. Some Circle being Pentagon is a possibility.\\nII. Some Pentagon are not Square.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-063",
+        "question": "Statements:\\nSome Cycle are Motor.\\nAll Motor are Ship.\\nNo Ship is an Airplane.\\nConclusions:\\nI. Some Airplane are Cycle.\\nII. Some Motor are not Airplanes.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-064",
+        "question": "Statements:\\nSome English is Reasoning.\\nNo Reasoning is GA.\\nNo GA is Quant.\\nConclusions:\\nI. Some Quant being English is a possibility.\\nII. Some English is not GA.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-065",
+        "question": "Statements:\\nNo White is Orange.\\nNo Orange is Azure.\\nAll Red is Azure.\\nConclusions:\\nI. All White being Azure is a possibility.\\nII. Some Red is Azure.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-066",
+        "question": "Statements:\\nAll Movie are Classics.\\nSome Classics are Instruments.\\nAll Blocks are Instruments.\\nNo Instrument is Pop.\\nConclusions:\\nI. Some Classics are not Pops.\\nII. All Blocks are Pops.\\nIII. No Pop is a Block.",
+        "image": null,
+        "options": [
+            "Only I and III follow",
+            "Only II follows",
+            "Only I follows",
+            "None follows"
+        ],
+        "answer": "Only I and III follow",
+        "explanation": "Only conclusions I and III follow."
+    },
+    {
+        "id": "lr-ser-067",
+        "question": "Statements:\\nSome Wall are Table.\\nAll Table are Fan.\\nNo Fan is Chair.\\nConclusions:\\nI. Some Wall are not Chairs.\\nII. No Table is Chair.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-068",
+        "question": "Statements:\\nSome Guava are Orange.\\nNo Orange is a Grapes.\\nConclusions:\\nI. Some Grapes are Guava.\\nII. All Guava can never be Grapes.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-069",
+        "question": "Statements:\\nAll Tyre are Brake.\\nNo Brake is a Clutch.\\nSome Clutch are Horn.\\nAll Horn are Handle.\\nConclusions:\\nI. Some Horn are Tyre.\\nII. Some Horn are Clutch.\\nIII. No Horn is a Tyre.\\nIV. Some Tyre are Handle.",
+        "image": null,
+        "options": [
+            "I and II follow",
+            "II and III follow",
+            "(e) ither I or III and II follow",
+            "None follows"
+        ],
+        "answer": "(e) ither I or III and II follow",
+        "explanation": "Either I or III and II follow."
+    },
+    {
+        "id": "lr-ser-070",
+        "question": "Statements:\\nAll Stump are Pads.\\nSome Pads are Pitch.\\nAll Pitch are Ground.\\nConclusions:\\nI. All Pads are Ground.\\nII. Some Pitch are Pads.\\nIII. Some Stump are Ground.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "Only III follows",
+            "Only II follows"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-071",
+        "question": "Statements:\\nSome White are Orange.\\nNo Orange is Violet.\\nSome Green are Violet.\\nConclusions:\\nI. Some White are not Violet.\\nII. Some Green are not Orange.\\nIII. Some Green are not White.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "(a) ll I, II and III follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Both conclusions I and II follow."
+    },
+    {
+        "id": "lr-ser-072",
+        "question": "Statements:\\nSome MI are Apple.\\nSome Apple are One Plus.\\nSome One Plus are iPhone.\\nConclusions:\\nI. Some iPhone are MI.\\nII. Some iPhone are not Apple.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Neither I nor II follow",
+        "explanation": "Neither conclusion I nor II follows."
+    },
+    {
+        "id": "lr-ser-073",
+        "question": "Statements:\\nAll Samsung are Redmi.\\nSome Redmi are HTC.\\nConclusions:\\nI. Some HTC are Redmi.\\nII. Some Redmi are not HTC.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only I follows",
+        "explanation": "Only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-074",
+        "question": "Statements:\\nSome Apple are Banana.\\nAll Banana are Cherry.\\nOnly Apple are Grapes.\\nConclusions:\\nI. Some Grapes are Banana.\\nII. All Cherry being Banana is a possibility.\\nIII. All Grapes are Apple.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II and III follow",
+            "Only I and III follow",
+            "(a) ll I, II, III follow"
+        ],
+        "answer": "Only II and III follow",
+        "explanation": "Only conclusions II and III follow."
+    },
+    {
+        "id": "lr-ser-075",
+        "question": "Statements:\\nOnly a few Grapes are Mango.\\nOnly a few Mango are Orange.\\nOnly a few Orange are Apple.\\nSome Apple are not Lemon.\\nConclusions:\\nI. Some Apple being Grapes is a possibility.\\nII. Some Lemon are not Apple.\\nIII. All Apple being Orange is a possibility.\\nIV. Some Grapes can never be Mango.",
+        "image": null,
+        "options": [
+            "I, II and III follow",
+            "Only I, III and IV follow",
+            "Only II and IV follow",
+            "(a) ll I, II, III and IV follow"
+        ],
+        "answer": "Only I, III and IV follow",
+        "explanation": "Only conclusions I, III, and IV follow."
+    },
+    {
+        "id": "lr-ser-076",
+        "question": "Statements:\\nOnly a few Red are Green.\\nNo Green is Yellow.\\nNo Red is Yellow.\\nNo Yellow is Black.\\nConclusions:\\nI. Some Red are Black.\\nII. All Green being Red is a possibility.\\nIII. All Yellow can never be a Red.\\nIV. No Red is Black.",
+        "image": null,
+        "options": [
+            "Only II and III follow",
+            "Only I and IV follow",
+            "(a) ll I, II, III follow",
+            "None follows"
+        ],
+        "answer": "Only II and III follow",
+        "explanation": "Only conclusions II and III follow."
+    },
+    {
+        "id": "lr-ser-077",
+        "question": "Statements:\\nSome Brown are White.\\nEach White is Pink.\\nNo Pink is Cyan.\\nNo Cyan is Gold.\\nConclusions:\\nI. All Brown being Pink is a possibility.\\nII. No Cyan is White.\\nIII. Some Brown are Gold.\\nIV. No Gold is Cyan.",
+        "image": null,
+        "options": [
+            "Only I and II follow",
+            "None of these",
+            "Only III and IV follow",
+            "(a) ll I, II, III, IV follow"
+        ],
+        "answer": "None of these",
+        "explanation": "None of the conclusions follow."
+    },
+    {
+        "id": "lr-ser-078",
+        "question": "Statements:\\nSome Pen are Pencil.\\nSome Pencil are Erasers.\\nOnly Erasers is Highlighter.\\nConclusions:\\nI. Some Pencil are Highlighter.\\nII. Some Highlighter are Pen.\\nIII. All Highlighter are Pencil.",
+        "image": null,
+        "options": [
+            "None follows",
+            "Only I follows",
+            "Only III follows",
+            "(a) ll follow"
+        ],
+        "answer": "None follows",
+        "explanation": "None of the conclusions follow."
+    },
+    {
+        "id": "lr-ser-079",
+        "question": "Statements:\\nSome Tab is Folder.\\nAll Folder is Binders.\\nNo Planner is Tab.\\nSome Calculator is not Binders.\\nConclusions:\\nI. No Folder is Planner.\\nII. All Planner can be Calculator.\\nIII. Some Binders is not Planner.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II and III follow",
+            "Only III follows",
+            "(a) ll I, II, III follow"
+        ],
+        "answer": "Only II and III follow",
+        "explanation": "Both conclusions II and III follow."
+    },
+    {
+        "id": "lr-ser-011",
+        "question": "Statement:\\nAll Dentist is Chef\\nSome Chef are Lawyer\\nOnly Artist is Barber\\nSome Artist is Dentist\\nConclusions:\\nI. No Chef is Barber\\nII. Some Lawyer is Artist\\nIII. No Lawyer is Artist",
+        "image": null,
+        "options": [
+            "Only conclusion I follows",
+            "(b) oth conclusion I and II follow",
+            "(c) onclusion I and Either II or III follows",
+            "Only conclusion III follows"
+        ],
+        "answer": "(c) onclusion I and Either II or III follows",
+        "explanation": "Conclusion I is certain; either II or III can follow depending on distribution."
+    },
+    {
+        "id": "lr-ser-012",
+        "question": "Statements:\\nRiver * Ponds\\nLakes @ River\\nSeas $ Lakes\\nConclusions:\\nI. Seas @ River is a possibility\\nII. River * Seas",
+        "image": null,
+        "options": [
+            "None of the conclusions follows",
+            "Only conclusion I follows",
+            "Only conclusion II follows",
+            "(b) oth follow"
+        ],
+        "answer": "None of the conclusions follows",
+        "explanation": "Neither conclusion logically follows from the statements."
+    },
+    {
+        "id": "lr-ser-013",
+        "question": "Statements:\\nTable @ Chairs\\nDinning * Table\\nSpoon % Dinning\\nConclusions:\\nI. Chairs * Table\\nII. Plate % Spoon",
+        "image": null,
+        "options": [
+            "Only conclusion I follows",
+            "Only conclusion II follows",
+            "(b) oth conclusions follow",
+            "None follows"
+        ],
+        "answer": "Only conclusion I follows",
+        "explanation": "Only conclusion I logically follows."
+    },
+    {
+        "id": "lr-ser-014",
+        "question": "Statements:\\nMilk % Curd\\nPaneer @ Milk\\nLassi * Paneer\\nConclusions:\\nI. Milk $ Curd\\nII. Milk * Paneer",
+        "image": null,
+        "options": [
+            "Only conclusion I follows",
+            "Only conclusion II follows",
+            "(b) oth conclusions follow",
+            "None follows"
+        ],
+        "answer": "Only conclusion II follows",
+        "explanation": "Only conclusion II logically follows from the statements."
+    },
+    {
+        "id": "lr-ser-015",
+        "question": "Statements:\\nLotus # Lilac\\nPeony @ Jasmine\\nLotus + Peony\\nLilac % Tulip\\nConclusions:\\nI. Tulip @^ Jasmine\\nII. Peony + Lilac",
+        "image": null,
+        "options": [
+            "Only conclusion I follows",
+            "Only conclusion II follows",
+            "(e) ither I or II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follows"
+        ],
+        "answer": "Only conclusion I follows",
+        "explanation": "Only conclusion I logically follows from the statements."
+    },
+    {
+        "id": "lr-ser-016",
+        "question": "Statements:\\nGear @ Brake\\nBrake + Seat\\nMirror + Gear\\nBelt % Mirror\\nConclusions:\\nI. Belt % Brake\\nII. Seat #^ Mirror",
+        "image": null,
+        "options": [
+            "Only conclusion I follows",
+            "Only conclusion II follows",
+            "(e) ither I or II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follows"
+        ],
+        "answer": "Only conclusion II follows",
+        "explanation": "Only conclusion II logically follows from the statements."
+    },
+    {
+        "id": "lr-ser-017",
+        "question": "Statements:\\nPilot + Doctor\\nLawyer # Engineer\\nEngineer # Doctor\\nProfessor @ Pilot\\nConclusions:\\nI. Professor @ Engineer\\nII. Professor + Engineer",
+        "image": null,
+        "options": [
+            "Only conclusion I follows",
+            "Only conclusion II follows",
+            "(e) ither I or II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follows"
+        ],
+        "answer": "(e) ither I or II follows",
+        "explanation": "Either conclusion I or II can logically follow depending on interpretation."
+    },
+    {
+        "id": "lr-ser-018",
+        "question": "Statements:\\nPlate # Cup\\nPot @ Plate\\nSpoon % Plane\\nPot + Spoon\\nConclusions:\\nI. Cup + Root\\nII. Plane ! Plate",
+        "image": null,
+        "options": [
+            "Only conclusion I follows",
+            "Only conclusion II follows",
+            "(e) ither I or II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follows"
+        ],
+        "answer": "Neither I nor II follows",
+        "explanation": "Neither conclusion logically follows from the statements."
+    },
+    {
+        "id": "lr-ser-019",
+        "question": "{\n        \"id\": \"lr-ser-019\",\n        \"question\": \"Statement:\\nChennai [ Jaipur { Kanpur | Kolkata, Chennai }",
+        "image": null,
+        "options": [
+            "(d) \": \"lr-ser-019\"",
+            "(e) stion\": \"Statement:\\nChennai [ Jaipur { Kanpur | Kolkata, Chennai }"
+        ],
+        "answer": "(d) \": \"lr-ser-019\"",
+        "explanation": ""
+    },
+    {
+        "id": "lr-ser-020",
+        "question": "{\n        \"id\": \"lr-ser-020\",\n        \"question\": \"Statement:\\nBrunei }",
+        "image": null,
+        "options": [
+            "(d) \": \"lr-ser-020\"",
+            "(e) stion\": \"Statement:\\nBrunei }"
+        ],
+        "answer": "(d) \": \"lr-ser-020\"",
+        "explanation": ""
+    },
+    {
+        "id": "auto-090",
+        "question": "{ Brazil | Bulgaria, Angola [ Bulgaria\\nConclusions:\\nI. All Angola can be Austria\\nII. No Brazil is Brunei\\nIII. Bulgaria = Austria is a possibility\",",
+        "image": null,
+        "options": [
+            "Only conclusion I",
+            "Only conclusion II",
+            "Only conclusion III",
+            "(a) ll conclusions I, II and III",
+            "None conclusion"
+        ],
+        "answer": "(a) ll conclusions I, II and III",
+        "explanation": "All three conclusions logically follow from the statements."
+    },
+    {
+        "id": "lr-ser-021",
+        "question": "{\n        \"id\": \"lr-ser-021\",\n        \"question\": \"Statement:\\nGambia { Ghana }",
+        "image": null,
+        "options": [
+            "(d) \": \"lr-ser-021\"",
+            "(e) stion\": \"Statement:\\nGambia { Ghana }"
+        ],
+        "answer": "(d) \": \"lr-ser-021\"",
+        "explanation": ""
+    },
+    {
+        "id": "lr-ser-001",
+        "question": "Statements:\\nAll sky are star\\nFew sky are sun\\nFew sun are moon\\nConclusions:\\nI. Some star are sky\\nII. Some sun are sky\\nIII. Some sun are star",
+        "image": null,
+        "options": [
+            "(a) ll follow",
+            "Only II follows",
+            "Only I and III follow",
+            "None follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II logically follows from the statements."
+    },
+    {
+        "id": "lr-ser-002",
+        "question": "Statements:\\nOnly few Dog are parrot\\nNo parrot is a rat\\nConclusions:\\nI. Some rats are Dog\\nII. All Dog cannot be rats\\nIII. All Dog can be parrot",
+        "image": null,
+        "options": [
+            "(a) ll follow",
+            "Only II follows",
+            "Only I follows",
+            "Only III follows"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows logically from the statements."
+    },
+    {
+        "id": "lr-ser-003",
+        "question": "Statements:\\nOnly 5 is 6\\nOnly a few 5 is 7\\nOnly a few 8 is 7\\nConclusions:\\nI. All 6 can never be 7\\nII. All 7 can never be 6\\nIII. Some 8 being not 7 is a possibility",
+        "image": null,
+        "options": [
+            "(a) ll follow",
+            "Only II follows",
+            "Only III follows",
+            "Only I follows"
+        ],
+        "answer": "(a) ll follow",
+        "explanation": "All conclusions logically follow from the statements."
+    },
+    {
+        "id": "lr-ser-004",
+        "question": "Statements:\\nAll bed are Fan\\nOnly a few bed are Cooler\\nSome Cooler are AC\\nConclusions:\\nI. Some AC are bed\\nII. Some Fan are Cooler\\nIII. Some Fan are not Cooler",
+        "image": null,
+        "options": [
+            "Only II follows",
+            "Only I and III follow",
+            "Only I follows",
+            "(a) ll follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II follows logically from the statements."
+    },
+    {
+        "id": "lr-ser-005",
+        "question": "Statements:\\nOnly a few Remote are TV\\nAll TV are Cream\\nFew Cream are Bottle\\nConclusions:\\nI. All TV being Bottle is a possibility\\nII. Some Cream are not TV\\nIII. All Bottle being Remote is a possibility",
+        "image": null,
+        "options": [
+            "I and III follow",
+            "Only II follows",
+            "Only I follows",
+            "Only III follows"
+        ],
+        "answer": "I and III follow",
+        "explanation": "Conclusions I and III follow logically from the statements."
+    },
+    {
+        "id": "lr-ser-006",
+        "question": "Statements:\\nSome water are cement\\nSome cement are Mud\\nAll Mud are Bricks\\nConclusions:\\nI. Some water can never be Mud\\nII. Some Bricks are water\\nIII. No Bricks is water",
+        "image": null,
+        "options": [
+            "(e) ither II or III follows",
+            "Only I follows",
+            "Only II follows",
+            "(a) ll follow"
+        ],
+        "answer": "(e) ither II or III follows",
+        "explanation": "Either conclusion II or III logically follows from the statements."
+    },
+    {
+        "id": "lr-ser-007",
+        "question": "Statements:\\nOnly a few Charger are Mobile\\nSome Laptop are Charger\\nAll Mouse are Laptop\\nConclusions:\\nI. Some Charger are not Mobile\\nII. All Mouse can be Mobile\\nIII. Some Laptop are not Charger",
+        "image": null,
+        "options": [
+            "Only I and II follow",
+            "Only II follows",
+            "Only III follows",
+            "(a) ll follow"
+        ],
+        "answer": "Only I and II follow",
+        "explanation": "Conclusions I and II follow logically from the statements."
+    },
+    {
+        "id": "lr-ser-008",
+        "question": "Statements:\\nOnly a few Car are Bike\\nOnly a few Bike are Petrol\\nAll Petrol are Oil\\nNo Oil is Diesel\\nConclusions:\\nI. Some Petrol are Car\\nII. Some Bike being Diesel is a possibility\\nIII. No Car is a Petrol\\nIV. All Diesel being Car is a possibility",
+        "image": null,
+        "options": [
+            "Only II and III follow",
+            "Only I and IV follow",
+            "Only I and II follow",
+            "(a) ll follow"
+        ],
+        "answer": "Only II and III follow",
+        "explanation": "Only conclusions II and III logically follow."
+    },
+    {
+        "id": "lr-ser-009",
+        "question": "Statements:\\nAll Apple are Guava\\nAll Grapes are Guava\\nSome Apple are not Grapes\\nSome Pear are Guava\\nConclusions:\\nI. All Guava being Grapes is a possibility\\nII. Some Guava are not Grapes\\nIII. Some Pear being Apple is a possibility\\nIV. Some Grapes are not Apple",
+        "image": null,
+        "options": [
+            "Only II and III follow",
+            "Only I and II follow",
+            "Only I follows",
+            "(a) ll follow"
+        ],
+        "answer": "Only II and III follow",
+        "explanation": "Only conclusions II and III logically follow."
+    },
+    {
+        "id": "lr-ser-010",
+        "question": "Statement:\\nAll Tulip are Lilac\\nSome Orchid is Tulip\\nOnly Orchid is Peony\\nNo Lilac is Jasmine\\nConclusion:\\nI. Some Lilac is Orchid\\nII. No Jasmine is Orchid\\nIII. Some Jasmine is Tulip",
+        "image": null,
+        "options": [
+            "Only conclusion I follows",
+            "Only conclusion II follows",
+            "Only conclusion III follows",
+            "(b) oth I and II follow"
+        ],
+        "answer": "Only conclusion I follows",
+        "explanation": "Only conclusion I logically follows."
+    },
+    {
+        "id": "lr-ser-036",
+        "question": "Statements:\\nAll Schools are Bags.\\nNo Bag is a Road.\\nAll Roads are Screens.\\nConclusions:\\nI. No Screen is a Bag.\\nII. No School is a Road.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(e) ither I or II follows",
+            "Neither I nor II follows",
+            "(b) oth I and II follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "All Schools are Bags, Bags are disjoint from Road. II follows. I is not necessarily true. Hence, only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-037",
+        "question": "Statements:\\nOnly a few trains are plains.\\nNo plains are Bus.\\nAll trains are Bikes.\\nConclusions:\\nI. Some Bikes are definitely not Bus.\\nII. All Plains can never be Bikes.",
+        "image": null,
+        "options": [
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follows",
+            "(e) ither I or II follows",
+            "Only I follows"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "All Trains are Bikes, some are not Bus (I). No direct connection prevents Plains being Bikes, II may also be true. Hence both follow."
+    },
+    {
+        "id": "lr-ser-038",
+        "question": "Statements:\\nAll Institutions are Banks.\\nNo Bank is a College.\\nAll Colleges are Universities.\\nConclusions:\\nI. No University is a Bank.\\nII. No Institution is a College.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If both Conclusions I and II follow",
+        "explanation": "Institutions are Banks; no Bank is College, so II is true. Colleges are Universities, no Bank among them, so I is true. Hence both conclusions follow."
+    },
+    {
+        "id": "lr-ser-039",
+        "question": "Statements:\\nAll Houses are Rooms.\\nOnly Rooms is Baskets.\\nSome Rooms are Tyres.\\nConclusions:\\nI. Some Tyres are Houses.\\nII. No Tyre is Baskets.",
+        "image": null,
+        "options": [
+            "(b) oth I and II follow",
+            "Only I follows",
+            "Only II follows",
+            "Neither I nor II follows",
+            "(e) ither I or II follows"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Some Rooms are Tyres; since all Houses are Rooms, some Tyres may be Houses. Only Rooms are Baskets, so Tyres cannot be Baskets. Hence both conclusions follow."
+    },
+    {
+        "id": "lr-ser-040",
+        "question": "Statements:\\nOnly a few lanterns are tractors.\\nAll Buses are Trains.\\nAll tractors are Buses.\\nConclusions:\\nI. All lanterns can be Trains.\\nII. Some Trains are tractors.",
+        "image": null,
+        "options": [
+            "Only I and II follow",
+            "Only II follows",
+            "Only I follows",
+            "Neither I nor II follows",
+            "(b) oth I and II do not follow"
+        ],
+        "answer": "Only I and II follow",
+        "explanation": "I is possible as lanterns may overlap with tractors, which are Buses, which are Trains. II is true because some Trains are Buses which include tractors. Hence I and II follow."
+    },
+    {
+        "id": "lr-ser-041",
+        "question": "Statements:\\nAll Boats are Ships.\\nAll Bike are Cycle.\\nNo Ships is Cycle.\\nConclusions:\\nI. Some Bike are Ships is a possibility.\\nII. Some Boats are Pant is a possibility.\\nIII. Some Cycle are Boat.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "(a) ll I, II and III do not follow",
+            "(b) oth I and III follow"
+        ],
+        "answer": "(a) ll I, II and III do not follow",
+        "explanation": "Boats are Ships, Ships and Cycles are disjoint, Bikes are Cycles. No conclusion connects the sets. Hence none of the conclusions follow."
+    },
+    {
+        "id": "lr-ser-042",
+        "question": "Statements:\\nSome chair is Sofa.\\nSome Sofa is Books.\\nNo Books is Nets.\\nConclusions:\\nI. No Nets is chair.\\nII. Some Books is Sofa.\\nIII. No Sofa is Nets.",
+        "image": null,
+        "options": [
+            "Only conclusion III follows",
+            "Only conclusions I and II follow",
+            "Only conclusion I and III follow",
+            "Only conclusion II follows",
+            "None of the conclusion follows"
+        ],
+        "answer": "Only conclusions I and II follow",
+        "explanation": "II is directly true as some Books are Sofa. III is true since no Books are Nets and Sofa overlaps with Books. I also follows because Nets are disjoint. Hence I and II follow."
+    },
+    {
+        "id": "lr-ser-043",
+        "question": "Statements:\\nAll Monkey are Parrots.\\nAll crow are Horses.\\nNo Parrot is Horse.\\nConclusions:\\nI. Some Monkey are crow.\\nII. Some Parrots which are not Monkey are crow.",
+        "image": null,
+        "options": [
+            "(e) ither I or II follow",
+            "Only I follow",
+            "(a) ll follows",
+            "Neither I nor II follow",
+            "Only II follows"
+        ],
+        "answer": "Neither I nor II follow",
+        "explanation": "Monkey are Parrots, which are disjoint from Horses (crow). No connection between Monkey and crow. Hence neither I nor II follow."
+    },
+    {
+        "id": "lr-ser-044",
+        "question": "Statements:\\nAll Tigers are phones.\\nAll phones are tablets.\\nNo phone is a mug.\\nConclusions:\\nI. No mug is a tablet.\\nII. Some tablets are Tigers.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If only Conclusion II follows",
+        "explanation": "All Tigers are phones, which are tablets, so II is true. I is not supported. Hence only II follows."
+    },
+    {
+        "id": "lr-ser-045",
+        "question": "Statements:\\nAll laptop are munch.\\nOnly a few munch is KitKat.\\nAll KitKat are Chocolate.\\nConclusions:\\nI. No laptop is KitKat.\\nII. Some Chocolate is munch.",
+        "image": null,
+        "options": [
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Only I follows",
+            "(e) ither I or II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Laptops are part of munch but only a few munch are KitKat, so some laptops are not KitKat. II is possible but not definite. Hence only II follows."
+    },
+    {
+        "id": "lr-ser-046",
+        "question": "Statements:\\nSome D's are O's.\\nAll S's are A's.\\nVery few O's are S's.\\nConclusions:\\nI. Very few A being D is a possibility.\\nII. All S's can be O.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(e) ither I or II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only I follows",
+        "explanation": "Very few A being D is possible as some O's overlap with S and D. II is not possible as S's may not fully overlap with O. Hence only I follows."
+    },
+    {
+        "id": "lr-ser-047",
+        "question": "Statements:\\nAll Printer are Mouse.\\nOnly a few Mouse are Keyboard.\\nNo Keyboard is Road.\\nConclusions:\\nI. Some Mouse is not Road.",
+        "image": null,
+        "options": [
+            "Some Mouse is not Road",
+            "(a) ll Pear can be Tomato",
+            "Some Door are Tablet is a possibility",
+            "Only I follows",
+            "None of these"
+        ],
+        "answer": "Some Mouse is not Road",
+        "explanation": "Only a few Mouse are Keyboard and Keyboard is disjoint from Road. Hence, some Mouse is definitely not Road."
+    },
+    {
+        "id": "lr-ser-048",
+        "question": "Statements:\\nAll Mango are Tomato.\\nSome Pear are Mango.\\nOnly a few Banana are Pear.\\nConclusions:\\nI. All Pear can be Tomato.",
+        "image": null,
+        "options": [
+            "(a) ll Banana are Tomato",
+            "No Tomato are Pear",
+            "(a) ll Pear can be Tomato",
+            "No Tomato are Mango",
+            "(a) ll Banana can be Pear"
+        ],
+        "answer": "(a) ll Pear can be Tomato",
+        "explanation": "Some Pear are Mango, Mango are Tomato, so it is possible all Pear can be Tomato. Other conclusions are not definite."
+    },
+    {
+        "id": "lr-ser-049",
+        "question": "Statements:\\nNo Glass is Door.\\nAll Door are Window.\\nOnly a few Window are Tablet.\\nConclusions:\\nI. Some Door are Tablet is a possibility.",
+        "image": null,
+        "options": [
+            "No Tablet is Glass",
+            "No Tablet is Door",
+            "No Window is Glass",
+            "(a) ll of these",
+            "Some Door are Tablet is a possibility"
+        ],
+        "answer": "Some Door are Tablet is a possibility",
+        "explanation": "Some Window are Tablet and Door is part of Window. Hence some Door being Tablet is possible."
+    },
+    {
+        "id": "lr-ser-050",
+        "question": "Statements:\\nAll Schools are Bags.\\nNo Bag is a Road.\\nAll Roads are Screens.\\nConclusions:\\nI. No Screen is a Bag.\\nII. No School is a Road.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(e) ither I or II follows",
+            "Neither I nor II follows",
+            "(b) oth I and II follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "All Schools are Bags, Bags are disjoint from Road, so II follows. I is not necessarily true. Hence only II follows."
+    },
+    {
+        "id": "lr-ser-011",
+        "question": "Statements:\\nAll HCL are TCS.\\nNo TCS is IBM.\\nAll IBM are Accenture.\\nConclusions:\\nI. All HCL being Accenture is a possibility.\\nII. All IBM being HCL is a possibility.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If only Conclusion I follows",
+        "explanation": "HCL and Accenture have no direct overlap, so I is only a possibility. II is not possible as IBM and HCL are disjoint via TCS. Hence, only I follows."
+    },
+    {
+        "id": "lr-ser-012",
+        "question": "Statements:\\nNo Carts is a Full.\\nSome Full are Papaya.\\nAll Papaya are Jackfruit.\\nConclusions:\\nI. No Papaya is a Carts.\\nII. Some Jackfruit are Full.",
+        "image": null,
+        "options": [
+            "If only conclusion I follows",
+            "If only conclusion II follows",
+            "If either conclusion I or II follows",
+            "If neither conclusion I nor II follows",
+            "If both conclusions I and II follow"
+        ],
+        "answer": "If both conclusions I and II follow",
+        "explanation": "I is true because Papaya are Jackfruit, and Full is disjoint from Carts. II is true because some Full are Papaya and Papaya are Jackfruit. Hence, both conclusions follow."
+    },
+    {
+        "id": "lr-ser-013",
+        "question": "Statements:\\nNo Eagle is Parrot.\\nMinimum cock is Eagle.\\nOnly a few parrot are Sparrow.\\nConclusions:\\nI. Some cock is not Sparrow.\\nII. Some Sparrow is not Eagle.",
+        "image": null,
+        "options": [
+            "Neither I nor II follows",
+            "(b) oth I and II follow",
+            "Only I follows",
+            "Only II follows",
+            "(e) ither I or II follows"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "Some cock are Eagles which are not Parrots, and some Sparrow are Parrots which are not Eagles. Hence, both conclusions follow."
+    },
+    {
+        "id": "lr-ser-014",
+        "question": "Statements:\\nAll Houses are Rooms.\\nOnly Rooms is Baskets.\\nSome Rooms are Tyres.\\nConclusions:\\nI. Some Tyres are Houses.\\nII. No Tyre is Houses.\\nIII. No Tyre is Baskets.",
+        "image": null,
+        "options": [
+            "(b) oth I and II follow",
+            "(b) oth I and III follow",
+            "(e) ither I or II and III follow",
+            "(e) ither II or III follows",
+            "(e) ither I or III follows"
+        ],
+        "answer": "(b) oth I and III follow",
+        "explanation": "Some Rooms are Tyres. Since all Houses are Rooms, some Tyres may be Houses. Also, Tyres are part of Rooms, and only Rooms are Baskets, so Tyres cannot be Baskets. Hence I and III follow."
+    },
+    {
+        "id": "lr-ser-015",
+        "question": "Statements:\\nOnly a few lanterns are tractors.\\nAll Buses are Trains.\\nAll tractors are Buses.\\nConclusions:\\nI. All lanterns can be Trains.\\nII. Some Trains are tractors.\\nIII. All Buses are lanterns.",
+        "image": null,
+        "options": [
+            "Only I and II follow",
+            "Only II follows",
+            "Only III and I follow",
+            "Only I follows",
+            "Only III follows"
+        ],
+        "answer": "Only I and II follow",
+        "explanation": "I is possible as lanterns may overlap with tractors, which are Buses, which are Trains. II is true because some Trains are Buses, which include tractors. III is not necessarily true. Hence only I and II follow."
+    },
+    {
+        "id": "lr-ser-016",
+        "question": "Statements:\\nAll Boats are Ships.\\nAll Bike are Cycle.\\nNo Ships is Cycle.\\nConclusions:\\nI. Some Bike are Ships is a possibility.\\nII. Some Boats are Pant is a possibility.\\nIII. Some Cycle are Boat.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "(a) ll I, II and III do not follow",
+            "(b) oth I and III follow"
+        ],
+        "answer": "(a) ll I, II and III do not follow",
+        "explanation": "Boats are Ships and Ships are disjoint from Cycles. Bikes are Cycles. There is no overlap of Boats with Pant or Cycle with Boat. Hence, none of the conclusions follow."
+    },
+    {
+        "id": "lr-ser-017",
+        "question": "Statements:\\nSome chair is Sofa.\\nSome Sofa is Books.\\nNo Books is Nets.\\nConclusions:\\nI. No Nets is chair.\\nII. Some Books is Sofa.\\nIII. No Sofa is Nets.",
+        "image": null,
+        "options": [
+            "Only conclusion III follows",
+            "Only conclusions I and II follow",
+            "Only conclusion I and III follow",
+            "Only conclusion II follows",
+            "None of the conclusion follows"
+        ],
+        "answer": "Only conclusions I and II follow",
+        "explanation": "II is directly true as some Books are Sofa. III is true since no Books are Nets and Sofa overlaps with Books. I also follows because Nets are disjoint. Hence I and II follow."
+    },
+    {
+        "id": "lr-ser-018",
+        "question": "Statements:\\nAll Monkey are Parrots.\\nAll crow are Horses.\\nNo Parrot is Horse.\\nConclusions:\\nI. Some Monkey are crow.\\nII. Some Parrots which are not Monkey are crow.",
+        "image": null,
+        "options": [
+            "(e) ither I or II follow",
+            "Only I follow",
+            "(a) ll follows",
+            "Neither I nor II follow",
+            "Only II follows"
+        ],
+        "answer": "Neither I nor II follow",
+        "explanation": "Monkey are Parrots and Parrots are disjoint from Horses (crow). No information connects Monkey and crow. Hence, neither I nor II follow."
+    },
+    {
+        "id": "lr-ser-019",
+        "question": "Statements:\\nAll Tigers are phones.\\nAll phones are tablets.\\nNo phone is a mug.\\nConclusions:\\nI. No mug is a tablet.\\nII. Some tablets are Tigers.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If only Conclusion II follows",
+        "explanation": "All Tigers are phones, phones are tablets, so some tablets are Tigers (II). No information supports I as true. Hence, only II follows."
+    },
+    {
+        "id": "lr-ser-020",
+        "question": "Statements:\\nAll laptop are munch.\\nOnly a few munch is KitKat.\\nAll KitKat are Chocolate.\\nConclusions:\\nI. No laptop is KitKat.\\nII. Some Chocolate is munch.",
+        "image": null,
+        "options": [
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Only I follows",
+            "(e) ither I or II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Laptops are part of munch but only a few munch are KitKat. So, laptops may not be KitKat (I follows). Some Chocolate being munch is possible but not definite. Hence, only II follows."
+    },
+    {
+        "id": "lr-ser-021",
+        "question": "Statements:\\nSome D's are O's.\\nAll S's are A's.\\nVery few O's are S's.\\nConclusions:\\nI. Very few A being D is a possibility.\\nII. All S's can be O.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(e) ither I or II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only I follows",
+        "explanation": "Very few A being D is possible as some O's overlap with S and D. II is not possible as S's may not fully overlap with O. Hence, only I follows."
+    },
+    {
+        "id": "lr-ser-022",
+        "question": "Statements:\\nAll Printer are Mouse.\\nOnly a few Mouse are Keyboard.\\nNo Keyboard is Road.\\nConclusions:\\nI. All Printer is Keyboard.\\nII. No Road is Mouse.\\nIII. Some Mouse is not Road.\\nIV. Some Printer is Keyboard.\\nV. No Road is Printer.",
+        "image": null,
+        "options": [
+            "Some Mouse is not Road",
+            "(a) ll Pear can be Tomato",
+            "Some Door are Tablet is a possibility",
+            "Only I follows",
+            "None of these"
+        ],
+        "answer": "Some Mouse is not Road",
+        "explanation": "Since only a few Mouse are Keyboard, and Keyboard is disjoint from Road, some Mouse is not Road. Hence, conclusion III follows."
+    },
+    {
+        "id": "lr-ser-023",
+        "question": "Statements:\\nAll Mango are Tomato.\\nSome Pear are Mango.\\nOnly a few Banana are Pear.\\nConclusions:\\nI. All Banana are Tomato.\\nII. No Tomato are Pear.\\nIII. All Pear can be Tomato.\\nIV. No Tomato are Mango.\\nV. All Banana can be Pear.",
+        "image": null,
+        "options": [
+            "(a) ll Banana are Tomato",
+            "No Tomato are Pear",
+            "(a) ll Pear can be Tomato",
+            "No Tomato are Mango",
+            "(a) ll Banana can be Pear"
+        ],
+        "answer": "(a) ll Pear can be Tomato",
+        "explanation": "Some Pear are Mango, Mango are Tomato, so it is possible all Pear can be Tomato. Other conclusions are not definite. Hence, III follows."
+    },
+    {
+        "id": "lr-ser-024",
+        "question": "Statements:\\nNo Glass is Door.\\nAll Door are Window.\\nOnly a few Window are Tablet.\\nConclusions:\\nI. No Tablet is Glass.\\nII. No Tablet is Door.\\nIII. No Window is Glass.\\nIV. All of these.\\nV. Some Door are Tablet is a possibility.",
+        "image": null,
+        "options": [
+            "No Tablet is Glass",
+            "No Tablet is Door",
+            "No Window is Glass",
+            "(a) ll of these",
+            "Some Door are Tablet is a possibility"
+        ],
+        "answer": "Some Door are Tablet is a possibility",
+        "explanation": "Some Window are Tablet, Door is part of Window, hence some Door may be Tablet. Other statements are either partial or not definite. Hence, conclusion V follows."
+    },
+    {
+        "id": "lr-ser-025",
+        "question": "Statements:\\nOnly a few Paper are Pen.\\nSome Pages are Color.\\nSome Pen are not Pages.\\nConclusions:\\nI. No Pen are Color.\\nII. All Paper being Pages is a possibility.",
+        "image": null,
+        "options": [
+            "Neither I nor II follows",
+            "Only II follows",
+            "Only I follows",
+            "(b) oth I and II follow",
+            "(e) ither I or II follows"
+        ],
+        "answer": "Only II follows",
+        "explanation": "All Paper being Pages is possible as only a few Paper are Pen and Pages are separate. I is not necessarily true. Hence, only II follows."
+    },
+    {
+        "id": "lr-ser-026",
+        "question": "Statements:\\nOnly a few Trains are Plains.\\nNo Plains are Bus.\\nAll Trains are Bikes.\\nConclusions:\\nI. Some Bikes are definitely not Bus.\\nII. All Plains can never be Bikes.",
+        "image": null,
+        "options": [
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follows",
+            "(e) ither I or II follows",
+            "Only I follows"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "All Trains are Bikes, and no Plains are Bus. Some Bikes (Trains) are not Bus (I). Since no information prevents Plains from being Bikes, II is also possible. Hence both follow."
+    },
+    {
+        "id": "lr-ser-027",
+        "question": "Statements:\\nAll Institutions are Banks.\\nNo Bank is a College.\\nAll Colleges are Universities.\\nConclusions:\\nI. No University is a Bank.\\nII. No Institution is a College.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If both Conclusions I and II follow",
+        "explanation": "Since Institutions are Banks and no Bank is College, Institutions cannot be College (II). Colleges are Universities, so no University is Bank (I). Hence, both conclusions follow."
+    },
+    {
+        "id": "lr-ser-028",
+        "question": "Statements:\\nAll Schools are Bags.\\nNo Bag is a Road.\\nAll Roads are Screens.\\nConclusions:\\nI. No Screen is a Bag.\\nII. No School is a Road.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If only Conclusion II follows",
+        "explanation": "All Schools are Bags and Bags are disjoint from Road. II follows. I is not necessarily true as Roads and Screens are separate. Hence, only II follows."
+    },
+    {
+        "id": "lr-ser-029",
+        "question": "Statements:\\nOnly a few Jute are Sweet.\\nSome Juggler are Jute.\\nNo Juice is Sweet.\\nConclusions:\\nI. At least some Jute are Juice.\\nII. All Sweet are Juggler is a possibility.",
+        "image": null,
+        "options": [
+            "(e) ither I or II follows",
+            "Neither I nor II follows",
+            "(b) oth I and II follows",
+            "Only I follows",
+            "Only II follows"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only a few Jute are Sweet, and some Juggler are Jute. II is possible but not definite. Hence, only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-030",
+        "question": "Statements:\\nOnly a few Green are Red.\\nAll Red are White.\\nSome White are Black.\\nConclusions:\\nI. Some Green are not Black.\\nII. Some Red are Black.",
+        "image": null,
+        "options": [
+            "(e) ither I or II follows",
+            "Neither I nor II follows",
+            "(b) oth I and II follows",
+            "Only I follows",
+            "Only II follows"
+        ],
+        "answer": "(b) oth I and II follows",
+        "explanation": "Some Red are White, some White are Black, so II is true. Some Green may not be Black. Hence, both conclusions follow."
+    },
+    {
+        "id": "lr-ser-031",
+        "question": "Statements:\\nAll HCL are TCS.\\nNo TCS is IBM.\\nAll IBM are Accenture.\\nConclusions:\\nI. All HCL being Accenture is a possibility.\\nII. All IBM being HCL is a possibility.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If only Conclusion I follows",
+        "explanation": "No direct connection between HCL and Accenture, so I is only a possibility. II is not possible. Hence only I follows."
+    },
+    {
+        "id": "lr-ser-032",
+        "question": "Statements:\\nNo Carts is a Full.\\nSome Full are Papaya.\\nAll Papaya are Jackfruit.\\nConclusions:\\nI. No Papaya is a Carts.\\nII. Some Jackfruit are Full.",
+        "image": null,
+        "options": [
+            "If only conclusion I follows",
+            "If only conclusion II follows",
+            "If either conclusion I or II follows",
+            "If neither conclusion I nor II follows",
+            "If both conclusions I and II follow"
+        ],
+        "answer": "If both conclusions I and II follow",
+        "explanation": "I is true because Papaya are Jackfruit, Full disjoint with Carts. II is true as some Full are Papaya which are Jackfruit. Both conclusions follow."
+    },
+    {
+        "id": "lr-ser-033",
+        "question": "Statements:\\nAll Printer are Mouse.\\nOnly a few Mouse are Keyboard.\\nNo Keyboard is Road.\\nConclusions:\\nI. Some Mouse is not Road.",
+        "image": null,
+        "options": [
+            "Some Mouse is not Road",
+            "(a) ll Pear can be Tomato",
+            "Some Door are Tablet is a possibility",
+            "Only I follows",
+            "None of these"
+        ],
+        "answer": "Some Mouse is not Road",
+        "explanation": "Since only a few Mouse are Keyboard and Keyboard is disjoint from Road, some Mouse is definitely not Road. Hence conclusion I follows."
+    },
+    {
+        "id": "lr-ser-034",
+        "question": "Statements:\\nAll Mango are Tomato.\\nSome Pear are Mango.\\nOnly a few Banana are Pear.\\nConclusions:\\nI. All Pear can be Tomato.",
+        "image": null,
+        "options": [
+            "(a) ll Banana are Tomato",
+            "No Tomato are Pear",
+            "(a) ll Pear can be Tomato",
+            "No Tomato are Mango",
+            "(a) ll Banana can be Pear"
+        ],
+        "answer": "(a) ll Pear can be Tomato",
+        "explanation": "Some Pear are Mango, Mango are Tomato, so it is possible all Pear can be Tomato. Other conclusions are not definite. Hence conclusion I follows."
+    },
+    {
+        "id": "lr-ser-035",
+        "question": "Statements:\\nNo Glass is Door.\\nAll Door are Window.\\nOnly a few Window are Tablet.\\nConclusions:\\nI. Some Door are Tablet is a possibility.",
+        "image": null,
+        "options": [
+            "No Tablet is Glass",
+            "No Tablet is Door",
+            "No Window is Glass",
+            "(a) ll of these",
+            "Some Door are Tablet is a possibility"
+        ],
+        "answer": "Some Door are Tablet is a possibility",
+        "explanation": "Some Window are Tablet and Door is part of Window, so some Door being Tablet is possible. Hence conclusion I follows."
+    },
+    {
+        "id": "lr-ser-001",
+        "question": "Statements:\\nSome mango are purple.\\nNo purple is papaya.\\nSome papaya are yellow.\\nConclusions:\\nI. Some mango are yellow.\\nII. Some yellow are purple.",
+        "image": null,
+        "options": [
+            "Neither I nor II follows",
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow"
+        ],
+        "answer": "Neither I nor II follows",
+        "explanation": "There is no direct connection between mango and yellow, nor yellow and purple. Hence, neither conclusion follows."
+    },
+    {
+        "id": "lr-ser-002",
+        "question": "Statements:\\nAll A are B.\\nSome D are A.\\nSome Q are D.\\nConclusions:\\nI. Some Q are A.\\nII. All A are Q.",
+        "image": null,
+        "options": [
+            "Neither I nor II follows",
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow"
+        ],
+        "answer": "Only I follows",
+        "explanation": "Since some Q are D and some D are A, it is possible that some Q are A. However, we cannot say all A are Q. Hence, only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-003",
+        "question": "Statements:\\nNo banana is guava.\\nNo lemon is grapes.\\nOnly a few grapes are banana.\\nConclusions:\\nI. Some grapes are not guava.\\nII. Some banana are not lemon.",
+        "image": null,
+        "options": [
+            "Neither I nor II follows",
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow"
+        ],
+        "answer": "(b) oth I and II follow",
+        "explanation": "I is true because no banana is guava, so grapes that are banana are not guava. II is true because some bananas may not be lemons. Hence, both conclusions follow."
+    },
+    {
+        "id": "lr-ser-004",
+        "question": "Statements:\\nAll mobiles are PC.\\nNo PC is laptop.\\nAll PC are charger.\\nConclusions:\\nI. All mobiles are charger.\\nII. Some chargers are laptop.",
+        "image": null,
+        "options": [
+            "Neither I nor II follows",
+            "Only I follows",
+            "Only II follows",
+            "(b) oth I and II follow"
+        ],
+        "answer": "Only I follows",
+        "explanation": "All mobiles are PC and all PC are chargers, so all mobiles are chargers. No PC is laptop, so II is false. Hence, only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-005",
+        "question": "Statements:\\nOnly a few men are women.\\nAll girls are women.\\n65% boys are men.\\nConclusions:\\nI. Some men are girls.\\nII. Some boys are girls is a possibility.",
+        "image": null,
+        "options": [
+            "(e) ither I or II follows",
+            "Neither I nor II follows",
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Only I follows"
+        ],
+        "answer": "Only I follows",
+        "explanation": "Since all girls are women and some men are women, it is possible that some men are girls. II is only a possibility, not definite. Hence, only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-006",
+        "question": "Statements:\\nOnly a few rose are lily.\\nNo lily is a lotus.\\nAll jasmine are lotus.\\nConclusions:\\nI. No lily is a jasmine.\\nII. Some jasmine being rose is a possibility.",
+        "image": null,
+        "options": [
+            "(b) oth I and II follow",
+            "Only I follows",
+            "Neither I nor II follows",
+            "Only II follows",
+            "(e) ither I or II follows"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Since no lily is a lotus and all jasmine are lotus, lily cannot be jasmine. II is possible because some jasmine may be rose. Hence, only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-007",
+        "question": "Statements:\\nAll cops are pager.\\nAll pager are boon.\\nNo boon is a pen.\\nConclusions:\\nI. No cop is a pen.\\nII. No pager is a pen.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If both Conclusions I and II follow",
+        "explanation": "Since all cops are pager and all pager are boon, and no boon is pen, it follows logically that no cop and no pager is a pen. Hence, both conclusions follow."
+    },
+    {
+        "id": "lr-ser-008",
+        "question": "Statements:\\nAll novels are tree.\\nNo tree is a palm.\\nAll palm are tablets.\\nConclusions:\\nI. All novels being tablets is a possibility.\\nII. All palm being novels is a possibility.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If only Conclusion I follows",
+        "explanation": "There is no direct connection between novels and tablets, so all novels being tablets is only a possibility. Palm and novels are separate sets, so II is not possible. Hence, only conclusion I follows."
+    },
+    {
+        "id": "lr-ser-009",
+        "question": "Statements:\\nOnly a few jute are sweet.\\nSome juggler are jute.\\nNo juice is sweet.\\nConclusions:\\nI. At least some jute are juice.\\nII. All sweet are juggler is a possibility.",
+        "image": null,
+        "options": [
+            "(e) ither I or II follows",
+            "Neither I nor II follows",
+            "(b) oth I and II follows",
+            "Only I follows",
+            "Only II follows"
+        ],
+        "answer": "Only II follows",
+        "explanation": "I is not definite. II is possible because some sweet may be juggler. Hence, only conclusion II follows."
+    },
+    {
+        "id": "lr-ser-010",
+        "question": "Statements:\\nOnly a few green are red.\\nAll red are white.\\nSome white are black.\\nConclusions:\\nI. Some green are not black.\\nII. Some red are black.",
+        "image": null,
+        "options": [
+            "(e) ither I or II follows",
+            "Neither I nor II follows",
+            "(b) oth I and II follows",
+            "Only I follows",
+            "Only II follows"
+        ],
+        "answer": "(b) oth I and II follows",
+        "explanation": "Since some white are black, some red (being white) may be black. Some green may not be black. Hence, both conclusions follow."
+    },
+    {
+        "id": "lr-stm-010",
+        "question": "Statements:\\nAll Bangles are Necklace\\nAll Necklace are Ring\\nNo _____ is Earring\\nConclusions:\\nNo Bangles are Earring\\nNo Necklace is a Earring\\nI. Bangles\\nII. Necklace\\nIII. Ring",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(e) ither II or III",
+            "Only III",
+            "None of these"
+        ],
+        "answer": "(e) ither II or III",
+        "explanation": "Either II or III can logically explain the conclusions."
+    },
+    {
+        "id": "lr-stm-011",
+        "question": "Conclusions:\\nSome Red being White is a possibility\\nAll those Red which are Black are also Green\\nStatements:\\nI. Some Black are Green. Some Black are Red. No White is an Azure. No Azure is Red.\\nII. All Black are Green. All Black are White. No Red is an Azure. No Azure is a White.\\nIII. All Black are Green. All Black are Red. No Red is an Azure. No Azure is a White.",
+        "image": null,
+        "options": [
+            "Only Statement I is sufficient",
+            "Only Statement II is sufficient",
+            "Only Statement III is sufficient",
+            "Neither of these statements is sufficient",
+            "(e) ither of these statements is sufficient"
+        ],
+        "answer": "Only Statement III is sufficient",
+        "explanation": "Only Statement III sufficiently supports both conclusions."
+    },
+    {
+        "id": "lr-stm-012",
+        "question": "Conclusions:\\nSome WhatsApp are not Facebook\\nNo Instagram is a Twitter\\nSome Meta are not Twitter\\nStatements:\\nI. Some Twitter are WhatsApp. No WhatsApp is an Instagram. No Twitter is a Facebook. Each Facebook is a Meta.\\nII. All Twitter are WhatsApp. All WhatsApp are Instagrams. No Twitter is a Facebook. Some Facebook are Meta.\\nIII. Some Twitter are WhatsApp. Only WhatsApp is an Instagram. No Twitter is a Facebook. Some Facebook are Meta.",
+        "image": null,
+        "options": [
+            "Only Statement I is sufficient",
+            "Only Statement II is sufficient",
+            "Only Statement III is sufficient",
+            "Neither of these statements is sufficient",
+            "(e) ither Statement I or II is sufficient"
+        ],
+        "answer": "Only Statement III is sufficient",
+        "explanation": "Only Statement III supports all three conclusions logically."
+    },
+    {
+        "id": "lr-stm-013",
+        "question": "Statements:\\nAll ____ are Current.\\nAll Resistance are Bulb.\\nSome Current are Shock.\\nNo Wire is Resistance\\nConclusions:\\nI. Some Current are Resistance.\\nII. Some Shock may be Wire.\\ni. Wire\\nii. Shock\\niii. Bulb",
+        "image": null,
+        "options": [
+            "Only III",
+            "Only II",
+            "Only I",
+            "(a) ll I, II and III",
+            "None of the given"
+        ],
+        "answer": "Only III",
+        "explanation": "Only conclusion III follows based on the statements."
+    },
+    {
+        "id": "lr-stm-014",
+        "question": "Statements:\\n100% 2 is 4\\nSome 4 is 6\\n50% ______ is 8\\nConclusions:\\nSome 6 is 2\\nSome 8 being 4 is possible\\ni. 6\\nii. 4\\niii. 2",
+        "image": null,
+        "options": [
+            "Only II",
+            "(b) oth I and II",
+            "Only I",
+            "Only III",
+            "None of the given"
+        ],
+        "answer": "None of the given",
+        "explanation": "None of the given conclusions follow logically."
+    },
+    {
+        "id": "lr-stm-015",
+        "question": "Conclusions:\\nI. Some Oranges is not Date\\nII. Some Grapes can be Guava\\nIII. No Banana is Guava\\nStatements:\\nI. No Date is Guava. All Grapes are Banana. Some Banana are Date. All Guava are Orange.\\nII. All Date is Guava. Some Banana is Orange. No Grapes is Guava. Some Orange is Grapes.\\nIII. All Orange is Banana. Some Grapes is Date. No Date is Guava. Some Guava is Orange.",
+        "image": null,
+        "options": [
+            "Only Statement I is sufficient",
+            "Only Statement II is sufficient",
+            "Only Statement III is sufficient",
+            "None of these statements is sufficient",
+            "(a) ll of these statements are sufficient"
+        ],
+        "answer": "None of these statements is sufficient",
+        "explanation": "None of the statements alone or combined are sufficient to support all conclusions."
+    },
+    {
+        "id": "lr-stm-016",
+        "question": "Conclusions:\\nI. Some CTO is not SD\\nII. Some PM is SA\\nIII. No CDO is CEO\\nStatements:\\nI. All CDO are SD. Some PM are CTO. No SA is CTO. Some CEO are PM. Some SD are SA.\\nII. No PM is CEO. All SD are CDO. Some PM is CTO. No SA is CDO. Some CTO is SA.\\nIII. Some CEOs are SA. Some SA are CTO. No SD is CEO. All CTO are PM. All CDO are SD. No PM is SD.",
+        "image": null,
+        "options": [
+            "Only Statement I is sufficient",
+            "Only Statement II is sufficient",
+            "Only Statement III is sufficient",
+            "Neither of these statements is sufficient",
+            "(a) ll of these statements are sufficient"
+        ],
+        "answer": "Only Statement III is sufficient",
+        "explanation": "Only Statement III is sufficient to validate all conclusions."
+    },
+    {
+        "id": "lr-stm-017",
+        "question": "Statements:\\nBricks – Stone\\nWood * Steel\\nStone + Wood\\nSteel ? Plastic\\nConclusions:\\nI. Some Stone can be Plastic\\nII. All Bricks being Steel is a possibility",
+        "image": null,
+        "options": [
+            "Neither conclusion I nor II follows",
+            "Only conclusion I follows",
+            "(b) oth conclusion I and II follow",
+            "Only conclusion II follows",
+            "(e) ither conclusion I or II follows"
+        ],
+        "answer": "(b) oth conclusion I and II follow",
+        "explanation": "Both conclusions I and II logically follow from the statements."
+    },
+    {
+        "id": "lr-stm-018",
+        "question": "Statements:\\nTimber ^ Sand\\nClay @ Timber\\nSand @ Bamboo\\nFoam & Bamboo\\nConclusions:\\nI. Some Clay is Mineral\\nII. All Bamboo can be Timber",
+        "image": null,
+        "options": [
+            "Neither conclusion I nor II follows",
+            "Only conclusion I follows",
+            "(b) oth conclusion I and II follow",
+            "Only conclusion II follows",
+            "(e) ither conclusion I or II follows"
+        ],
+        "answer": "Only conclusion II follows",
+        "explanation": "Only conclusion II logically follows from the statements."
+    },
+    {
+        "id": "lr-stm-019",
+        "question": "Conclusions:\\nI. Jan @^ Mar\\nII. July ! Jan\\nIII. Mar <^ July\\nStatements:\\nA. Dec < July; July $ Oct; Oct @ Jan; Mar $ July\\nB. July $ Mar; Jan ! Dec; Mar @ Dec; Oct @ July\\nC. Dec @ Mar; July @ Dec; Oct # July; Jan $ Oct\\nD. Dec < Mar; Mar # July; Jan $ Oct; Mar $ Jan\\nE. July < Jan; Mar # Oct; Mar @ Jan; Dec $ Mar",
+        "image": null,
+        "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D",
+            "Option E"
+        ],
+        "answer": "Option C",
+        "explanation": "Option C correctly represents the relationships that validate the conclusions."
+    },
+    {
+        "id": "lr-stm-020",
+        "question": "Conclusions:\\nI. Books @ Square\\nII. lowers $ Square\\nIII. Star $ Moon\\nStatements:\\nA. Square < Star; Star $ Books; Moon > lowers; Moon @ Books\\nB. Square < Star; Star $ Moon; Star < Books; lowers < Moon\\nC. Square # Books; Books < Star; Star @ Moon; Moon > lowers\\nD. Square < Star; Star < Books; Books $ Moon; Moon @ lowers\\nE. Books < Square; Moon > lowers; Moon @ Books; Star $ Square",
+        "image": null,
+        "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D",
+            "Option E"
+        ],
+        "answer": "Option B",
+        "explanation": "Option B correctly validates all the given conclusions."
+    },
+    {
+        "id": "lr-stm-021",
+        "question": "Conclusions:\\nI. London @ France\\nII. Italy ! Rome\\nIII. Dubai @^ London\\nStatements:\\nA. Italy < Rome; Italy @ France; Dubai @ Rome; Rome $ London\\nB. Dubai < London; London $ Rome; Rome @ Italy; Italy < France\\nC. Dubai < Italy; France $ Rome; Rome @ London; Italy < France\\nD. London @ Italy; Italy < France; London $ Rome; Rome @ Dubai\\nE. France $ Rome; Dubai @ London; Italy < Dubai; London < France",
+        "image": null,
+        "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D",
+            "Option E"
+        ],
+        "answer": "Option D",
+        "explanation": "Option D correctly satisfies all three conclusions."
+    },
+    {
+        "id": "lr-stm-001",
+        "question": "Conclusions:\\nSome Rice are Wheat\\nNo Cereals is oil is a possibility\\nNo coffee is Wheat\\nSome Cereals is Wheat is a possibility\\nStatements:\\nI. Only Rice is Cereals.\\nII. Few Rice are coffee.\\nIII. Only Cereals are oil\\nIV. No oil is Wheat",
+        "image": null,
+        "options": [
+            "Only I and III",
+            "Only II and IV",
+            "Only I, III and IV",
+            "(a) ll the statements are required",
+            "None of the statements"
+        ],
+        "answer": "None of the statements",
+        "explanation": "None of the statements alone or combined sufficiently support all conclusions."
+    },
+    {
+        "id": "lr-stm-002",
+        "question": "Conclusions:\\nSome H are not O\\nSome K are G is a possibility\\nSome G are O is a possibility\\nSome U are not O\\nStatements:\\nI. Few H are K\\nII. No K is O\\nIII. Some K are U\\nIV. Few U are G",
+        "image": null,
+        "options": [
+            "Only I and III",
+            "Only II and IV",
+            "Only I, III and IV",
+            "(a) ll the statements are required",
+            "None of the statements"
+        ],
+        "answer": "(a) ll the statements are required",
+        "explanation": "All four statements are required to evaluate the conclusions."
+    },
+    {
+        "id": "lr-stm-003",
+        "question": "Conclusions:\\nSome Bottle is not Glass\\nAll Pan is Spray\\nSome Stove is not Spray\\nStatements:\\nI. All Bottle is Pan. No Pan is Stove. Some Stove is Glass. All Glass is Spray. No Spray is Knife.\\nII. Some Bottle is Knife. No Knife is Glass. All Pan is Glass. Some Glass is Spray. All Stove is Spray.\\nIII. All Bottle is Stove. No Stove is Glass. All Spray is Glass. Some Spray is Knife. All Knife is Pan.",
+        "image": null,
+        "options": [
+            "Only Statement I is sufficient",
+            "Only Statement II is sufficient",
+            "Only Statement III is sufficient",
+            "Neither of these statements is sufficient",
+            "(a) ll of these statements are sufficient"
+        ],
+        "answer": "Neither of these statements is sufficient",
+        "explanation": "Neither statement alone is sufficient to support all conclusions."
+    },
+    {
+        "id": "lr-stm-004",
+        "question": "Conclusions:\\nMostly AC is Fan\\nAll Bulb is not TV\\nSome Bulb is not Computer\\nStatements:\\nI. 100% Bulb is AC. 25% laptop is Bulb. Few Computer is laptop. All Computer is Fan. No Fan is TV.\\nII. 40% AC is TV. 100% TV is Fan. 0% Fan is Bulb. Some laptop is Bulb. No Computer is laptop.\\nIII. Some Computer is Fan. 100% Fan is AC. 0% AC is TV. Some TV is laptop. All laptop is Bulb.",
+        "image": null,
+        "options": [
+            "Only Statement I is sufficient",
+            "Only Statement II is sufficient",
+            "Only Statement III is sufficient",
+            "Neither of these statements is sufficient",
+            "(a) ll of these statements are sufficient"
+        ],
+        "answer": "Only Statement II is sufficient",
+        "explanation": "Only Statement II logically supports the conclusions."
+    },
+    {
+        "id": "lr-stm-005",
+        "question": "Conclusions:\\nOnly a few Excel is PPT\\nNo Excel being MS is a possibility\\nStatements:\\nI. Some PPT is MS. Some MS is Meet. All Meet is Monitor.\\nII. Some Excel is MS. Some MS is Monitor. Some Monitor is Meet.\\nIII. Some MS is PPT. Only a few Excel is PPT. All Excel is Monitor.",
+        "image": null,
+        "options": [
+            "Only Statement I is sufficient",
+            "Only Statement II is sufficient",
+            "Only Statement III is sufficient",
+            "Neither of these statements is sufficient",
+            "(a) ll of these statements are sufficient"
+        ],
+        "answer": "Only Statement III is sufficient",
+        "explanation": "Only Statement III is sufficient to validate both conclusions."
+    },
+    {
+        "id": "lr-stm-006",
+        "question": "Conclusions:\\nSome 2004 can never be 2005\\nAll 2007 being 2004 is a possibility\\nNo 2009 is 2011\\nStatements:\\nI. Some 2005 is 2011. All 2011 is 2004. Only a few 2004 is 2007. No 2005 is 2009.\\nII. No 2005 is 2011. No 2011 is 2004. Only a few 2004 is 2007. Only 2005 is 2009.\\nIII. No 2005 is 2011. All 2011 is 2004. Only a few 2004 is 2007. Only 2005 is 2009.",
+        "image": null,
+        "options": [
+            "Only Statement I is sufficient",
+            "Only Statement II is sufficient",
+            "Only Statement III is sufficient",
+            "Neither of these statements is sufficient",
+            "(a) ll of these statements are sufficient"
+        ],
+        "answer": "Only Statement III is sufficient",
+        "explanation": "Only Statement III supports all conclusions."
+    },
+    {
+        "id": "lr-stm-007",
+        "question": "Statements:\\nSome Gloves are Balls\\nAll Balls are Discs\\nAll Discs are Nets\\nNo Nets is a Goals",
+        "image": null,
+        "options": [
+            "(a) ll Balls are Nets",
+            "No Balls is a Goals",
+            "No Goals is a Discs",
+            "(a) ll Goals being Gloves is a possibility",
+            "(a) ll Gloves being Goals is a possibility"
+        ],
+        "answer": "(a) ll Gloves being Goals is a possibility",
+        "explanation": "All Gloves being Goals is a possibility based on the statements."
+    },
+    {
+        "id": "lr-stm-008",
+        "question": "Statements:\\nSome Stump are Bags\\nSome Bags are Cleats\\nNo Cleats is Bat\\nAll Bat are Skis",
+        "image": null,
+        "options": [
+            "Some Bat are not Bags",
+            "Some Stump are Cleats",
+            "Some Bags are Stump",
+            "(a) ll Skis being Cleats is a possibility",
+            "(a) ll Stump being Skis is a possibility"
+        ],
+        "answer": "(a) ll Stump being Skis is a possibility",
+        "explanation": "All Stump being Skis is a possibility based on the hierarchy."
+    },
+    {
+        "id": "lr-stm-009",
+        "question": "Statements:\\nSome Tea are Coconut\\nEvery Coconut is a Bread\\nSome _____ are Cream\\nConclusions:\\nSome Creams are Coconut\\nSome Breads are Creams",
+        "image": null,
+        "options": [
+            "Only I",
+            "Only II",
+            "(e) ither I or III",
+            "Only III",
+            "None of these"
+        ],
+        "answer": "Only II",
+        "explanation": "Only conclusion II follows based on the statements."
+    },
+    {
+        "id": "lr-ser-001",
+        "question": "Statements:\\nAll Monkey are Parrots.\\nAll crow are Horses.\\nNo Parrot is Horse.\\nConclusions:\\nI. Some Monkey are crow.\\nII. Some Parrot which are not Monkey are crow.",
+        "image": null,
+        "options": [
+            "(e) ither I or II follow",
+            "Only I follow",
+            "(a) ll follows",
+            "Neither I nor II follow",
+            "Only II follows"
+        ],
+        "answer": "Neither I nor II follow",
+        "explanation": "Neither I nor II logically follow from the statements."
+    },
+    {
+        "id": "lr-ser-002",
+        "question": "Statements:\\nAll Tigers are phones.\\nAll phones are tablets.\\nNo phone is a mug.\\nConclusions:\\nI. No mug is a tablet.\\nII. Some tablets are Tigers.",
+        "image": null,
+        "options": [
+            "If only Conclusion I follows",
+            "If only Conclusion II follows",
+            "If either Conclusion I or II follows",
+            "If neither Conclusion I nor II follows",
+            "If both Conclusions I and II follow"
+        ],
+        "answer": "If both Conclusions I and II follow",
+        "explanation": "Both conclusions I and II follow logically."
+    },
+    {
+        "id": "lr-ser-003",
+        "question": "Statements:\\nAll laptop are munch.\\nOnly a few munch is KitKat.\\nAll KitKat are Chocolate.\\nConclusions:\\nI. No laptop is KitKat.\\nII. Some Chocolate is munch.",
+        "image": null,
+        "options": [
+            "Only II follows",
+            "(b) oth I and II follow",
+            "Only I follows",
+            "(e) ither I or II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only II follows",
+        "explanation": "Only conclusion II logically follows."
+    },
+    {
+        "id": "lr-ser-004",
+        "question": "Statements:\\nSome D's are O's.\\nAll S's are A's.\\nVery few O's are S's.\\nConclusions:\\nI. Very few A being D is a possibility.\\nII. All S's can be O.",
+        "image": null,
+        "options": [
+            "Only I follows",
+            "Only II follows",
+            "(e) ither I or II follows",
+            "(b) oth I and II follow",
+            "Neither I nor II follow"
+        ],
+        "answer": "Only I follows",
+        "explanation": "Only conclusion I is possible; conclusion II cannot be inferred."
+    },
+    {
+        "id": "lr-ser-005",
+        "question": "Statements:\\nAll Printer are Mouse.\\nOnly a few Mouse are Keyboard.\\nNo Keyboard is Road.",
+        "image": null,
+        "options": [
+            "(a) ll Printer is Keyboard",
+            "No Road is Mouse",
+            "Some Mouse is not Road",
+            "Some Printer is Keyboard",
+            "No Road is Printer"
+        ],
+        "answer": "Some Mouse is not Road",
+        "explanation": "Some Mouse is not Road logically follows."
+    },
+    {
+        "id": "lr-ser-006",
+        "question": "Statements:\\nAll Mango are Tomato.\\nSome Pear are Mango.\\nOnly a few Banana are Pear.",
+        "image": null,
+        "options": [
+            "(a) ll Banana are Tomato",
+            "No Tomato are Pear",
+            "(a) ll Pear can be Tomato",
+            "No Tomato are Mango",
+            "(a) ll Banana can be Pear"
+        ],
+        "answer": "(a) ll Pear can be Tomato",
+        "explanation": "All Pear can be Tomato is logically possible."
+    },
+    {
+        "id": "lr-ser-007",
+        "question": "Statements:\\nNo Glass is Door.\\nAll Door are Window.\\nOnly a few Window are Tablet.",
+        "image": null,
+        "options": [
+            "No Tablet is Glass",
+            "No Tablet is Door",
+            "No Window is Glass",
+            "(a) ll of these",
+            "Some Door are Tablet is a possibility"
+        ],
+        "answer": "Some Door are Tablet is a possibility",
+        "explanation": "Only 'Some Door are Tablet is a possibility' is correct."
+    },
+    {
+        "id": "lr-ser-008",
+        "question": "Statements:\\nNo Open is a Night.\\nAll Nights are Days.\\nAll Days are Sun.\\nNo Sun is a Moon.",
+        "image": null,
+        "options": [
+            "(a) ll Opens being Sun is a possibility",
+            "Some Nights are not Sun",
+            "No Night is a Moon",
+            "No Moon is a Day",
+            "(a) ll Opens being Days is a possibility"
+        ],
+        "answer": "(a) ll Opens being Sun is a possibility",
+        "explanation": "All Opens being Sun is a possibility does not follow logically."
+    },
+    {
+        "id": "lr-ser-009",
+        "question": "Statements:\\nSome Bikes are Watch.\\nAll Watch are Car.\\nNo Car is a Things.\\nAll Things are Pens.",
+        "image": null,
+        "options": [
+            "Some Pens are Bikes",
+            "Some Pens are Car",
+            "Some Things are Bikes",
+            "Some Car are Bikes",
+            "Some Things are Watch"
+        ],
+        "answer": "Some Things are Watch",
+        "explanation": "Some Things are Watch does not logically follow."
+    },
+    {
+        "id": "lr-ser-010",
+        "question": "Statements:\\nSome Laptop are Cup.\\nAll Cup are Track.\\nAll Track are Laps.\\nNo lap is a Mouse.",
+        "image": null,
+        "options": [
+            "No Cup is a Mouse",
+            "Some Mouse being Laptop is a possibility",
+            "Some Laps are Cup",
+            "No Mouse is a jar",
+            "(a) ll Laptop being Mouse is a possibility"
+        ],
+        "answer": "Some Mouse being Laptop is a possibility",
+        "explanation": "Some Mouse being Laptop is a possibility does not follow."
+    },
+    {
+        "id": "lr-ser-011",
+        "question": "Statements:\\nAll A are B.\\nAll C are B.\\nSome B are D.\\nNo D is a C.",
+        "image": null,
+        "options": [
+            "No C are D",
+            "Some A are D",
+            "No A is a D",
+            "(a) ll B being D is a possibility",
+            "(a) ll A being D is a possibility"
+        ],
+        "answer": "(a) ll B being D is a possibility",
+        "explanation": "All B being D is a possibility does not follow."
+    },
+    {
+        "id": "lr-ser-012",
+        "question": "Statements:\\nSome Fruits are Sweets.\\nAll Sweets are Flowers.\\nAll Flowers are Bees.\\nNo Bees is a Curd.",
+        "image": null,
+        "options": [
+            "(a) ll Fruits being Curds is a possibility",
+            "(a) ll Curds being Fruits is a possibility",
+            "(a) ll Sweets are Bees",
+            "No Sweet is a Curd",
+            "No Curd is a Flower"
+        ],
+        "answer": "(a) ll Fruits being Curds is a possibility",
+        "explanation": "All Fruits being Curds is a possibility does not follow."
+    },
+    {
+        "id": "lr-ser-013",
+        "question": "Statements:\\nNo Bulb being Screen is a possibility.\\nAll Movie being Screen is a possibility.",
+        "image": null,
+        "options": [
+            "(a) ll Bottle are not Bulb. All Bottle are not Movie. All Screen are Bottle",
+            "No Bulb is a Movie. All Bottle are Movie. All Bottle are not Screen",
+            "Some Bulb are Bottle. Some Bottle are Screen. No Movie is a bottle",
+            "(a) ll Movie are Bulb. All Bottle are Bulb. No bottle is a Screen",
+            "(b) oth 1st and 3rd"
+        ],
+        "answer": "(b) oth 1st and 3rd",
+        "explanation": "Both 1st and 3rd options are correct."
+    },
+    {
+        "id": "lr-ser-014",
+        "question": "Statements:\\nAll Roads being Glass is not a possibility.\\nNo water is a Cup.",
+        "image": null,
+        "options": [
+            "(a) ll Roads are Cups. All waters are Glass. No water is a Road",
+            "Some Glass are not Roads. Some Roads are Cups. No water is a Glass",
+            "No Road is a Cup. All Cups are Glass. All Glass are waters",
+            "(a) ll Cups are Glass. Some Cups are not Roads. No Glass is a water",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "None of the options are logically correct."
+    },
+    {
+        "id": "lr-ser-015",
+        "question": "Statements:\\nAll Chennai being Kolkata is not a possibility.\\nAll Kolkata being Mumbai is not a possibility.",
+        "image": null,
+        "options": [
+            "(a) ll Kolkata are not Chennai. All Delhi are Mumbai. No Delhi is a Chennai",
+            "No Delhi is a Chennai. Some Chennai are Mumbai. No Mumbai is a Delhi",
+            "No Chennai is a Delhi. All Delhi are Kolkata. All Chennai are Mumbai",
+            "Some Chennai are definitely not Delhi. No Mumbai is a Delhi. All Kolkata are Delhi",
+            "None of these"
+        ],
+        "answer": "Some Chennai are definitely not Delhi. No Mumbai is a Delhi. All Kolkata are Delhi",
+        "explanation": "Option D does not logically follow."
+    },
+    {
+        "id": "lr-ser-016",
+        "question": "Statements:\\nAll Doubt cannot be Right.\\nNo wrong is a Right.",
+        "image": null,
+        "options": [
+            "Some wrong are Doubt. Some Doubt are Confusing. No Confusing is a Right",
+            "No fox is a Confusing. All Right are Confusing. All wrong are Doubt",
+            "Some Doubt are Confusing. All wrong are Confusing. Some Right are not Confusing",
+            "(a) ll Doubt are Confusing. Some Confusing are not Right. No Confusing is a wrong",
+            "(b) oth 2nd and 4th"
+        ],
+        "answer": "No fox is a Confusing. All Right are Confusing. All wrong are Doubt",
+        "explanation": "Option B does not follow logically."
+    },
+    {
+        "id": "lr-ser-017",
+        "question": "Statements:\\nAll white are Blue.\\nNo Yellow is a white.",
+        "image": null,
+        "options": [
+            "(a) ll Red are Blue. All Red are white. No Yellow is a Blue",
+            "(a) ll white are Red. All Red are Blue. Some Yellow are not Blue",
+            "No Red is a white. No Yellow is a Blue. All Red are not Yellow",
+            "(a) ll Blue are Red. All Red are white. No Red is a Yellow",
+            "None of the above"
+        ],
+        "answer": "None of the above",
+        "explanation": "None of the options logically follow."
+    }
+],
 
 
     
