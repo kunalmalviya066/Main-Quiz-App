@@ -14922,5 +14922,28 @@ const quizDB = {
 
 
     
-    }
+    },
+
+     'Computer': {
+  
+      'Series (20 Questions)': [
+        {
+          "id": "lr-ser-001",
+          "question": "Find the next term in the series: 2, 6, 12, 20, ?",
+          "options": ["30", "28", "26", "24"],
+          "answer": 1,
+          "explanation": "Differences are +4, +6, +8 → next +10 → 20+8=28."
+        }
+      ],
+      'Coding-Decoding (20 Questions)': [
+        {
+          "id": "lr-cod-001",
+          "question": "If CAT = 24 and DOG = 26, then BAT = ?",
+          "options": ["22", "23", "24", "25"],
+          "answer": 0,
+          "explanation": "Sum of positions: B(2)+A(1)+T(20)=23; add  -1 → 22."
+        }
+      ]
+    
+  },
 };
