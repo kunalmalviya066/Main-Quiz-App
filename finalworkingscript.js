@@ -1,6 +1,6 @@
 /*
  * ============================================
- * FILE: script.js (FINAL - Includes Non-Shuffling Topic Feature)
+ * FILE: script.js (FINAL - Includes Newline Feature Fix)
  * DESCRIPTION: Core application logic with persistent authentication and question formatting.
  * ============================================
  */
@@ -12,6 +12,7 @@ const AUTH_KEY = "quizAppAuthenticated"; // Key for localStorage flag
 
 // --- 1. APPLICATION STATE MANAGEMENT ---
 const appState = {
+    // FIX: Read authentication status on load. This determines the initial flow.
     isAuthenticated: localStorage.getItem(AUTH_KEY) === 'true', 
     currentView: 'login-gate', 
     isQuizActive: false,
@@ -101,6 +102,7 @@ let currentQIndex = 0;
  * Changes the active view in the SPA.
  */
 function navigateTo(viewId, forceChange = false) {
+    // Ensure navigation always redirects to login if not authenticated, unless explicitly going to login.
     if (!appState.isAuthenticated && viewId !== 'login-gate') {
         viewId = 'login-gate';
     }
@@ -120,6 +122,7 @@ function navigateTo(viewId, forceChange = false) {
 
     DOM.navLinks.forEach(link => {
         link.classList.remove('active');
+        // Hide nav links if not authenticated
         link.classList.toggle('hidden', !appState.isAuthenticated);
         if (link.dataset.view === viewId) {
             link.classList.add('active');
@@ -139,6 +142,7 @@ function handleLogin() {
     
     if (enteredPassword === MASTER_PASSWORD) {
         appState.isAuthenticated = true;
+        // PERSISTENCE FIX: Save authentication status to localStorage
         localStorage.setItem(AUTH_KEY, 'true'); 
         navigateTo('home', true);
     } else {
@@ -152,6 +156,7 @@ function handleAdminLogin() {
     DOM.adminLoginError.classList.add('hidden');
     
     if (enteredPassword === ADMIN_PASSWORD) {
+        // Successful Admin Login
         DOM.adminPasswordInput.value = '';
         navigateTo('admin-panel', true);
     } else {
@@ -199,7 +204,7 @@ function updateTimerDisplay() {
         `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
-// --- 6. QUIZ SETUP & DATA SELECTION (UPDATED) ---
+// --- 6. QUIZ SETUP & DATA SELECTION ---
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -212,9 +217,6 @@ function shuffleArray(array) {
 function prepareQuestions(type, params) {
     let allQuestions = [];
     let selectedQuestions = [];
-    let allShuffledQuestions = [];
-    let allNonShuffledQuestions = []; 
-    
     const numQ = parseInt(params.numQ);
 
     if (type === 'subject') {
@@ -222,16 +224,8 @@ function prepareQuestions(type, params) {
         if (!subjectData) return [];
 
         for (const topic of params.topics) {
-            let topicQuestions = subjectData[topic];
-            if (!topicQuestions) continue;
-
-            // CHECK SHUFFLE PROPERTY AT TOPIC LEVEL
-            if (topicQuestions.shuffle === false) {
-                // If it shouldn't shuffle, add all questions from that topic directly
-                allNonShuffledQuestions.push(...topicQuestions);
-            } else {
-                // Otherwise, add to the pool to be shuffled later
-                allShuffledQuestions.push(...topicQuestions);
+            if (subjectData[topic]) {
+                allQuestions.push(...subjectData[topic]);
             }
         }
     } else if (type === 'mock' || type === 'daily') {
@@ -242,27 +236,14 @@ function prepareQuestions(type, params) {
         for (const subject of subjectsToUse) {
             const subjectData = quizDB[subject];
             for (const topic in subjectData) {
-                // Determine if any topic should retain order even in a mixed quiz
-                 if (subjectData[topic].shuffle === false) {
-                    allNonShuffledQuestions.push(...subjectData[topic]);
-                } else {
-                    allShuffledQuestions.push(...subjectData[topic]);
-                }
+                allQuestions.push(...subjectData[topic]);
             }
         }
     }
-    
-    // Shuffle the mixable questions pool
-    shuffleArray(allShuffledQuestions);
-    
-    // Combine the non-shuffled questions (in their original order) and the shuffled pool
-    allQuestions = [...allNonShuffledQuestions, ...allShuffledQuestions];
 
     if (allQuestions.length === 0) return [];
-    
-    // Select the required number of questions (take from the combined, ordered list)
+    shuffleArray(allQuestions);
     selectedQuestions = allQuestions.slice(0, numQ);
-    
     selectedQuestions.forEach((q, index) => q.quizIndex = index + 1);
     return selectedQuestions;
 }
@@ -280,7 +261,7 @@ function startQuiz(type, params) {
     appState.currentQuiz = {
         type: type,
         subject: params.subject || (type === 'daily' ? 'Mixed' : null),
-        topic: params.topics ? params.topics.join(', ') : (type === 'daily' ? 'Random Selection' : 'Full Subject Mock'),
+        topic: type === 'subject' ? params.topics.join(', ') : (type === 'daily' ? 'Random Selection' : 'Full Subject Mock'),
         questions: questions,
         totalQuestions: questions.length,
         timer: params.timer, 
@@ -470,6 +451,7 @@ function finishQuiz(isTimeUp = false) {
 // --- 8. HISTORY & RESULTS RENDERING ---
 
 function renderHistorySummary() {
+    // FIX: Ensure history is refreshed from storage when viewing the summary.
     appState.history = JSON.parse(localStorage.getItem('quizHistory')) || [];
 
     DOM.historyList.innerHTML = '';
@@ -555,6 +537,7 @@ function renderResultDetails(id) {
         const userAnswerText = result.userAnswer || 'N/A';
         const userClass = result.isCorrect ? 'correct-answer' : 'user-answer';
 
+        // FIX: Format question and explanation text for review screen
         const formattedQuestionText = result.questionText.replace(/\n/g, '<br>');
         const formattedExplanation = result.explanation ? result.explanation.replace(/\n/g, '<br>') : 'No explanation provided.';
 
@@ -604,16 +587,13 @@ function initializeSetupScreens() {
 
         const topics = Object.keys(quizDB[selectedSubject]);
         topics.forEach(topic => {
-            const topicData = quizDB[selectedSubject][topic];
-            const questionCount = topicData ? topicData.length : 0;
-            // Display shuffle status in the selection list
-            const shuffleStatus = topicData.shuffle === false ? ' (Non-Shuffling)' : '';
+            const questionCount = quizDB[selectedSubject] && quizDB[selectedSubject][topic] ? quizDB[selectedSubject][topic].length : 0;
             
             DOM.topicsContainer.innerHTML += `
                 <div class="topic-item">
                     <label>
                         <input type="checkbox" name="topic" value="${topic}"> 
-                        ${topic} (${questionCount} Qs)${shuffleStatus}
+                        ${topic} (${questionCount} Qs)
                     </label>
                 </div>
             `;
@@ -726,11 +706,12 @@ function setupEventListeners() {
     DOM.showQuestionListBtn.addEventListener('click', renderQuestionList);
     DOM.clearHistoryAdminBtn.addEventListener('click', handleClearHistoryAdmin);
     
+    // Show admin link only if authenticated (superficial check)
     if (appState.isAuthenticated) {
         DOM.adminNavLink.classList.remove('hidden');
     }
 }
-// --- 10. ADMIN PANEL FUNCTIONS (UPDATED) ---
+// --- 10. ADMIN PANEL FUNCTIONS ---
 
 /**
  * Handles clearing all quiz history from localStorage.
@@ -744,7 +725,7 @@ function handleClearHistoryAdmin() {
 }
 
 /**
- * Renders the form to add a new question, including a new topic creator.
+ * Renders the form to add a new question.
  */
 function renderAddQuestionForm() {
     const subjects = Object.keys(quizDB);
@@ -759,48 +740,36 @@ function renderAddQuestionForm() {
         <h3>Add New Question</h3>
         <form id="add-question-form" class="setup-form-container">
             <div class="setup-step">
-                <label for="new-q-subject">1. Select Subject:</label>
+                <label for="new-q-subject">Subject:</label>
                 <select id="new-q-subject" required>
                     <option value="">-- Select Subject --</option>
                     ${subjectOptions}
                 </select>
             </div>
-            
+
             <div class="setup-step">
-                <label for="new-q-topic">2. Select Existing Topic OR Create New:</label>
+                <label for="new-q-topic">Topic:</label>
                 <select id="new-q-topic" required>
                     <option value="">-- Select Topic --</option>
                 </select>
             </div>
-            
-            <div class="setup-step" style="border: 1px solid #ffc107; background-color: #fffde7;">
-                <label for="new-topic-name" style="color: #ffc107;">3. Create New Topic:</label>
-                <input type="text" id="new-topic-name" placeholder="Enter NEW Topic Name">
-                <div style="margin-top: 10px;">
-                    <label style="display:inline; font-weight:normal;">
-                        <input type="checkbox" id="new-topic-non-shuffling"> 
-                        **Non-Shuffling Topic** (For DI, Puzzles)
-                    </label>
-                </div>
-                <button type="button" id="create-new-topic-btn" class="control-btn primary" style="width:100%; margin-top:10px;">Create Topic</button>
-            </div>
 
-            <label for="new-q-text">4. Question Text (Use \\n for new lines):</label>
+            <label for="new-q-text">Question Text:</label>
             <textarea id="new-q-text" required></textarea>
 
-            <label>5. Options (A, B, C, D):</label>
+            <label>Options (A, B, C, D):</label>
             <input type="text" id="opt-a" placeholder="Option A" required>
             <input type="text" id="opt-b" placeholder="Option B" required>
             <input type="text" id="opt-c" placeholder="Option C" required>
             <input type="text" id="opt-d" placeholder="Option D" required>
 
-            <label for="new-q-answer">6. Correct Answer (Must match one option):</label>
+            <label for="new-q-answer">Correct Answer (Must match one option):</label>
             <input type="text" id="new-q-answer" required>
 
-            <label for="new-q-explanation">7. Explanation (Use \\n for new lines):</label>
+            <label for="new-q-explanation">Explanation:</label>
             <textarea id="new-q-explanation" rows="3" required></textarea>
             
-            <label for="new-q-image">8. Image URL/Path (Optional):</label>
+            <label for="new-q-image">Image URL/Path (Optional):</label>
             <input type="text" id="new-q-image" placeholder="e.g., images/my_chart.png">
 
             <button type="submit" class="start-button">Save Question</button>
@@ -808,62 +777,21 @@ function renderAddQuestionForm() {
         </form>
     `;
 
-    // Dynamic Topic Loading
+    // Dynamic Topic Loading for Admin Form
     const subjectSelect = document.getElementById('new-q-subject');
     const topicSelect = document.getElementById('new-q-topic');
-    const newTopicNameInput = document.getElementById('new-topic-name');
-    const createNewTopicBtn = document.getElementById('create-new-topic-btn');
-    const nonShufflingCheckbox = document.getElementById('new-topic-non-shuffling');
-
-    const updateTopicDropdown = (selectedSubject) => {
+    subjectSelect.addEventListener('change', () => {
+        const selectedSubject = subjectSelect.value;
         topicSelect.innerHTML = '<option value="">-- Select Topic --</option>';
         if (selectedSubject && quizDB[selectedSubject]) {
             const topics = Object.keys(quizDB[selectedSubject]);
             topics.forEach(t => {
-                const topicData = quizDB[selectedSubject][t];
-                const shuffleStatus = topicData.shuffle === false ? ' (Sequential)' : '';
-                topicSelect.innerHTML += `<option value="${t}">${t}${shuffleStatus}</option>`;
+                topicSelect.innerHTML += `<option value="${t}">${t}</option>`;
             });
         }
-    };
-
-    subjectSelect.addEventListener('change', () => {
-        updateTopicDropdown(subjectSelect.value);
     });
 
-    // New Topic Creation Handler
-    createNewTopicBtn.addEventListener('click', () => {
-        const selectedSubject = subjectSelect.value;
-        const newTopicName = newTopicNameInput.value.trim();
-        const isNonShuffling = nonShufflingCheckbox.checked;
-
-        if (!selectedSubject) {
-            alert("Please select a subject first.");
-            return;
-        }
-        if (!newTopicName) {
-            alert("Please enter a name for the new topic.");
-            return;
-        }
-        if (quizDB[selectedSubject][newTopicName]) {
-            alert(`Topic "${newTopicName}" already exists! Select it from the dropdown.`);
-            return;
-        }
-
-        // Create the new topic array/structure
-        quizDB[selectedSubject][newTopicName] = [];
-        if (isNonShuffling) {
-            quizDB[selectedSubject][newTopicName].shuffle = false;
-        }
-
-        // Clear creation fields and update dropdown
-        newTopicNameInput.value = '';
-        nonShufflingCheckbox.checked = false;
-        updateTopicDropdown(selectedSubject);
-        topicSelect.value = newTopicName; // Auto-select the newly created topic
-        alert(`Topic "${newTopicName}" created! Shuffle: ${isNonShuffling ? 'Disabled' : 'Enabled'}.`);
-    });
-
+    // Handle Form Submission
     document.getElementById('add-question-form').addEventListener('submit', handleAddQuestionSubmit);
 }
 
@@ -895,6 +823,7 @@ function handleAddQuestionSubmit(e) {
         return;
     }
 
+    // Find the current max ID in the entire database (simple way to ensure uniqueness)
     let maxId = 0;
     Object.values(quizDB).forEach(subData => {
         Object.values(subData).forEach(topicArray => {
@@ -913,9 +842,11 @@ function handleAddQuestionSubmit(e) {
         explanation: explanation,
     };
 
+    // Add question to the in-memory database object
     if (quizDB[subject] && quizDB[subject][topic]) {
         quizDB[subject][topic].push(newQuestion);
         
+        // Success message and reset form (or you could just show success)
         document.getElementById('add-question-form').reset();
         statusDiv.textContent = `Success! Question ID ${newQuestion.id} added to ${subject} - ${topic}. (NOTE: Refresh required for changes to take full effect)`;
         statusDiv.style.color = 'var(--success-color)';
@@ -942,7 +873,7 @@ function renderQuestionList() {
                 <tr>
                     <th>ID</th>
                     <th>Subject</th>
-                    <th>Topic (Shuffle)</th>
+                    <th>Topic</th>
                     <th>Question (Snippet)</th>
                     <th>Answer</th>
                 </tr>
@@ -952,19 +883,16 @@ function renderQuestionList() {
 
     Object.entries(quizDB).forEach(([subject, subData]) => {
         Object.entries(subData).forEach(([topic, topicArray]) => {
-            questionCount += topicArray.length;
-            
-            const isNonShuffling = topicArray.shuffle === false;
-            const shuffleDisplay = isNonShuffling ? 'Sequential' : 'Shuffling';
-
             topicArray.forEach(q => {
+                questionCount++;
+                // FIX: Escape question text for table display
                 const snippet = q.question.replace(/\n/g, ' ').substring(0, 50) + '...';
 
                 tableHTML += `
                     <tr>
                         <td>${q.id}</td>
                         <td>${subject}</td>
-                        <td>${topic} (${shuffleDisplay})</td>
+                        <td>${topic}</td>
                         <td>${snippet}</td>
                         <td>${q.answer}</td>
                     </tr>
@@ -983,6 +911,7 @@ function initApp() {
     initializeSetupScreens();
     setupEventListeners();
     
+    // STARTUP FIX: Navigate directly to 'home' if authenticated, otherwise go to 'login-gate'.
     const initialView = appState.isAuthenticated ? 'home' : 'login-gate';
     navigateTo(initialView, true);
 }
