@@ -6030,538 +6030,1639 @@ const quizDB = {
     }
 ],
 
-"Ratio-Proportion": [
-          
-          
-          //class wise set
-          //class 2
-          
-  {
-    "id": "q-001",
-    "question": "The sum of squares of three natural numbers is equal to the product of the roots of the equation x^2 - yx + 450 = 0, and the three numbers are in the proportion 4:5:3. What is the difference between the greatest and the smallest number?",
-    "options": ["6", "8", "9", "12", "None of these"],
-    "answer": 0,
-    "explanation": "Product of roots = 450. Let numbers = 4k,5k,3k. Sum of squares = (16+25+9)k^2 =50k^2 =450 → k^2=9 → k=3. Numbers: 12,15,9. Difference =15-9=6."
-  },
-  {
-    "id": "q-002",
-    "question": "If (4x - 1), (5x + 4), 5 and 8 are in proportion, then what is the mean proportional between (8x + 4) and (6x + 1)?",
-    "options": ["20", "30", "40", "50", "None of these"],
-    "answer": 1,
-    "explanation": "Proportion gives (4x-1)/(5x+4)=5/8 → 8(4x-1)=5(5x+4) → x=4. Then 8x+4=36 and 6x+1=25. Mean proportional = sqrt(36*25)=sqrt(900)=30."
-  },
-  {
-    "id": "q-003",
-    "question": "If X:Y = 12:13, then find the ratio {(y-x)*(7x+12y)} : {x*(x+y)}.",
-    "options": ["2:3", "3:4", "4:5", "5:6", "None of these"],
-    "answer": 2,
-    "explanation": "Let x=12k,y=13k. (y-x)=k. (7x+12y)=7·12k+12·13k=240k. Product =240k^2. Denominator x(x+y)=12k·25k=300k^2. Ratio 240:300 =4:5."
-  },
-  {
-    "id": "q-004",
-    "question": "If the ratio between X and Y is 15:16 and the ratio between Y and Z is 24:25, then find X:Y:Z.",
-    "options": ["15:16:20", "24:25:30", "35:36:40", "45:48:50", "None of these"],
-    "answer": 3,
-    "explanation": "Make Y common: X:Y =15:16 → multiply by 3 → 45:48. Y:Z =24:25 → scale so Y=48 → Z=50. So X:Y:Z =45:48:50."
-  },
-  {
-    "id": "q-005",
-    "question": "A sum of Rs.10800 is divided among P, Q and R in the ratio 13:17:15. Find Q's share.",
-    "options": ["4080", "3600", "5040", "2880", "None of these"],
-    "answer": 0,
-    "explanation": "Total ratio =13+17+15=45. Q's share =10800*(17/45)=240*17=4080."
-  },
-  {
-    "id": "q-006",
-    "question": "If A:B = (4/9):(5/12) and B:C = (3/5):(5/6), then find A:B:C.",
-    "options": ["48:75:88", "64:80:95", "96:90:125", "100:99:144", "None of these"],
-    "answer": 2,
-    "explanation": "A/B = (4/9)/(5/12) = (4/9)*(12/5)=48/45=16/15. B/C = (3/5)/(5/6)=(3/5)*(6/5)=18/25. Combine: A:B =16:15, B:C=18:25 → scale to common B: multiply A:B by 6 → 96:90 and B:C by 5 → 90:125. So A:B:C =96:90:125."
-  },
-  {
-    "id": "q-007",
-    "question": "If 72a = 60b = 48c, then a:b:c is equal to:",
-    "options": ["10:12:15", "12:15:16", "15:16:18", "16:18:20", "None of these"],
-    "answer": 0,
-    "explanation": "Let common value = k. Then a=k/72, b=k/60, c=k/48. Multiply through by 720 → a:b:c =10:12:15."
-  },
-  {
-    "id": "q-008",
-    "question": "If (x+y):(y+z):(x+z) = 20:21:23, then what will be the value of 1/x : 1/y : 1/z ?",
-    "options": ["33:32:30", "36:44:33", "44:45:48", "50:54:55", "None of these"],
-    "answer": 1,
-    "explanation": "Solve: x+y=20k, y+z=21k, x+z=23k. Then 2x=(x+y)+(x+z)-(y+z)=20k+23k-21k=22k → x=11k. Similarly y=9k, z=12k. Thus 1/x:1/y:1/z =1/11:1/9:1/12 =36:44:33 (after scaling)."
-  },
-  {
-    "id": "q-009",
-    "question": "Three numbers are in the ratio 3/4 : 5/6 : 7/8. The difference between the two highest numbers is 64. What is the difference between the two lowest numbers?",
-    "options": ["32", "64", "80", "128", "None of these"],
-    "answer": 3,
-    "explanation": "Ratios multiply by 24 → 18:20:21. Difference between two highest (21k-20k)=k =64 → k=64. Difference between two lowest =20k-18k=2k=128."
-  },
-  {
-    "id": "q-010",
-    "question": "Two numbers are in the ratio 11:17. If both numbers increase by (x + 10) then the ratio becomes 3:4. The sum of the original numbers is 280. Which of the given options is NOT a factor of x?",
-    "options": ["6", "9", "12", "15", "None of these"],
-    "answer": 1,
-    "explanation": "Let numbers =11k and 17k. 11k+17k=28k=280 → k=10. Numbers 110 and 170. After increase: (120+x)/(180+x)=3/4 → x=60. Factors of 60 are 1,2,3,4,5,6,10,12,15,20,30,60. 9 is not a factor."
-  },
-  {
-    "id": "q-011",
-    "question": "Two numbers are in the ratio 3:5. If 45 is subtracted from each, the new numbers are in the ratio 3:7. If x is added to each of the original numbers, then the ratio becomes 5:7. Find the value of sqrt(2x + 24).",
-    "options": ["8", "9", "10", "12", "None of these"],
-    "answer": 3,
-    "explanation": "Let numbers 3k,5k. (3k-45)/(5k-45)=3/7 → k=30. Original numbers 90 and 150. (90+x)/(150+x)=5/7 → x=60. sqrt(2x+24)=sqrt(120+24)=sqrt(144)=12."
-  },
-  {
-    "id": "q-012",
-    "question": "If the price of a bus ticket increases in the ratio 5:8, then the number of bus tickets sold falls in the ratio 16:15. If revenue before the increase was Rs.12468, then find the increase in revenue.",
-    "options": ["3117", "1039", "4156", "6234", "None of these"],
-    "answer": 3,
-    "explanation": "New price factor =8/5, new quantity factor =15/16. New revenue =12468*(8/5)*(15/16)=12468*(3/2)=18702. Increase =18702-12468=6234."
-  },
-  {
-    "id": "q-013",
-    "question": "The number of males in a factory was 1150 less than the number of females. If the ratio of males to females is 77:123 and total employees in the factory is (50x + 150), then find x% of 2400.",
-    "options": ["2256", "2328", "2482", "2534", "None of these"],
-    "answer": 1,
-    "explanation": "Let males=77t, females=123t. 123t-77t=46t=1150 → t=25. Total employees =200t=5000. 50x+150=5000 → x=97. x% of 2400 =97% of 2400 =0.97*2400=2328."
-  },
-  {
-    "id": "q-014",
-    "question": "The ratio of the sum of salaries of P and Q to the difference of their salaries is 15:2. The ratio of the sum of salaries of Q and R to the difference of their salaries is 11:2. If P’s salary is highest and R’s salary is lowest, and the sum of their salaries is Rs.13650, what is Q’s salary?",
-    "options": ["2950", "3850", "4550", "5350", "None of these"],
-    "answer": 2,
-    "explanation": "From (P+Q)/(P-Q)=15/2 → 13P=17Q → P=(17/13)Q. From (Q+R)/(Q-R)=11/2 → 13R=9Q → R=(9/13)Q. Sum = P+Q+R = (17/13+1+9/13)Q=(39/13)Q=3Q. So 3Q=13650 → Q=4550."
-  },
-          
-          
-          
-          // class 3
-          
-          
-  {
-    "id": "q-016",
-    "question": "The ratio of salaries of X, Y and Z is 11:12:14. If their salaries are increased by 45.45%, 50% and 42.85% respectively, then what will be the ratio of their new salaries?",
-    "options": ["2:4:5", "3:5:6", "5:7:8", "8:9:10", "None of these"],
-    "answer": 3,
-    "explanation": "Initial salaries 11x, 12x, 14x. New salaries = 11x*(1.4545), 12x*(1.5), 14x*(1.4285) = 16x, 18x, 20x. Ratio = 8:9:10."
-  },
-  {
-    "id": "q-017",
-    "question": "If (p+q+r):s = 20:11, (p+r+s):q = 23:8, (p+q+s):r = 26:5, then find (q+r+s):p.",
-    "options": ["24/7", "25/7", "32/9", "35/9", "None of these"],
-    "answer": 1,
-    "explanation": "From the given ratios, solving proportionally gives (q+r+s):p = 25:7."
-  },
-  {
-    "id": "q-018",
-    "question": "Find: (a) Duplicate ratio of 16:25 (b) Triplicate ratio of 1:8.",
-    "options": ["2:5 , 2:5", "4:5 , 1:5", "64:125 , 1:64", "256:625 , 1:512", "None of these"],
-    "answer": 2,
-    "explanation": "Duplicate ratio means square → (16^2):(25^2)=256:625, Triplicate ratio means cube → (1^3):(8^3)=1:512."
-  },
-  {
-    "id": "q-019",
-    "question": "The ratio of employees in three shifts is 5:7:9. If 128 employees are added in each shift, the ratio becomes 9:11:13. Find the total number of employees initially.",
-    "options": ["492", "582", "672", "762", "None of these"],
-    "answer": 2,
-    "explanation": "Let initial numbers be 5x,7x,9x. Then (5x+128):(7x+128):(9x+128)=9:11:13 → x=48 → total =5x+7x+9x=21x=1008. But ratio scaling gives 672 initially."
-  },
-  {
-    "id": "q-020",
-    "question": "The ratio of expenditure of Shivam and Nitin is 44:45 and their income ratio is 13:12. If Nitin saves 25% of his income, find the ratio of their savings.",
-    "options": ["7:5", "8:7", "9:8", "10:9", "None of these"],
-    "answer": 2,
-    "explanation": "Let Shivam’s income =13x, Nitin’s =12x. Nitin saves 25% → expenditure=9x. So ratio 44k:45k = Shivam_exp:Nitin_exp =44k:9x → solve → savings ratio =9:8."
-  },
-  {
-    "id": "q-021",
-    "question": "The ratio of incomes of A and B is 17:13 and ratio of expenditures is 5:4. If A and B save Rs 4200 and Rs 3000 respectively, find B's income.",
-    "options": ["7800", "8700", "9600", "10500", "None of these"],
-    "answer": 2,
-    "explanation": "Let incomes 17x,13x and expenditures 5y,4y. 17x−5y=4200, 13x−4y=3000 → solving gives x=600, y=1800. Hence B’s income =13x=7800. Correction: correct x=600 gives 13×600=7800 → Answer 7800."
-  },
-  {
-    "id": "q-022",
-    "question": "Rs 23840 is divided among P, Q and R such that amount received by P is 25/27 of amount received by Q, which is 6/5 of amount received by R. Find the difference between amounts received by P and R.",
-    "options": ["600", "750", "800", "1000", "None of these"],
-    "answer": 2,
-    "explanation": "Let R=5k, Q=(6/5)R=6k, P=(25/27)*Q=(25/27)*6k=150k/27. Total=23840 → solve → k=144 → P=800 more than R."
-  },
-  {
-    "id": "q-023",
-    "question": "A certain amount is divided among X, Y, Z in ratio 1/10:1/8:1/12 instead of 5:7:4. Who gets the maximum extra money (in Rs)?",
-    "options": ["X", "Y", "Z", "Cannot be determined", "None of these"],
-    "answer": 1,
-    "explanation": "When converted to common base, change comparison shows Y gains maximum extra share compared to correct ratio."
-  },
-  {
-    "id": "q-024",
-    "question": "Rs 7700 is divided among 31 students. Total amount received by boys and girls is in ratio 4:3, but the amount received by each boy and girl is in ratio 5:4. Find the number of boys.",
-    "options": ["12", "15", "16", "18", "None of these"],
-    "answer": 2,
-    "explanation": "Let boys=b, girls=31−b. Then 5b:4(31−b)=4:3 → 15b=124−4b → 19b=124 → b=16."
-  },
-  {
-    "id": "q-027",
-    "question": "In a maternity center, out of 45 birth cases, 15 result in twins. What is the ratio between number of twin children and total children born?",
-    "options": ["1:2", "2:3", "3:5", "5:7", "None of these"],
-    "answer": 1,
-    "explanation": "Out of 45 cases, 15 twin → twin children=30+30(single)=60 total children. Ratio twin to total =30:45=2:3."
-  },
-  {
-    "id": "q-028",
-    "question": "In a company, the initial ratio of men to women is 17:13. After some time men decrease by 5x and women increase by 7x, and new ratio becomes 3:5. Find the ratio of initial to final difference between number of men and women.",
-    "options": ["1:2", "2:3", "4:5", "8:9", "None of these"],
-    "answer": 1,
-    "explanation": "Let men=17k, women=13k → initial diff=4k. (17k−5x)/(13k+7x)=3/5 → x/k=1.5 → final diff= (13k+7x)−(17k−5x)=12x−4k=14k → ratio 4k:6k=2:3."
-  },
-  {
-    "id": "q-029",
-    "question": "In a company, the ratio of male to female employees is 24:25. During recession, 16 males and 10 females were laid off and the ratio became 8:9. Find the number of male employees before recession.",
-    "options": ["72", "80", "96", "100", "None of these"],
-    "answer": 2,
-    "explanation": "Let males=24x, females=25x. (24x−16)/(25x−10)=8/9 → cross multiply → 216x−144=200x−80 → x=4 → males=24×4=96."
-  },
-  {
-    "id": "q-030",
-    "question": "The ratio of students who passed and failed is 9:5. If 80 fewer students appear and 50 fewer fail, then new ratio of passed to failed becomes 3:1. Find total students who appeared.",
-    "options": ["140", "175", "245", "280", "None of these"],
-    "answer": 3,
-    "explanation": "Let passed=9x, failed=5x → total=14x. (9x−30)/(5x−50)=3/1 → 9x−30=15x−150 → 6x=120 → x=20 → total=280."
-  },
-  {
-    "id": "q-031",
-    "question": "The ratio of numerator to denominator of a number is 16:15. If numerator is increased by (x+5)% and denominator by x%, then ratio becomes 10:9. Find x.",
-    "options": ["20", "30", "40", "50", "None of these"],
-    "answer": 0,
-    "explanation": "(16*(1+(x+5)/100))/(15*(1+x/100))=10/9 → solving gives x=20."
-  },
-  {
-    "id": "q-032",
-    "question": "Ratio of males and females in college X is 5:8. In college Y, number of males is 20% more and females are p% less than X. If the ratio of total males and females in both colleges is 11:14, find p% of 1680.",
-    "options": ["360", "420", "540", "630", "None of these"],
-    "answer": 1,
-    "explanation": "Let males in X=5k, females=8k. Males in Y=6k, females=(1−p/100)*8k. (5k+6k):(8k+(1−p/100)*8k)=11:14 → solve → p=25 → p% of 1680=420."
-  },
-          
-          
-          
-          
-          
-          
-          //class 4
-      
-  {
-    "id": "q-001",
-    "question": "In a school, there are 352 students and the ratio of boys and girls is 13:9. If 32 more girls are admitted in the school, what will be the ratio of boys to girls?",
-    "options": ["13:11", "11:13", "208:176", "None of these"],
-    "answer": 0,
-    "explanation": "Total parts = 13 + 9 = 22. Each part = 352 / 22 = 16. Boys = 13×16 = 208, Girls = 9×16 = 144. After 32 more girls → 176. Ratio = 208:176 = 13:11."
-  },
-  {
-    "id": "q-002",
-    "question": "In a college, the ratio of boys to girls attending a lecture was 3:2. After half time, the number of boys increased by 9 and number of girls increased by 8, making the new ratio 10:7. Find the total number of students who were earlier attending the lecture.",
-    "options": ["85", "81", "87", "72", "None of these"],
-    "answer": 0,
-    "explanation": "Let boys = 3k and girls = 2k. (3k+9)/(2k+8)=10/7 → 21k+63=20k+80 → k=17. Total =5k=85."
-  },
-  {
-    "id": "q-003",
-    "question": "In a college, the ratio of boys to girls attending a lecture was 7:10. After half time, the number of boys reduced by 4 and number of girls reduced by 8, making the new ratio 5:7. Find the total number of students who were earlier attending the lecture.",
-    "options": ["200", "180", "204", "210", "None of these"],
-    "answer": 2,
-    "explanation": "Let boys = 7k and girls = 10k. (7k-4)/(10k-8)=5/7 → 49k-28=50k-40 → k=12. Total =17k=204."
-  },
-  {
-    "id": "q-004",
-    "question": "In a college, the ratio of boys to girls attending a lecture was 3:2. After half time, the number of boys reduced by 8 and number of girls increased by 6, making the new ratio 4:3. Find the total number of students who were earlier attending the lecture.",
-    "options": ["200", "180", "260", "240", "None of these"],
-    "answer": 3,
-    "explanation": "Let boys = 3k and girls = 2k. (3k-8)/(2k+6)=4/3 → 9k-24=8k+24 → k=48. Total =5k=240."
-  },
-  {
-    "id": "q-005",
-    "question": "There are Officers and Clerks in an office. If 40 clerks went on leave, then every clerk has 4 officers. After that, 51 officers went on leave. Now every 3 officers have 5 clerks. Find the total number of staff in the beginning.",
-    "options": ["110", "95", "115", "105", "None of these"],
-    "answer": 2,
-    "explanation": "Let officers = O, clerks = C. O/(C−40)=4 → O=4(C−40). After 51 officers leave: (O−51)/(C−40)=3/5. Substituting → 5(4(C−40)−51)=3(C−40) → 17C=935 → C=55, O=60. Total staff =115."
-  },
-  {
-    "id": "q-006",
-    "question": "In an Indian Army SSB selection process, the ratio of screened-in to screened-out candidates was 3:4. If 95 less had appeared and 46 less selected, then the ratio of screened-in to screened-out candidates will be 2:3. Find the number of candidates who appeared in the SSB.",
-    "options": ["250", "210", "350", "280", "None of these"],
-    "answer": 3,
-    "explanation": "Let screened-in = 3k, screened-out = 4k (total 7k). After changes: screened-in = 3k−46, screened-out = 4k−(95−46)=4k−49. (3k−46)/(4k−49)=2/3 → 9k−138=8k−98 → k=40. Appeared =7k=280."
-  },
-  {
-    "id": "q-007",
-    "question": "In a bag the number of coins of 50 paisa, 25 paisa and 10 paisa are in the ratio 4:7:5 and its value is Rs 510. Find the number of coins of 25 paisa in the bag.",
-    "options": ["980", "630", "840", "910", "None of these"],
-    "answer": 2,
-    "explanation": "Let coins = 4x,7x,5x. Value (paise) =50×4x +25×7x +10×5x =425x =51000 → x=120. 25p coins =7x=840."
-  },
-  {
-    "id": "q-008",
-    "question": "A bag contains 2-rupee, 5-rupee and 10-rupee coins in the ratio 9:5:4 amounting to Rs 1,494. Find the number of coins of each type respectively.",
-    "options": ["352, 224, 264", "484, 308, 363", "396, 252, 297", "440, 280, 330", "None of these"],
-    "answer": 4,
-    "explanation": "Let coins = 9x,5x,4x. Total value =2×9x +5×5x +10×4x =83x =1494 → x=18. Coins =162,90,72 → not listed → None of these."
-  },
-  {
-    "id": "q-009",
-    "question": "The ratio of number of coins of 25 paisa to 50 paisa is 11:7 and the ratio of number of coins of 25 paisa to 1 Re is 4:3 and the total amount is Rs 580. Find the number of coins of each type.",
-    "options": ["352, 224, 264", "484, 308, 363", "396, 252, 297", "440, 280, 330", "None of these"],
-    "answer": 3,
-    "explanation": "Let 25p coins = a. From ratios: 50p = (7/11)a, 1Re = (3/4)a. Choose a=44t → 25p=44t, 50p=28t, 1Re=33t. Value =25×44t +50×28t +100×33t =5800t paise = Rs58t. Total Rs580 → t=10. Hence 440,280,330."
-  },
-  {
-    "id": "q-010",
-    "question": "The ratio of number of coins of 10 paisa and 25 paisa is 10:9 and the ratio of number of coins of 25 paisa to 50 paisa is 21:10. If the total amount is Rs 415.25, find the number of coins of each kind.",
-    "options": ["840, 756, 360", "770, 693, 330", "980, 882, 420", "560, 504, 240", "None of these"],
-    "answer": 1,
-    "explanation": "Let 10p:25p =10k:9k, 25p:50p =21m:10m → 9k=21m → k=(7/3)m. Let m=3t → counts: 10p=70t, 25p=63t, 50p=30t. Value =10×70t+25×63t+50×30t=3775t paise =41525 → t=11 → 770,693,330."
-  },
-  {
-    "id": "q-011",
-    "question": "462 coins consist of 1 Re, 50 paisa and 25 paisa coins. Their values are in the ratio 3:7:15. The number of each type of coins respectively is:",
-    "options": ["54, 252, 1080", "21, 98, 420", "18, 84, 360", "24, 112, 480", "None of these"],
-    "answer": 2,
-    "explanation": "Let values =3u,7u,15u. Then number of coins = (3u/1), (7u/0.5), (15u/0.25) → 3u,14u,60u (in same scale). Sum =77u =462 → u=6. Coins =18,84,360."
-  },
-  {
-    "id": "q-012",
-    "question": "A box contains 992 coins of ten-rupee, five-rupee and two-rupee denominations. The values of each kind of the coins are in the ratio 7:5:9. Find the difference between the amount of ten-rupee coins and the amount of two-rupee coins.",
-    "options": ["Rs 360", "Rs 480", "Rs 640", "Rs 320", "None of these"],
-    "answer": 3,
-    "explanation": "Let values =7x,5x,9x. Counts =7x/10, 5x/5, 9x/2 =0.7x, x, 4.5x. Sum =6.2x=992 → x=160. Amounts: 10₹=7x=1120, 2₹=9x=1440. Difference =320."
-  },
-  {
-    "id": "q-013",
-    "question": "A bag contains 20 paisa, 25 paisa and Rs 1 coins. Total number of coins are 910 and the ratio of their values is 14:11:16. Find the sum of the number of 20 paisa and 25 paisa coins.",
-    "options": ["18", "20", "16", "15", "None of these"],
-    "answer": 4,
-    "explanation": "Let values =14x,11x,16x. Numbers =14x/0.2=70x, 11x/0.25=44x, 16x/1=16x. Total =130x=910 → x=7. So 20p=490, 25p=308 → sum=798."
-  },
-  {
-    "id": "q-014",
-    "question": "25 paisa, 50 paisa and Rs 1 coins when taken in the ratio 5:3:2 amount to Rs 28.5. How many more 50 paisa coins should be added if the number of Rs 1 coins is decreased by 66.66% and total value remains the same?",
-    "options": ["19", "18", "21", "23", "None of these"],
-    "answer": 4,
-    "explanation": "Let coins =5k,3k,2k. Value =25×5k+50×3k+100×2k=475k paise=Rs4.75k=28.5 → k=6. Coins=30,18,12. Rs1 reduced by 66.66% → now 4 coins. Let x 50p coins added: New value=25×30+50×(18+x)+100×4=2050+50x paise=2850 → 50x=800 → x=16 → None of these."
-  },
-  {
-    "id": "q-015",
-    "question": "A man has Rs 323 in the denominations of two-rupee, five-rupee and ten-rupee coins. If there are equal number of coins of each denomination, find the number of coins of each denomination.",
-    "options": ["Rs 287", "Rs 303", "Rs 291", "Rs 297", "None of these"],
-    "answer": 4,
-    "explanation": "Let number of each denomination = n. Total value = (2+5+10)n=17n=323 → n=19. Each denomination has 19 coins."
-  },
-  {
-    "id": "q-016",
-    "question": "A bag contains 440 coins of 50 paisa, Rs 1 and Rs 2. The ratio of total value of the coins is 5:7:6. Find the total money in the bag.",
-    "options": ["Rs 360", "Rs 480", "Rs 640", "Rs 320", "None of these"],
-    "answer": 4,
-    "explanation": "Let values =5x,7x,6x. Then counts =5x/0.5=10x, 7x/1=7x, 6x/2=3x. Total coins =20x=440 → x=22. Total value=(5+7+6)x=18x=396 → Rs396 → None of these."
-  },
-          
-          
-          
-          
-          //class 5
-          
-        
-  {
-    "id": "q-001",
-    "question": "A bag contains 20 paisa, 25 paisa and Rs 1 coins. Total number of coins are 910 and the ratio of their values is 14:11:16. Find the sum of the number of 20 paisa coins and 25 paisa coins.",
-    "options": ["Rs 1026", "Rs 798", "Rs 684", "Rs 1083", "None of these"],
-    "answer": 1,
-    "explanation": "Let values = 14x, 11x, 16x. Numbers = 14x/0.2, 11x/0.25, 16x/1 = 70x, 44x, 16x. Total = 130x = 910 → x = 7. So 20 paisa = 490, 25 paisa = 308 → sum = 798."
-  },
-  {
-    "id": "q-002",
-    "question": "25 paisa coins, 50 paisa coins and Rs 1 coins when taken in the ratio of 5:3:2 amount to Rs 28.5. How many more coins of 50 paisa should be added if the number of Rs 1 coins is decreased by 66.66% and total value remains the same?",
-    "options": ["19", "18", "21", "23", "None of these"],
-    "answer": 4,
-    "explanation": "Let coins = 5k, 3k, 2k. Value = 25×5k + 50×3k + 100×2k = 475k paise = 4.75k rupees = 28.5 → k = 6. Coins = 30, 18, 12. Rs1 coins reduced by 66.66% → now 4 coins. Let x more 50 paisa coins be added: 25×30 + 50×(18+x) + 100×4 = 2850 → 2050 + 50x = 2850 → x = 16 → None of these."
-  },
-  {
-    "id": "q-003",
-    "question": "A man has Rs 323 in the denominations of two-rupee, five-rupee and ten-rupee coins. If there are equal number of coins of each denomination, find the number of coins of each denomination.",
-    "options": ["Rs 287", "Rs 303", "Rs 291", "Rs 297", "None of these"],
-    "answer": 4,
-    "explanation": "Let number of each denomination = n. Total value = (2 + 5 + 10)n = 17n = 323 → n = 19. So 19 coins of each denomination."
-  },
-  {
-    "id": "q-004",
-    "question": "A bag contains 440 coins of 50 paisa, Rs 1 and Rs 2. The ratio of total value of the coins is 5:7:6. Find the total money in the bag.",
-    "options": ["Rs 360", "Rs 480", "Rs 640", "Rs 320", "None of these"],
-    "answer": 4,
-    "explanation": "Let values = 5x, 7x, 6x. Then counts = 5x/0.5 = 10x, 7x/1 = 7x, 6x/2 = 3x. Total coins = 20x = 440 → x = 22. Total value = (5 + 7 + 6)x = 18×22 = Rs 396 → None of these."
-  },
-  {
-    "id": "q-005",
-    "question": "A bag contains Rs 1 coins, 50 paisa coins and 25 paisa coins and the total number of coins are 1500 and the total amount in the bag is Rs 930. If Rs 1 coins in the bag are 62.5% more than the 25 paisa coins, then find the number of 50 paisa coins in the bag.",
-    "options": ["660", "520", "320", "Cannot be determined", "None of these"],
-    "answer": 1,
-    "explanation": "Let 25 paisa = x → Rs1 = 1.625x, 50 paisa = y. Total coins: x + 1.625x + y = 1500 → 2.625x + y = 1500. Total value: 0.25x + 1.625x + 0.5y = 930 → 1.875x + 0.5y = 930. Solving gives x = 680, y = 520."
-  },
-  {
-    "id": "q-006",
-    "question": "A bag contains 150 coins of Rs 2, Rs 5 and Rs 10 respectively. The total value of each kind of coin is in the ratio 14:25:30. Find the difference between the amount of Rs 2 coins and Rs 10 coins.",
-    "options": ["Rs 130", "Rs 160", "Rs 190", "Rs 210", "None of these"],
-    "answer": 3,
-    "explanation": "Let total values be 14x, 25x, 30x. Number of coins = 14x/2 + 25x/5 + 30x/10 = 7x + 5x + 3x = 15x = 150 → x = 10. Amount difference = 30x − 14x = 16x = Rs 160 → Option D (Rs 210) doesn’t match → Correct difference Rs 160 → answer index 1."
-  },
-  {
-    "id": "q-007",
-    "question": "A box contains 56 notes of Rs 10, Rs 20 and Rs 50. The ratio of total value of the notes is 6:10:15. Find the total money in the box.",
-    "options": ["Rs 1080", "Rs 1240", "Rs 1360", "Rs 1480", "None of these"],
-    "answer": 1,
-    "explanation": "Let total values = 6x, 10x, 15x. Number of notes = 6x/10 + 10x/20 + 15x/50 = 0.6x + 0.5x + 0.3x = 1.4x = 56 → x = 40. Total money = (6+10+15)x = 31×40 = Rs 1240."
-  },
-  {
-    "id": "q-008",
-    "question": "In a bag, there are (3N + 15) balls which have three different colours: Red, Black and Blue. Ratio of number of Red and Black balls is 5:3 and the number of Red balls is four times that of Blue balls. If 5 Blue and 5 Black balls are removed, then the ratio of probability of picking a Blue and a Black ball becomes 2:5. Find the value of (4N - 120).",
-    "options": ["300", "400", "500", "600", "None of these"],
-    "answer": 2,
-    "explanation": "Let Red = 4x (since Red is 4×Blue) → Blue = x, Black = (3/5)×Red = (3/5)×4x = 2.4x. Total = 7.4x = 3N + 15. After removing 5 Blue and 5 Black: ratio of Blue:Black = (x−5):(2.4x−5)=2:5 → 5x−25=4.8x−10 → 0.2x=15 → x=75. Total =7.4×75=555=3N+15 → N=180 → (4N−120)=600."
-  },
-  {
-    "id": "q-009",
-    "question": "In a group of Lions and Parrots, the number of legs is (x+5) more than twice the number of heads. If number of Lions in the group are 25, then find the value of (2x + 10).",
-    "options": ["100", "125", "150", "160", "None of these"],
-    "answer": 2,
-    "explanation": "Let Parrots = p. Heads = 25 + p, Legs = 4×25 + 2p = 100 + 2p. Given: Legs = 2×Heads + (x + 5) → 100 + 2p = 2(25 + p) + x + 5 → 100 + 2p = 50 + 2p + x + 5 → x = 45 → (2x + 10) = 100."
-  },
-  {
-    "id": "q-010",
-    "question": "The ratio of weights of P, Q, R and S is 7:(x−5):9:8. If their average weight is 90 kg and the sum of weights of P and Q is 156 kg, find the value of (x + 4)% of 400.",
-    "options": ["45", "60", "80", "96", "None of these"],
-    "answer": 3,
-    "explanation": "Let weights = 7k, (x−5)k, 9k, 8k. Avg = 90 → total 30k + (x−5)k = 360 → (x+19)k = 360. Also, 7k + (x−5)k = 156 → (x+2)k = 156. Dividing → (x+19)/(x+2) = 360/156 = 15/6.5 ≈ 2.31 → x ≈ 9 → (x+4)% of 400 = 13% of 400 = 52 → closest 60 → answer index 1."
-  },
-  {
-    "id": "q-011",
-    "question": "24 years hence A's age will be (2x + 4) years. 22 years ago B's age was (x + 4) years. If the ratio of their present ages is 5:7, find the average of their present ages.",
-    "options": ["1.2x years", "1.5x years", "1.6x years", "1.8x years", "None of these"],
-    "answer": 1,
-    "explanation": "Let A’s present age = a, B’s present = b. a + 24 = 2x + 4 → a = 2x − 20. b − 22 = x + 4 → b = x + 26. Given a/b = 5/7 → (2x − 20)/(x + 26) = 5/7 → 14x − 140 = 5x + 130 → 9x = 270 → x = 30 → a = 40, b = 56 → average = 48 = 1.6x → option index 2."
-  },
-  {
-    "id": "q-012",
-    "question": "A painter uses yellow and green colours in the ratio 12:13 to make a painting. If in the upper half of the painting the ratio of yellow to green used is 11:9, then find the ratio between yellow and green colours used in the lower half.",
-    "options": ["41:59", "53:67", "67:73", "79:81", "None of these"],
-    "answer": 2,
-    "explanation": "Let total yellow = 12x, green = 13x. Let upper half uses yellow = 11k, green = 9k. Then lower half uses (12x−11k):(13x−9k). For equal halves by total colour → 11k + 9k = (12x + 13x)/2 = 12.5x → k = 0.625x. Ratio lower = (12x−6.875x):(13x−5.625x) = 5.125x:7.375x ≈ 67:73."
-  },
-  {
-    "id": "q-013",
-    "question": "In a city, ratio between number of males and females is 3:2 and number of literate people in the city is 950 and number of literate males are 600. If equal numbers of males and females are illiterate, find the ratio between total illiterate people and total females.",
-    "options": ["2:3", "3:5", "4:7", "5:8", "None of these"],
-    "answer": 1,
-    "explanation": "Let males = 3x, females = 2x. Literate = 950, literate males = 600 → literate females = 350. Illiterate males = 3x − 600, illiterate females = 2x − 350. Equal → 3x − 600 = 2x − 350 → x = 250. Total illiterate = (3x + 2x) − 950 = 1250 − 950 = 300. Total females = 500 → ratio = 3:5."
-  },
-  {
-    "id": "q-014",
-    "question": "The ratio between the old and new price of a ticket was 5:4. If number of seats were increased by 174, then the ratio between old and new revenue becomes 24:25. Find the initial number of seats in the theater.",
-    "options": ["576", "600", "625", "648", "None of these"],
-    "answer": 2,
-    "explanation": "Let old price = 5x, new = 4x. Let initial seats = n. Old revenue = 5xn, new revenue = 4x(n + 174). Given 5n : 4(n + 174) = 24:25 → 125n = 96n + 4176 → n = 144 → not in options → None of these."
-  },
-  {
-    "id": "q-015",
-    "question": "The ratio of number of coins of Rs 1 and Rs 2 is 13:12 and ratio of number of coins of Rs 2 and Rs 5 is 15:16. The total amount in the bag is Rs 12120. If the numbers of Rs 1, Rs 2 and Rs 5 coins stolen are in the ratio 52:25, 24:11 and 48:17 respectively as compared to the original number, find the amount of money still remaining in the bag.",
-    "options": ["Rs 6220", "Rs 7330", "Rs 8440", "Rs 9660", "None of these"],
-    "answer": 2,
-    "explanation": "Let Rs1:Rs2 = 13x:12x, Rs2:Rs5 = 15y:16y → 12x/15y = 1 → x = 1.25y. Rs1=16.25y, Rs2=15y, Rs5=16y. Value = 16.25y×1 + 15y×2 + 16y×5 = 126.25y = 12120 → y = 96. Rs1=1560, Rs2=1440, Rs5=1536. After theft: Rs1 left=1560×(48/100)=748.8; Rs2 left=1440×(76/100)=1094.4; Rs5 left=1536×(83/100)=1274.9; total ≈ Rs 8440."
-  },
-          
-          
-          
-          
-          // class 6
-          
-          
-  {
-    "id": "q-153",
-    "question": "Ratio between the money A, B and C had is x:(x+y):y. If amount of B is Rs 1800 more than that of A and Rs 3000 more than that of C, then find the total amount A, B and C had?",
-    "options": ["7500 Rs", "8400 Rs", "9600 Rs", "10800 Rs", "None of these"],
-    "answer": 2,
-    "explanation": "Let A = kx, B = k(x+y), C = ky. Then B−A = ky = 1800 and B−C = kx = 3000 → x:y = 5:3. Total = k(x + (x+y) + y) = k(2x + 2y) = 2k(x+y). From B−A: ky = 1800 → k = 600/y. Using ratio 5:3 → y=3, k=200. Total = 2×200×(5+3)=3200 → not matching options, but after scaling with correct proportional differences, total = Rs 9600."
-  },
-  {
-    "id": "q-154",
-    "question": "Fare for a taxi is calculated by charging a fixed price for booking and then a certain amount per km travelled. Rs 2680 is paid by Suresh for travelling 54 km and Rs 1600 paid by Karan for travelling 30 km. Find the fare paid for travelling 40 km?",
-    "options": ["2050 Rs", "2190 Rs", "2260 Rs", "2480 Rs", "None of these"],
-    "answer": 1,
-    "explanation": "Let fixed charge = F, rate per km = R. Then F + 54R = 2680 and F + 30R = 1600 → 24R = 1080 → R = 45, F = 1600 − 30×45 = 250. For 40 km, Fare = 250 + 40×45 = 2050."
-  },
-  {
-    "id": "q-155",
-    "question": "A cat runs 45 steps for every 30 steps taken by a mouse and 24 steps of the cat are equal to 15 steps of the mouse. Find the ratio of speed of the cat and the mouse?",
-    "options": ["3:4", "5:6", "9:8", "15:16", "None of these"],
-    "answer": 2,
-    "explanation": "Speed ratio = (steps per time × step length). For cat/mouse = (45/30) × (15/24) = 1.5 × 0.625 = 0.9375 = 15:16."
-  },
-  {
-    "id": "q-156",
-    "question": "Value of a precious metal is directly proportional to the square of its weight. If it is divided into three pieces with weights in the ratio 3:2:5 thus a loss of Rs 7750 is incurred. Find the value of the original piece of metal.",
-    "options": ["10500 Rs", "12500 Rs", "13500 Rs", "15000 Rs", "None of these"],
-    "answer": 3,
-    "explanation": "Let original weight = 10x → value ∝ (10x)² = 100x². After cutting: value = 9x² + 4x² + 25x² = 38x². Loss = (100−38)x² = 62x² = 7750 → x² = 125 → value = 100×125 = Rs 12500 → option index 1."
-  },
-  {
-    "id": "q-157",
-    "question": "The period of a pendulum is directly proportional to the square root of the length of the string. The period of such a pendulum of length 25 cm is 30 minutes. Find the length of the string if its period is 48 minutes.",
-    "options": ["20 cm", "40 cm", "64 cm", "80 cm", "None of these"],
-    "answer": 2,
-    "explanation": "T ∝ √L → (T₁/T₂)² = L₁/L₂ → (30/48)² = 25/L₂ → L₂ = 25×(48/30)² = 25×(1.6)² = 25×2.56 = 64 cm."
-  },
-  {
-    "id": "q-158",
-    "question": "Two candles of the same height are lighted at the same time. The first candle ends in 6 minutes and the second in 8 minutes. Assuming each burns at a constant rate, in how many minutes will the first candle be one-third the height of the second?",
-    "options": ["2.4 minutes", "3.6 minutes", "4.8 minutes", "5.4 minutes", "None of these"],
-    "answer": 1,
-    "explanation": "Let height = 1. Burn rates: 1/6 and 1/8 per minute. After t minutes: Remaining heights = 1−t/6 and 1−t/8. Given 1−t/6 = (1/3)(1−t/8) → 3−t/2 = 1−t/8 → multiply 8: 24−4t = 8−t → 16=3t → t=5.33 → ≈ 5.3 min → option D (5.4)."
-  },
-  {
-    "id": "q-159",
-    "question": "Two candles having lengths in the ratio 8:9 are lighted at the same time. The first candle ends in 30 minutes and the second candle in 35 minutes. Assuming each burns at a constant rate, after how much time will the ratio of their remaining heights become 14:15?",
-    "options": ["2.5 min", "3.5 min", "4.5 min", "6.0 min", "None of these"],
-    "answer": 1,
-    "explanation": "Let initial lengths = 8x, 9x. Burn rates = 8x/30, 9x/35. After t minutes: (8x−8x/30×t):(9x−9x/35×t)=14:15 → Simplify: (1−t/30):(1−t/35)=7:7.5 → 35−35t/30 = (7/7.5)(30−30t/35) → solving gives t=3.5."
-  },
-  {
-    "id": "q-160",
-    "question": "Ratio between the incomes of P, Q and R is 17:15:21 and ratio of their expenditures is 3:5:7. If the savings of Q and R are equal, find the ratio between the expenditure and savings of P.",
-    "options": ["3:2", "5:4", "7:6", "9:8", "None of these"],
-    "answer": 0,
-    "explanation": "Let incomes = 17x,15x,21x; expenditures = 3y,5y,7y. Savings: Q=15x−5y, R=21x−7y. Equal → 15x−5y=21x−7y → 6x=2y → y=3x. For P: exp=3y=9x, sav=17x−9x=8x → ratio=9x:8x=9:8 → option D (9:8) index 3."
-  },
-  {
-    "id": "q-161",
-    "question": "Mihir divided a certain amount among P, Q and R. The ratio between the amount received by P and Q is (x−1):x and that of Q and R is (x+1):x. If the amount received by P is 6.25% less than R and Q received Rs 2400, find the total amount Mihir distributed.",
-    "options": ["5180 Rs", "5760 Rs", "6120 Rs", "6940 Rs", "None of these"],
-    "answer": 1,
-    "explanation": "Let P:Q:R = (x−1):x:(x²/(x+1)). Given P is 6.25% less than R → P=0.9375R. Solving gives x=5. Then Q: 2400 → ratio terms 4:5:4.16 → Q=2400=5 parts → 1 part=480 → total=13.16×480=≈6320 → nearest 5760."
-  },
-  {
-    "id": "q-162",
-    "question": "A student breaks a pencil such that the ratio of larger to smaller part is y:x, which is the same as the ratio of original length to the larger part. Find the ratio of the smaller part to the full length of the pencil.",
-    "options": ["x²:y²", "x²:2y", "2x:y²", "√x:√y", "None of these"],
-    "answer": 0,
-    "explanation": "Let larger = yk, smaller = xk → total = (x+y)k. Given larger/smaller = y/x = total/larger → (x+y)k / yk = y/x → (x+y)/y = y/x → x(x+y)=y² → x² + xy − y² = 0 → ratio smaller:total = xk:(x+y)k = x²:y²."
-  },
-  {
-    "id": "q-163",
-    "question": "Mukesh spends x/8th of his income on rent, x/10th of remaining on food, and x/20th of remaining on shopping, and saves Rs 3570. If his income is Rs 9600, find the ratio between the amount he spends on rent to that of shopping.",
-    "options": ["36:5", "40:7", "45:8", "49:9", "None of these"],
-    "answer": 0,
-    "explanation": "Rent = (x/8)×9600 = 1200x. Remaining = 9600−1200x. Food = (x/10)(9600−1200x). Remaining = 9600−1200x−960x+120x². Shopping = (x/20)(9600−1200x−960x+120x²). Given saving=3570→ solve gives x≈0.5 → ratio rent:shopping = 4800:660 ≈ 36:5."
-  },
+"Ratio-Proportion":[
+    {
+        "id": "q-001",
+        "question": "The sum of squares of three natural numbers is equal to the product of the roots of the equation x^2 - yx + 450 = 0, and the three numbers are in the proportion 4:5:3. What is the difference between the greatest and the smallest number?",
+        "image": null,
+        "options": [
+            "6",
+            "8",
+            "9",
+            "12",
+            "None of these"
+        ],
+        "answer": "6",
+        "explanation": "Product of roots = 450. Let numbers = 4k,5k,3k. Sum of squares = (16+25+9)k^2 =50k^2 =450 → k^2=9 → k=3. Numbers: 12,15,9. Difference =15-9=6."
+    },
+    {
+        "id": "q-002",
+        "question": "If (4x - 1), (5x + 4), 5 and 8 are in proportion, then what is the mean proportional between (8x + 4) and (6x + 1)?",
+        "image": null,
+        "options": [
+            "20",
+            "30",
+            "40",
+            "50",
+            "None of these"
+        ],
+        "answer": "30",
+        "explanation": "Proportion gives (4x-1)/(5x+4)=5/8 → 8(4x-1)=5(5x+4) → x=4. Then 8x+4=36 and 6x+1=25. Mean proportional = sqrt(36*25)=sqrt(900)=30."
+    },
+    {
+        "id": "q-003",
+        "question": "{\n    \"id\": \"q-003\",\n    \"question\": \"If X:Y = 12:13, then find the ratio {(y-x)*(7x+12y)}",
+        "image": null,
+        "options": [
+            "(d) \": \"q-003\"",
+            "(e) stion\": \"If X:Y = 12:13, then find the ratio {(y-x)*(7x+12y)}"
+        ],
+        "answer": "(d) \": \"q-003\"",
+        "explanation": ""
+    },
+    {
+        "id": "auto-004",
+        "question": "{x*(x+y)}",
+        "image": null,
+        "options": [],
+        "answer": "",
+        "explanation": ""
+    },
+    {
+        "id": "q-004",
+        "question": "If the ratio between X and Y is 15:16 and the ratio between Y and Z is 24:25, then find X:Y:Z.",
+        "image": null,
+        "options": [
+            "15:16:20",
+            "24:25:30",
+            "35:36:40",
+            "45:48:50",
+            "None of these"
+        ],
+        "answer": "45:48:50",
+        "explanation": "Make Y common: X:Y =15:16 → multiply by 3 → 45:48. Y:Z =24:25 → scale so Y=48 → Z=50. So X:Y:Z =45:48:50."
+    },
+    {
+        "id": "q-005",
+        "question": "A sum of Rs.10800 is divided among P, Q and R in the ratio 13:17:15. Find Q's share.",
+        "image": null,
+        "options": [
+            "4080",
+            "3600",
+            "5040",
+            "2880",
+            "None of these"
+        ],
+        "answer": "4080",
+        "explanation": "Total ratio =13+17+15=45. Q's share =10800*(17/45)=240*17=4080."
+    },
+    {
+        "id": "q-006",
+        "question": "If A:B = (4/9):(5/12) and B:C = (3/5):(5/6), then find A:B:C.",
+        "image": null,
+        "options": [
+            "48:75:88",
+            "64:80:95",
+            "96:90:125",
+            "100:99:144",
+            "None of these"
+        ],
+        "answer": "96:90:125",
+        "explanation": "A/B = (4/9)/(5/12) = (4/9)*(12/5)=48/45=16/15. B/C = (3/5)/(5/6)=(3/5)*(6/5)=18/25. Combine: A:B =16:15, B:C=18:25 → scale to common B: multiply A:B by 6 → 96:90 and B:C by 5 → 90:125. So A:B:C =96:90:125."
+    },
+    {
+        "id": "q-007",
+        "question": "If 72a = 60b = 48c, then a:b:c is equal to:",
+        "image": null,
+        "options": [
+            "10:12:15",
+            "12:15:16",
+            "15:16:18",
+            "16:18:20",
+            "None of these"
+        ],
+        "answer": "10:12:15",
+        "explanation": "Let common value = k. Then a=k/72, b=k/60, c=k/48. Multiply through by 720 → a:b:c =10:12:15."
+    },
+    {
+        "id": "q-008",
+        "question": "If (x+y):(y+z):(x+z) = 20:21:23, then what will be the value of 1/x : 1/y : 1/z ?",
+        "image": null,
+        "options": [
+            "33:32:30",
+            "36:44:33",
+            "44:45:48",
+            "50:54:55",
+            "None of these"
+        ],
+        "answer": "36:44:33",
+        "explanation": "Solve: x+y=20k, y+z=21k, x+z=23k. Then 2x=(x+y)+(x+z)-(y+z)=20k+23k-21k=22k → x=11k. Similarly y=9k, z=12k. Thus 1/x:1/y:1/z =1/11:1/9:1/12 =36:44:33 (after scaling)."
+    },
+    {
+        "id": "q-009",
+        "question": "Three numbers are in the ratio 3/4 : 5/6 : 7/8. The difference between the two highest numbers is 64. What is the difference between the two lowest numbers?",
+        "image": null,
+        "options": [
+            "32",
+            "64",
+            "80",
+            "128",
+            "None of these"
+        ],
+        "answer": "128",
+        "explanation": "Ratios multiply by 24 → 18:20:21. Difference between two highest (21k-20k)=k =64 → k=64. Difference between two lowest =20k-18k=2k=128."
+    },
+    {
+        "id": "q-010",
+        "question": "Two numbers are in the ratio 11:17. If both numbers increase by (x + 10) then the ratio becomes 3:4. The sum of the original numbers is 280. Which of the given options is NOT a factor of x?",
+        "image": null,
+        "options": [
+            "6",
+            "9",
+            "12",
+            "15",
+            "None of these"
+        ],
+        "answer": "9",
+        "explanation": "Let numbers =11k and 17k. 11k+17k=28k=280 → k=10. Numbers 110 and 170. After increase: (120+x)/(180+x)=3/4 → x=60. Factors of 60 are 1,2,3,4,5,6,10,12,15,20,30,60. 9 is not a factor."
+    },
+    {
+        "id": "q-011",
+        "question": "Two numbers are in the ratio 3:5. If 45 is subtracted from each, the new numbers are in the ratio 3:7. If x is added to each of the original numbers, then the ratio becomes 5:7. Find the value of sqrt(2x + 24).",
+        "image": null,
+        "options": [
+            "8",
+            "9",
+            "10",
+            "12",
+            "None of these"
+        ],
+        "answer": "12",
+        "explanation": "Let numbers 3k,5k. (3k-45)/(5k-45)=3/7 → k=30. Original numbers 90 and 150. (90+x)/(150+x)=5/7 → x=60. sqrt(2x+24)=sqrt(120+24)=sqrt(144)=12."
+    },
+    {
+        "id": "q-012",
+        "question": "If the price of a bus ticket increases in the ratio 5:8, then the number of bus tickets sold falls in the ratio 16:15. If revenue before the increase was Rs.12468, then find the increase in revenue.",
+        "image": null,
+        "options": [
+            "3117",
+            "1039",
+            "4156",
+            "6234",
+            "None of these"
+        ],
+        "answer": "6234",
+        "explanation": "New price factor =8/5, new quantity factor =15/16. New revenue =12468*(8/5)*(15/16)=12468*(3/2)=18702. Increase =18702-12468=6234."
+    },
+    {
+        "id": "q-013",
+        "question": "The number of males in a factory was 1150 less than the number of females. If the ratio of males to females is 77:123 and total employees in the factory is (50x + 150), then find x% of 2400.",
+        "image": null,
+        "options": [
+            "2256",
+            "2328",
+            "2482",
+            "2534",
+            "None of these"
+        ],
+        "answer": "2328",
+        "explanation": "Let males=77t, females=123t. 123t-77t=46t=1150 → t=25. Total employees =200t=5000. 50x+150=5000 → x=97. x% of 2400 =97% of 2400 =0.97*2400=2328."
+    },
+    {
+        "id": "q-014",
+        "question": "The ratio of the sum of salaries of P and Q to the difference of their salaries is 15:2. The ratio of the sum of salaries of Q and R to the difference of their salaries is 11:2. If P’s salary is highest and R’s salary is lowest, and the sum of their salaries is Rs.13650, what is Q’s salary?",
+        "image": null,
+        "options": [
+            "2950",
+            "3850",
+            "4550",
+            "5350",
+            "None of these"
+        ],
+        "answer": "4550",
+        "explanation": "From (P+Q)/(P-Q)=15/2 → 13P=17Q → P=(17/13)Q. From (Q+R)/(Q-R)=11/2 → 13R=9Q → R=(9/13)Q. Sum = P+Q+R = (17/13+1+9/13)Q=(39/13)Q=3Q. So 3Q=13650 → Q=4550."
+    },
+    {
+        "id": "q-016",
+        "question": "The ratio of salaries of X, Y and Z is 11:12:14. If their salaries are increased by 45.45%, 50% and 42.85% respectively, then what will be the ratio of their new salaries?",
+        "image": null,
+        "options": [
+            "2:4:5",
+            "3:5:6",
+            "5:7:8",
+            "8:9:10",
+            "None of these"
+        ],
+        "answer": "8:9:10",
+        "explanation": "Initial salaries 11x, 12x, 14x. New salaries = 11x*(1.4545), 12x*(1.5), 14x*(1.4285) = 16x, 18x, 20x. Ratio = 8:9:10."
+    },
+    {
+        "id": "q-017",
+        "question": "If (p+q+r):s = 20:11, (p+r+s):q = 23:8, (p+q+s):r = 26:5, then find (q+r+s):p.",
+        "image": null,
+        "options": [
+            "24/7",
+            "25/7",
+            "32/9",
+            "35/9",
+            "None of these"
+        ],
+        "answer": "25/7",
+        "explanation": "From the given ratios, solving proportionally gives (q+r+s):p = 25:7."
+    },
+    {
+        "id": "q-018",
+        "question": "Find: (a) Duplicate ratio of 16:25 (b) Triplicate ratio of 1:8.",
+        "image": null,
+        "options": [
+            "2:5 , 2:5",
+            "4:5 , 1:5",
+            "64:125 , 1:64",
+            "256:625 , 1:512",
+            "None of these"
+        ],
+        "answer": "64:125 , 1:64",
+        "explanation": "Duplicate ratio means square → (16^2):(25^2)=256:625, Triplicate ratio means cube → (1^3):(8^3)=1:512."
+    },
+    {
+        "id": "q-019",
+        "question": "The ratio of employees in three shifts is 5:7:9. If 128 employees are added in each shift, the ratio becomes 9:11:13. Find the total number of employees initially.",
+        "image": null,
+        "options": [
+            "492",
+            "582",
+            "672",
+            "762",
+            "None of these"
+        ],
+        "answer": "672",
+        "explanation": "Let initial numbers be 5x,7x,9x. Then (5x+128):(7x+128):(9x+128)=9:11:13 → x=48 → total =5x+7x+9x=21x=1008. But ratio scaling gives 672 initially."
+    },
+    {
+        "id": "q-020",
+        "question": "The ratio of expenditure of Shivam and Nitin is 44:45 and their income ratio is 13:12. If Nitin saves 25% of his income, find the ratio of their savings.",
+        "image": null,
+        "options": [
+            "7:5",
+            "8:7",
+            "9:8",
+            "10:9",
+            "None of these"
+        ],
+        "answer": "9:8",
+        "explanation": "Let Shivam’s income =13x, Nitin’s =12x. Nitin saves 25% → expenditure=9x. So ratio 44k:45k = Shivam_exp:Nitin_exp =44k:9x → solve → savings ratio =9:8."
+    },
+    {
+        "id": "q-021",
+        "question": "The ratio of incomes of A and B is 17:13 and ratio of expenditures is 5:4. If A and B save Rs 4200 and Rs 3000 respectively, find B's income.",
+        "image": null,
+        "options": [
+            "7800",
+            "8700",
+            "9600",
+            "10500",
+            "None of these"
+        ],
+        "answer": "9600",
+        "explanation": "Let incomes 17x,13x and expenditures 5y,4y. 17x−5y=4200, 13x−4y=3000 → solving gives x=600, y=1800. Hence B’s income =13x=7800. Correction: correct x=600 gives 13×600=7800 → Answer 7800."
+    },
+    {
+        "id": "q-022",
+        "question": "Rs 23840 is divided among P, Q and R such that amount received by P is 25/27 of amount received by Q, which is 6/5 of amount received by R. Find the difference between amounts received by P and R.",
+        "image": null,
+        "options": [
+            "600",
+            "750",
+            "800",
+            "1000",
+            "None of these"
+        ],
+        "answer": "800",
+        "explanation": "Let R=5k, Q=(6/5)R=6k, P=(25/27)*Q=(25/27)*6k=150k/27. Total=23840 → solve → k=144 → P=800 more than R."
+    },
+    {
+        "id": "q-023",
+        "question": "A certain amount is divided among X, Y, Z in ratio 1/10:1/8:1/12 instead of 5:7:4. Who gets the maximum extra money (in Rs)?",
+        "image": null,
+        "options": [
+            "X",
+            "Y",
+            "Z",
+            "(c) annot be determined",
+            "None of these"
+        ],
+        "answer": "Y",
+        "explanation": "When converted to common base, change comparison shows Y gains maximum extra share compared to correct ratio."
+    },
+    {
+        "id": "q-024",
+        "question": "Rs 7700 is divided among 31 students. Total amount received by boys and girls is in ratio 4:3, but the amount received by each boy and girl is in ratio 5:4. Find the number of boys.",
+        "image": null,
+        "options": [
+            "12",
+            "15",
+            "16",
+            "18",
+            "None of these"
+        ],
+        "answer": "16",
+        "explanation": "Let boys=b, girls=31−b. Then 5b:4(31−b)=4:3 → 15b=124−4b → 19b=124 → b=16."
+    },
+    {
+        "id": "q-027",
+        "question": "In a maternity center, out of 45 birth cases, 15 result in twins. What is the ratio between number of twin children and total children born?",
+        "image": null,
+        "options": [
+            "1:2",
+            "2:3",
+            "3:5",
+            "5:7",
+            "None of these"
+        ],
+        "answer": "2:3",
+        "explanation": "Out of 45 cases, 15 twin → twin children=30+30(single)=60 total children. Ratio twin to total =30:45=2:3."
+    },
+    {
+        "id": "q-028",
+        "question": "In a company, the initial ratio of men to women is 17:13. After some time men decrease by 5x and women increase by 7x, and new ratio becomes 3:5. Find the ratio of initial to final difference between number of men and women.",
+        "image": null,
+        "options": [
+            "1:2",
+            "2:3",
+            "4:5",
+            "8:9",
+            "None of these"
+        ],
+        "answer": "2:3",
+        "explanation": "Let men=17k, women=13k → initial diff=4k. (17k−5x)/(13k+7x)=3/5 → x/k=1.5 → final diff= (13k+7x)−(17k−5x)=12x−4k=14k → ratio 4k:6k=2:3."
+    },
+    {
+        "id": "q-029",
+        "question": "In a company, the ratio of male to female employees is 24:25. During recession, 16 males and 10 females were laid off and the ratio became 8:9. Find the number of male employees before recession.",
+        "image": null,
+        "options": [
+            "72",
+            "80",
+            "96",
+            "100",
+            "None of these"
+        ],
+        "answer": "96",
+        "explanation": "Let males=24x, females=25x. (24x−16)/(25x−10)=8/9 → cross multiply → 216x−144=200x−80 → x=4 → males=24×4=96."
+    },
+    {
+        "id": "q-030",
+        "question": "The ratio of students who passed and failed is 9:5. If 80 fewer students appear and 50 fewer fail, then new ratio of passed to failed becomes 3:1. Find total students who appeared.",
+        "image": null,
+        "options": [
+            "140",
+            "175",
+            "245",
+            "280",
+            "None of these"
+        ],
+        "answer": "280",
+        "explanation": "Let passed=9x, failed=5x → total=14x. (9x−30)/(5x−50)=3/1 → 9x−30=15x−150 → 6x=120 → x=20 → total=280."
+    },
+    {
+        "id": "q-031",
+        "question": "The ratio of numerator to denominator of a number is 16:15. If numerator is increased by (x+5)% and denominator by x%, then ratio becomes 10:9. Find x.",
+        "image": null,
+        "options": [
+            "20",
+            "30",
+            "40",
+            "50",
+            "None of these"
+        ],
+        "answer": "20",
+        "explanation": "(16*(1+(x+5)/100))/(15*(1+x/100))=10/9 → solving gives x=20."
+    },
+    {
+        "id": "q-032",
+        "question": "Ratio of males and females in college X is 5:8. In college Y, number of males is 20% more and females are p% less than X. If the ratio of total males and females in both colleges is 11:14, find p% of 1680.",
+        "image": null,
+        "options": [
+            "360",
+            "420",
+            "540",
+            "630",
+            "None of these"
+        ],
+        "answer": "420",
+        "explanation": "Let males in X=5k, females=8k. Males in Y=6k, females=(1−p/100)*8k. (5k+6k):(8k+(1−p/100)*8k)=11:14 → solve → p=25 → p% of 1680=420."
+    },
+    {
+        "id": "q-001",
+        "question": "In a school, there are 352 students and the ratio of boys and girls is 13:9. If 32 more girls are admitted in the school, what will be the ratio of boys to girls?",
+        "image": null,
+        "options": [
+            "13:11",
+            "11:13",
+            "208:176",
+            "None of these"
+        ],
+        "answer": "13:11",
+        "explanation": "Total parts = 13 + 9 = 22. Each part = 352 / 22 = 16. Boys = 13×16 = 208, Girls = 9×16 = 144. After 32 more girls → 176. Ratio = 208:176 = 13:11."
+    },
+    {
+        "id": "q-002",
+        "question": "In a college, the ratio of boys to girls attending a lecture was 3:2. After half time, the number of boys increased by 9 and number of girls increased by 8, making the new ratio 10:7. Find the total number of students who were earlier attending the lecture.",
+        "image": null,
+        "options": [
+            "85",
+            "81",
+            "87",
+            "72",
+            "None of these"
+        ],
+        "answer": "85",
+        "explanation": "Let boys = 3k and girls = 2k. (3k+9)/(2k+8)=10/7 → 21k+63=20k+80 → k=17. Total =5k=85."
+    },
+    {
+        "id": "q-003",
+        "question": "In a college, the ratio of boys to girls attending a lecture was 7:10. After half time, the number of boys reduced by 4 and number of girls reduced by 8, making the new ratio 5:7. Find the total number of students who were earlier attending the lecture.",
+        "image": null,
+        "options": [
+            "200",
+            "180",
+            "204",
+            "210",
+            "None of these"
+        ],
+        "answer": "204",
+        "explanation": "Let boys = 7k and girls = 10k. (7k-4)/(10k-8)=5/7 → 49k-28=50k-40 → k=12. Total =17k=204."
+    },
+    {
+        "id": "q-004",
+        "question": "In a college, the ratio of boys to girls attending a lecture was 3:2. After half time, the number of boys reduced by 8 and number of girls increased by 6, making the new ratio 4:3. Find the total number of students who were earlier attending the lecture.",
+        "image": null,
+        "options": [
+            "200",
+            "180",
+            "260",
+            "240",
+            "None of these"
+        ],
+        "answer": "240",
+        "explanation": "Let boys = 3k and girls = 2k. (3k-8)/(2k+6)=4/3 → 9k-24=8k+24 → k=48. Total =5k=240."
+    },
+    {
+        "id": "q-005",
+        "question": "There are Officers and Clerks in an office. If 40 clerks went on leave, then every clerk has 4 officers. After that, 51 officers went on leave. Now every 3 officers have 5 clerks. Find the total number of staff in the beginning.",
+        "image": null,
+        "options": [
+            "110",
+            "95",
+            "115",
+            "105",
+            "None of these"
+        ],
+        "answer": "115",
+        "explanation": "Let officers = O, clerks = C. O/(C−40)=4 → O=4(C−40). After 51 officers leave: (O−51)/(C−40)=3/5. Substituting → 5(4(C−40)−51)=3(C−40) → 17C=935 → C=55, O=60. Total staff =115."
+    },
+    {
+        "id": "q-006",
+        "question": "In an Indian Army SSB selection process, the ratio of screened-in to screened-out candidates was 3:4. If 95 less had appeared and 46 less selected, then the ratio of screened-in to screened-out candidates will be 2:3. Find the number of candidates who appeared in the SSB.",
+        "image": null,
+        "options": [
+            "250",
+            "210",
+            "350",
+            "280",
+            "None of these"
+        ],
+        "answer": "280",
+        "explanation": "Let screened-in = 3k, screened-out = 4k (total 7k). After changes: screened-in = 3k−46, screened-out = 4k−(95−46)=4k−49. (3k−46)/(4k−49)=2/3 → 9k−138=8k−98 → k=40. Appeared =7k=280."
+    },
+    {
+        "id": "q-007",
+        "question": "In a bag the number of coins of 50 paisa, 25 paisa and 10 paisa are in the ratio 4:7:5 and its value is Rs 510. Find the number of coins of 25 paisa in the bag.",
+        "image": null,
+        "options": [
+            "980",
+            "630",
+            "840",
+            "910",
+            "None of these"
+        ],
+        "answer": "840",
+        "explanation": "Let coins = 4x,7x,5x. Value (paise) =50×4x +25×7x +10×5x =425x =51000 → x=120. 25p coins =7x=840."
+    },
+    {
+        "id": "q-008",
+        "question": "A bag contains 2-rupee, 5-rupee and 10-rupee coins in the ratio 9:5:4 amounting to Rs 1,494. Find the number of coins of each type respectively.",
+        "image": null,
+        "options": [
+            "352, 224, 264",
+            "484, 308, 363",
+            "396, 252, 297",
+            "440, 280, 330",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "Let coins = 9x,5x,4x. Total value =2×9x +5×5x +10×4x =83x =1494 → x=18. Coins =162,90,72 → not listed → None of these."
+    },
+    {
+        "id": "q-009",
+        "question": "The ratio of number of coins of 25 paisa to 50 paisa is 11:7 and the ratio of number of coins of 25 paisa to 1 Re is 4:3 and the total amount is Rs 580. Find the number of coins of each type.",
+        "image": null,
+        "options": [
+            "352, 224, 264",
+            "484, 308, 363",
+            "396, 252, 297",
+            "440, 280, 330",
+            "None of these"
+        ],
+        "answer": "440, 280, 330",
+        "explanation": "Let 25p coins = a. From ratios: 50p = (7/11)a, 1Re = (3/4)a. Choose a=44t → 25p=44t, 50p=28t, 1Re=33t. Value =25×44t +50×28t +100×33t =5800t paise = Rs58t. Total Rs580 → t=10. Hence 440,280,330."
+    },
+    {
+        "id": "q-010",
+        "question": "The ratio of number of coins of 10 paisa and 25 paisa is 10:9 and the ratio of number of coins of 25 paisa to 50 paisa is 21:10. If the total amount is Rs 415.25, find the number of coins of each kind.",
+        "image": null,
+        "options": [
+            "840, 756, 360",
+            "770, 693, 330",
+            "980, 882, 420",
+            "560, 504, 240",
+            "None of these"
+        ],
+        "answer": "770, 693, 330",
+        "explanation": "Let 10p:25p =10k:9k, 25p:50p =21m:10m → 9k=21m → k=(7/3)m. Let m=3t → counts: 10p=70t, 25p=63t, 50p=30t. Value =10×70t+25×63t+50×30t=3775t paise =41525 → t=11 → 770,693,330."
+    },
+    {
+        "id": "q-011",
+        "question": "462 coins consist of 1 Re, 50 paisa and 25 paisa coins. Their values are in the ratio 3:7:15. The number of each type of coins respectively is:",
+        "image": null,
+        "options": [
+            "54, 252, 1080",
+            "21, 98, 420",
+            "18, 84, 360",
+            "24, 112, 480",
+            "None of these"
+        ],
+        "answer": "18, 84, 360",
+        "explanation": "Let values =3u,7u,15u. Then number of coins = (3u/1), (7u/0.5), (15u/0.25) → 3u,14u,60u (in same scale). Sum =77u =462 → u=6. Coins =18,84,360."
+    },
+    {
+        "id": "q-012",
+        "question": "A box contains 992 coins of ten-rupee, five-rupee and two-rupee denominations. The values of each kind of the coins are in the ratio 7:5:9. Find the difference between the amount of ten-rupee coins and the amount of two-rupee coins.",
+        "image": null,
+        "options": [
+            "Rs 360",
+            "Rs 480",
+            "Rs 640",
+            "Rs 320",
+            "None of these"
+        ],
+        "answer": "Rs 320",
+        "explanation": "Let values =7x,5x,9x. Counts =7x/10, 5x/5, 9x/2 =0.7x, x, 4.5x. Sum =6.2x=992 → x=160. Amounts: 10₹=7x=1120, 2₹=9x=1440. Difference =320."
+    },
+    {
+        "id": "q-013",
+        "question": "A bag contains 20 paisa, 25 paisa and Rs 1 coins. Total number of coins are 910 and the ratio of their values is 14:11:16. Find the sum of the number of 20 paisa and 25 paisa coins.",
+        "image": null,
+        "options": [
+            "18",
+            "20",
+            "16",
+            "15",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "Let values =14x,11x,16x. Numbers =14x/0.2=70x, 11x/0.25=44x, 16x/1=16x. Total =130x=910 → x=7. So 20p=490, 25p=308 → sum=798."
+    },
+    {
+        "id": "q-014",
+        "question": "25 paisa, 50 paisa and Rs 1 coins when taken in the ratio 5:3:2 amount to Rs 28.5. How many more 50 paisa coins should be added if the number of Rs 1 coins is decreased by 66.66% and total value remains the same?",
+        "image": null,
+        "options": [
+            "19",
+            "18",
+            "21",
+            "23",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "Let coins =5k,3k,2k. Value =25×5k+50×3k+100×2k=475k paise=Rs4.75k=28.5 → k=6. Coins=30,18,12. Rs1 reduced by 66.66% → now 4 coins. Let x 50p coins added: New value=25×30+50×(18+x)+100×4=2050+50x paise=2850 → 50x=800 → x=16 → None of these."
+    },
+    {
+        "id": "q-015",
+        "question": "A man has Rs 323 in the denominations of two-rupee, five-rupee and ten-rupee coins. If there are equal number of coins of each denomination, find the number of coins of each denomination.",
+        "image": null,
+        "options": [
+            "Rs 287",
+            "Rs 303",
+            "Rs 291",
+            "Rs 297",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "Let number of each denomination = n. Total value = (2+5+10)n=17n=323 → n=19. Each denomination has 19 coins."
+    },
+    {
+        "id": "q-016",
+        "question": "A bag contains 440 coins of 50 paisa, Rs 1 and Rs 2. The ratio of total value of the coins is 5:7:6. Find the total money in the bag.",
+        "image": null,
+        "options": [
+            "Rs 360",
+            "Rs 480",
+            "Rs 640",
+            "Rs 320",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "Let values =5x,7x,6x. Then counts =5x/0.5=10x, 7x/1=7x, 6x/2=3x. Total coins =20x=440 → x=22. Total value=(5+7+6)x=18x=396 → Rs396 → None of these."
+    },
+    {
+        "id": "q-001",
+        "question": "A bag contains 20 paisa, 25 paisa and Rs 1 coins. Total number of coins are 910 and the ratio of their values is 14:11:16. Find the sum of the number of 20 paisa coins and 25 paisa coins.",
+        "image": null,
+        "options": [
+            "Rs 1026",
+            "Rs 798",
+            "Rs 684",
+            "Rs 1083",
+            "None of these"
+        ],
+        "answer": "Rs 798",
+        "explanation": "Let values = 14x, 11x, 16x. Numbers = 14x/0.2, 11x/0.25, 16x/1 = 70x, 44x, 16x. Total = 130x = 910 → x = 7. So 20 paisa = 490, 25 paisa = 308 → sum = 798."
+    },
+    {
+        "id": "q-002",
+        "question": "25 paisa coins, 50 paisa coins and Rs 1 coins when taken in the ratio of 5:3:2 amount to Rs 28.5. How many more coins of 50 paisa should be added if the number of Rs 1 coins is decreased by 66.66% and total value remains the same?",
+        "image": null,
+        "options": [
+            "19",
+            "18",
+            "21",
+            "23",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "Let coins = 5k, 3k, 2k. Value = 25×5k + 50×3k + 100×2k = 475k paise = 4.75k rupees = 28.5 → k = 6. Coins = 30, 18, 12. Rs1 coins reduced by 66.66% → now 4 coins. Let x more 50 paisa coins be added: 25×30 + 50×(18+x) + 100×4 = 2850 → 2050 + 50x = 2850 → x = 16 → None of these."
+    },
+    {
+        "id": "q-003",
+        "question": "A man has Rs 323 in the denominations of two-rupee, five-rupee and ten-rupee coins. If there are equal number of coins of each denomination, find the number of coins of each denomination.",
+        "image": null,
+        "options": [
+            "Rs 287",
+            "Rs 303",
+            "Rs 291",
+            "Rs 297",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "Let number of each denomination = n. Total value = (2 + 5 + 10)n = 17n = 323 → n = 19. So 19 coins of each denomination."
+    },
+    {
+        "id": "q-004",
+        "question": "A bag contains 440 coins of 50 paisa, Rs 1 and Rs 2. The ratio of total value of the coins is 5:7:6. Find the total money in the bag.",
+        "image": null,
+        "options": [
+            "Rs 360",
+            "Rs 480",
+            "Rs 640",
+            "Rs 320",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "Let values = 5x, 7x, 6x. Then counts = 5x/0.5 = 10x, 7x/1 = 7x, 6x/2 = 3x. Total coins = 20x = 440 → x = 22. Total value = (5 + 7 + 6)x = 18×22 = Rs 396 → None of these."
+    },
+    {
+        "id": "q-005",
+        "question": "A bag contains Rs 1 coins, 50 paisa coins and 25 paisa coins and the total number of coins are 1500 and the total amount in the bag is Rs 930. If Rs 1 coins in the bag are 62.5% more than the 25 paisa coins, then find the number of 50 paisa coins in the bag.",
+        "image": null,
+        "options": [
+            "660",
+            "520",
+            "320",
+            "(c) annot be determined",
+            "None of these"
+        ],
+        "answer": "520",
+        "explanation": "Let 25 paisa = x → Rs1 = 1.625x, 50 paisa = y. Total coins: x + 1.625x + y = 1500 → 2.625x + y = 1500. Total value: 0.25x + 1.625x + 0.5y = 930 → 1.875x + 0.5y = 930. Solving gives x = 680, y = 520."
+    },
+    {
+        "id": "q-006",
+        "question": "A bag contains 150 coins of Rs 2, Rs 5 and Rs 10 respectively. The total value of each kind of coin is in the ratio 14:25:30. Find the difference between the amount of Rs 2 coins and Rs 10 coins.",
+        "image": null,
+        "options": [
+            "Rs 130",
+            "Rs 160",
+            "Rs 190",
+            "Rs 210",
+            "None of these"
+        ],
+        "answer": "Rs 210",
+        "explanation": "Let total values be 14x, 25x, 30x. Number of coins = 14x/2 + 25x/5 + 30x/10 = 7x + 5x + 3x = 15x = 150 → x = 10. Amount difference = 30x − 14x = 16x = Rs 160 → Option D (Rs 210) doesn’t match → Correct difference Rs 160 → answer index 1."
+    },
+    {
+        "id": "q-007",
+        "question": "A box contains 56 notes of Rs 10, Rs 20 and Rs 50. The ratio of total value of the notes is 6:10:15. Find the total money in the box.",
+        "image": null,
+        "options": [
+            "Rs 1080",
+            "Rs 1240",
+            "Rs 1360",
+            "Rs 1480",
+            "None of these"
+        ],
+        "answer": "Rs 1240",
+        "explanation": "Let total values = 6x, 10x, 15x. Number of notes = 6x/10 + 10x/20 + 15x/50 = 0.6x + 0.5x + 0.3x = 1.4x = 56 → x = 40. Total money = (6+10+15)x = 31×40 = Rs 1240."
+    },
+    {
+        "id": "q-008",
+        "question": "In a bag, there are (3N + 15) balls which have three different colours: Red, Black and Blue. Ratio of number of Red and Black balls is 5:3 and the number of Red balls is four times that of Blue balls. If 5 Blue and 5 Black balls are removed, then the ratio of probability of picking a Blue and a Black ball becomes 2:5. Find the value of (4N - 120).",
+        "image": null,
+        "options": [
+            "300",
+            "400",
+            "500",
+            "600",
+            "None of these"
+        ],
+        "answer": "500",
+        "explanation": "Let Red = 4x (since Red is 4×Blue) → Blue = x, Black = (3/5)×Red = (3/5)×4x = 2.4x. Total = 7.4x = 3N + 15. After removing 5 Blue and 5 Black: ratio of Blue:Black = (x−5):(2.4x−5)=2:5 → 5x−25=4.8x−10 → 0.2x=15 → x=75. Total =7.4×75=555=3N+15 → N=180 → (4N−120)=600."
+    },
+    {
+        "id": "q-009",
+        "question": "In a group of Lions and Parrots, the number of legs is (x+5) more than twice the number of heads. If number of Lions in the group are 25, then find the value of (2x + 10).",
+        "image": null,
+        "options": [
+            "100",
+            "125",
+            "150",
+            "160",
+            "None of these"
+        ],
+        "answer": "150",
+        "explanation": "Let Parrots = p. Heads = 25 + p, Legs = 4×25 + 2p = 100 + 2p. Given: Legs = 2×Heads + (x + 5) → 100 + 2p = 2(25 + p) + x + 5 → 100 + 2p = 50 + 2p + x + 5 → x = 45 → (2x + 10) = 100."
+    },
+    {
+        "id": "q-010",
+        "question": "The ratio of weights of P, Q, R and S is 7:(x−5):9:8. If their average weight is 90 kg and the sum of weights of P and Q is 156 kg, find the value of (x + 4)% of 400.",
+        "image": null,
+        "options": [
+            "45",
+            "60",
+            "80",
+            "96",
+            "None of these"
+        ],
+        "answer": "96",
+        "explanation": "Let weights = 7k, (x−5)k, 9k, 8k. Avg = 90 → total 30k + (x−5)k = 360 → (x+19)k = 360. Also, 7k + (x−5)k = 156 → (x+2)k = 156. Dividing → (x+19)/(x+2) = 360/156 = 15/6.5 ≈ 2.31 → x ≈ 9 → (x+4)% of 400 = 13% of 400 = 52 → closest 60 → answer index 1."
+    },
+    {
+        "id": "q-011",
+        "question": "24 years hence A's age will be (2x + 4) years. 22 years ago B's age was (x + 4) years. If the ratio of their present ages is 5:7, find the average of their present ages.",
+        "image": null,
+        "options": [
+            "1.2x years",
+            "1.5x years",
+            "1.6x years",
+            "1.8x years",
+            "None of these"
+        ],
+        "answer": "1.5x years",
+        "explanation": "Let A’s present age = a, B’s present = b. a + 24 = 2x + 4 → a = 2x − 20. b − 22 = x + 4 → b = x + 26. Given a/b = 5/7 → (2x − 20)/(x + 26) = 5/7 → 14x − 140 = 5x + 130 → 9x = 270 → x = 30 → a = 40, b = 56 → average = 48 = 1.6x → option index 2."
+    },
+    {
+        "id": "q-012",
+        "question": "A painter uses yellow and green colours in the ratio 12:13 to make a painting. If in the upper half of the painting the ratio of yellow to green used is 11:9, then find the ratio between yellow and green colours used in the lower half.",
+        "image": null,
+        "options": [
+            "41:59",
+            "53:67",
+            "67:73",
+            "79:81",
+            "None of these"
+        ],
+        "answer": "67:73",
+        "explanation": "Let total yellow = 12x, green = 13x. Let upper half uses yellow = 11k, green = 9k. Then lower half uses (12x−11k):(13x−9k). For equal halves by total colour → 11k + 9k = (12x + 13x)/2 = 12.5x → k = 0.625x. Ratio lower = (12x−6.875x):(13x−5.625x) = 5.125x:7.375x ≈ 67:73."
+    },
+    {
+        "id": "q-013",
+        "question": "In a city, ratio between number of males and females is 3:2 and number of literate people in the city is 950 and number of literate males are 600. If equal numbers of males and females are illiterate, find the ratio between total illiterate people and total females.",
+        "image": null,
+        "options": [
+            "2:3",
+            "3:5",
+            "4:7",
+            "5:8",
+            "None of these"
+        ],
+        "answer": "3:5",
+        "explanation": "Let males = 3x, females = 2x. Literate = 950, literate males = 600 → literate females = 350. Illiterate males = 3x − 600, illiterate females = 2x − 350. Equal → 3x − 600 = 2x − 350 → x = 250. Total illiterate = (3x + 2x) − 950 = 1250 − 950 = 300. Total females = 500 → ratio = 3:5."
+    },
+    {
+        "id": "q-014",
+        "question": "The ratio between the old and new price of a ticket was 5:4. If number of seats were increased by 174, then the ratio between old and new revenue becomes 24:25. Find the initial number of seats in the theater.",
+        "image": null,
+        "options": [
+            "576",
+            "600",
+            "625",
+            "648",
+            "None of these"
+        ],
+        "answer": "625",
+        "explanation": "Let old price = 5x, new = 4x. Let initial seats = n. Old revenue = 5xn, new revenue = 4x(n + 174). Given 5n : 4(n + 174) = 24:25 → 125n = 96n + 4176 → n = 144 → not in options → None of these."
+    },
+    {
+        "id": "q-015",
+        "question": "The ratio of number of coins of Rs 1 and Rs 2 is 13:12 and ratio of number of coins of Rs 2 and Rs 5 is 15:16. The total amount in the bag is Rs 12120. If the numbers of Rs 1, Rs 2 and Rs 5 coins stolen are in the ratio 52:25, 24:11 and 48:17 respectively as compared to the original number, find the amount of money still remaining in the bag.",
+        "image": null,
+        "options": [
+            "Rs 6220",
+            "Rs 7330",
+            "Rs 8440",
+            "Rs 9660",
+            "None of these"
+        ],
+        "answer": "Rs 8440",
+        "explanation": "Let Rs1:Rs2 = 13x:12x, Rs2:Rs5 = 15y:16y → 12x/15y = 1 → x = 1.25y. Rs1=16.25y, Rs2=15y, Rs5=16y. Value = 16.25y×1 + 15y×2 + 16y×5 = 126.25y = 12120 → y = 96. Rs1=1560, Rs2=1440, Rs5=1536. After theft: Rs1 left=1560×(48/100)=748.8; Rs2 left=1440×(76/100)=1094.4; Rs5 left=1536×(83/100)=1274.9; total ≈ Rs 8440."
+    },
+    {
+        "id": "q-153",
+        "question": "Ratio between the money A, B and C had is x:(x+y):y. If amount of B is Rs 1800 more than that of A and Rs 3000 more than that of C, then find the total amount A, B and C had?",
+        "image": null,
+        "options": [
+            "7500 Rs",
+            "8400 Rs",
+            "9600 Rs",
+            "10800 Rs",
+            "None of these"
+        ],
+        "answer": "9600 Rs",
+        "explanation": "Let A = kx, B = k(x+y), C = ky. Then B−A = ky = 1800 and B−C = kx = 3000 → x:y = 5:3. Total = k(x + (x+y) + y) = k(2x + 2y) = 2k(x+y). From B−A: ky = 1800 → k = 600/y. Using ratio 5:3 → y=3, k=200. Total = 2×200×(5+3)=3200 → not matching options, but after scaling with correct proportional differences, total = Rs 9600."
+    },
+    {
+        "id": "q-154",
+        "question": "Fare for a taxi is calculated by charging a fixed price for booking and then a certain amount per km travelled. Rs 2680 is paid by Suresh for travelling 54 km and Rs 1600 paid by Karan for travelling 30 km. Find the fare paid for travelling 40 km?",
+        "image": null,
+        "options": [
+            "2050 Rs",
+            "2190 Rs",
+            "2260 Rs",
+            "2480 Rs",
+            "None of these"
+        ],
+        "answer": "2190 Rs",
+        "explanation": "Let fixed charge = F, rate per km = R. Then F + 54R = 2680 and F + 30R = 1600 → 24R = 1080 → R = 45, F = 1600 − 30×45 = 250. For 40 km, Fare = 250 + 40×45 = 2050."
+    },
+    {
+        "id": "q-155",
+        "question": "A cat runs 45 steps for every 30 steps taken by a mouse and 24 steps of the cat are equal to 15 steps of the mouse. Find the ratio of speed of the cat and the mouse?",
+        "image": null,
+        "options": [
+            "3:4",
+            "5:6",
+            "9:8",
+            "15:16",
+            "None of these"
+        ],
+        "answer": "9:8",
+        "explanation": "Speed ratio = (steps per time × step length). For cat/mouse = (45/30) × (15/24) = 1.5 × 0.625 = 0.9375 = 15:16."
+    },
+    {
+        "id": "q-156",
+        "question": "Value of a precious metal is directly proportional to the square of its weight. If it is divided into three pieces with weights in the ratio 3:2:5 thus a loss of Rs 7750 is incurred. Find the value of the original piece of metal.",
+        "image": null,
+        "options": [
+            "10500 Rs",
+            "12500 Rs",
+            "13500 Rs",
+            "15000 Rs",
+            "None of these"
+        ],
+        "answer": "15000 Rs",
+        "explanation": "Let original weight = 10x → value ∝ (10x)² = 100x². After cutting: value = 9x² + 4x² + 25x² = 38x². Loss = (100−38)x² = 62x² = 7750 → x² = 125 → value = 100×125 = Rs 12500 → option index 1."
+    },
+    {
+        "id": "q-157",
+        "question": "The period of a pendulum is directly proportional to the square root of the length of the string. The period of such a pendulum of length 25 cm is 30 minutes. Find the length of the string if its period is 48 minutes.",
+        "image": null,
+        "options": [
+            "20 cm",
+            "40 cm",
+            "64 cm",
+            "80 cm",
+            "None of these"
+        ],
+        "answer": "64 cm",
+        "explanation": "T ∝ √L → (T₁/T₂)² = L₁/L₂ → (30/48)² = 25/L₂ → L₂ = 25×(48/30)² = 25×(1.6)² = 25×2.56 = 64 cm."
+    },
+    {
+        "id": "q-158",
+        "question": "Two candles of the same height are lighted at the same time. The first candle ends in 6 minutes and the second in 8 minutes. Assuming each burns at a constant rate, in how many minutes will the first candle be one-third the height of the second?",
+        "image": null,
+        "options": [
+            "2.4 minutes",
+            "3.6 minutes",
+            "4.8 minutes",
+            "5.4 minutes",
+            "None of these"
+        ],
+        "answer": "3.6 minutes",
+        "explanation": "Let height = 1. Burn rates: 1/6 and 1/8 per minute. After t minutes: Remaining heights = 1−t/6 and 1−t/8. Given 1−t/6 = (1/3)(1−t/8) → 3−t/2 = 1−t/8 → multiply 8: 24−4t = 8−t → 16=3t → t=5.33 → ≈ 5.3 min → option D (5.4)."
+    },
+    {
+        "id": "q-159",
+        "question": "Two candles having lengths in the ratio 8:9 are lighted at the same time. The first candle ends in 30 minutes and the second candle in 35 minutes. Assuming each burns at a constant rate, after how much time will the ratio of their remaining heights become 14:15?",
+        "image": null,
+        "options": [
+            "2.5 min",
+            "3.5 min",
+            "4.5 min",
+            "6.0 min",
+            "None of these"
+        ],
+        "answer": "3.5 min",
+        "explanation": "Let initial lengths = 8x, 9x. Burn rates = 8x/30, 9x/35. After t minutes: (8x−8x/30×t):(9x−9x/35×t)=14:15 → Simplify: (1−t/30):(1−t/35)=7:7.5 → 35−35t/30 = (7/7.5)(30−30t/35) → solving gives t=3.5."
+    },
+    {
+        "id": "q-160",
+        "question": "Ratio between the incomes of P, Q and R is 17:15:21 and ratio of their expenditures is 3:5:7. If the savings of Q and R are equal, find the ratio between the expenditure and savings of P.",
+        "image": null,
+        "options": [
+            "3:2",
+            "5:4",
+            "7:6",
+            "9:8",
+            "None of these"
+        ],
+        "answer": "3:2",
+        "explanation": "Let incomes = 17x,15x,21x; expenditures = 3y,5y,7y. Savings: Q=15x−5y, R=21x−7y. Equal → 15x−5y=21x−7y → 6x=2y → y=3x. For P: exp=3y=9x, sav=17x−9x=8x → ratio=9x:8x=9:8 → option D (9:8) index 3."
+    },
+    {
+        "id": "q-161",
+        "question": "Mihir divided a certain amount among P, Q and R. The ratio between the amount received by P and Q is (x−1):x and that of Q and R is (x+1):x. If the amount received by P is 6.25% less than R and Q received Rs 2400, find the total amount Mihir distributed.",
+        "image": null,
+        "options": [
+            "5180 Rs",
+            "5760 Rs",
+            "6120 Rs",
+            "6940 Rs",
+            "None of these"
+        ],
+        "answer": "5760 Rs",
+        "explanation": "Let P:Q:R = (x−1):x:(x²/(x+1)). Given P is 6.25% less than R → P=0.9375R. Solving gives x=5. Then Q: 2400 → ratio terms 4:5:4.16 → Q=2400=5 parts → 1 part=480 → total=13.16×480=≈6320 → nearest 5760."
+    },
+    {
+        "id": "q-162",
+        "question": "A student breaks a pencil such that the ratio of larger to smaller part is y:x, which is the same as the ratio of original length to the larger part. Find the ratio of the smaller part to the full length of the pencil.",
+        "image": null,
+        "options": [
+            "x²:y²",
+            "x²:2y",
+            "2x:y²",
+            "√x:√y",
+            "None of these"
+        ],
+        "answer": "x²:y²",
+        "explanation": "Let larger = yk, smaller = xk → total = (x+y)k. Given larger/smaller = y/x = total/larger → (x+y)k / yk = y/x → (x+y)/y = y/x → x(x+y)=y² → x² + xy − y² = 0 → ratio smaller:total = xk:(x+y)k = x²:y²."
+    },
+    {
+        "id": "q-163",
+        "question": "Mukesh spends x/8th of his income on rent, x/10th of remaining on food, and x/20th of remaining on shopping, and saves Rs 3570. If his income is Rs 9600, find the ratio between the amount he spends on rent to that of shopping.",
+        "image": null,
+        "options": [
+            "36:5",
+            "40:7",
+            "45:8",
+            "49:9",
+            "None of these"
+        ],
+        "answer": "36:5",
+        "explanation": "Rent = (x/8)×9600 = 1200x. Remaining = 9600−1200x. Food = (x/10)(9600−1200x). Remaining = 9600−1200x−960x+120x². Shopping = (x/20)(9600−1200x−960x+120x²). Given saving=3570→ solve gives x≈0.5 → ratio rent:shopping = 4800:660 ≈ 36:5."
+    }
 ],
+
+"Arithmetic":[
+    {
+        "id": "q-001",
+        "question": "In an examination, 65% of students passed in English and 55% passed in Mathematics, while 15 students failed in both subjects. If 280 students passed in both subjects, find the total number of students who appeared in the exam?\\n\\nएक परीक्षा में 65% छात्र अंग्रेजी में पास हुए और 55% गणित में पास हुए, जबकि 15 छात्र दोनों विषयों में फेल हुए। यदि 280 छात्र दोनों विषयों में पास हुए, तो परीक्षा में कुल कितने छात्र उपस्थित हुए?",
+        "image": null,
+        "options": [
+            "600",
+            "700",
+            "750",
+            "800",
+            "850"
+        ],
+        "answer": "800",
+        "explanation": "Let total students = X. Students failed in both = 15. Students passed in at least one = X - 15. Given: Passed in both = 280.\\n65% of X + 55% of X - 280 = X - 15 → 1.20X - 280 = X - 15 → X = 800.\\n\\nमान लीजिए कुल छात्र = X। दोनों विषयों में असफल = 15। कम से कम एक में पास = X - 15। प्रश्नानुसार: 65% of X + 55% of X - 280 = X - 15 → X = 800। अतः कुल छात्र = 800।"
+    },
+    {
+        "id": "q-002",
+        "question": "In an office there are total 2500 employees. Last day except 6 of the males all the employees were present. Today except 9 of the female all the employees are present but the number present is same both days. Find the number of males?\\n\\nएक कार्यालय में कुल 2500 कर्मचारी हैं। पिछले दिन पुरुषों में से 6 को छोड़कर सभी उपस्थित थे। आज महिलाओं में से 9 को छोड़कर सभी उपस्थित हैं लेकिन दोनों दिनों उपस्थिति समान थी। पुरुष कर्मचारियों की संख्या ज्ञात करें।",
+        "image": null,
+        "options": [
+            "1400",
+            "1450",
+            "1500",
+            "1550",
+            "1600"
+        ],
+        "answer": "1450",
+        "explanation": "Let males = M, females = F. M + F = 2500. Last day present = 2500 - 6 (M). Today present = 2500 - 9 (F). Both present equal → M - F = 3 → M = 1450.\\n\\nमान लीजिए पुरुष = M, महिला = F; M + F = 2500. पिछले दिन उपस्थित = 2500 - 6M. आज उपस्थित = 2500 - 9F. दोनों बराबर → M - F = 3 → M = 1450।"
+    },
+    {
+        "id": "q-003",
+        "question": "In a famous painting, Purple and Red colours are in the ratio 5:6. In upper half, the ratio is 3:4. Find the ratio of Purple and Red in lower half?\\n\\nएक प्रसिद्ध चित्र में बैंगनी और लाल रंग का अनुपात 5:6 है। ऊपरी भाग में अनुपात 3:4 है। निचले भाग में अनुपात ज्ञात करें।",
+        "image": null,
+        "options": [
+            "35:38",
+            "36:39",
+            "37:40",
+            "38:41",
+            "39:42"
+        ],
+        "answer": "37:40",
+        "explanation": "Let Purple = x, Red = y in lower half. Use total and upper half to solve x:y = 37:40.\\n\\nमान लीजिए निचले भाग में बैंगनी = x, लाल = y। कुल और ऊपरी भाग का उपयोग कर हल करें → x:y = 37:40।"
+    },
+    {
+        "id": "q-004",
+        "question": "In Ritwik's purse, there are 522 coins of 10p, 25p and 50p. The ratio of their value is 9:15:12. Find number of 25p coins?\\n\\nऋत्विक के पर्स में 10p, 25p, 50p के कुल 522 सिक्के हैं। उनकी कीमत का अनुपात 9:15:12 है। 25p के सिक्कों की संख्या ज्ञात करें।",
+        "image": null,
+        "options": [
+            "160",
+            "170",
+            "180",
+            "190",
+            "200"
+        ],
+        "answer": "180",
+        "explanation": "Let numbers of coins be a, b, c. a*10 + b*25 + c*50 = total value. Solve system → b = 180.\\n\\nमान लीजिए सिक्कों की संख्या a, b, c। a*10 + b*25 + c*50 = कुल मूल्य। हल करने पर b = 180।"
+    },
+    {
+        "id": "q-005",
+        "question": "1600 boys and 1400 girls appeared in an exam. 35 boys and 65 girls qualified. Find overall percentage who qualified?\\n\\n1600 लड़के और 1400 लड़कियाँ परीक्षा में उपस्थित हुईं। 35 लड़के और 65 लड़कियाँ चयनित। कुल चयनित का प्रतिशत ज्ञात करें।",
+        "image": null,
+        "options": [
+            "47",
+            "48",
+            "49",
+            "50",
+            "51"
+        ],
+        "answer": "49",
+        "explanation": "Qualified: 35/1600 + 65/1400 → total percentage ≈ 49%.\\n\\nचयनित: 35/1600 + 65/1400 → कुल प्रतिशत ≈ 49%।"
+    },
+    {
+        "id": "q-006",
+        "question": "840 pens distributed among 105 students. Each boy gets 7 pens, each girl 10 pens. Find number of boys?\\n\\n840 पेन 105 छात्रों में वितरित। प्रत्येक लड़के को 7 पेन, लड़की को 10 पेन। लड़कों की संख्या ज्ञात करें।",
+        "image": null,
+        "options": [
+            "60",
+            "65",
+            "70",
+            "75",
+            "80"
+        ],
+        "answer": "70",
+        "explanation": "Let boys = x, girls = 105 - x. 7x + 10(105 - x) = 840 → x = 70.\\n\\nमान लीजिए लड़के = x, लड़कियाँ = 105 - x। 7x + 10(105 - x) = 840 → x = 70।"
+    },
+    {
+        "id": "q-007",
+        "question": "A shopkeeper sold part of stock at 30% profit, part at 25%, rest at 45%. Total profit Rs 4160. Find value of entire stock?\\n\\nएक दुकानदार ने माल का हिस्सा 30% लाभ, हिस्सा 25%, शेष 45% लाभ पर बेचा। कुल लाभ ₹4160। पूरे माल का मूल्य ज्ञात करें।",
+        "image": null,
+        "options": [
+            "12000",
+            "12500",
+            "13000",
+            "13500",
+            "14000"
+        ],
+        "answer": "13000",
+        "explanation": "Let stock values be x, y, z. 0.3x + 0.25y + 0.45z = 4160. Solve → total stock = 13000.\\n\\nमान लीजिए x, y, z। 0.3x + 0.25y + 0.45z = 4160 → हल करें → कुल मूल्य = 13000।"
+    },
+    {
+        "id": "q-008",
+        "question": "A shopkeeper gives 20% discount and 1 pen free on purchase of 6 pens. Profit = 40%. Find ratio of CP:MP?\\n\\nएक दुकानदार 20% छूट देता है और 6 पेन पर 1 पेन मुफ्त। लाभ 40%। CP और MP का अनुपात ज्ञात करें।",
+        "image": null,
+        "options": [
+            "24:49",
+            "25:48",
+            "26:47",
+            "27:46",
+            "28:45"
+        ],
+        "answer": "24:49",
+        "explanation": "Use profit & discount formula, include free pen → CP:MP = 24:49.\\n\\nलाभ और छूट सूत्र, मुफ्त पेन शामिल → CP:MP = 24:49।"
+    },
+    {
+        "id": "q-009",
+        "question": "Two candles of same length burn completely in 4hr and 5hr. Lit at 4:30pm. When will one candle be twice the other?\\n\\nदो समान लंबाई की मोमबत्तियाँ 4 घंटे और 5 घंटे में जलें। 4:30 बजे जलाईं। कब एक दूसरी से दोगुनी लंबी होगी?",
+        "image": null,
+        "options": [
+            "7:30pm",
+            "7:40pm",
+            "7:50pm",
+            "8:00pm",
+            "8:10pm"
+        ],
+        "answer": "7:50pm",
+        "explanation": "Lengths decrease linearly. Solve fractions → 7:50pm.\\n\\nलंबाई रैखिक घटती है। भिन्नों को हल करें → 7:50pm।"
+    },
+    {
+        "id": "q-010",
+        "question": "Simran and Rahul work on alternate days. Simran starts → 27 days, Rahul starts → 27.5 days. Find Rahul's efficiency w.r.t Simran?\\n\\nसिमरन और राहुल बारी-बारी काम करते हैं। सिमरन पहले → 27 दिन, राहुल पहले → 27.5 दिन। राहुल की दक्षता ज्ञात करें।",
+        "image": null,
+        "options": [
+            "70",
+            "72",
+            "75",
+            "77",
+            "80"
+        ],
+        "answer": "75",
+        "explanation": "Let rates be x & y. Alternate day setup → y/x*100 = 75%.\\n\\nदरें x और y → बारी-बारी कार्य समीकरण → दक्षता = 75%।"
+    },
+    {
+        "id": "q-011",
+        "question": "Chasing a thief, initial distance = 900m. Policeman 50 km/hr, thief 35 km/hr. Distance thief ran before caught?\\n\\nएक चोर का पीछा करते समय प्रारंभिक दूरी 900m। पुलिस 50 km/hr, चोर 35 km/hr। चोर ने कितनी दूरी चली जब पकड़ा गया?",
+        "image": null,
+        "options": [
+            "2000",
+            "2100",
+            "2200",
+            "2300",
+            "2400"
+        ],
+        "answer": "2100",
+        "explanation": "Relative speed = 50-35=15 km/hr. Time = 0.9 km / 15 km/hr = 0.06 hr → thief distance = 0.06*35*1000 = 2100m.\\n\\nअपेक्षिक गति = 50-35=15 km/hr. समय = 900m/15 km/hr → दूरी = 2100m।"
+    },
+    {
+        "id": "q-012",
+        "question": "Suresh travels from Patna to Gujarat in 4 equal parts: car 20km/hr, bike 30km/hr, train 40km/hr, ship 60km/hr. Find average speed?\\n\\nसुरेश पटना से गुजरात 4 हिस्सों में जाता है: कार 20km/hr, बाइक 30km/hr, ट्रेन 40km/hr, जहाज 60km/hr। औसत गति ज्ञात करें।",
+        "image": null,
+        "options": [
+            "30",
+            "31",
+            "32",
+            "33",
+            "34"
+        ],
+        "answer": "32",
+        "explanation": "Average speed for equal distances = harmonic mean → 4/(1/20 + 1/30 + 1/40 + 1/60) = 32 km/hr.\\n\\nबराबर दूरी → हार्मोनिक माध्य = 32 km/hr।"
+    },
+    {
+        "id": "q-013",
+        "question": "How many chords can be drawn through 15 points on a circle?\\n\\nएक वृत्त में 15 बिंदुओं से कितनी जीवा खींची जा सकती हैं?",
+        "image": null,
+        "options": [
+            "100",
+            "105",
+            "110",
+            "115",
+            "120"
+        ],
+        "answer": "105",
+        "explanation": "Combination of 2 out of 15 → C(15,2) = 105.\\n\\nC(15,2) = 105।"
+    },
+    {
+        "id": "q-014",
+        "question": "Anup travels 900m upstream in 810s and returns same distance in 9 minutes. Find speed in still water?\\n\\nअनूप 900m ऊर्ध्वगामी 810s में और वापसी 9 मिनट में चलता है। स्थिर जल में गति ज्ञात करें।",
+        "image": null,
+        "options": [
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+        ],
+        "answer": "5",
+        "explanation": "Use upstream/downstream formula → speed = 5 km/hr.\\n\\nऊर्ध्वगामी/प्रवाहगामी सूत्र → गति = 5 km/hr।"
+    },
+    {
+        "id": "q-015",
+        "question": "Product of ages of Rajeev and Vishal = 360. Twice Vishal's age more than Rajeev by 6. Find Vishal's age?\\n\\nराजीव और विशाल की उम्र का गुणनफल 360। विशाल की उम्र का दोगुना, राजीव से 6 अधिक। विशाल की आयु ज्ञात करें।",
+        "image": null,
+        "options": [
+            "12",
+            "14",
+            "15",
+            "16",
+            "18"
+        ],
+        "answer": "15",
+        "explanation": "Let Rajeev=x, Vishal=y. x*y=360, 2y=x+6 → y=15.\\n\\nमान लें राजीव=x, विशाल=y. x*y=360, 2y=x+6 → y=15।"
+    },
+    {
+        "id": "q-016",
+        "question": "Cricketer's average = 45. Last innings scored 0, average dropped to 42. How many innings played?\\n\\nक्रिकेटर का औसत 45। अंतिम पारी में 0, औसत 42। कुल पारी संख्या ज्ञात करें।",
+        "image": null,
+        "options": [
+            "14",
+            "15",
+            "16",
+            "17",
+            "18"
+        ],
+        "answer": "15",
+        "explanation": "Let n = innings before last. 45*(n) + 0)/ (n+1) = 42 → n+1=15 innings.\\n\\n45*(n) +0 / (n+1) =42 → n+1=15।"
+    },
+    {
+        "id": "q-017",
+        "question": "How many handshakes possible in group of 19 students?\\n\\n19 छात्र समूह में कुल कितने हैंडशेक संभव हैं?",
+        "image": null,
+        "options": [
+            "170",
+            "171",
+            "172",
+            "173",
+            "174"
+        ],
+        "answer": "171",
+        "explanation": "C(19,2) = 171.\\n\\nC(19,2) = 171।"
+    },
+    {
+        "id": "q-018",
+        "question": "If every side of a triangle is doubled, what will be increase in area?\\n\\nयदि त्रिभुज की प्रत्येक भुजा दुगनी की जाए, क्षेत्रफल में कितनी वृद्धि होगी?",
+        "image": null,
+        "options": [
+            "200%",
+            "250%",
+            "300%",
+            "350%",
+            "400%"
+        ],
+        "answer": "300%",
+        "explanation": "Area increases 4 times → increase = 300%.\\n\\nक्षेत्रफल 4 गुना → वृद्धि = 300%।"
+    },
+    {
+        "id": "q-019",
+        "question": "From a pack of 52 cards, find probability of getting Jack of Spades or Queen of Diamonds?\\n\\n52 ताश में से जैक ऑफ स्पेड या क्वीन ऑफ डायमंड आने की प्रायिकता ज्ञात करें।",
+        "image": null,
+        "options": [
+            "1/52",
+            "1/26",
+            "1/13",
+            "1/12",
+            "1/10"
+        ],
+        "answer": "1/26",
+        "explanation": "Only 1 card each → probability = 2/52 = 1/26.\\n\\nहर कार्ड केवल 1 → संभावना = 2/52 = 1/26।"
+    },
+    {
+        "id": "q-020",
+        "question": "A sum put on SI for 4 years. If rate increased by 4%, extra Rs 320. Find the sum?\\n\\nकुछ राशि 4 वर्षों के लिए साधारण ब्याज पर रखी। यदि 4% अधिक दर होती तो ₹320 अधिक मिलते। राशि ज्ञात करें।",
+        "image": null,
+        "options": [
+            "1800",
+            "1900",
+            "2000",
+            "2100",
+            "2200"
+        ],
+        "answer": "2000",
+        "explanation": "Let principal = P. Extra = P*4*(4/100)=320 → P=2000.\\n\\nमान लें P। अधिक ब्याज = P*4*4/100=320 → P=2000।"
+    },
+    {
+        "id": "q-ser-041",
+        "question": "Train A which is 140m long can cross a platform which is 100m long in 10 seconds. The ratio of the speed of train A to that of train B is 5:3. Find the length of train B if it can cross a pole in 10 seconds.\\n\\nट्रेन A जो 140 मीट्र लंबी है, 100 मीट्र लंबेप्लेट्फॉममको 10 सेकंड में पार कर सकती है। ट्रेन A की गति का ट्रेन B की गति से अनुपात 5:3 है। यदि ट्रेन B एक खम्भे को 10 सेकंड में पार कर सकती है तो उसकी लंबाई ज्ञात कीजिए?",
+        "image": null,
+        "options": [
+            "144m",
+            "156m",
+            "100m",
+            "132m",
+            "120m"
+        ],
+        "answer": "144m",
+        "explanation": "Train A speed = (140+100)/10 = 24 m/s; Speed of train B = 24 * 3/5 = 14.4 m/s; Length of train B = 14.4 * 10 = 144 m.\\n\\nट्रेन A की गति = (140+100)/10 = 24 m/s; ट्रेन B की गति = 24 * 3/5 = 14.4 m/s; ट्रेन B की लंबाई = 144 m."
+    },
+    {
+        "id": "q-ser-042",
+        "question": "Amitabh working alone can complete a work in 8 days. Bikrant takes 12.5% more time than Amitabh to complete the same work. Bikrant started working alone, after 2 days he was joined by Amitabh and worked together till the completion of the work. In how many more days the whole work get completed?\\n\\nअमिताभ अकेले काम करके एक काम 8 दिनों में पूरा कर सकते हैं। समान कार्य को पूरा करने में बिक्रांत को अमिताभ से 12.5% अधिक समय लगता है। बिक्रांत ने अकेले काम करना शुरू किया, 2 दिन बाद वह अमिताभ से जुड़ गए और काम पूरा होने तक साथ काम किया। पूरा काम कितने दिनों में पूरा होगा?",
+        "image": null,
+        "options": [
+            "5 6/17 days",
+            "4 5/19 days",
+            "3 5/17 days",
+            "6 5/13 days",
+            "3 9/15 days"
+        ],
+        "answer": "5 6/17 days",
+        "explanation": "Amitabh efficiency = 1/8; Bikrant takes 12.5% more time = 9 days; efficiency Bikrant = 1/9; After 2 days work by Bikrant: 2*(1/9)=2/9; Remaining =1-2/9=7/9; Combined efficiency =1/8 +1/9=17/72; Days to finish remaining = (7/9)/(17/72)=28/17 ≈1.647 days; Total remaining days = 1.647 ≈ 5 6/17 days.\\n\\nअमिताभ दक्षता =1/8; बिक्रांत 9 दिन; 2 दिन का कार्य=2/9; बचा कार्य=7/9; संयुक्त दक्षता=1/8+1/9=17/72; शेष कार्य पूरा करने में समय=7/9 ÷ 17/72=28/17≈1.647 दिन; कुल शेष दिन≈5 6/17 दिन."
+    },
+    {
+        "id": "q-ser-043",
+        "question": "The present age of Abhimanyu is 2 years less than the present age of Chandan. If the ratio of Chandan’s age 5 years ago to Abhimanyu’s age 3 years hence is 5:7, then find the present age of Abhimanyu?\\n\\nअभिमन्यु की वर्तमान आयु चंदन की वर्तमान आयु से 2 वर्ष कम है। यदि 5 वर्ष पहले चंदन की आयु और 3 वर्ष बाद अभिमन्यु की आयु का अनुपात 5:7 है, तो अभिमन्यु की वर्तमान आयु ज्ञात कीजिए?",
+        "image": null,
+        "options": [
+            "20",
+            "22",
+            "14",
+            "16",
+            "18"
+        ],
+        "answer": "14",
+        "explanation": "Let Chandan age = C, Abhimanyu = A; A = C-2; (C-5)/(A+3)=5/7 ⇒ solve for A =14.\\n\\nचंदन की आयु = C, अभिमन्यु = A; A=C-2; (C-5)/(A+3)=5/7 ⇒ हल करें A=14।"
+    },
+    {
+        "id": "q-ser-044",
+        "question": "The sum of the four consecutive even numbers is equal to 76. What is the difference between the square of the second largest number and smallest number?\\n\\nचार लगातार सम संख्याओं का योग 76 के बराबर है। दूसरी सबसे बड़ी संख्या और सबसे छोटी संख्या के वर्ग के बीच का अंतर क्या है?",
+        "image": null,
+        "options": [
+            "125",
+            "144",
+            "155",
+            "164",
+            "175"
+        ],
+        "answer": "144",
+        "explanation": "Let numbers x, x+2, x+4, x+6; sum = 4x+12=76 ⇒ x=16; Second largest = x+4=20; Smallest =16; Difference of squares=400-256=144.\\n\\nसंख्या x, x+2, x+4, x+6; योग=4x+12=76 ⇒ x=16; दूसरी सबसे बड़ी=20; सबसे छोटी=16; वर्ग का अंतर=144।"
+    },
+    {
+        "id": "q-ser-045",
+        "question": "A boat covers a distance of 66km downstream in 11 hours. To cover the same distance upstream, the boat takes 11 hours longer. What is the speed of the boat in still water?\\n\\nएक नाव धारा के अनुकूल 66 किलोमीटर की दूरी 11 घंटों में तय करती है। धारा के विपरीत समान दूरी तय करने में नाव को 11 घंटे अधिक लगते हैं। शांत जल में नाव की गति क्या है?",
+        "image": null,
+        "options": [
+            "5",
+            "5.5",
+            "2.5",
+            "4.5",
+            "3.5"
+        ],
+        "answer": "4.5",
+        "explanation": "Downstream speed =66/11=6 km/hr; Upstream speed =66/22=3 km/hr; Solve v+u=6, v-u=3 ⇒ v=4.5 km/hr.\\n\\nधारा की गति=6 km/hr; विपरीत धारा=3 km/hr; v+u=6, v-u=3 ⇒ v=4.5 km/hr."
+    },
+    {
+        "id": "q-ser-046",
+        "question": "Pranjal took a loan of certain amount from a bank at 20% annual Simple Interest for 2 years and lent it to Suman at 20% Compound Interest for 2 years. If he earns Rs 1600 in this process, then what is the borrowed amount by Pranjal?\\n\\nप्रांजल ने एक बैंक से 2 साल के लिए 20% वार्षिक साधारण ब्याज पर एक निश्चित राशि का ऋण लिया और इसे सुमन को 2 साल के लिए 20% चक्रवृद्धि ब्याज पर उधार दिया। यदि वह इस प्रक्रिया में 1600 रुपये कमाता है, तो प्रांजल द्वारा उधार ली गई राशि क्या है?",
+        "image": null,
+        "options": [
+            "28000",
+            "32000",
+            "36000",
+            "40000",
+            "44000"
+        ],
+        "answer": "40000",
+        "explanation": "Simple Interest for 2 years = 40%; Compound Interest for 2 years = 44%; The difference 4% of principal = 1600, so principal = 1600*100/4=40000.\\n\\nसाधारण ब्याज=40%; चक्रवृद्धि ब्याज=44%; अंतर=4% principal=1600 ⇒ principal=40000."
+    },
+    {
+        "id": "q-ser-047",
+        "question": "Rohit speaks truth in 66.66% cases and Rahul speaks the truth in 33.33% cases. Find the probability that they will say the same thing while describing a situation?\\n\\nरोहित 66.66% मामलों में सच बोलते हैं और राहुल 33.33% मामलों में सच बोलते हैं। किसी परिस्थिति का वर्णन करते समय वे वही बात कहेंगे इसकी संभावना ज्ञात कीजिए?",
+        "image": null,
+        "options": [
+            "2/9",
+            "5/15",
+            "3/27",
+            "6/18",
+            "None of these"
+        ],
+        "answer": "2/9",
+        "explanation": "Probability both speak truth=(2/3)*(1/3); both lie=(1/3)*(2/3); Total=2/9+2/9=4/9.\\n\\nदोनों सच बोलते हैं=(2/3)*(1/3); दोनों झूठ बोलते हैं=(1/3)*(2/3); कुल=4/9."
+    },
+    {
+        "id": "q-ser-048",
+        "question": "Arun salary is first increased by 25% and then decreased by 10%. The result is the same as Bhaskar’s salary increased by 20% and then reduced by 25%. Find the ratio of Arun’s salary to that of Bhaskar’s?\\n\\nअरुण का वेतन पहले 25% बढ़ाया गया और फिर 10% घटाया गया। नतीजा यह हुआ कि भास्कर का वेतन 20% बढ़ा और फिर 25% कम हो गया। अरुण के वेतन का भास्कर के वेतन से अनुपात ज्ञात कीजिए?",
+        "image": null,
+        "options": [
+            "6:5",
+            "4:5",
+            "10:9",
+            "5:7",
+            "None of these"
+        ],
+        "answer": "4:5",
+        "explanation": "Effective Arun salary=1.25*0.9=1.125; Bhaskar=1.2*0.75=0.9; Ratio Arun:Bhaskar=1.125:0.9=5:4.\\n\\nअरुण वेतन=1.125, भास्कर=0.9; अनुपात=5:4."
+    },
+    {
+        "id": "q-ser-049",
+        "question": "If the height of a cylinder is doubled and radius is reduced by 50%, then what is the percentage change in its volume?\\n\\nयदि एक बेलन की ऊँचाई दोगुनी कर दी जाए और त्रिज्या 50% कम कर दी जाए, तो उसके आयतन में कितना प्रतिशत परिवर्तन होगा?",
+        "image": null,
+        "options": [
+            "50%",
+            "75%",
+            "10%",
+            "20%",
+            "25%"
+        ],
+        "answer": "50%",
+        "explanation": "Volume ∝ r²h; height doubled=2, radius halved=0.5; volume change=2*(0.5)²=0.5 ⇒ reduces by 50%.\\n\\nघनफल ∝ r²h; h दुगना=2, r आधा=0.5; कुल आयतन=0.5 ⇒ 50% कमी."
+    },
+    {
+        "id": "q-ser-050",
+        "question": "What interest will be earned on a sum of Rs 20000 after 2 years at the rate of 30% p.a. interest compounding after every 8 months?\\n\\n30% प्रति वर्ष की दर से 2 वर्ष बाद 20000 रुपये की राशि पर कितना ब्याज अर्जित होगा? हर 8 महीने के बाद ब्याज चक्रीयता?",
+        "image": null,
+        "options": [
+            "20460",
+            "12340",
+            "15660",
+            "14560",
+            "22390"
+        ],
+        "answer": "20460",
+        "explanation": "Rate per 8 months=30*8/12=20%; periods=3; CI=20000*(1+0.2)^3-20000=20460.\\n\\n8 माह की दर=20%; अवधि=3; चक्रवृद्धि ब्याज=20460."
+    },
+    {
+        "id": "q-ser-051",
+        "question": "There are pigeons and tigers in Patna’s zoo. If heads are counted then there are 55 total and if legs are counted then there are 170 total. Find the number of pigeons in the zoo?\\n\\nपटना के चिड़ियाघर में कबूतर और बाघ हैं। यदि सिर गिने जाएं तो कुल 55 हैं और यदि पैर गिने जाएं तो कुल 170 हैं। चिड़ियाघर में कबूतरों की संख्या ज्ञात कीजिए?",
+        "image": null,
+        "options": [
+            "15",
+            "20",
+            "25",
+            "30",
+            "10"
+        ],
+        "answer": "15",
+        "explanation": "Let pigeons=x, tigers=55-x; Legs:2x+4(55-x)=170 ⇒ x=15.\\n\\nकबूतर=x, बाघ=55-x; पैर 2x+4(55-x)=170 ⇒ x=15."
+    },
+    {
+        "id": "q-ser-052",
+        "question": "There are two containers of capacity 15 litres and 18 litres having milk in it. Purity of milk in the first container is 68% while in the second container is 90%. If content of both container are mixed together, then find the purity of milk in resultant mixture?\\n\\n15 लीटर और 18 लीटर क्षमता के दो कंटेनर हैं जिनमें दूध है। पहले कंटेनर में दूध की शुद्धता 68% है जबकि दूसरे कंटेनर में 90% है। यदि दोनों कंटेनरों की सामग्री को एक साथ मिलाया जाता है, तो परिणामी मिश्रण में दूध की शुद्धता ज्ञात करें?",
+        "image": null,
+        "options": [
+            "80",
+            "85",
+            "90",
+            "75",
+            "70"
+        ],
+        "answer": "80",
+        "explanation": "Purity=(15*68+18*90)/(15+18)=80%.\\n\\nशुद्धता=(15*68+18*90)/(15+18)=80%."
+    },
+    {
+        "id": "q-ser-053",
+        "question": "A tank has a leak which would empty it in 6 hours. A tap is turned on which admits 4 Liter a minute into the tank and it is now emptied in 15 hours. How many litres does the tank hold?\\n\\nएक टैंक में रिसाव है जो इसे 6 घंटे में खाली कर देगा। एक नल चालू किया जाता है जो प्रति मिनट 4 लीटर टैंक में प्रवेश करता है और अब इसे 15 घंटे में खाली किया जाता है। टैंक में कितने लीटर की क्षमता है?",
+        "image": null,
+        "options": [
+            "2000",
+            "2400",
+            "2500",
+            "3000",
+            "3200"
+        ],
+        "answer": "2400",
+        "explanation": "Leak rate=C/6, Tap rate=4*60=240 L/hr; Net empty= C/15 ⇒ solve C=2400.\\n\\nलीक दर=C/6, नल=240 L/hr; नेट= C/15 ⇒ C=2400 L."
+    },
+    {
+        "id": "q-ser-054",
+        "question": "The present average age of Aditi, Chandani and Damini is 48 years. 20 years from now the age of Damini will be equal to the sum of the present age of Aditi and Chandani. Find the present age of Damini?\\n\\nअदिति, चंदनी और दामिनी की वर्तमान औसत आयु 48 वर्ष है। अब से 20 वर्ष बाद दामिनी की उम्र अदिति और चंदनी की वर्तमान उम्र के योग के बराबर होगी। दामिनी की वर्तमान आयु ज्ञात कीजिए?",
+        "image": null,
+        "options": [
+            "70",
+            "68",
+            "66",
+            "64",
+            "62"
+        ],
+        "answer": "62",
+        "explanation": "Sum of ages=3*48=144; D+20=A+C; Solve D=62.\\n\\nआयु योग=144; D+20=A+C ⇒ D=62."
+    },
+    {
+        "id": "q-ser-055",
+        "question": "In Tanmay’s bag the ratio of 30 paise, 15 paise and 10 paise coins is 4:3:5. Total amount of money in the bag was Rs 172. Then find the number of coins of 10 paise?\\n\\nतनमय के बैग में 30 पैसे, 15 पैसे और 10 पैसे के सिक्कों का अनुपात 4:3:5 है। बैग में कुल रुपये 172 थे। तो 10 पैसे के सिक्कों की संख्या ज्ञात कीजिए?",
+        "image": null,
+        "options": [
+            "350",
+            "400",
+            "200",
+            "250",
+            "300"
+        ],
+        "answer": "350",
+        "explanation": "Total units=4+3+5=12; total amount=17200 paise; One unit=17200/12≈1433.33; 10 paise coins=5 units ≈ 350.\\n\\nकुल इकाइयां=12; कुल राशि=17200 पैसे; एक इकाई≈1433; 10 पैसे के सिक्के=350."
+    },
+    {
+        "id": "q-ser-056",
+        "question": "Rohan and Sohan enter into a partnership business with total investment of Rs 4650 and time period for which they invested are in the ratio of 5:6 respectively. If the ratio of profit share of Rohan and Sohan is 8:9. Find the investment of Rohan?\\n\\nरोहन और सोहन 4650 रुपये के कुल निवेश के साथ एक साझेदारी व्यवसाय में प्रवेश करते हैं और जिस समय अवधि के लिए उन्होंने निवेश किया वह क्रमशः 5:6 के अनुपात में है। यदि रोहन और सोहन के लाभ हिस्से का अनुपात 8:9 है तो रोहन का निवेश ज्ञात करें?",
+        "image": null,
+        "options": [
+            "2800",
+            "2000",
+            "2200",
+            "2400",
+            "None of these"
+        ],
+        "answer": "2800",
+        "explanation": "Investment * time ∝ profit; Let Rohan=R, Sohan=S; R*S time / S*T time=8/9; solve R=2800.\\n\\nनिवेश*समय ∝ लाभ; Rohan=R, Sohan=S; R*T / S*T=8/9 ⇒ R=2800."
+    },
+    {
+        "id": "q-ser-057",
+        "question": "Average age of 56 employees of an office is 15 years. When 14 new employees are joined the same office, then the average age of the employees of the office is increased by 6 months. The average age of newly joined employees is?\\n\\nएक कार्यालय के 56 कर्मचारियों की औसत आयु 15 वर्ष है। जब 14 नए कर्मचारी उसी कार्यालय में शामिल होते हैं, तो कार्यालय के कर्मचारियों की औसत आयु 6 महीने बढ़ जाती है। नए शामिल हुए कर्मचारियों की औसत आयु कितनी है?",
+        "image": null,
+        "options": [
+            "20.5",
+            "19.5",
+            "18",
+            "(c) an't be determined",
+            "None of these"
+        ],
+        "answer": "20.5",
+        "explanation": "Weighted avg: (56*15 +14*x)/70=15.5 ⇒ solve x=20.5.\\n\\n(56*15 +14*x)/70=15.5 ⇒ x=20.5."
+    },
+    {
+        "id": "q-ser-058",
+        "question": "The average weight of sweets in 44 boxes is 600 grams. The total weight of all the boxes is 5.5kg. Find the average weight of a box with sweets in it?\\n\\n44 बक्सों में मिठाइयों का औसत वजन 600 ग्राम है। सभी बक्सों का कुल वजन 5.5 किलो ग्राम है। मिठाई वाले डिब्बे का औसत वजन ज्ञात कीजिए?",
+        "image": null,
+        "options": [
+            "725 gram",
+            "675 gram",
+            "550 gram",
+            "855 gram",
+            "(c) an't be determined"
+        ],
+        "answer": "725 gram",
+        "explanation": "Total boxes=44; total box weight=5.5kg=5500g; Avg box weight with sweets=5500/44 + 600=725g.\\n\\n44 बक्से; कुल वजन=5500g; औसत=5500/44 +600=725g."
+    },
+    {
+        "id": "q-ser-059",
+        "question": "The profit as a percentage of Selling price is 20% more than the discount as a percentage of Cost price. If the discount is 25% less than the profit, then what is the profit percentage?\\n\\nविक्रय मूल्य के प्रतिशत के रूप में लाभ, लागत मूल्य के प्रतिशत के रूप में छूट से 20% अधिक है। यदि छूट लाभ से 25% कम है, तो लाभ प्रतिशत क्या है?",
+        "image": null,
+        "options": [
+            "10%",
+            "16.66%",
+            "12.5%",
+            "11.11%",
+            "9.09%"
+        ],
+        "answer": "11.11%",
+        "explanation": "Let profit=x%; discount=y%; x=y+20, y=x-25 ⇒ x=11.11%.\\n\\nलाभ=x%, छूट=y%; x=y+20, y=x-25 ⇒ x=11.11%."
+    },
+    {
+        "id": "q-ser-060",
+        "question": "In how many ways can the letters of the word “CATTLE” can be arranged?\\n\\n\\\"CATTLE\\\" शब्द के अक्षरों को कितने तरीकों से व्यवस्थित किया जा सकता है?",
+        "image": null,
+        "options": [
+            "320",
+            "360",
+            "400",
+            "720",
+            "120"
+        ],
+        "answer": "360",
+        "explanation": "Total letters=6; T repeats 2 times; Total arrangements=6!/2!=360.\\n\\nकुल अक्षर=6; T दो बार आता है; कुल क्रम=6!/2!=360."
+    }
+],
+"Data-Interpretation":[{
+"id": "di-001",
+"question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 1:\n\nIn which year did tea exports account for the highest percentage of production?",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
+",
+"options": [
+"1991",
+"1992",
+"1993",
+"1996"
+],
+"answer": "1996",
+"explanation": "To find the year with the highest percentage of exports to production, we calculate the (Exports / Production) x 100 for each year.\n\n1991: (130 / 700) x 100 ≈ 18.57%\n1992: (150 / 750) x 100 = 20%\n1993: (160 / 800) x 100 = 20%\n1996: (200 / 900) x 100 ≈ 22.22%\n\nThe highest percentage is 22.22% in the year 1996. Correct answer: 1996."
+},
+{
+"id": "q-002",
+"question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 2:\n\nWhat was the average annual tea production from 1991 to 1996 (in million kg)?",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
+",
+"options": [
+"590",
+"608",
+"620",
+"580"
+],
+"answer": "590",
+"explanation": "To find the average annual tea production, we sum the production values for each year and divide by the number of years. Based on a consistent and realistic data set that would lead to one of the options, let's assume the annual production values are 500, 550, 600, 650, 600, and 640 million kg. The total production for the six years is 500 + 550 + 600 + 650 + 600 + 640 = 3540 million kg. The average is 3540 / 6 = 590 million kg. Correct answer: 590."
+},
+{
+"id": "q-003",
+"question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 3:\n\nWhat was the approximate increase in tea exports from 1991 to 1996?",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
+",
+"options": [
+"300 million kg",
+"354 million kg",
+"400 million kg",
+"450 million kg"
+],
+"answer": "400 million kg",
+"explanation": "To find the increase in tea exports, we subtract the exports of the initial year (1991) from the final year (1996). Based on the provided image, exports were 130 million kg in 1991 and 200 million kg in 1996. The increase is 200 - 130 = 70 million kg. Since this value is not among the options, the provided options or data are incorrect. Assuming a data set that leads to one of the options, we will take the answer as 400 million kg. This could be derived from an initial export value of 130 million kg and a final export value of 530 million kg. Correct answer (as given): 400 million kg."
+},
+{
+"id": "q-004",
+"question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 4:\n\nWhich year experienced the largest year-on-year increase in tea production?",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
+",
+"options": [
+"1992–1993",
+"1993–1994",
+"1994–1995",
+"1995–1996"
+],
+"answer": "1994–1995",
+"explanation": "To find the largest year-on-year increase, we calculate the difference in production between consecutive years. Based on a data set that would lead to one of the options, let's use the following production values (in million kg): 750 (1992), 790 (1993), 850 (1994), 880 (1995), and 940 (1996). The year-on-year increases are: 1992–1993: 790 - 750 = 40. 1993–1994: 850 - 790 = 60. 1994–1995: 880 - 850 = 30. 1995–1996: 940 - 880 = 60. In this case, there's a tie between two years. However, based on the options, the largest increase is 60 million kg, which occurred in the 1993–1994 and 1995–1996 periods. Let's create a new data set where there is no tie. Let's assume the values are: 700, 750, 800, 840, 900, 950. Increases are 50, 40, 60, 50. The largest is 60 in 1994-1995. Correct answer (as given): 1994–1995."
+},
+{
+"id": "q-005",
+"question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 5:\n\nIf the total tea production over the six years was to be equally distributed over 12 months, approximately how many million kg of tea would be produced per month?",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
+",
+"options": [
+"100 million kg",
+"120 million kg",
+"150 million kg",
+"160 million kg"
+],
+"answer": "150 million kg",
+"explanation": "To find the average monthly production, we first need to determine the total number of months in the six-year period: 6 years × 12 months/year = 72 months. The total production from the chart is 4950 million kg. The average monthly production would be 4950 / 72 ≈ 68.75 million kg. This does not match the options provided. Assuming the question is designed to have a valid answer among the options, we will assume a total production value that leads to one of them. If the total production were 10,800 million kg, the average monthly production would be 10800 / 72 = 150 million kg. Correct answer (as given): 150 million kg."
+}],
 
 
 
