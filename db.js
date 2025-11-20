@@ -7593,7 +7593,7 @@ const quizDB = {
         "explanation": "Total letters=6; T repeats 2 times; Total arrangements=6!/2!=360.\\n\\nकुल अक्षर=6; T दो बार आता है; कुल क्रम=6!/2!=360."
     }
 ],
-"Data-Interpretation":[{
+"Data-Interpretation":Object.assign([{
 "id": "di-001",
 "question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 1:\n\nIn which year did tea exports account for the highest percentage of production?",
 "image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png",
@@ -7658,7 +7658,8 @@ const quizDB = {
 "answer": "150 million kg",
 "explanation": "To find the average monthly production, we first need to determine the total number of months in the six-year period: 6 years × 12 months/year = 72 months. The total production from the chart is 4950 million kg. The average monthly production would be 4950 / 72 ≈ 68.75 million kg. This does not match the options provided. Assuming the question is designed to have a valid answer among the options, we will assume a total production value that leads to one of them. If the total production were 10,800 million kg, the average monthly production would be 10800 / 72 = 150 million kg. Correct answer (as given): 150 million kg."
 }],
-
+{ shuffle: false }
+),
 
 
 
