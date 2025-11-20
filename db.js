@@ -4568,6 +4568,289 @@ const quizDB = {
     }
 ],
 
+"Number-Missing Series":[
+    {
+        "id": "q-ser-001",
+        "question": "4 , 12, 16 , ? , 86 , 602",
+        "image": null,
+        "options": [
+            "40",
+            "51",
+            "48",
+            "80",
+            "None"
+        ],
+        "answer": "80",
+        "explanation": "Pattern: ×3, +4, ×5, +6 → 4×3=12, 12+4=16, 16×5=80, 80+6=86. Missing term is 80."
+    },
+    {
+        "id": "q-ser-002",
+        "question": "217 , 96, 240 , ? , 267 , 42",
+        "image": null,
+        "options": [
+            "45",
+            "71",
+            "60",
+            "78",
+            "None"
+        ],
+        "answer": "71",
+        "explanation": "Pattern: −121, +144, −169, +196, −225. Missing term is 71."
+    },
+    {
+        "id": "q-ser-003",
+        "question": "62, 33 , ? , 54.5 , 111 , 279.5",
+        "image": null,
+        "options": [
+            "48",
+            "65",
+            "35",
+            "48",
+            "None"
+        ],
+        "answer": "35",
+        "explanation": "Pattern: ×0.5+2, ×1+2, ×1.5+2, ×2+2, ×2.5+2. So missing term is 35."
+    },
+    {
+        "id": "q-ser-004",
+        "question": "245 , 221 , ? , 167 , 137 , 105",
+        "image": null,
+        "options": [
+            "195",
+            "214",
+            "325",
+            "218",
+            "None"
+        ],
+        "answer": "195",
+        "explanation": "Pattern: −24, −26, −28, −30, −32. Missing term is 195."
+    },
+    {
+        "id": "q-ser-005",
+        "question": "65 , 84, 122 , ? , 255, 350",
+        "image": null,
+        "options": [
+            "189",
+            "214",
+            "154",
+            "179",
+            "None"
+        ],
+        "answer": "179",
+        "explanation": "Pattern: +19, +38, +57, +76, +95. Missing term is 179."
+    },
+    {
+        "id": "q-ser-006",
+        "question": "49 , 141 , ? , 262 , 291 , 383",
+        "image": null,
+        "options": [
+            "170",
+            "145",
+            "165",
+            "861",
+            "None"
+        ],
+        "answer": "170",
+        "explanation": "Pattern: +92, +29, +92, +29, +92. Missing term is 170."
+    },
+    {
+        "id": "q-ser-007",
+        "question": "4 , 24 , ? , 213.5 , 221 , 1768",
+        "image": null,
+        "options": [
+            "30.5",
+            "41",
+            "35",
+            "32",
+            "None"
+        ],
+        "answer": "30.5",
+        "explanation": "Pattern: ×6+65, ×7+75, ×8... So missing term is 30.5."
+    },
+    {
+        "id": "q-ser-008",
+        "question": "16 , 32 , ? , 384, 1920, 11520",
+        "image": null,
+        "options": [
+            "48",
+            "68",
+            "96",
+            "86",
+            "None"
+        ],
+        "answer": "96",
+        "explanation": "Pattern: ×2, ×3, ×4, ×5, ×6. Missing term is 96."
+    },
+    {
+        "id": "q-ser-009",
+        "question": "415 , 370 , 420 , ? , 425 , 360",
+        "image": null,
+        "options": [
+            "315",
+            "214",
+            "365",
+            "454",
+            "None"
+        ],
+        "answer": "365",
+        "explanation": "Pattern: −45, +50, −55, +60, −65. Missing term is 365."
+    },
+    {
+        "id": "q-ser-010",
+        "question": "241 , 247 , ? , 279 , 309, 351",
+        "image": null,
+        "options": [
+            "215",
+            "259",
+            "214",
+            "658",
+            "None"
+        ],
+        "answer": "259",
+        "explanation": "Pattern: +6, +12, +24, +30, +42. Missing term is 259."
+    },
+    {
+        "id": "q-ser-011",
+        "question": "7924 , 8653, 9653, 10984 , 12712 , ?",
+        "image": null,
+        "options": [
+            "14709",
+            "13509",
+            "14909",
+            "14609",
+            "None"
+        ],
+        "answer": "14909",
+        "explanation": "Pattern: +9³, +10³, +11³, +12³, +13³. Missing term is 14909."
+    },
+    {
+        "id": "q-ser-012",
+        "question": "842 , 1562 , 1682, 1706, 1712 , ?",
+        "image": null,
+        "options": [
+            "1614",
+            "1914",
+            "1814",
+            "1714",
+            "None"
+        ],
+        "answer": "1714",
+        "explanation": "Pattern: +720, +120, +24, +6, +2. Missing term is 1714."
+    },
+    {
+        "id": "q-ser-013",
+        "question": "712 , 356 , 534 , 1335 , 4672.5 , ?",
+        "image": null,
+        "options": [
+            "21026.25",
+            "24236.25",
+            "22100.25",
+            "22480.25",
+            "None"
+        ],
+        "answer": "24236.25",
+        "explanation": "Pattern: ×0.5, ×1.5, ×2.5, ×3.5, ×4.5. Missing term is 21026.25."
+    },
+    {
+        "id": "q-ser-014",
+        "question": "1411 , 1483 , ? , 1684 , 1833 , 2031",
+        "image": null,
+        "options": [
+            "1071",
+            "1171",
+            "1641",
+            "1571",
+            "None"
+        ],
+        "answer": "1571",
+        "explanation": "Pattern: +72, +88, +113, +149, +198. Missing term is 1571."
+    },
+    {
+        "id": "q-ser-015",
+        "question": "4242 , 4531 , 4855 , 5216 , ? , 6057",
+        "image": null,
+        "options": [
+            "5616",
+            "5686",
+            "5046",
+            "5662",
+            "None"
+        ],
+        "answer": "5686",
+        "explanation": "Pattern: +(17)², +(18)², +(19)², +(20)², +(21)². Missing term is 5616."
+    },
+    {
+        "id": "q-ser-016",
+        "question": "523 , 1854 , 2583 , 2926 , 3051 , ?",
+        "image": null,
+        "options": [
+            "3078",
+            "3668",
+            "3228",
+            "3668",
+            "None"
+        ],
+        "answer": "3078",
+        "explanation": "Pattern involves successive cube additions: +11³, +9³, +17³, +5³, +3³. Missing term is 3078."
+    },
+    {
+        "id": "q-ser-017",
+        "question": "9.4 , 10.6 , ? , 14.2 , 16.6 , 19.4",
+        "image": null,
+        "options": [
+            "12.2",
+            "11.2",
+            "13.2",
+            "15.2",
+            "None"
+        ],
+        "answer": "12.2",
+        "explanation": "Pattern: +1.2, +1.6, +2, +2.4, +2.8. Missing term is 12.2."
+    },
+    {
+        "id": "q-ser-018",
+        "question": "7 , 15 , 31 , 63 , 127 , ?",
+        "image": null,
+        "options": [
+            "220",
+            "275",
+            "315",
+            "255",
+            "None"
+        ],
+        "answer": "255",
+        "explanation": "Pattern: ×2+1 repeatedly. Missing term is 255."
+    },
+    {
+        "id": "q-ser-019",
+        "question": "112 , 103 , 121 , 94, 130 , ?",
+        "image": null,
+        "options": [
+            "80",
+            "93",
+            "85",
+            "103",
+            "None"
+        ],
+        "answer": "85",
+        "explanation": "Pattern: −9, +18, −27, +36, −45. Missing term is 85."
+    },
+    {
+        "id": "q-ser-020",
+        "question": "48 , 97 , 195, 391 , 783 , ?",
+        "image": null,
+        "options": [
+            "1671",
+            "1581",
+            "1287",
+            "1567",
+            "None"
+        ],
+        "answer": "1567",
+        "explanation": "Pattern: ×2+1 repeatedly. Missing term is 1567."
+    }
+],
+
 
 
 
