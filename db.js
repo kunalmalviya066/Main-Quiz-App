@@ -2075,424 +2075,2511 @@ const quizDB = {
     // --- QUANTITATIVE APTITUDE ---
     "Quantitative Aptitude": {
         "Simplification": [
-            
     {
-        id: "q-ar-021",
-        question: "25% of 640 + 35% of 480 – 10% of 900 = ?",
-        image: null,
-        options: ["(a) 238","(b) 240","(c) 242","(d) 232"],
-        answer: "(a) 238",
-        explanation: "25% of 640 = 160, 35% of 480 = 168, 10% of 900 = 90 ⇒ 160 + 168 – 90 = 238",
+        "id": "q-ar-021",
+        "question": "25% of 640 + 35% of 480 – 10% of 900 = ?",
+        "image": null,
+        "options": [
+            "(a) 238",
+            "(b) 240",
+            "(c) 242",
+            "(d) 232",
+            "(e) None of these"
+        ],
+        "answer": "(a) 238",
+        "explanation": "25% of 640 = 160, 35% of 480 = 168, 10% of 900 = 90 ⇒ 160 + 168 – 90 = 238"
     },
     {
-        id: "q-ar-022",
-        question: "(7/8 × 96) + (2/5 × 250) – 15 = ?²",
-        image: null,
-        options: ["(a) 11","(b) 12","(c) 13","(d) 14"],
-        answer: "(c) 13",
-        explanation: "(7/8 × 96) = 84, (2/5 × 250) = 100 ⇒ 84 + 100 – 15 = 169 ⇒ ? = 13",
+        "id": "q-ar-022",
+        "question": "(7/8 × 96) + (2/5 × 250) – 15 = ?²",
+        "image": null,
+        "options": [
+            "(a) 11",
+            "(b) 12",
+            "(c) 13",
+            "(d) 14",
+            "(e) None of these"
+        ],
+        "answer": "(c) 13",
+        "explanation": "(7/8 × 96) = 84, (2/5 × 250) = 100 ⇒ 84 + 100 – 15 = 169 ⇒ ? = 13"
     },
     {
-        id: "q-ar-023",
-        question: "48² + 26² – 34² = ?",
-        image: null,
-        options: ["(a) 1824","(b) 1724","(c) 1924","(d) 1814"],
-        answer: "(a) 1824",
-        explanation: "48² = 2304, 26² = 676 ⇒ 2304 + 676 = 2980, 2980 – 1156 = 1824",
+        "id": "q-ar-023",
+        "question": "48² + 26² – 34² = ?",
+        "image": null,
+        "options": [
+            "(a) 1824",
+            "(b) 1724",
+            "(c) 1924",
+            "(d) 1814",
+            "(e) None of these"
+        ],
+        "answer": "(a) 1824",
+        "explanation": "48² = 2304, 26² = 676 ⇒ 2304 + 676 = 2980, 2980 – 1156 = 1824"
     },
     {
-        id: "q-ar-024",
-        question: "√1600 × √225 – 450 = ?",
-        image: null,
-        options: ["(a) 150","(b) 140","(c) 160","(d) 180"],
-        answer: "(a) 150",
-        explanation: "√1600 = 40, √225 = 15 ⇒ 40 × 15 = 600 ⇒ 600 – 450 = 150",
+        "id": "q-ar-024",
+        "question": "√1600 × √225 – 450 = ?",
+        "image": null,
+        "options": [
+            "(a) 150",
+            "(b) 140",
+            "(c) 160",
+            "(d) 180",
+            "(e) None of these"
+        ],
+        "answer": "(a) 150",
+        "explanation": "√1600 = 40, √225 = 15 ⇒ 40 × 15 = 600 ⇒ 600 – 450 = 150"
     },
     {
-        id: "q-ar-025",
-        question: "(1560 ÷ 12) + (625 ÷ 25) – 12² = ?",
-        image: null,
-        options: ["(a) 11","(b) 21","(c) 10","(d) 14"],
-        answer: "(a) 11",
-        explanation: "1560/12 = 130, 625/25 = 25, 12² = 144 ⇒ 130 + 25 – 144 = 11",
+        "id": "q-ar-025",
+        "question": "(1560 ÷ 12) + (625 ÷ 25) – 12² = ?",
+        "image": null,
+        "options": [
+            "(a) 11",
+            "(b) 21",
+            "(c) 10",
+            "(d) 14",
+            "(e) None of these"
+        ],
+        "answer": "(a) 11",
+        "explanation": "1560/12 = 130, 625/25 = 25, 12² = 144 ⇒ 130 + 25 – 144 = 11"
     },
     {
-        id: "q-ar-026",
-        question: "60% of (250 + 150) + 39 = ?",
-        image: null,
-        options: ["(a) 279","(b) 289","(c) 269","(d) 281"],
-        answer: "(a) 279",
-        explanation: "250 + 150 = 400 ⇒ 60% × 400 = 240 ⇒ 240 + 39 = 279",
+        "id": "q-ar-026",
+        "question": "60% of (250 + 150) + 39 = ?",
+        "image": null,
+        "options": [
+            "(a) 279",
+            "(b) 289",
+            "(c) 269",
+            "(d) 281",
+            "(e) None of these"
+        ],
+        "answer": "(a) 279",
+        "explanation": "250 + 150 = 400 ⇒ 60% × 400 = 240 ⇒ 240 + 39 = 279"
     },
     {
-        id: "q-ar-027",
-        question: "18 × 14 – 35 × 7 + 8 × 19 = ?",
-        image: null,
-        options: ["(a) 159","(b) 149","(c) 169","(d) 179"],
-        answer: "(a) 159",
-        explanation: "18×14 = 252, 35×7 = 245, 8×19 = 152 ⇒ 252 – 245 + 152 = 159",
+        "id": "q-ar-027",
+        "question": "18 × 14 – 35 × 7 + 8 × 19 = ?",
+        "image": null,
+        "options": [
+            "(a) 159",
+            "(b) 149",
+            "(c) 169",
+            "(d) 179",
+            "(e) None of these"
+        ],
+        "answer": "(a) 159",
+        "explanation": "18×14 = 252, 35×7 = 245, 8×19 = 152 ⇒ 252 – 245 + 152 = 159"
     },
     {
-        id: "q-ar-028",
-        question: "(90 ÷ 6)³ ÷ 125 = ?",
-        image: null,
-        options: ["(a) 25","(b) 27","(c) 29","(d) 30"],
-        answer: "(b) 27",
-        explanation: "90/6 = 15 ⇒ 15³ = 3375 ⇒ 3375/125 = 27",
+        "id": "q-ar-028",
+        "question": "(90 ÷ 6)³ ÷ 125 = ?",
+        "image": null,
+        "options": [
+            "(a) 25",
+            "(b) 27",
+            "(c) 29",
+            "(d) 30",
+            "(e) None of these"
+        ],
+        "answer": "(b) 27",
+        "explanation": "90/6 = 15 ⇒ 15³ = 3375 ⇒ 3375/125 = 27"
     },
     {
-        id: "q-ar-029",
-        question: "(√2916 + 24) × 5 = ?",
-        image: null,
-        options: ["(a) 380","(b) 395","(c) 390","(d) 400"],
-        answer: "(c) 390",
-        explanation: "√2916 = 54 ⇒ 54 + 24 = 78 ⇒ 78 × 5 = 390",
+        "id": "q-ar-029",
+        "question": "(√2916 + 24) × 5 = ?",
+        "image": null,
+        "options": [
+            "(a) 380",
+            "(b) 395",
+            "(c) 390",
+            "(d) 400",
+            "(e) None of these"
+        ],
+        "answer": "(c) 390",
+        "explanation": "√2916 = 54 ⇒ 54 + 24 = 78 ⇒ 78 × 5 = 390"
     },
     {
-        id: "q-ar-030",
-        question: "(3/4 of 320) + (4/5 of 200) – (1/2 of 180) = ?",
-        image: null,
-        options: ["(a) 310","(b) 300","(c) 315","(d) 305"],
-        answer: "(a) 310",
-        explanation: "(3/4 × 320) = 240, (4/5 × 200) = 160, (1/2 × 180) = 90 ⇒ 240 + 160 – 90 = 310",
+        "id": "q-ar-030",
+        "question": "(3/4 of 320) + (4/5 of 200) – (1/2 of 180) = ?",
+        "image": null,
+        "options": [
+            "(a) 310",
+            "(b) 300",
+            "(c) 315",
+            "(d) 305",
+            "(e) None of these"
+        ],
+        "answer": "(a) 310",
+        "explanation": "(3/4 × 320) = 240, (4/5 × 200) = 160, (1/2 × 180) = 90 ⇒ 240 + 160 – 90 = 310"
     },
     {
-        id: "q-ar-001",
-        question: "44% of 750 + 18% of 550 + 38.45% of 767 = ?",
-        image: null,
-        options: ["(a) 796","(b) 792","(c) 797","(d) 724"],
-        answer: "(d) 724",
-        explanation: "44% of 750 = 330, 18% of 550 = 99, 38.45% of 767 ≈ 295. Sum = 330 + 99 + 295 = 724",
+        "id": "q-ar-001",
+        "question": "44% of 750 + 18% of 550 + 38.45% of 767 = ?",
+        "image": null,
+        "options": [
+            "(a) 796",
+            "(b) 792",
+            "(c) 797",
+            "(d) 724",
+            "(e) None of these"
+        ],
+        "answer": "(d) 724",
+        "explanation": "44% of 750 = 330, 18% of 550 = 99, 38.45% of 767 ≈ 295. Sum = 330 + 99 + 295 = 724"
     },
     {
-        id: "q-ar-002",
-        question: "(7/9) of 405 + (7/18) of 1530 – (3/17) of 1615 = ?²",
-        image: null,
-        options: ["(a) 24","(b) 25","(c) 26","(d) 20"],
-        answer: "(b) 25",
-        explanation: "7/9 of 405 = 315, 7/18 of 1530 = 595, 3/17 of 1615 = 285, 315 + 595 – 285 = 625, √625 = 25",
+        "id": "q-ar-002",
+        "question": "(7/9) of 405 + (7/18) of 1530 – (3/17) of 1615 = ?²",
+        "image": null,
+        "options": [
+            "(a) 24",
+            "(b) 25",
+            "(c) 26",
+            "(d) 20",
+            "(e) None of these"
+        ],
+        "answer": "(b) 25",
+        "explanation": "7/9 of 405 = 315, 7/18 of 1530 = 595, 3/17 of 1615 = 285, 315 + 595 – 285 = 625, √625 = 25"
     },
     {
-        id: "q-ar-003",
-        question: "(108 × 24) + 48² + 72² = ? + 17²",
-        image: null,
-        options: ["(a) 9791","(b) 9998","(c) 9794","(d) 9996"],
-        answer: "(a) 9791",
-        explanation: "108 × 24 = 2592, 48² = 2304, 72² = 5184, Sum = 10080, ? + 289 = 10080, ? = 9791",
+        "id": "q-ar-003",
+        "question": "(108 × 24) + 48² + 72² = ? + 17²",
+        "image": null,
+        "options": [
+            "(a) 9791",
+            "(b) 9998",
+            "(c) 9794",
+            "(d) 9996",
+            "(e) None of these"
+        ],
+        "answer": "(a) 9791",
+        "explanation": "108 × 24 = 2592, 48² = 2304, 72² = 5184, Sum = 10080, ? + 289 = 10080, ? = 9791"
     },
     {
-        id: "q-ar-004",
-        question: "18 × 4.5 – 28 × 3.5 – 75 × 4 + 36 × 9.5 = ?",
-        image: null,
-        options: ["(a) 25","(b) 23","(c) 24","(d) 20"],
-        answer: "(a) 25",
-        explanation: "81 – 98 – 300 + 342 = 25",
+        "id": "q-ar-004",
+        "question": "18 × 4.5 – 28 × 3.5 – 75 × 4 + 36 × 9.5 = ?",
+        "image": null,
+        "options": [
+            "(a) 25",
+            "(b) 23",
+            "(c) 24",
+            "(d) 20",
+            "(e) None of these"
+        ],
+        "answer": "(a) 25",
+        "explanation": "81 – 98 – 300 + 342 = 25"
     },
     {
-        id: "q-ar-005",
-        question: "(√3136 × √1296) ÷ √12544 + 175 = ?",
-        image: null,
-        options: ["(a) 198","(b) 190","(c) 199","(d) 193"],
-        answer: "(d) 193",
-        explanation: "√3136 = 56, √1296 = 36, √12544 = 112, (56×36)/112 = 18, 18 + 175 = 193",
-    },
-
-
-
-    {
-        id: "q-ar-006",
-        question: "(156 + 1728 – 356 – 752) / 8 = ?",
-        image: null,
-        options: ["(a) 98","(b) 99","(c) 97","(d) 96"],
-        answer: "(c) 97",
-        explanation: "156 + 1728 – 356 – 752 = 776, 776/8 = 97",
+        "id": "q-ar-005",
+        "question": "(√3136 × √1296) ÷ √12544 + 175 = ?",
+        "image": null,
+        "options": [
+            "(a) 198",
+            "(b) 190",
+            "(c) 199",
+            "(d) 193",
+            "(e) None of these"
+        ],
+        "answer": "(d) 193",
+        "explanation": "√3136 = 56, √1296 = 36, √12544 = 112, (56×36)/112 = 18, 18 + 175 = 193"
     },
     {
-        id: "q-ar-007",
-        question: "18.75% of 768 + 46.14% of 1248 – 15.38% of 923 = ?",
-        image: null,
-        options: ["(a) 579","(b) 578","(c) 550","(d) 572"],
-        answer: "(b) 578",
-        explanation: "18.75% = 144, 46.14% = 576, 15.38% = 142, 144 + 576 – 142 = 578",
+        "id": "q-ar-006",
+        "question": "(156 + 1728 – 356 – 752) / 8 = ?",
+        "image": null,
+        "options": [
+            "(a) 98",
+            "(b) 99",
+            "(c) 97",
+            "(d) 96",
+            "(e) None of these"
+        ],
+        "answer": "(c) 97",
+        "explanation": "156 + 1728 – 356 – 752 = 776, 776/8 = 97"
     },
     {
-        id: "q-ar-008",
-        question: "[(18)² ÷ (2)⁴] × 40 – 752 = ?",
-        image: null,
-        options: ["(a) 56","(b) 55","(c) 58","(d) 68"],
-        answer: "(c) 58",
-        explanation: "18²/16 = 20.25, 20.25×40 = 810, 810 – 752 = 58",
+        "id": "q-ar-007",
+        "question": "18.75% of 768 + 46.14% of 1248 – 15.38% of 923 = ?",
+        "image": null,
+        "options": [
+            "(a) 579",
+            "(b) 578",
+            "(c) 550",
+            "(d) 572",
+            "(e) None of these"
+        ],
+        "answer": "(b) 578",
+        "explanation": "18.75% = 144, 46.14% = 576, 15.38% = 142, 144 + 576 – 142 = 578"
     },
     {
-        id: "q-ar-009",
-        question: "80% of 560 + 3600 ÷ 75 – 4320 ÷ 96 = ?",
-        image: null,
-        options: ["(a) 455","(b) 451","(c) 450","(d) 453"],
-        answer: "(b) 451",
-        explanation: "448 + 48 – 45 = 451",
+        "id": "q-ar-008",
+        "question": "[(18)² ÷ (2)⁴] × 40 – 752 = ?",
+        "image": null,
+        "options": [
+            "(a) 56",
+            "(b) 55",
+            "(c) 58",
+            "(d) 68",
+            "(e) None of these"
+        ],
+        "answer": "(c) 58",
+        "explanation": "18²/16 = 20.25, 20.25×40 = 810, 810 – 752 = 58"
     },
     {
-        id: "q-ar-010",
-        question: "{(1184 ÷ 74) × 5 + 432 ÷ 9} = ?² × 8",
-        image: null,
-        options: ["(a) 4","(b) 8","(c) 5","(d) 3"],
-        answer: "(a) 4",
-        explanation: "1184/74 = 16, 16×5 = 80, 432/9 = 48, 80+48 = 128, 128 = ?²×8 ⇒ ? = 4",
+        "id": "q-ar-009",
+        "question": "80% of 560 + 3600 ÷ 75 – 4320 ÷ 96 = ?",
+        "image": null,
+        "options": [
+            "(a) 455",
+            "(b) 451",
+            "(c) 450",
+            "(d) 453",
+            "(e) None of these"
+        ],
+        "answer": "(b) 451",
+        "explanation": "448 + 48 – 45 = 451"
     },
     {
-        id: "q-ar-011",
-        question: "5(2/9) of 3(6/7) of 42.85% of 196 = ?",
-        image: null,
-        options: ["(a) 1699","(b) 1696","(c) 1692","(d) 1691"],
-        answer: "(c) 1692",
-        explanation: "(47/9)×(27/7)×(3/7)×196 = 1692",
+        "id": "q-ar-010",
+        "question": "{\n    \"id\": \"q-ar-010\",\n    \"question\": \"{(1184 ÷ 74) × 5 + 432 ÷ 9}",
+        "image": null,
+        "options": [
+            "(d) \": \"q-ar-010\"",
+            "(e) stion\": \"{(1184 ÷ 74) × 5 + 432 ÷ 9}"
+        ],
+        "answer": "(d) \": \"q-ar-010\"",
+        "explanation": ""
     },
     {
-        id: "q-ar-012",
-        question: "(5/13 of √2704) + (1134 ÷ 9 ÷ 7) + (7.5 × 2.5 × 8) = ?",
-        image: null,
-        options: ["(a) 188","(b) 199","(c) 198","(d) 186"],
-        answer: "(a) 188",
-        explanation: "20 + 18 + 150 = 188",
+        "id": "q-ar-011",
+        "question": "5(2/9) of 3(6/7) of 42.85% of 196 = ?",
+        "image": null,
+        "options": [
+            "(a) 1699",
+            "(b) 1696",
+            "(c) 1692",
+            "(d) 1691",
+            "(e) None of these"
+        ],
+        "answer": "(c) 1692",
+        "explanation": "(47/9)×(27/7)×(3/7)×196 = 1692"
     },
     {
-        id: "q-ar-013",
-        question: "80% of (√5184 + 158) + ? = 156 × 4.5",
-        image: null,
-        options: ["(a) 516","(b) 518","(c) 519","(d) 520"],
-        answer: "(b) 518",
-        explanation: "184 + ? = 702 ⇒ ? = 518",
+        "id": "q-ar-012",
+        "question": "(5/13 of √2704) + (1134 ÷ 9 ÷ 7) + (7.5 × 2.5 × 8) = ?",
+        "image": null,
+        "options": [
+            "(a) 188",
+            "(b) 199",
+            "(c) 198",
+            "(d) 186",
+            "(e) None of these"
+        ],
+        "answer": "(a) 188",
+        "explanation": "20 + 18 + 150 = 188"
     },
     {
-        id: "q-ar-014",
-        question: "(7/3 + 9/2 – 17/3 + 15/2) = ? × 13/24",
-        image: null,
-        options: ["(a) 14","(b) 16","(c) 18","(d) 20"],
-        answer: "(b) 16",
-        explanation: "26/3 = ?×13/24 ⇒ ? = 16",
+        "id": "q-ar-013",
+        "question": "80% of (√5184 + 158) + ? = 156 × 4.5",
+        "image": null,
+        "options": [
+            "(a) 516",
+            "(b) 518",
+            "(c) 519",
+            "(d) 520",
+            "(e) None of these"
+        ],
+        "answer": "(b) 518",
+        "explanation": "184 + ? = 702 ⇒ ? = 518"
     },
     {
-        id: "q-ar-015",
-        question: "(28/36) ÷ (7/288) + 18³ = ? + 882 ÷ 7²",
-        image: null,
-        options: ["(a) 5548","(b) 5846","(c) 5640","(d) 5750"],
-        answer: "(b) 5846",
-        explanation: "32 + 5832 = ? + 18 ⇒ ? = 5846",
+        "id": "q-ar-014",
+        "question": "(7/3 + 9/2 – 17/3 + 15/2) = ? × 13/24",
+        "image": null,
+        "options": [
+            "(a) 14",
+            "(b) 16",
+            "(c) 18",
+            "(d) 20",
+            "(e) None of these"
+        ],
+        "answer": "(b) 16",
+        "explanation": "26/3 = ?×13/24 ⇒ ? = 16"
     },
     {
-        id: "q-ar-016",
-        question: "(5139.75 + 485.25)½ + (443.55 + 852.45)½ + 3⁵ = ?",
-        image: null,
-        options: ["(a) 354","(b) 356","(c) 343","(d) 344"],
-        answer: "(a) 354",
-        explanation: "√5625 + √1296 + 243 = 75 + 36 + 243 = 354",
+        "id": "q-ar-015",
+        "question": "(28/36) ÷ (7/288) + 18³ = ? + 882 ÷ 7²",
+        "image": null,
+        "options": [
+            "(a) 5548",
+            "(b) 5846",
+            "(c) 5640",
+            "(d) 5750",
+            "(e) None of these"
+        ],
+        "answer": "(b) 5846",
+        "explanation": "32 + 5832 = ? + 18 ⇒ ? = 5846"
     },
     {
-        id: "q-ar-017",
-        question: "(√324 × 19) – (√625 × 12) + (√289 × 21) = ?",
-        image: null,
-        options: ["(a) 299","(b) 399","(c) 199","(d) 499"],
-        answer: "(b) 399",
-        explanation: "342 – 300 + 357 = 399",
+        "id": "q-ar-016",
+        "question": "(5139.75 + 485.25)½ + (443.55 + 852.45)½ + 3⁵ = ?",
+        "image": null,
+        "options": [
+            "(a) 354",
+            "(b) 356",
+            "(c) 343",
+            "(d) 344",
+            "(e) None of these"
+        ],
+        "answer": "(a) 354",
+        "explanation": "√5625 + √1296 + 243 = 75 + 36 + 243 = 354"
     },
     {
-        id: "q-ar-018",
-        question: "[(752 + 328) ÷ 8] + [(758 – 98) ÷ 11] – 148 = ?",
-        image: null,
-        options: ["(a) 47","(b) 57","(c) 37","(d) 67"],
-        answer: "(a) 47",
-        explanation: "1080/8 = 135, 660/11 = 60, 135+60−148 = 47",
+        "id": "q-ar-017",
+        "question": "(√324 × 19) – (√625 × 12) + (√289 × 21) = ?",
+        "image": null,
+        "options": [
+            "(a) 299",
+            "(b) 399",
+            "(c) 199",
+            "(d) 499",
+            "(e) None of these"
+        ],
+        "answer": "(b) 399",
+        "explanation": "342 – 300 + 357 = 399"
     },
     {
-        id: "q-ar-019",
-        question: "(17/3) of 225 – 37² + 56² = ? × 6",
-        image: null,
-        options: ["(a) 507","(b) 565","(c) 602","(d) 666"],
-        answer: "(a) 507",
-        explanation: "1275 − 1369 + 3136 = 3042, 3042/6 = 507",
+        "id": "q-ar-018",
+        "question": "[(752 + 328) ÷ 8] + [(758 – 98) ÷ 11] – 148 = ?",
+        "image": null,
+        "options": [
+            "(a) 47",
+            "(b) 57",
+            "(c) 37",
+            "(d) 67",
+            "(e) None of these"
+        ],
+        "answer": "(a) 47",
+        "explanation": "1080/8 = 135, 660/11 = 60, 135+60−148 = 47"
     },
     {
-        id: "q-ar-020",
-        question: "4⁴ ÷ (64)⅓ of (256)¾ of (64)⅔ = ?",
-        image: null,
-        options: ["(a) 8","(b) 15","(c) 6","(d) 18"],
-        answer: "(a) 8",
-        explanation: "Final simplified correct value = 8",
+        "id": "q-ar-019",
+        "question": "(17/3) of 225 – 37² + 56² = ? × 6",
+        "image": null,
+        "options": [
+            "(a) 507",
+            "(b) 565",
+            "(c) 602",
+            "(d) 666",
+            "(e) None of these"
+        ],
+        "answer": "(a) 507",
+        "explanation": "1275 − 1369 + 3136 = 3042, 3042/6 = 507"
     },
     {
-        id: "q-ser-013",
-        question: "(26/35) x (105/286) ÷ (78/88) + (5/26) = ?",
-        image: null,
-        options: ["(a) 1/2", "(b) 3/4", "(c) 5/6", "(d) 7/8"],
-        answer: "(a) 1/2",
-        explanation: "((26/35) x (105/286) ÷ (78/88)) + 5/26 = 1/2",
+        "id": "q-ar-020",
+        "question": "4⁴ ÷ (64)⅓ of (256)¾ of (64)⅔ = ?",
+        "image": null,
+        "options": [
+            "(a) 8",
+            "(b) 15",
+            "(c) 6",
+            "(d) 18",
+            "(e) None of these"
+        ],
+        "answer": "(a) 8",
+        "explanation": "Final simplified correct value = 8"
     },
     {
-        id: "q-ser-014",
-        question: "40% of 480 ÷ 3 = ?",
-        image: null,
-        options: ["(a) 68", "(b) 67", "(c) 64", "(d) 65"],
-        answer: "(c) 64",
-        explanation: "0.4 * 480 ÷ 3 = 64",
+        "id": "q-ser-013",
+        "question": "(26/35) x (105/286) ÷ (78/88) + (5/26) = ?",
+        "image": null,
+        "options": [
+            "1/2",
+            "3/4",
+            "5/6",
+            "7/8",
+            "None of these"
+        ],
+        "answer": "1/2",
+        "explanation": "((26/35) x (105/286) ÷ (78/88)) + 5/26 = 1/2"
     },
     {
-        id: "q-ser-015",
-        question: "? - sqrt(121) - sqrt(169) = 39",
-        image: null,
-        options: ["(a) 63", "(b) 61", "(c) 60", "(d) 59"],
-        answer: "(a) 63",
-        explanation: "? - 11 - 13 = 39 ⇒ ? = 63",
+        "id": "q-ser-014",
+        "question": "40% of 480 ÷ 3 = ?",
+        "image": null,
+        "options": [
+            "68",
+            "67",
+            "64",
+            "65",
+            "None of these"
+        ],
+        "answer": "64",
+        "explanation": "0.4 * 480 ÷ 3 = 64"
     },
     {
-        id: "q-ser-016",
-        question: "(38 ÷ sqrt(4) x sqrt(16)) + 321 = ?",
-        image: null,
-        options: ["(a) 399", "(b) 400", "(c) 402", "(d) 397"],
-        answer: "(d) 397",
-        explanation: "(38 ÷ 2) x 4 + 321 = 76 + 321 = 397",
+        "id": "q-ser-015",
+        "question": "? - sqrt(121) - sqrt(169) = 39",
+        "image": null,
+        "options": [
+            "63",
+            "61",
+            "60",
+            "59",
+            "None of these"
+        ],
+        "answer": "63",
+        "explanation": "? - 11 - 13 = 39 ⇒ ? = 63"
     },
     {
-        id: "q-ser-017",
-        question: "1288 + 2116 + 988 - ? = 4832 - 1160",
-        image: null,
-        options: ["(a) 740", "(b) 720", "(c) 730", "(d) 710"],
-        answer: "(b) 720",
-        explanation: "1288 + 2116 + 988 - ? = 3672 ⇒ ? = 720",
+        "id": "q-ser-016",
+        "question": "(38 ÷ sqrt(4) x sqrt(16)) + 321 = ?",
+        "image": null,
+        "options": [
+            "399",
+            "400",
+            "402",
+            "397",
+            "None of these"
+        ],
+        "answer": "397",
+        "explanation": "(38 ÷ 2) x 4 + 321 = 76 + 321 = 397"
     },
     {
-        id: "q-ser-018",
-        question: "? x 35 = 84^2 - 284",
-        image: null,
-        options: ["(a) 107", "(b) 106", "(c) 109", "(d) None of these"],
-        answer: "(d) None of these",
-        explanation: "84^2 - 284 = 7056 - 284 = 6772 ⇒ 6772 ÷ 35 ≈ 193.49, which is not in options ⇒ None of these",
+        "id": "q-ser-017",
+        "question": "1288 + 2116 + 988 - ? = 4832 - 1160",
+        "image": null,
+        "options": [
+            "740",
+            "720",
+            "730",
+            "710",
+            "None of these"
+        ],
+        "answer": "720",
+        "explanation": "1288 + 2116 + 988 - ? = 3672 ⇒ ? = 720"
     },
     {
-        id: "q-ser-019",
-        question: "(3√2 + 4√2)(5√2 + √2) - 24 = ?",
-        image: null,
-        options: ["(a) 60", "(b) 70", "(c) 80", "(d) 90"],
-        answer: "(a) 60",
-        explanation: "(7√2 x 6√2) - 24 = 84 - 24 = 60",
+        "id": "q-ser-018",
+        "question": "? x 35 = 84^2 - 284",
+        "image": null,
+        "options": [
+            "107",
+            "106",
+            "109",
+            "110",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "84^2 - 284 = 7056 - 284 = 6772 ⇒ 6772 ÷ 35 ≈ 193.49, which is not in options ⇒ None of these"
     },
     {
-        id: "q-ser-020",
-        question: "√11664 x √6084 - 552 = √? + 732",
-        image: null,
-        options: ["(a) 4800", "(b) 5400", "(c) 4700", "(d) None of these"],
-        answer: "(d) None of these",
-        explanation: "√11664 = 108, √6084 = 78, 108*78 - 552 = 8424 - 552 = 7872 ⇒ √? + 732 = 7872 ⇒ ? = 7872 - 732 = 7140, which is not in options ⇒ None of these",
+        "id": "q-ser-019",
+        "question": "(3√2 + 4√2)(5√2 + √2) - 24 = ?",
+        "image": null,
+        "options": [
+            "60",
+            "70",
+            "80",
+            "90",
+            "None of these"
+        ],
+        "answer": "60",
+        "explanation": "(7√2 x 6√2) - 24 = 84 - 24 = 60"
     },
     {
-        id: "q-ser-021",
-        question: "3/4 of 2/5 of {(3x6) + (4x8)} + 14 + 17 = ?",
-        image: null,
-        options: ["(a) 46", "(b) 45", "(c) 44", "(d) 43"],
-        answer: "(a) 46",
-        explanation: "3/4 * 2/5 * 50 + 14 + 17 = 30 + 31 = 61 ⇒ not in options ⇒ None of these",
+        "id": "q-ser-020",
+        "question": "√11664 x √6084 - 552 = √? + 732",
+        "image": null,
+        "options": [
+            "4800",
+            "5400",
+            "4700",
+            "4900",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "√11664 = 108, √6084 = 78, 108*78 - 552 = 8424 - 552 = 7872 ⇒ √? + 732 = 7872 ⇒ ? = 7872 - 732 = 7140, which is not in options ⇒ None of these"
     },
     {
-        id: "q-ser-022",
-        question: "7/7 x 9 x 27/140 x 5/5 x 9/29 = ?",
-        image: null,
-        options: ["(a) 3/25", "(b) 3/100", "(c) 3/77", "(d) 3/50"],
-        answer: "(c) 3/77",
-        explanation: "Simplify step by step ⇒ 3/77",
+        "id": "q-ser-021",
+        "question": "'3/4 of 2/5 of {(3x6) + (4x8)}",
+        "image": null,
+        "options": [
+            "(d) 'q-ser-021'",
+            "(e) stion: '3/4 of 2/5 of {(3x6) + (4x8)}"
+        ],
+        "answer": "(d) 'q-ser-021'",
+        "explanation": ""
     },
     {
-        id: "q-ser-023",
-        question: "1860 + 4/7 of 21 - 41 = ?",
-        image: null,
-        options: ["(a) 1844", "(b) 1936", "(c) 1831", "(d) 1800"],
-        answer: "(a) 1844",
-        explanation: "1860 + 12 - 41 = 1831 ⇒ correct value is 1831 ⇒ should be index 2, not 0",
+        "id": "q-ser-022",
+        "question": "7/7 x 9 x 27/140 x 5/5 x 9/29 = ?",
+        "image": null,
+        "options": [
+            "3/25",
+            "3/100",
+            "3/77",
+            "3/50",
+            "None of these"
+        ],
+        "answer": "3/77",
+        "explanation": "Simplify step by step ⇒ 3/77"
     },
     {
-        id: "q-ser-024",
-        question: "25% of ? + 36% of 1225 = 816",
-        image: null,
-        options: ["(a) 1600", "(b) 1700", "(c) 1750", "(d) None of these"],
-        answer: "(d) None of these",
-        explanation: "0.36*1225 = 441 ⇒ 0.25x + 441 = 816 ⇒ x = 1500, not in options ⇒ None of these",
+        "id": "q-ser-023",
+        "question": "1860 + 4/7 of 21 - 41 = ?",
+        "image": null,
+        "options": [
+            "1844",
+            "1936",
+            "1831",
+            "1800",
+            "None of these"
+        ],
+        "answer": "1844",
+        "explanation": "1860 + 12 - 41 = 1831 ⇒ correct value is 1831 ⇒ should be index 2, not 0"
     },
     {
-        id: "q-ser-025",
-        question: "7/25 of 110 + ? = 844",
-        image: null,
-        options: ["(a) 40", "(b) 30", "(c) 20", "(d) None of these"],
-        answer: "(d) None of these",
-        explanation: "7/25*110 = 30.8 ⇒ ? = 844 - 30.8 = 813.2 ⇒ not in options ⇒ None of these",
+        "id": "q-ser-024",
+        "question": "25% of ? + 36% of 1225 = 816",
+        "image": null,
+        "options": [
+            "1600",
+            "1700",
+            "1750",
+            "1550",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "0.36*1225 = 441 ⇒ 0.25x + 441 = 816 ⇒ x = 1500, not in options ⇒ None of these"
     },
     {
-        id: "q-ser-026",
-        question: "6 1/2 - 2 1/3 + 1 1/4 - 2 1/6 = ?",
-        image: null,
-        options: ["(a) 3 1/4", "(b) 4 1/4", "(c) 5 1/4", "(d) 6 1/4"],
-        answer: "(a) 3 1/4",
-        explanation: "6.5 - 2.333 + 1.25 - 2.166 ≈ 3.25 ⇒ 3 1/4",
+        "id": "q-ser-025",
+        "question": "7/25 of 110 + ? = 844",
+        "image": null,
+        "options": [
+            "40",
+            "30",
+            "20",
+            "26",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "7/25*110 = 30.8 ⇒ ? = 844 - 30.8 = 813.2 ⇒ not in options ⇒ None of these"
     },
     {
-        id: "q-ser-027",
-        question: "2560 + 5/7 of 28 - 35 = ?",
-        image: null,
-        options: ["(a) 2547", "(b) 2548", "(c) 2560", "(d) None of these"],
-        answer: "(d) None of these",
-        explanation: "2560 + 20 - 35 = 2545 ⇒ not in options ⇒ None of these",
+        "id": "q-ser-026",
+        "question": "6 1/2 - 2 1/3 + 1 1/4 - 2 1/6 = ?",
+        "image": null,
+        "options": [
+            "3 1/4",
+            "4 1/4",
+            "5 1/4",
+            "6 1/4",
+            "None of these"
+        ],
+        "answer": "3 1/4",
+        "explanation": "6.5 - 2.333 + 1.25 - 2.166 ≈ 3.25 ⇒ 3 1/4"
     },
     {
-        id: "q-ser-028",
-        question: "282 + 342 - 192 = ?",
-        image: null,
-        options: ["(a) 1580", "(b) 1578", "(c) 1579", "(d) None of these"],
-        answer: "(d) None of these",
-        explanation: "282 + 342 - 192 = 432 ⇒ not in options ⇒ None of these",
+        "id": "q-ser-027",
+        "question": "2560 + 5/7 of 28 - 35 = ?",
+        "image": null,
+        "options": [
+            "2547",
+            "2548",
+            "2560",
+            "2575",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "2560 + 20 - 35 = 2545 ⇒ not in options ⇒ None of these"
     },
     {
-        id: "q-ser-029",
-        question: "666 x 66 x 6 = ?",
-        image: null,
-        options: ["(a) 263836", "(b) 236736", "(c) 263736", "(d) 273663"],
-        answer: "(c) 263736",
-        explanation: "666 x 66 x 6 = 263736",
+        "id": "q-ser-028",
+        "question": "282 + 342 - 192 = ?",
+        "image": null,
+        "options": [
+            "1580",
+            "1578",
+            "1579",
+            "1577",
+            "None of these"
+        ],
+        "answer": "None of these",
+        "explanation": "282 + 342 - 192 = 432 ⇒ not in options ⇒ None of these"
     },
     {
-        id: "q-ser-030",
-        question: "242 - (118 - 79) + (17 x 36 ÷ 12 x 4) = ?",
-        image: null,
-        options: ["(a) 408", "(b) 407", "(c) 406", "(d) 405"],
-        answer: "(b) 407",
-        explanation: "242 - 39 + (17*3*4) = 242 - 39 + 204 = 407",
+        "id": "q-ser-029",
+        "question": "666 x 66 x 6 = ?",
+        "image": null,
+        "options": [
+            "263836",
+            "236736",
+            "263736",
+            "273663",
+            "None of these"
+        ],
+        "answer": "263736",
+        "explanation": "666 x 66 x 6 = 263736"
     },
     {
-        id: "q-ser-031",
-        question: "[(15 x 9)^2 - (105)^2] + [(602) x 2] = ?",
-        image: null,
-        options: ["(a) 14400", "(b) 14655", "(c) 17880", "(d) 14650"],
-        answer: "(a) 14400",
-        explanation: "(135^2 - 105^2) + 1204 = 18225 - 11025 + 1204 = 8404? Check: actual 18225-11025=7200+1204=8404 ⇒ not in options ⇒ None of these",
+        "id": "q-ser-030",
+        "question": "242 - (118 - 79) + (17 x 36 ÷ 12 x 4) = ?",
+        "image": null,
+        "options": [
+            "408",
+            "407",
+            "406",
+            "405",
+            "None of these"
+        ],
+        "answer": "407",
+        "explanation": "242 - 39 + (17*3*4) = 242 - 39 + 204 = 407"
     },
     {
-        id: "q-ser-032",
-        question: "[54 x 3 + 11 x 18] ÷ ? = 12",
-        image: null,
-        options: ["(a) 42", "(b) 39", "(c) 32", "(d) 30"],
-        answer: "(d) 30",
-        explanation: "54*3 + 11*18 = 162 + 198 = 360 ⇒ 360 ÷ 30 = 12",
+        "id": "q-ser-031",
+        "question": "[(15 x 9)^2 - (105)^2] + [(602) x 2] = ?",
+        "image": null,
+        "options": [
+            "14400",
+            "14655",
+            "17880",
+            "14650",
+            "None of these"
+        ],
+        "answer": "14400",
+        "explanation": "(135^2 - 105^2) + 1204 = 18225 - 11025 + 1204 = 8404? Check: actual 18225-11025=7200+1204=8404 ⇒ not in options ⇒ None of these"
+    },
+    {
+        "id": "q-ser-032",
+        "question": "[54 x 3 + 11 x 18] ÷ ? = 12",
+        "image": null,
+        "options": [
+            "42",
+            "39",
+            "32",
+            "30",
+            "None of these"
+        ],
+        "answer": "30",
+        "explanation": "54*3 + 11*18 = 162 + 198 = 360 ⇒ 360 ÷ 30 = 12"
+    },
+    {
+        "id": "simp-001",
+        "question": "135% of 165 + 55% of 235 = 11x + 12.5% of 88",
+        "image": null,
+        "options": [
+            "27",
+            "29",
+            "31",
+            "33",
+            "35"
+        ],
+        "answer": "31",
+        "explanation": "135% of 165 = 222.75; 55% of 235 = 129.25; Sum = 352; 12.5% of 88 = 11; 352 = 11x + 11; x = 31."
+    },
+    {
+        "id": "simp-002",
+        "question": "(25 × 11) + (34 × 2.5) + (24 × 3.75) = (x)^2 + 89",
+        "image": null,
+        "options": [
+            "19",
+            "21",
+            "23",
+            "25",
+            "27"
+        ],
+        "answer": "19",
+        "explanation": "275 + 85 + 90 = x² + 89; 450 = x² + 89; x² = 361; x = 19."
+    },
+    {
+        "id": "simp-003",
+        "question": "√2304 + √2197/3 + √1764 = 6x + √6859/3",
+        "image": null,
+        "options": [
+            "22",
+            "18",
+            "16",
+            "14",
+            "12"
+        ],
+        "answer": "14",
+        "explanation": "√2304 = 48; √2197/3 = 13; √1764 = 42; √6859/3 = 19; 48 + 13 + 42 = 6x + 19; 103 = 6x + 19; x = 14."
+    },
+    {
+        "id": "simp-004",
+        "question": "√x × (45% of 140 + 912 ÷ 19) = 3108",
+        "image": null,
+        "options": [
+            "729",
+            "784",
+            "841",
+            "625",
+            "676"
+        ],
+        "answer": "784",
+        "explanation": "45% of 140 = 63; 912 ÷ 19 = 48; sum = 111; √x × 111 = 3108; √x = 28; x = 784."
+    },
+    {
+        "id": "simp-005",
+        "question": "x% of 648 + (26 × 18) = 15% of 4200",
+        "image": null,
+        "options": [
+            "20",
+            "15",
+            "28",
+            "30",
+            "25"
+        ],
+        "answer": "25",
+        "explanation": "26 × 18 = 468; 15% of 4200 = 630; x% of 648 = 162; x = 25."
+    },
+    {
+        "id": "simp-006",
+        "question": "16⅔% of 12½% of 7.69% of 23712 = x² - 62",
+        "image": null,
+        "options": [
+            "8",
+            "10",
+            "12",
+            "15",
+            "18"
+        ],
+        "answer": "10",
+        "explanation": "16⅔% = 1/6; 12½% = 1/8; 7.69% ≈ 1/13; (1/6 × 1/8 × 1/13 × 23712) = a; a + 62 = x²; x = 10."
+    },
+    {
+        "id": "simp-007",
+        "question": "15 × 17 - 28 × 13 = x - 15% of 1460",
+        "image": null,
+        "options": [
+            "100",
+            "105",
+            "110",
+            "115",
+            "120"
+        ],
+        "answer": "110",
+        "explanation": "15 × 17 = 255; 28 × 13 = 364; diff = -109; 15% of 1460 = 219; x = -109 + 219 = 110."
+    },
+    {
+        "id": "simp-008",
+        "question": "√1936 + 112.5% of 528 ÷ 11 = x",
+        "image": null,
+        "options": [
+            "98",
+            "100",
+            "102",
+            "104",
+            "106"
+        ],
+        "answer": "98",
+        "explanation": "√1936 = 44; 528 ÷ 11 = 48; 112.5% of 48 = 54; 44 + 54 = 98."
+    },
+    {
+        "id": "simp-009",
+        "question": "(1261 + 1627) ÷ 19 + (1309 + 692) ÷ 29 = x × 13",
+        "image": null,
+        "options": [
+            "11",
+            "13",
+            "15",
+            "17",
+            "19"
+        ],
+        "answer": "17",
+        "explanation": "(1261 + 1627) = 2888 ÷ 19 = 152; (1309 + 692) = 2001 ÷ 29 = 69; 152 + 69 = 221; x × 13 = 221; x = 17."
+    },
+    {
+        "id": "simp-010",
+        "question": "8/17 × 585/13 × 2635/1800 = x² - 50",
+        "image": null,
+        "options": [
+            "10",
+            "9",
+            "13",
+            "17",
+            "7"
+        ],
+        "answer": "9",
+        "explanation": "(8/17) × (585/13) × (2635/1800) = value; value + 50 = x²; x = 9."
+    },
+    {
+        "id": "simp-011",
+        "question": "6995 + (15/18 of 228) - (19/3) = x",
+        "image": null,
+        "options": [
+            "212",
+            "242",
+            "288",
+            "326",
+            "348"
+        ],
+        "answer": "326",
+        "explanation": "15/18 of 228 = 190; 19/3 = 6.33; 6995 + 190 - 6.33 = 7178.67; x ≈ 326."
+    },
+    {
+        "id": "simp-012",
+        "question": "√0.0961 + √0.1521 + √24.389/3 = 5 - x",
+        "image": null,
+        "options": [
+            "1.4",
+            "-4.9",
+            "4.01",
+            "8.6",
+            "3.2"
+        ],
+        "answer": "1.4",
+        "explanation": "√0.0961 = 0.31; √0.1521 = 0.39; √24.389/3 ≈ 2.9; sum = 3.6; 5 - 3.6 = x = 1.4."
+    },
+    {
+        "id": "simp-013",
+        "question": "(2079 ÷ 27) - (1241 ÷ 17) = √4913/3 - x",
+        "image": null,
+        "options": [
+            "7",
+            "9",
+            "13",
+            "17",
+            "21"
+        ],
+        "answer": "13",
+        "explanation": "2079 ÷ 27 = 77; 1241 ÷ 17 = 73; 77 - 73 = 4; √4913/3 ≈ 17; 17 - x = 4; x = 13."
+    },
+    {
+        "id": "simp-014",
+        "question": "√2025% of 540 + 152 = 7x + 178",
+        "image": null,
+        "options": [
+            "33",
+            "35",
+            "27",
+            "29",
+            "31"
+        ],
+        "answer": "31",
+        "explanation": "√2025 = 45; 45% of 540 = 243; 243 + 152 = 395; 7x + 178 = 395 → 7x = 217 → x = 31."
+    },
+    {
+        "id": "simp-015",
+        "question": "(14.28% of 196)/(9.09% of 187) = (x% of 840)/(16.66% of 306)",
+        "image": null,
+        "options": [
+            "17.5",
+            "15",
+            "12.5",
+            "10",
+            "7.5"
+        ],
+        "answer": "10",
+        "explanation": "14.28% of 196 = 28; 9.09% of 187 ≈ 17; 28/17 ≈ 1.65; 16.66% of 306 ≈ 51; x% of 840 = 84; 1.65 = 84/51 → x ≈ 10."
+    },
+    {
+        "id": "simp-016",
+        "question": "5/9 of 8/15 of x/7 of 17010 = 4320",
+        "image": null,
+        "options": [
+            "6",
+            "8",
+            "10",
+            "12",
+            "14"
+        ],
+        "answer": "6",
+        "explanation": "(5/9 × 8/15 × x/7 × 17010) = 4320; solving gives x = 6."
+    },
+    {
+        "id": "simp-017",
+        "question": "671.19 + 568.25 + 432.56 = 19x + √1444",
+        "image": null,
+        "options": [
+            "116",
+            "76",
+            "86",
+            "96",
+            "106"
+        ],
+        "answer": "86",
+        "explanation": "671.19 + 568.25 + 432.56 = 1672; √1444 = 38; 19x = 1672 - 38 = 1634; x = 86."
+    },
+    {
+        "id": "simp-019",
+        "question": "432 ÷ 27 × 4 + 15 × 11 = x² + √1089",
+        "image": null,
+        "options": [
+            "15",
+            "11",
+            "12",
+            "13",
+            "14"
+        ],
+        "answer": "14",
+        "explanation": "432 ÷ 27 = 16; 16 × 4 = 64; 15 × 11 = 165; total = 229; √1089 = 33; x² = 229 - 33 = 196; x = 14."
     },
 
 
 
         ],
-        "Averages": [
-            {
-                id: 401,
-                question: "The average age of 5 students is 15 years. If a new student is added, the average age becomes 16 years. What is the age of the new student?",
-                image: null,
-                options: ["18 years", "21 years", "20 years", "22 years"],
-                answer: "21 years",
-                explanation: "Total age of 5 students: 5 * 15 = 75. Total age of 6 students: 6 * 16 = 96. Age of new student: 96 - 75 = 21 years.",
-            },
+        "Quadratic-Equations":[
+    {
+        "id": "q-ser-021",
+        "question": "4x^2 - 20x + 21 = 0",
+        "image": null,
+        "options": [
+            "(1, 21/4)",
+            "(3/2, 7/2)",
+            "(-3/2, -7/2)",
+            "(3, 7)",
+            "None"
         ],
+        "answer": "(3/2, 7/2)",
+        "explanation": "Factor: 4x^2-20x+21 = (2x-3)(2x-7) → x = 3/2, 7/2."
+    },
+    {
+        "id": "q-ser-022",
+        "question": "x^2 - 13x + 42 = 0",
+        "image": null,
+        "options": [
+            "(6, 7)",
+            "(-7, 6)",
+            "(3, 14)",
+            "(2, 21)",
+            "None"
+        ],
+        "answer": "(6, 7)",
+        "explanation": "Factor: x^2-13x+42 = (x-6)(x-7) → x = 6, 7."
+    },
+    {
+        "id": "q-ser-023",
+        "question": "x^2 - 7x + 25 = 2x + 5 (i.e., x^2 - 9x + 20 = 0)",
+        "image": null,
+        "options": [
+            "(4, 5)",
+            "(-5, 4)",
+            "(−4, −5)",
+            "(2, 10)",
+            "None"
+        ],
+        "answer": "(4, 5)",
+        "explanation": "Simplify: x^2 - 9x + 20 = (x-4)(x-5) → x = 4, 5."
+    },
+    {
+        "id": "q-ser-024",
+        "question": "x^2 - 12x + 32 = 0",
+        "image": null,
+        "options": [
+            "(6, -6)",
+            "(4, 8)",
+            "(2, 16)",
+            "(-8, 4)",
+            "None"
+        ],
+        "answer": "(4, 8)",
+        "explanation": "Factor: (x-4)(x-8) → x = 4, 8."
+    },
+    {
+        "id": "q-ser-025",
+        "question": "x^2 + 14x - 51 = 0",
+        "image": null,
+        "options": [
+            "(−17, 3)",
+            "(-3, −17)",
+            "(3, 17)",
+            "(17, −3)",
+            "None"
+        ],
+        "answer": "(−17, 3)",
+        "explanation": "Factor: (x+17)(x−3) → x = −17, 3."
+    },
+    {
+        "id": "q-ser-026",
+        "question": "x^2 + 14x - 32 = 0",
+        "image": null,
+        "options": [
+            "(8, −2)",
+            "(−16, 2)",
+            "(-2, −16)",
+            "(−2, 16)",
+            "None"
+        ],
+        "answer": "(−16, 2)",
+        "explanation": "Factor: (x+16)(x−2) → x = −16, 2."
+    },
+    {
+        "id": "q-ser-027",
+        "question": "9x^2 + 14x - 8 = 0",
+        "image": null,
+        "options": [
+            "(−2, 4/9)",
+            "(2, −4/9)",
+            "(-4/9, −2)",
+            "(−4/6, 2)",
+            "None"
+        ],
+        "answer": "(−2, 4/9)",
+        "explanation": "Factor: (9x−4)(x+2) → x = −2, 4/9."
+    },
+    {
+        "id": "q-ser-028",
+        "question": "x^2 + 16x + 63 = 0",
+        "image": null,
+        "options": [
+            "(−9, −7)",
+            "(7, −9)",
+            "(9, 7)",
+            "(−7, 9)",
+            "None"
+        ],
+        "answer": "(−9, −7)",
+        "explanation": "Factor: (x+9)(x+7) → x = −9, −7."
+    },
+    {
+        "id": "q-ser-029",
+        "question": "x^2 - 8x + 15 = 0",
+        "image": null,
+        "options": [
+            "(15, −1)",
+            "(3, 5)",
+            "(−3, −5)",
+            "(-5, 3)",
+            "None"
+        ],
+        "answer": "(3, 5)",
+        "explanation": "Factor: (x−3)(x−5) → x = 3, 5."
+    },
+    {
+        "id": "q-ser-030",
+        "question": "x^2 - 7x + 12 = 0",
+        "image": null,
+        "options": [
+            "(−3, −4)",
+            "(6, 2)",
+            "(-4, 3)",
+            "(3, 4)",
+            "None"
+        ],
+        "answer": "(3, 4)",
+        "explanation": "Factor: (x−3)(x−4) → x = 3, 4."
+    },
+    {
+        "id": "q-ser-031",
+        "question": "x^2 + 11x - 26 = 0",
+        "image": null,
+        "options": [
+            "(−13, 2)",
+            "(-2, −13)",
+            "(13, −2)",
+            "(−2, 34)",
+            "None"
+        ],
+        "answer": "(−13, 2)",
+        "explanation": "Factor: (x+13)(x−2) → x = −13, 2."
+    },
+    {
+        "id": "q-ser-032",
+        "question": "x^2 + 8x - 180 = 0",
+        "image": null,
+        "options": [
+            "(−10, 18)",
+            "(-10, −18)",
+            "(18, −5)",
+            "(−18, 10)",
+            "None"
+        ],
+        "answer": "(−18, 10)",
+        "explanation": "Factor: (x+18)(x−10) → x = −18, 10."
+    },
+    {
+        "id": "q-ser-033",
+        "question": "x^2 - 11x + 28 = 0",
+        "image": null,
+        "options": [
+            "(4, -7)",
+            "(7, 4)",
+            "(14, −2)",
+            "(−4, −7)",
+            "None"
+        ],
+        "answer": "(7, 4)",
+        "explanation": "Factor: (x−4)(x−7) → x = 4, 7."
+    },
+    {
+        "id": "q-ser-034",
+        "question": "x^2 - 5x + 6 = 0",
+        "image": null,
+        "options": [
+            "(−2, −3)",
+            "(-3, 2)",
+            "(6, −1)",
+            "(2, 3)",
+            "None"
+        ],
+        "answer": "(2, 3)",
+        "explanation": "Factor: (x−2)(x−3) → x = 2, 3."
+    },
+    {
+        "id": "q-ser-035",
+        "question": "5x^2 - 19x + 18 = 0",
+        "image": null,
+        "options": [
+            "(2, -9/5)",
+            "(−9/5, −2)",
+            "(9/5, 2)",
+            "(18, −1)",
+            "None"
+        ],
+        "answer": "(9/5, 2)",
+        "explanation": "Factor: (5x−9)(x−2) → x = 9/5, 2."
+    },
+    {
+        "id": "q-ser-036",
+        "question": "x^2 - 19x + 88 = 0",
+        "image": null,
+        "options": [
+            "(19, −?)",
+            "(−8, −11)",
+            "(-11, 8)",
+            "(8, 11)",
+            "None"
+        ],
+        "answer": "(8, 11)",
+        "explanation": "Factor: (x−8)(x−11) → x = 8, 11."
+    },
+    {
+        "id": "q-ser-037",
+        "question": "x^2 - 36x + 128 = 0",
+        "image": null,
+        "options": [
+            "(−4, −32)",
+            "(-32, 4)",
+            "(8, 16)",
+            "(4, 32)",
+            "None"
+        ],
+        "answer": "(4, 32)",
+        "explanation": "Factor: (x−4)(x−32) → x = 4, 32."
+    },
+    {
+        "id": "q-ser-038",
+        "question": "x^2 - 21x + 108 = 0",
+        "image": null,
+        "options": [
+            "(9, 12)",
+            "(18, 6)",
+            "(-12, 9)",
+            "(−9, −12)",
+            "None"
+        ],
+        "answer": "(9, 12)",
+        "explanation": "Factor: (x−9)(x−12) → x = 9, 12."
+    },
+    {
+        "id": "q-ser-039",
+        "question": "3x^2 - 10x + 8 = 0",
+        "image": null,
+        "options": [
+            "(-2, 4/3)",
+            "(4/3, 2)",
+            "(8, −1)",
+            "(−4/3, −2)",
+            "None"
+        ],
+        "answer": "(4/3, 2)",
+        "explanation": "Factor: (3x−4)(x−2) → x = 4/3, 2."
+    },
+    {
+        "id": "q-ser-040",
+        "question": "x^2 + 14x + 33 = 0",
+        "image": null,
+        "options": [
+            "(−11, −3)",
+            "(3, 11)",
+            "(11, -3)",
+            "(3, −11)",
+            "None"
+        ],
+        "answer": "(−11, −3)",
+        "explanation": "Factor: (x+11)(x+3) → x = −11, −3."
+    },
+    {
+        "id": "q-ser-070",
+        "question": "I. x² - 17x + 42 = 0 II. y² + 7y - 30 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Eqn 1 = 14, 3 | Roots of Eqn 2 = -10, 3 | Answer: D"
+    },
+    {
+        "id": "q-ser-071",
+        "question": "I. x² + 6x - 24 = -3x + 12 II. y² - 14y + 48 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "Roots of Eqn 1 = -12, 3 | Roots of Eqn 2 = 8, 6 | Answer: B"
+    },
+    {
+        "id": "q-ser-072",
+        "question": "I. x² - 2x - 15 = 0 II. y² - 4y + 52 = 7y + 22",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "Roots of Eqn 1 = 5, -3 | Roots of Eqn 2 = 6, 5 | Answer: E"
+    },
+    {
+        "id": "q-ser-073",
+        "question": "I. x² - 16x + 30 = -2x - 3 II. y² + 11y - 42 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Eqn 1 = 11, 3 | Roots of Eqn 2 = -14, 3 | Answer: D"
+    },
+    {
+        "id": "q-ser-074",
+        "question": "I. x² - 8x + 18 = 10 - 2x II. y² + 3y - 40 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Roots of Eqn 1 = 4, 2 | Roots of Eqn 2 = -8, 5 | Answer: C"
+    },
+    {
+        "id": "q-ser-075",
+        "question": "I. x² + 8x - 48 = 0 II. y² - 15y + 44 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "Roots of Eqn 1 = -12, 4 | Roots of Eqn 2 = 11, 4 | Answer: E"
+    },
+    {
+        "id": "q-ser-401",
+        "question": "I. x² - 9x + 18 = 0 II. y² - 7y + 12 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "x = 3,6 | y = 3,4 | X ≤ Y always"
+    },
+    {
+        "id": "q-ser-402",
+        "question": "I. x² - 5x - 24 = 0 II. y² - 6y - 16 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = -3,8 | y = -2,8 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-403",
+        "question": "I. x² - 10x + 21 = 0 II. y² - 13y + 42 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "x = 3,7 | y = 6,7 | X > Y mostly"
+    },
+    {
+        "id": "q-ser-404",
+        "question": "I. x² - 12x + 35 = 0 II. y² - 9y + 14 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "x = 5,7 | y = 2,7 | X ≥ Y and > mostly"
+    },
+    {
+        "id": "q-ser-405",
+        "question": "I. x² - 14x + 48 = 2x - 12 II. y² - 6y + 5 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Eq1 → x² - 16x + 60=0 → roots: 6,10 | y = 1,5 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-406",
+        "question": "I. x² + 2x - 15 = 0 II. y² - y - 20 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 3,-5 | y = 5,-4 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-407",
+        "question": "I. x² - 11x + 30 = 0 II. y² - 15y + 54 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "x = 5,6 | y = 6,9 | X ≤ Y always"
+    },
+    {
+        "id": "q-ser-408",
+        "question": "I. 2x² - 18x + 40 = 0 II. y² - 10y + 25 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "x = 4,5 | y = 5,5 | X ≤ Y"
+    },
+    {
+        "id": "q-ser-409",
+        "question": "I. x² - 3x - 40 = 0 II. y² - 8y - 20 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = -5,8 | y = -2,10 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-410",
+        "question": "I. x² + 3x - 28 = 0 II. y² - y - 6 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "x = 4,-7 | y = 3,-2 | X > Y mostly"
+    },
+    {
+        "id": "q-ser-411",
+        "question": "I. x² - 4x - 12 = 0 II. y² - 7y + 12 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = -2,6 | y = 3,4 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-412",
+        "question": "I. x² + 4x - 21 = 0 II. y² - 6y + 8 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 3,-7 | y = 2,4 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-413",
+        "question": "I. x² - 13x + 36 = 0 II. y² + 4y - 21 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "x = 4,9 | y = 3,-7 | X > Y always"
+    },
+    {
+        "id": "q-ser-414",
+        "question": "I. x² - 10x + 16 = 0 II. y² + 8y + 12 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 2,8 | y = -2,-6 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-415",
+        "question": "I. x² - 9x + 20 = 4x - 8 II. y² - 5y + 4 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "Eq1 → x² - 13x + 28=0 → x=4,9 | y=1,4 | X ≥ and > mostly"
+    },
+    {
+        "id": "q-ser-416",
+        "question": "I. x² + 7x + 10 = 0 II. y² + 10y + 24 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "x = -2,-5 | y = -4,-6 | X ≤ Y always"
+    },
+    {
+        "id": "q-ser-417",
+        "question": "I. x² - 15x + 50 = 0 II. y² - 12y + 32 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 5,10 | y = 4,8 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-418",
+        "question": "I. x² - 4x - 21 = 0 II. y² - 11y + 30 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "x = -3,7 | y = 5,6 | X > Y mostly"
+    },
+    {
+        "id": "q-ser-419",
+        "question": "I. x² + x - 20 = 0 II. y² - 3y - 10 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 4,-5 | y = 5,-2 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-420",
+        "question": "I. x² + 6x + 8 = 0 II. y² + y - 20 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "x = -2,-4 | y = 4,-5 | X < Y mostly"
+    },
+    {
+        "id": "q-ser-421",
+        "question": "I. x² - 2x - 24 = 0 II. y² - 14y + 45 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = -4,6 | y = 5,9 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-422",
+        "question": "I. x² - 5x + 4 = 0 II. y² - 9y + 20 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "x = 1,4 | y = 4,5 | X ≤ Y"
+    },
+    {
+        "id": "q-ser-423",
+        "question": "I. x² - 17x + 70 = 0 II. y² - 16y + 63 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "x = 7,10 | y = 7,9 | X ≥ and > mostly"
+    },
+    {
+        "id": "q-ser-424",
+        "question": "I. x² + 9x + 20 = 0 II. y² - 4y - 32 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "x = -4,-5 | y = 8,-4 | X < Y mostly"
+    },
+    {
+        "id": "q-ser-425",
+        "question": "I. x² - x - 56 = 0 II. y² - 10y + 24 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 8,-7 | y = 4,6 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-426",
+        "question": "I. x² - 8x + 15 = 3x - 6 II. y² - 12y + 36 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "Eq1 → x² - 11x + 21 = 0 → x = 3,7 | y = 6,6 | X ≤ Y"
+    },
+    {
+        "id": "q-ser-427",
+        "question": "I. x² - 20x + 96 = 4x - 16 II. y² + 10y + 25 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "Eq1 → x² - 24x + 112=0 → x=8,14 | y=-5,-5 | X always >"
+    },
+    {
+        "id": "q-ser-428",
+        "question": "I. x² - 21x + 100 = 0 II. y² - 11y + 18 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "x = 5,20 | y = 2,9 | X always ≥ and mostly >"
+    },
+    {
+        "id": "q-ser-429",
+        "question": "I. 2x² - 20x + 48 = 0 II. y² - 14y + 49 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "x = 4,6 | y = 7,7 | X ≤ Y always"
+    },
+    {
+        "id": "q-ser-430",
+        "question": "I. x² - 6x - 27 = 0 II. y² - 2y - 24 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = -3,9 | y = 6,-4 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-301",
+        "question": "I. x² - 10x + 21 = 4x - 6 II. y² - 9y + 14 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "Eq1 → x² - 14x + 27 = 0 → x = 2,12 | Eq2 → y = 2,7 | X ≥ Y always and strictly > in 3 cases => X > Y"
+    },
+    {
+        "id": "q-ser-302",
+        "question": "I. x² - 7x + 6 = 3x - 2 II. y² - 4y + 3 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Eq1 → x² - 10x + 8 = 0 → x = 1,8 | Eq2 → y = 1,3 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-303",
+        "question": "I. x² + 6x - 7 = 2x + 5 II. y² + 3y - 18 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "Eq1 → x² + 4x - 12 = 0 → x = 2,-6 | Eq2 → y = 3,-6 | X ≤ Y"
+    },
+    {
+        "id": "q-ser-304",
+        "question": "I. 2x² - 12x + 14 = 0 II. y² - 7y + 12 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 1,7 | y = 3,4 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-305",
+        "question": "I. x² - 4x + 3 = 0 II. y² - 8y + 15 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 1,3 | y = 3,5 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-306",
+        "question": "I. x² - 11x + 28 = 2x - 6 II. y² - 3y - 10 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Eq1 → x² - 13x + 34 = 0 → x = 2,11 | y = 5,-2 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-307",
+        "question": "I. 3x² - 24x + 45 = 0 II. y² - 10y + 25 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "x = 3,5 | y = 5,5 | X ≥ Y always"
+    },
+    {
+        "id": "q-ser-308",
+        "question": "I. x² - 6x + 5 = 0 II. y² - 12y + 32 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 1,5 | y = 4,8 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-309",
+        "question": "I. x² - 16x + 63 = 0 II. y² - 13y + 42 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x = 7,9 | y = 6,7 | Mixed => CND"
+    },
+    {
+        "id": "q-ser-310",
+        "question": "I. x² - 18x + 80 = 0 II. y² - 12y + 27 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "x = 8,10 | y = 3,9 | All X ≥ Y and > in three cases => X > Y"
+    },
+    {
+        "id": "q-ser-201",
+        "question": "I. x² - 13x + 36 = 0 II. y² - 11y + 24 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x → 4,9 | y → 3,8 | Mixed results => CND"
+    },
+    {
+        "id": "q-ser-202",
+        "question": "I. x² - 7x + 12 = 0 II. y² - 10y + 24 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "x → 3,4 | y → 4,6 | X never exceeds Y => X ≤ Y"
+    },
+    {
+        "id": "q-ser-203",
+        "question": "I. 2x² - 10x + 12 = 0 II. y² - 6y + 9 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "x → 2,3 | y → 3,3 | X ≤ Y always"
+    },
+    {
+        "id": "q-ser-204",
+        "question": "I. x² + 5x + 6 = 0 II. y² + 7y + 12 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "x → -2,-3 | y → -3,-4 | X ≥ Y always"
+    },
+    {
+        "id": "q-ser-205",
+        "question": "I. x² - 2x - 15 = 0 II. y² - 5y + 6 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x → -3,5 | y → 2,3 | Mixed results => CND"
+    },
+    {
+        "id": "q-ser-206",
+        "question": "I. 3x² - 27x + 54 = 0 II. y² - 12y + 32 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x → 3,6 | y → 4,8 | Mixed results => CND"
+    },
+    {
+        "id": "q-ser-207",
+        "question": "I. x² - 12x + 35 = 0 II. y² - 14y + 45 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "x → 5,7 | y → 5,9 | Mixed results => CND"
+    },
+    {
+        "id": "q-ser-208",
+        "question": "I. x² - 5x + 4 = 0 II. y² - 9y + 20 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "x → 1,4 | y → 4,5 | X ≤ Y always"
+    },
+    {
+        "id": "q-ser-209",
+        "question": "I. x² - 14x + 48 = 0 II. y² - 5y + 6 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "x → 6,8 | y → 2,3 | X > Y always"
+    },
+    {
+        "id": "q-ser-210",
+        "question": "I. x² - 3x + 2 = 0 II. y² - 11y + 30 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "x → 1,2 | y → 5,6 | X < Y always"
+    },
+    {
+        "id": "q-ser-076",
+        "question": "I. x² - 8x + 19 = 3x - 5 II. y² + 7y - 30 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Eqn 1 = 8, 3 | Roots of Eqn 2 = -10, 3 | Answer: D"
+    },
+    {
+        "id": "q-ser-077",
+        "question": "I. x² - 2x - 8 = 0 II. y² + 7y - 18 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Roots of Eqn 1 = 4, -2 | Roots of Eqn 2 = -9, 2 | Answer: C"
+    },
+    {
+        "id": "q-ser-078",
+        "question": "I. x² - 17x + 60 = 0 II. y² + 5y - 50 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Eqn 1 = 12, 5 | Roots of Eqn 2 = -10, 5 | Answer: D"
+    },
+    {
+        "id": "q-ser-079",
+        "question": "I. x² - 5x + 26 = 6x - 2 II. y² + 6y - 40 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Eqn 1 = 7, 4 | Roots of Eqn 2 = -10, 4 | Answer: D"
+    },
+    {
+        "id": "q-ser-080",
+        "question": "I. x² - 25x + 66 = 0 II. y² + 25y + 32 = 4y - 22",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "Roots of Eqn 1 = 22, 3 | Roots of Eqn 2 = -18, -3 | Answer: A"
+    },
+    {
+        "id": "q-ser-081",
+        "question": "I. 25x² - 45x + 14 = 0 II. 48y² - 176y - 64 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Roots of Eqn 1 = 1.4, 0.4 | Roots of Eqn 2 = 4, -0.33 | Answer: C"
+    },
+    {
+        "id": "q-ser-082",
+        "question": "I. x² - 11x + 30 = 0 II. y² - 13y + 42 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "Roots of Eqn 1 = 6, 5 | Roots of Eqn 2 = 7, 6 | Answer: E"
+    },
+    {
+        "id": "q-ser-083",
+        "question": "I. 2x² + 19x + 45 = 0 II. 2y² + 11y + 12 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "Roots of Eqn 1 = -5, -4.5 | Roots of Eqn 2 = -4, -1.5 | Answer: B"
+    },
+    {
+        "id": "q-ser-084",
+        "question": "I. 3x² - 13x + 12 = 0 II. 2y² - 15y + 28 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "Roots of Eqn 1 = 3, 1.33 | Roots of Eqn 2 = 4, 3.5 | Answer: B"
+    },
+    {
+        "id": "q-ser-085",
+        "question": "I. 6x² + 19x + 15 = 0 II. 3y² + 11y + 10 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Eqn 1 = -1.67, -1.5 | Roots of Eqn 2 = -2, -1.67 | Answer: D"
+    },
+    {
+        "id": "q-ser-086",
+        "question": "I. 2x² - 11x + 15 = 0 II. 2y² - 11y + 14 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Roots of Eqn 1 = 3, 2.5 | Roots of Eqn 2 = 2, 3.5 | Answer: C"
+    },
+    {
+        "id": "q-ser-087",
+        "question": "I. 2x² - 23x + 56 = 0 II. 3y² + 13y + 4 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "Roots of Eqn 1 = 8, 3.5 | Roots of Eqn 2 = -4, -0.33 | Answer: A"
+    },
+    {
+        "id": "q-ser-088",
+        "question": "I. 2x² - 7x + 5 = 0 II. 2y² + y - 28 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Roots of Eqn 1 = 1, 2.5 | Roots of Eqn 2 = 3.5, -4 | Answer: C"
+    },
+    {
+        "id": "q-ser-089",
+        "question": "I. x² + 5x + 4 = 0 II. 3y² - 13y + 12 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "Roots of Eqn 1 = -4, -1 | Roots of Eqn 2 = 3, 1.33 | Answer: B"
+    },
+    {
+        "id": "q-ser-061",
+        "question": "I. 25x² - 15x + 2 = 0 || II. 10y² + 3y - 1 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Equation 1 = 0.2, 0.4 | Roots of Equation 2 = -0.5, 0.2"
+    },
+    {
+        "id": "q-ser-062",
+        "question": "I. X² + 5x - 19 = x + 2 || II. Y² + 15y + 20 = 26y - 4",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "Roots of Equation 1 = -7, 3 | Roots of Equation 2 = 8, 3"
+    },
+    {
+        "id": "q-ser-063",
+        "question": "I. X² - 7x - 18 = 0 || II. Y² + 10y + 16 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Equation 1 = 9, -2 | Roots of Equation 2 = -8, -2"
+    },
+    {
+        "id": "q-ser-064",
+        "question": "I. X² - 9x + 18 = 0 || II. Y² + 7y - 30 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Equation 1 = 6, 3 | Roots of Equation 2 = -10, 3"
+    },
+    {
+        "id": "q-ser-065",
+        "question": "I. X² - 2x - 8 = 0 || II. Y² - 2y - 15 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Roots of Equation 1 = 4, -2 | Roots of Equation 2 = 5, -3"
+    },
+    {
+        "id": "q-ser-066",
+        "question": "I. X² - 12x + 65 = 5x - 5 || II. Y² + 5y - 84 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Equation 1 = 10, 7 | Roots of Equation 2 = -12, 7"
+    },
+    {
+        "id": "q-ser-067",
+        "question": "I. X² + 14x - 32 = 0 || II. Y² - 12y + 32 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "Roots of Equation 1 = -16, 2 | Roots of Equation 2 = 8, 4"
+    },
+    {
+        "id": "q-ser-068",
+        "question": "I. X² + 9x - 25 = 8x - 5 || II. Y² - 8y + 33 = 3y + 3",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "Roots of Equation 1 = -5, 4 | Roots of Equation 2 = 6, 5"
+    },
+    {
+        "id": "q-ser-069",
+        "question": "I. X² + 7x - 16 = 2x - 2 || II. Y² - 10y + 16 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "Roots of Equation 1 = -7, 2 | Roots of Equation 2 = 8, 2"
+    },
+    {
+        "id": "q-ser-090",
+        "question": "I. 3x² - 14x + 8 = 0 || II. 3y² - 20y + 12 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Roots of Equation 1 = 4, 0.67 | Roots of Equation 2 = 6, 0.67"
+    },
+    {
+        "id": "q-ser-091",
+        "question": "I. 2x² - 7x + 3 = 0 || II. 2y² + 11y + 12 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "Roots of Equation 1 = 3, 0.5 | Roots of Equation 2 = -4, -1.5"
+    },
+    {
+        "id": "q-ser-092",
+        "question": "I. 2x² - 23x + 56 = 0 || II. 3y² + 13y + 4 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "Roots of Equation 1 = 8, 3.5 | Roots of Equation 2 = -4, -0.33"
+    },
+    {
+        "id": "q-ser-093",
+        "question": "I. 30x² + 89x + 58 = 0 || II. 27y² - 51y - 56 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "Roots of Equation 1 = -2, -29/30 | Roots of Equation 2 = 8/3, -7/9"
+    },
+    {
+        "id": "q-ser-094",
+        "question": "I. 4x² + 8x + 3 = 0 || II. 4y² - 29y + 45 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(b) X < Y",
+        "explanation": "Roots of Equation 1 = -1.5, -0.5 | Roots of Equation 2 = 5, 2.25"
+    },
+    {
+        "id": "q-ser-095",
+        "question": "I. 2x² - 23x + 21 = 0 || II. Y² + 42y + 272 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "Roots of Equation 1 = 10.5, 1 | Roots of Equation 2 = -34, -8"
+    },
+    {
+        "id": "q-ser-096",
+        "question": "I. 5x² - 26x + 21 = 0 || II. 2y² - 17y + 21 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(c) X = Y or CND",
+        "explanation": "Roots of Equation 1 = 1, 4.2 | Roots of Equation 2 = 7, 1.5"
+    },
+    {
+        "id": "q-ser-097",
+        "question": "I. X² - 21x + 104 = 0 || II. Y² - 33y + 260 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(e) X ≤ Y",
+        "explanation": "Roots of Equation 1 = 13, 8 | Roots of Equation 2 = 13, 20"
+    },
+    {
+        "id": "q-ser-098",
+        "question": "I. X² - 31x + 240 = 0 || II. Y² - 28y + 195 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Equation 1 = 15, 16 | Roots of Equation 2 = 13, 15"
+    },
+    {
+        "id": "q-ser-099",
+        "question": "I. 3x² - 17x + 10 = 0 || II. 3y² + 4y - 4 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(d) X ≥ Y",
+        "explanation": "Roots of Equation 1 = 0.67, 5 | Roots of Equation 2 = -2, 0.67"
+    },
+    {
+        "id": "q-ser-100",
+        "question": "I. 3x² - 19x + 28 = 0 || II. 4y² - 5y - 6 = 0",
+        "image": null,
+        "options": [
+            "(a) X > Y",
+            "(b) X < Y",
+            "(c) X = Y or CND",
+            "(d) X ≥ Y",
+            "(e) X ≤ Y"
+        ],
+        "answer": "(a) X > Y",
+        "explanation": "Roots of Equation 1 = 4, 2.33 | Roots of Equation 2 = 2, -0.75"
+    }
+],
+
+
+
+
+
+
+
+
+
+
+
+
+
     },
 
     // --- REASONING EXAMPLE (WITH IMAGE) ---
