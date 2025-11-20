@@ -7596,8 +7596,7 @@ const quizDB = {
 "Data-Interpretation":[{
 "id": "di-001",
 "question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 1:\n\nIn which year did tea exports account for the highest percentage of production?",
-"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
-",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png",
 "options": [
 "1991",
 "1992",
@@ -7610,8 +7609,7 @@ const quizDB = {
 {
 "id": "q-002",
 "question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 2:\n\nWhat was the average annual tea production from 1991 to 1996 (in million kg)?",
-"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
-",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png",
 "options": [
 "590",
 "608",
@@ -7624,8 +7622,7 @@ const quizDB = {
 {
 "id": "q-003",
 "question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 3:\n\nWhat was the approximate increase in tea exports from 1991 to 1996?",
-"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
-",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png",
 "options": [
 "300 million kg",
 "354 million kg",
@@ -7638,8 +7635,7 @@ const quizDB = {
 {
 "id": "q-004",
 "question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 4:\n\nWhich year experienced the largest year-on-year increase in tea production?",
-"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
-",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png",
 "options": [
 "1992–1993",
 "1993–1994",
@@ -7652,8 +7648,7 @@ const quizDB = {
 {
 "id": "q-005",
 "question": "Overview:\n\nThe chart represents Tea production and exports in India from 1991 to 1996, measured in million kilograms. Production consistently exceeds exports, with both showing an increasing trend over the years.\n\nQuestion 5:\n\nIf the total tea production over the six years was to be equally distributed over 12 months, approximately how many million kg of tea would be produced per month?",
-"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png
-",
+"image": "https://res.cloudinary.com/dzz2nken6/image/upload/w_400/v1758636553/generated-image_kh2lls.png",
 "options": [
 "100 million kg",
 "120 million kg",
