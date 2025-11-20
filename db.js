@@ -21019,15 +21019,112 @@ const quizDB = {
 
   'Computer': {
   
-      'Series (20 Questions)': [
-        {
-          "id": "lr-ser-001",
-          "question": "Find the next term in the series: 2, 6, 12, 20, ?",
-          "options": ["30", "28", "26", "24"],
-          "answer": 1,
-          "explanation": "Differences are +4, +6, +8 → next +10 → 20+8=28."
-        }
-      ],
+      'Basic Concepts': [
+  {
+    "id": "q-001",
+    "question": "Which of the following is an example of system software?",
+    "image": null,
+    "options": ["MS Word", "Windows 11", "Excel", "PowerPoint", "Photoshop"],
+    "answer": "Windows 11",
+    "explanation": "System software includes operating systems that manage hardware and resources."
+  },
+  {
+    "id": "q-002",
+    "question": "What is the function of the ALU in a computer?",
+    "image": null,
+    "options": [
+      "Stores data permanently",
+      "Performs arithmetic and logic operations",
+      "Controls peripheral devices",
+      "Displays output",
+      "Executes networking tasks"
+    ],
+    "answer": "Performs arithmetic and logic operations",
+    "explanation": "The Arithmetic Logic Unit handles mathematical and logical processing inside the CPU."
+  },
+  {
+    "id": "q-003",
+    "question": "Which protocol is used to transfer web pages over the internet?",
+    "image": null,
+    "options": ["FTP", "SMTP", "HTTP", "POP3", "IMAP"],
+    "answer": "HTTP",
+    "explanation": "HTTP is the standard protocol used for web communication and page transfer."
+  },
+  {
+    "id": "q-004",
+    "question": "What does BIOS stand for?",
+    "image": null,
+    "options": [
+      "Binary Input Output System",
+      "Basic Input Output System",
+      "Basic Integrated Operating System",
+      "Binary Integrated Operating System",
+      "Base Internal Operating Setup"
+    ],
+    "answer": "Basic Input Output System",
+    "explanation": "BIOS initializes hardware and loads the operating system during boot."
+  },
+  {
+    "id": "q-005",
+    "question": "Which of the following is considered volatile memory?",
+    "image": null,
+    "options": ["ROM", "Flash memory", "Hard disk", "RAM", "SSD"],
+    "answer": "RAM",
+    "explanation": "RAM stores data temporarily and loses it when power is turned off."
+  },
+  {
+    "id": "q-006",
+    "question": "What is the main purpose of a firewall?",
+    "image": null,
+    "options": [
+      "To store passwords",
+      "To speed up network traffic",
+      "To block unauthorized access",
+      "To encrypt data",
+      "To increase bandwidth"
+    ],
+    "answer": "To block unauthorized access",
+    "explanation": "Firewalls monitor and filter incoming and outgoing network traffic for security."
+  },
+  {
+    "id": "q-007",
+    "question": "Which memory is used to store the bootloader?",
+    "image": null,
+    "options": ["RAM", "ROM", "Cache", "Virtual memory", "Registers"],
+    "answer": "ROM",
+    "explanation": "ROM stores firmware including the bootloader, which loads the OS."
+  },
+  {
+    "id": "q-008",
+    "question": "What does URL stand for?",
+    "image": null,
+    "options": [
+      "Universal Resource Locator",
+      "Uniform Resource Locator",
+      "Unified Routing Link",
+      "Universal Routing Language",
+      "Unified Resource Language"
+    ],
+    "answer": "Uniform Resource Locator",
+    "explanation": "A URL uniquely identifies a resource on the internet."
+  },
+  {
+    "id": "q-009",
+    "question": "Which of the following is an example of open-source operating systems?",
+    "image": null,
+    "options": ["Windows", "MacOS", "Linux", "ChromeOS", "Unix"],
+    "answer": "Linux",
+    "explanation": "Linux is widely used as an open-source OS available for free modification."
+  },
+  {
+    "id": "q-010",
+    "question": "Which device converts digital signals to analog signals and vice versa for internet connectivity?",
+    "image": null,
+    "options": ["Router", "Switch", "Hub", "Modem", "Bridge"],
+    "answer": "Modem",
+    "explanation": "A modem modulates and demodulates signals to establish internet communication."
+  }
+],
      
       
   },
