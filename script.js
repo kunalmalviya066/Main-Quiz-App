@@ -6,7 +6,7 @@
  */
 
 // --- 0. SECURITY & CONFIGURATION ---
-const MASTER_PASSWORD = "BankMock"; 
+const MASTER_PASSWORD = "AccessGrant"; 
 const ADMIN_PASSWORD = "Admin@123"; // New Admin Password
 const AUTH_KEY = "quizAppAuthenticated"; // Key for localStorage flag
 
