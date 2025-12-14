@@ -172,12 +172,82 @@
   }
 
   /* =========================
+     AI QUIZ REVIEW SUMMARY
+  ========================= */
+  function generateQuizReviewSummary() {
+    const history = getQuizHistory();
+    if (!history.length) return null;
+
+    const last = history[history.length - 1];
+    if (!last) return null;
+
+    const accuracy = percent(last.correct || 0, last.attempted || 0);
+    const unattempted = last.unattempted || 0;
+    const timeTaken = last.timeTaken || null;
+
+    let strength = "Consistency";
+    let weakness = "Accuracy";
+    let tip = "Maintain regular practice.";
+
+    if (accuracy >= 75) {
+      strength = last.subject || "Overall Performance";
+      tip = "Try increasing difficulty or attempting a full mock.";
+    } else if (accuracy >= 50) {
+      weakness = last.subject || "Concept clarity";
+      tip = "Revise weak topics and reattempt similar questions.";
+    } else {
+      weakness = last.subject || "Fundamentals";
+      tip = "Slow down and focus on concept-based questions.";
+    }
+
+    return {
+      accuracy,
+      strength,
+      weakness,
+      unattempted,
+      timeTaken,
+      tip
+    };
+  }
+
+  function renderQuizReviewSummary() {
+    const container = document.getElementById("result-details") || document.getElementById("result-summary");
+    if (!container) return;
+
+    const summary = generateQuizReviewSummary();
+    if (!summary) return;
+
+    const box = document.createElement("div");
+    box.style.marginTop = "24px";
+    box.style.padding = "18px";
+    box.style.borderRadius = "14px";
+    box.style.background = "#eff6ff";
+    box.style.border = "1px solid #dbeafe";
+
+    box.innerHTML = `
+      <h3 style="margin-bottom:8px; color:#1e40af">🧠 AI Quiz Review</h3>
+      <ul style="font-size:14px; color:#1e3a8a; line-height:1.6">
+        <li><strong>Accuracy:</strong> ${summary.accuracy}%</li>
+        <li><strong>Strength:</strong> ${summary.strength}</li>
+        <li><strong>Needs Improvement:</strong> ${summary.weakness}</li>
+        <li><strong>Unattempted:</strong> ${summary.unattempted}</li>
+      </ul>
+      <p style="margin-top:10px; font-size:14px; color:#0f172a">
+        <strong>AI Tip:</strong> ${summary.tip}
+      </p>
+    `;
+
+    container.prepend(box);
+  }
+
+  /* =========================
      BOOTSTRAP EXTENSION
   ========================= */
   document.addEventListener("DOMContentLoaded", () => {
     try {
       injectAIInsights();
       renderConfidenceScore();
+      renderQuizReviewSummary();
     } catch {
       /* silent fail */
     }
