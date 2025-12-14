@@ -1,18 +1,24 @@
 /* =========================
-   GLOBAL RESET & TOKENS
+   DESIGN TOKENS
 ========================= */
 :root {
-  --bg: #f3f4f6;
+  --bg: #f5f7fb;
   --card-bg: #ffffff;
-  --primary: #4f46e5;
-  --primary-dark: #4338ca;
-  --text-main: #111827;
-  --text-muted: #6b7280;
-  --border: #e5e7eb;
-  --input-bg: #f9fafb;
-  --radius: 14px;
+  --primary: #2563eb;         /* Blue 600 */
+  --primary-soft: #dbeafe;    /* Blue 100 */
+  --primary-dark: #1e40af;    /* Blue 800 */
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --input-bg: #f8fafc;
+  --radius: 16px;
+  --shadow-soft: 0 10px 30px rgba(2, 6, 23, 0.08);
+  --shadow-hover: 0 14px 40px rgba(37, 99, 235, 0.25);
 }
 
+/* =========================
+   RESET
+========================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,7 +35,7 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(circle at top, #eef2ff, var(--bg));
+    radial-gradient(1200px 600px at top, #eef2ff, var(--bg));
   color: var(--text-main);
 }
 
@@ -40,12 +46,28 @@ form {
   width: 100%;
   max-width: 420px;
   background: var(--card-bg);
-  padding: 36px 32px;
+  padding: 38px 34px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.08);
-  animation: slideUp 0.6s ease;
+  box-shadow: var(--shadow-soft);
+  animation: slideUp 0.55s ease;
+  position: relative;
+}
+
+/* subtle top accent */
+form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    #60a5fa
+  );
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
 /* =========================
@@ -53,20 +75,21 @@ form {
 ========================= */
 h2 {
   text-align: center;
-  font-size: 1.7rem;
+  font-size: 1.75rem;
   font-weight: 600;
+  letter-spacing: -0.02em;
   margin-bottom: 6px;
 }
 
 h2 + p {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
-  margin-bottom: 28px;
+  margin-bottom: 30px;
 }
 
 /* =========================
-   INPUT GROUP
+   INPUTS
 ========================= */
 input {
   width: 100%;
@@ -77,18 +100,21 @@ input {
   background: var(--input-bg);
   font-size: 0.95rem;
   color: var(--text-main);
-  transition: border 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
 input::placeholder {
-  color: #9ca3af;
+  color: #94a3b8;
 }
 
 input:focus {
   outline: none;
   border-color: var(--primary);
   background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+  box-shadow: 0 0 0 4px var(--primary-soft);
 }
 
 /* =========================
@@ -109,25 +135,26 @@ button {
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
+  letter-spacing: 0.01em;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    filter 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
 }
 
 button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.35);
+  box-shadow: var(--shadow-hover);
   filter: brightness(1.05);
 }
 
 button:active {
   transform: translateY(0);
-  box-shadow: 0 6px 14px rgba(79, 70, 229, 0.25);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
 }
 
 /* =========================
-   LINKS & FOOTER TEXT
+   FOOTER TEXT & LINKS
 ========================= */
 p {
   margin-top: 18px;
@@ -154,12 +181,22 @@ p a:first-child {
 }
 
 /* =========================
+   ERROR MESSAGE (optional)
+========================= */
+.error-message {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* =========================
    ANIMATION
 ========================= */
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.98);
+    transform: translateY(18px) scale(0.97);
   }
   to {
     opacity: 1;
@@ -172,10 +209,10 @@ p a:first-child {
 ========================= */
 @media (max-width: 480px) {
   form {
-    padding: 28px 22px;
+    padding: 30px 22px;
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
   }
 }
