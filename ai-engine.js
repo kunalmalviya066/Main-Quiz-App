@@ -100,13 +100,7 @@
   /* =========================
      BOOTSTRAP (NON-BLOCKING)
   ========================= */
-  document.addEventListener("DOMContentLoaded", () => {
-    try {
-      injectAIInsights();
-    } catch {
-      /* silent fail */
-    }
-  });
+ 
 
   /* =========================
      CONFIDENCE SCORE ENGINE
