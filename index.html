@@ -9,17 +9,12 @@
 </head>
 <!-- AUTH GUARD (NO FLOW CHANGE) -->
 <script>
-  (function () {
-    const isAuth = localStorage.getItem("isAuthenticated");
-    if (!isAuth) {
-      document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("login-gate").classList.remove("hidden");
-        document.getElementById("app-container").classList.add("hidden");
-        document.querySelector("header nav").classList.add("hidden");
-      });
-    }
-  })();
+  const user = localStorage.getItem("loggedInUser");
+  if (!user) {
+    window.location.href = "auth/login.html";
+  }
 </script>
+
 <body>
 
     <header class="main-header">
