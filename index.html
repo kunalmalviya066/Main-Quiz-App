@@ -7,28 +7,19 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+<!-- AUTH GUARD (NO FLOW CHANGE) -->
 <script>
-  (function authGuard() {
-    const isAuthenticated = localStorage.getItem("isAuthenticated");
-
-    const loginGate = document.getElementById("login-gate");
-    const appContainer = document.getElementById("app-container");
-    const headerNav = document.querySelector("header nav");
-
-    if (!isAuthenticated) {
-      // User NOT logged in
-      loginGate.classList.remove("hidden");
-      appContainer.classList.add("hidden");
-      headerNav.classList.add("hidden");
-    } else {
-      // User logged in
-      loginGate.classList.add("hidden");
-      appContainer.classList.remove("hidden");
-      headerNav.classList.remove("hidden");
+  (function () {
+    const isAuth = localStorage.getItem("isAuthenticated");
+    if (!isAuth) {
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("login-gate").classList.remove("hidden");
+        document.getElementById("app-container").classList.add("hidden");
+        document.querySelector("header nav").classList.add("hidden");
+      });
     }
   })();
 </script>
-
 <body>
 
     <header class="main-header">
@@ -351,5 +342,32 @@
 
     <script src="db.js"></script>
     <script src="script.js"></script>
+    <!-- LOGIN + LOGOUT HANDLER (NO FLOW BREAK) -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.getElementById("login-button");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (loginBtn) {
+      loginBtn.addEventListener("click", () => {
+        const pwd = document.getElementById("password-input").value;
+        if (pwd === "ask to owner") {
+          localStorage.setItem("isAuthenticated", "true");
+          location.reload();
+        } else {
+          document.getElementById("login-error").textContent = "Invalid password";
+          document.getElementById("login-error").classList.remove("hidden");
+        }
+      });
+    }
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("isAuthenticated");
+        location.reload();
+      });
+    }
+  });
+</script>
 </body>
 </html>
