@@ -337,6 +337,13 @@
 
     <script src="db.js"></script>
     <script src="script.js"></script>
+    <script>
+  document.getElementById("logoutBtn")?.addEventListener("click", () => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "auth/login.html";
+  });
+</script>
+
     <!-- LOGIN + LOGOUT HANDLER (NO FLOW BREAK) -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
