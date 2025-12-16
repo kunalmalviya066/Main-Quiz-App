@@ -1,168 +1,148 @@
 /* ============================================================
-   Exam Integrity Engine (One-File Extension)
-   Non-intrusive | LocalStorage-only | Plug & Play
+   Exam Integrity Engine (Guaranteed SPA-Compatible)
+   Zero dependency | Zero modification | One file
 ============================================================ */
 
 (function () {
-  const INTEGRITY_KEY = "__exam_integrity_live";
-  const ATTEMPT_KEY = "examAttempts"; // adjust ONLY if your app uses a different key
+  const ATTEMPT_KEY = "examAttempts";
+  const LIVE_KEY = "__exam_integrity_live";
 
   // ----------------------------
-  // Live Integrity Tracker
+  // Live tracker
   // ----------------------------
-  const integrity = {
+  const live = {
     tabSwitches: 0,
-    windowBlurs: 0,
+    blurs: 0,
     pauses: 0,
     fastAnswers: 0,
     answerTimes: [],
-    lastAnswerTime: null,
-    startTime: Date.now()
+    lastAnswerAt: null
   };
 
-  // Store live state
-  localStorage.setItem(INTEGRITY_KEY, JSON.stringify(integrity));
+  localStorage.setItem(LIVE_KEY, JSON.stringify(live));
 
   // ----------------------------
-  // Event Listeners (Passive)
+  // Passive detection
   // ----------------------------
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
-      integrity.tabSwitches++;
-      persist();
+      live.tabSwitches++;
+      save();
     }
   });
 
   window.addEventListener("blur", () => {
-    integrity.windowBlurs++;
-    persist();
+    live.blurs++;
+    save();
   });
 
-  // Optional pause detection (if pause button exists)
-  document.addEventListener("click", (e) => {
-    if (e.target && e.target.innerText?.toLowerCase().includes("pause")) {
-      integrity.pauses++;
-      persist();
+  document.addEventListener("click", e => {
+    if (e.target?.innerText?.toLowerCase().includes("pause")) {
+      live.pauses++;
+      save();
     }
   });
 
-  // Answer speed detection
-  document.addEventListener("change", (e) => {
-    if (e.target.type === "radio") {
+  document.addEventListener("change", e => {
+    if (e.target?.type === "radio") {
       const now = Date.now();
-      if (integrity.lastAnswerTime) {
-        const diff = (now - integrity.lastAnswerTime) / 1000;
-        integrity.answerTimes.push(diff);
-        if (diff < 3) integrity.fastAnswers++;
+      if (live.lastAnswerAt) {
+        const diff = (now - live.lastAnswerAt) / 1000;
+        live.answerTimes.push(diff);
+        if (diff < 3) live.fastAnswers++;
       }
-      integrity.lastAnswerTime = now;
-      persist();
+      live.lastAnswerAt = now;
+      save();
     }
   });
 
-  function persist() {
-    localStorage.setItem(INTEGRITY_KEY, JSON.stringify(integrity));
+  function save() {
+    localStorage.setItem(LIVE_KEY, JSON.stringify(live));
   }
 
   // ----------------------------
-  // Score Calculator
+  // Integrity scoring
   // ----------------------------
-  function calculateIntegrityScore(data) {
+  function scoreIntegrity(d) {
     let score = 100;
+    score -= d.tabSwitches * 10;
+    score -= d.blurs * 5;
+    score -= d.pauses * 8;
+    score -= d.fastAnswers * 4;
 
-    score -= data.tabSwitches * 10;
-    score -= data.windowBlurs * 5;
-    score -= data.pauses * 8;
-    score -= data.fastAnswers * 4;
-
-    // Suspicious pattern: too consistent speed
-    if (data.answerTimes.length >= 5) {
-      const avg =
-        data.answerTimes.reduce((a, b) => a + b, 0) /
-        data.answerTimes.length;
-
-      const variance =
-        data.answerTimes.reduce((s, t) => s + Math.pow(t - avg, 2), 0) /
-        data.answerTimes.length;
-
+    if (d.answerTimes.length >= 5) {
+      const avg = d.answerTimes.reduce((a,b)=>a+b,0)/d.answerTimes.length;
+      const variance = d.answerTimes.reduce((s,t)=>s+Math.pow(t-avg,2),0)/d.answerTimes.length;
       if (variance < 1) score -= 10;
     }
-
     return Math.max(score, 0);
   }
 
-  function getRiskLabel(score) {
+  function risk(score) {
     if (score >= 85) return { label: "Low Risk", icon: "✅", color: "green" };
     if (score >= 60) return { label: "Medium Risk", icon: "⚠", color: "orange" };
     return { label: "High Risk", icon: "🚫", color: "red" };
   }
 
   // ----------------------------
-  // Attach Integrity to Last Attempt
+  // Detect NEW attempt (THIS IS THE KEY)
   // ----------------------------
-  window.addEventListener("beforeunload", finalizeIntegrity);
-  document.addEventListener("examSubmitted", finalizeIntegrity);
+  let lastCount = (JSON.parse(localStorage.getItem(ATTEMPT_KEY)) || []).length;
 
-  function finalizeIntegrity() {
-    const live = JSON.parse(localStorage.getItem(INTEGRITY_KEY));
-    if (!live) return;
+  setInterval(() => {
+    const attempts = JSON.parse(localStorage.getItem(ATTEMPT_KEY)) || [];
+    if (attempts.length > lastCount) {
+      attachIntegrity(attempts);
+      lastCount = attempts.length;
+    }
+  }, 800);
 
-    const score = calculateIntegrityScore(live);
-    const risk = getRiskLabel(score);
+  function attachIntegrity(attempts) {
+    const data = JSON.parse(localStorage.getItem(LIVE_KEY));
+    if (!data) return;
 
-    const attempts = JSON.parse(localStorage.getItem(ATTEMPT_KEY) || "[]");
-    if (!attempts.length) return;
+    const score = scoreIntegrity(data);
+    const r = risk(score);
 
     attempts[attempts.length - 1].integrity = {
       score,
-      risk: risk.label,
-      details: live
+      risk: r.label,
+      details: data
     };
 
     localStorage.setItem(ATTEMPT_KEY, JSON.stringify(attempts));
-    localStorage.removeItem(INTEGRITY_KEY);
+    localStorage.removeItem(LIVE_KEY);
   }
 
   // ----------------------------
-  // Result Page UI Injection
+  // Result UI Injection (safe)
   // ----------------------------
-  function injectIntegrityUI() {
-    const attempts = JSON.parse(localStorage.getItem(ATTEMPT_KEY) || "[]");
+  setInterval(() => {
+    const attempts = JSON.parse(localStorage.getItem(ATTEMPT_KEY)) || [];
     if (!attempts.length) return;
 
     const last = attempts[attempts.length - 1];
-    if (!last.integrity) return;
+    if (!last.integrity || document.getElementById("integrity-box")) return;
 
-    const { score, risk } = last.integrity;
-    const meta = getRiskLabel(score);
+    const r = risk(last.integrity.score);
 
     const box = document.createElement("div");
+    box.id = "integrity-box";
     box.style.cssText = `
-      margin-top:20px;
-      padding:16px;
+      margin-top:16px;
+      padding:14px;
       border-radius:10px;
-      background:#111827;
-      border-left:6px solid ${meta.color};
+      background:#0f172a;
+      border-left:6px solid ${r.color};
       font-weight:600;
     `;
-
     box.innerHTML = `
-      <div style="font-size:18px">
-        Exam Integrity: ${meta.icon} ${risk}
-      </div>
-      <div style="font-size:14px;opacity:.8;margin-top:6px">
-        Trust Score: ${score}/100
+      Exam Integrity: ${r.icon} ${last.integrity.risk}
+      <div style="font-size:13px;opacity:.8">
+        Trust Score: ${last.integrity.score}/100
       </div>
     `;
 
-    const target =
-      document.querySelector(".result-summary") ||
-      document.querySelector("#result") ||
-      document.body;
-
-    target.appendChild(box);
-  }
-
-  // Delay injection (SPA safe)
-  setTimeout(injectIntegrityUI, 1000);
+    document.body.appendChild(box);
+  }, 1000);
 })();
