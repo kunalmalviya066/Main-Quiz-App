@@ -67,7 +67,7 @@
   }
 
   /* =========================
-     UI INJECTION (SAFE)
+     SMART INSIGHT (MATCHES CONFIDENCE UI)
   ========================= */
   function injectAIInsights() {
     const container = document.getElementById("home");
@@ -79,28 +79,24 @@
     const weak = insights[0];
 
     const box = document.createElement("div");
-    box.style.marginTop = "24px";
+    box.style.marginTop = "20px";
     box.style.padding = "16px";
     box.style.borderRadius = "12px";
-    box.style.background = "#eff6ff";
-    box.style.border = "1px solid #dbeafe";
+    box.style.background = "#f8fafc";
+    box.style.border = "1px solid #e2e8f0";
 
     box.innerHTML = `
-      <h3 style="margin-bottom:6px; color:#1e40af">📊 Smart Insight</h3>
-      <p style="font-size:14px; color:#1e3a8a">
-        Your weakest subject is <strong>${weak.subject}</strong>
-        (Accuracy: ${weak.accuracy}%).<br>
-        Recommended: Practice this subject today.
+      <h3 style="margin-bottom:6px; color:#0f172a">📊 Smart Insight</h3>
+      <p style="font-size:14px; color:#475569">
+        Your weakest subject is 
+        <strong>${weak.subject}</strong> 
+        (${weak.accuracy}% accuracy).<br>
+        Focused practice here will improve your overall score.
       </p>
     `;
 
     container.appendChild(box);
   }
-
-  /* =========================
-     BOOTSTRAP (NON-BLOCKING)
-  ========================= */
- 
 
   /* =========================
      CONFIDENCE SCORE ENGINE
@@ -117,8 +113,12 @@
     recent.forEach((q, i) => {
       const acc = percent(q.correct || 0, q.attempted || 0);
       totalAccuracy += acc;
+
       if (i > 0) {
-        const prevAcc = percent(recent[i - 1].correct || 0, recent[i - 1].attempted || 0);
+        const prevAcc = percent(
+          recent[i - 1].correct || 0,
+          recent[i - 1].attempted || 0
+        );
         if (acc > prevAcc) improvementTrend++;
       }
     });
@@ -145,7 +145,7 @@
 
     const dots = Array.from({ length: 5 }, (_, i) =>
       `<span style="font-size:18px; color:${i < score ? '#2563eb' : '#cbd5f5'}">●</span>`
-    ).join(' ');
+    ).join(" ");
 
     const box = document.createElement("div");
     box.style.marginTop = "20px";
@@ -166,82 +166,12 @@
   }
 
   /* =========================
-     AI QUIZ REVIEW SUMMARY
-  ========================= */
-  function generateQuizReviewSummary() {
-    const history = getQuizHistory();
-    if (!history.length) return null;
-
-    const last = history[history.length - 1];
-    if (!last) return null;
-
-    const accuracy = percent(last.correct || 0, last.attempted || 0);
-    const unattempted = last.unattempted || 0;
-    const timeTaken = last.timeTaken || null;
-
-    let strength = "Consistency";
-    let weakness = "Accuracy";
-    let tip = "Maintain regular practice.";
-
-    if (accuracy >= 75) {
-      strength = last.subject || "Overall Performance";
-      tip = "Try increasing difficulty or attempting a full mock.";
-    } else if (accuracy >= 50) {
-      weakness = last.subject || "Concept clarity";
-      tip = "Revise weak topics and reattempt similar questions.";
-    } else {
-      weakness = last.subject || "Fundamentals";
-      tip = "Slow down and focus on concept-based questions.";
-    }
-
-    return {
-      accuracy,
-      strength,
-      weakness,
-      unattempted,
-      timeTaken,
-      tip
-    };
-  }
-
-  function renderQuizReviewSummary() {
-    const container = document.getElementById("result-details") || document.getElementById("result-summary");
-    if (!container) return;
-
-    const summary = generateQuizReviewSummary();
-    if (!summary) return;
-
-    const box = document.createElement("div");
-    box.style.marginTop = "24px";
-    box.style.padding = "18px";
-    box.style.borderRadius = "14px";
-    box.style.background = "#eff6ff";
-    box.style.border = "1px solid #dbeafe";
-
-    box.innerHTML = `
-      <h3 style="margin-bottom:8px; color:#1e40af">🧠 AI Quiz Review</h3>
-      <ul style="font-size:14px; color:#1e3a8a; line-height:1.6">
-        <li><strong>Accuracy:</strong> ${summary.accuracy}%</li>
-        <li><strong>Strength:</strong> ${summary.strength}</li>
-        <li><strong>Needs Improvement:</strong> ${summary.weakness}</li>
-        <li><strong>Unattempted:</strong> ${summary.unattempted}</li>
-      </ul>
-      <p style="margin-top:10px; font-size:14px; color:#0f172a">
-        <strong>AI Tip:</strong> ${summary.tip}
-      </p>
-    `;
-
-    container.prepend(box);
-  }
-
-  /* =========================
-     BOOTSTRAP EXTENSION
+     BOOTSTRAP (SAFE)
   ========================= */
   document.addEventListener("DOMContentLoaded", () => {
     try {
       injectAIInsights();
       renderConfidenceScore();
-      renderQuizReviewSummary();
     } catch {
       /* silent fail */
     }
