@@ -4,7 +4,7 @@
    =============================== */
 
 (function () {
-  const ADMIN_EMAIL = "admin@govexams.com"; // 👈 change if needed
+  const ADMIN_EMAIL = "admin@gmail.com"; // 👈 change if needed
   const STORAGE_KEY = "gov_policy_rules";
 
   /* ---------- Default Content ---------- */
