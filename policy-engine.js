@@ -5,7 +5,7 @@
 
 (function () {
   const ADMIN_CREDENTIALS = {
-    email: "admin@govexams.com",
+    email: "admin@gmail.com",
     password: "Admin@123"
   };
 
