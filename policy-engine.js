@@ -11,14 +11,15 @@
   const DEFAULT_POLICY = {
     policy: `
 1. This platform is intended for exam practice only.
-2. Any misuse or attempt to bypass rules may result in account restriction.
-3. User data is stored locally for performance analysis only.
+2. Any attempt to exploit, manipulate, or circumvent platform safeguards may lead to temporary or permanent account suspension.
+3. User activity data is stored locally and used strictly for performance tracking, integrity checks, and system improvement.
     `,
     rules: `
 1. Tab switching is monitored during quizzes.
-2. Copy, paste, and right-click actions are restricted.
-3. Quizzes auto-submit on rule violation or time expiry.
+2. Actions such as copy, paste, screen capture, or right-click are disabled to maintain exam integrity.
+3. Quizzes are automatically submitted if a rule violation is detected or when the allotted time expires.
 4. Results once submitted cannot be altered.
+    
     `,
     updatedAt: new Date().toLocaleString()
   };
