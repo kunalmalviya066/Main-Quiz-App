@@ -4,6 +4,8 @@
  * DESCRIPTION: Core application logic with persistent authentication and question formatting.
  * ============================================
  */
+let tabSwitchCount = 0;
+const MAX_TAB_SWITCHES = 3; // you can change this
 
 // --- 0. SECURITY & CONFIGURATION ---
 const MASTER_PASSWORD = "AccessGrant"; 
