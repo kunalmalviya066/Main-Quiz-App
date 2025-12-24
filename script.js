@@ -760,6 +760,32 @@ document.addEventListener('selectstart', (e) => {
     }
 });
 
+// ---- FULLSCREEN EXIT ----
+document.addEventListener('fullscreenchange', () => {
+    if (appState.isQuizActive && !document.fullscreenElement) {
+        alert("Fullscreen exited. Exam will be submitted.");
+        finishQuiz(true);
+    }
+});
+
+// ---- TAB SWITCH DETECTION ----
+document.addEventListener('visibilitychange', () => {
+    if (!appState.isQuizActive) return;
+
+    if (document.hidden) {
+        tabSwitchCount++;
+
+        if (tabSwitchCount > MAX_TAB_SWITCHES) {
+            alert("Tab switched too many times. Exam will be submitted.");
+            finishQuiz(true);
+            return;
+        }
+
+        alert(`Warning: Tab switch detected (${tabSwitchCount}/${MAX_TAB_SWITCHES})`);
+        pauseTimer(true);
+    }
+});
+
     // --- ADMIN PANEL LISTENERS ---
     DOM.showAddQuestionBtn.addEventListener('click', renderAddQuestionForm);
     DOM.showQuestionListBtn.addEventListener('click', renderQuestionList);
