@@ -731,6 +731,34 @@ function setupEventListeners() {
     DOM.adminPasswordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleAdminLogin();
     });
+      
+    // ---- DISABLE RIGHT CLICK ----
+document.addEventListener('contextmenu', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+        alert("Right-click is disabled during the exam.");
+    }
+});
+// ---- DISABLE COPY / PASTE ----
+document.addEventListener('copy', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+        alert("Copy is disabled during the exam.");
+    }
+});
+
+document.addEventListener('paste', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+        alert("Paste is disabled during the exam.");
+    }
+});
+
+document.addEventListener('selectstart', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+    }
+});
 
     // --- ADMIN PANEL LISTENERS ---
     DOM.showAddQuestionBtn.addEventListener('click', renderAddQuestionForm);

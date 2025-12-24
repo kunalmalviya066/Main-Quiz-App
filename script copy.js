@@ -313,8 +313,12 @@ function renderQuestion(index) {
     DOM.qNumberDisplay.textContent = `Question ${q.quizIndex} of ${appState.currentQuiz.totalQuestions}`;
     
     // FIX: Handle newline characters (\n) for formatting multiline question text
-    const formattedQuestionText = q.question.replace(/\n/g, '<br>');
-    DOM.questionText.innerHTML = formattedQuestionText; // Use innerHTML to render <br>
+    const formattedQuestionText = q.question
+    .replace(/\\n+/g, '<br>')  // converts \n, \n\n, \n\n\n → <br>
+    .replace(/\n+/g, '<br>');  // converts real newlines → <br>
+
+DOM.questionText.innerHTML = formattedQuestionText;
+ // Use innerHTML to render <br>
 
     DOM.questionImageContainer.innerHTML = q.image 
         ? `<img src="${q.image}" alt="Question Image" />`
@@ -555,8 +559,15 @@ function renderResultDetails(id) {
         const userAnswerText = result.userAnswer || 'N/A';
         const userClass = result.isCorrect ? 'correct-answer' : 'user-answer';
 
-        const formattedQuestionText = result.questionText.replace(/\n/g, '<br>');
-        const formattedExplanation = result.explanation ? result.explanation.replace(/\n/g, '<br>') : 'No explanation provided.';
+       const formattedQuestionText = result.questionText
+    .replace(/\\n+/g, '<br>')
+    .replace(/\n+/g, '<br>');
+
+    const formattedExplanation = result.explanation
+    ? result.explanation.replace(/\\n+/g, '<br>').replace(/\n+/g, '<br>')
+    : 'No explanation provided.';
+
+        // const formattedExplanation = result.explanation ? result.explanation.replace(/\n/g, '<br>') : 'No explanation provided.';
 
         const card = document.createElement('div');
         card.className = 'review-question-card';
