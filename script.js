@@ -783,7 +783,12 @@ document.addEventListener('visibilitychange', () => {
             return;
         }
 
-        alert(`Warning: Tab switch detected (${tabSwitchCount}/${MAX_TAB_SWITCHES})`);
+      //  alert(`Warning: Tab switch detected (${tabSwitchCount}/${MAX_TAB_SWITCHES})`);
+        alert(
+            `Warning: Tab switch detected!\n\n` +
+            `This is violation ${tabSwitchCount} of ${MAX_TAB_SWITCHES}.\n` +
+            `Do NOT switch tabs again. Test Will Submit Automatic`
+        );
         pauseTimer(true);
     }
 });
