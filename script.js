@@ -4,6 +4,8 @@
  * DESCRIPTION: Core application logic with persistent authentication and question formatting.
  * ============================================
  */
+let forceAutoSubmit = false;
+
 let tabSwitchCount = 0;
 const MAX_TAB_SWITCHES = 3; // you can change this
 
@@ -408,8 +410,9 @@ function finishQuiz(isTimeUp = false) {
     if (appState.isQuizActive === false) return;
 
     if (!confirm(isTimeUp ? "Time is up! Submitting your quiz now." : "Are you sure you want to finish and submit the quiz?")) {
-        return;
-    }
+    return;
+}
+
 
     if (appState.currentQuiz.timerId) clearInterval(appState.currentQuiz.timerId);
 
