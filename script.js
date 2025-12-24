@@ -774,49 +774,27 @@ document.addEventListener('fullscreenchange', () => {
 });
 
 // ---- TAB SWITCH DETECTION ----
-// ---- TAB SWITCH DETECTION (AUTO SUBMIT GUARANTEED) ----
 document.addEventListener('visibilitychange', () => {
     if (!appState.isQuizActive) return;
 
     if (document.hidden) {
         tabSwitchCount++;
 
-        // ❌ Exceeded allowed attempts → FORCE SUBMIT
         if (tabSwitchCount > MAX_TAB_SWITCHES) {
-            forceAutoSubmit = true;
-
-            // Non-blocking message
-            DOM.pauseOverlay.classList.remove('hidden');
-            DOM.pauseOverlay.innerHTML = `
-                <div class="violation-message">
-                    <h2>Exam Violated</h2>
-                    <p>You switched tabs ${tabSwitchCount} times.</p>
-                    <p>Your exam is being submitted automatically.</p>
-                </div>
-            `;
-
-            setTimeout(() => {
-                finishQuiz(true);
-            }, 300); // allow DOM update
-
+            alert("Tab switched too many times. Exam will be submitted.");
+            finishQuiz(true);
             return;
         }
 
-        // ⚠️ Warning (still non-blocking)
-        forceAutoSubmit = false;
-        DOM.pauseOverlay.classList.remove('hidden');
-        DOM.pauseOverlay.innerHTML = `
-            <div class="violation-message">
-                <h3>Warning</h3>
-                <p>Tab switch detected (${tabSwitchCount}/${MAX_TAB_SWITCHES})</p>
-                <p>Do not switch tabs again.</p>
-            </div>
-        `;
-
+      //  alert(`Warning: Tab switch detected (${tabSwitchCount}/${MAX_TAB_SWITCHES})`);
+        alert(
+            `Warning: Tab switch detected!\n\n` +
+            `This is violation ${tabSwitchCount} of ${MAX_TAB_SWITCHES}.\n` +
+            `Do NOT switch tabs again. Test Will Submit Automatic`
+        );
         pauseTimer(true);
     }
 });
-
 
     // --- ADMIN PANEL LISTENERS ---
     DOM.showAddQuestionBtn.addEventListener('click', renderAddQuestionForm);
