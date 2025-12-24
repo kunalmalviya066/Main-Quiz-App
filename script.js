@@ -4,10 +4,11 @@
  * DESCRIPTION: Core application logic with persistent authentication and question formatting.
  * ============================================
  */
-let forceAutoSubmit = false;
+
 
 let tabSwitchCount = 0;
-const MAX_TAB_SWITCHES = 3; // you can change this
+const MAX_TAB_SWITCHES = 3;
+let forceAutoSubmit = false; // you can change this
 
 // --- 0. SECURITY & CONFIGURATION ---
 const MASTER_PASSWORD = "AccessGrant"; 
@@ -409,9 +410,16 @@ function clearCurrentAnswer() {
 function finishQuiz(isTimeUp = false) {
     if (appState.isQuizActive === false) return;
 
-    if (!confirm(isTimeUp ? "Time is up! Submitting your quiz now." : "Are you sure you want to finish and submit the quiz?")) {
-    return;
+    if (!forceAutoSubmit) {
+    if (!confirm(
+        isTimeUp
+            ? "Time is up! Submitting your quiz now."
+            : "Are you sure you want to finish and submit the quiz?"
+    )) {
+        return;
+    }
 }
+
 
 
     if (appState.currentQuiz.timerId) clearInterval(appState.currentQuiz.timerId);
@@ -774,27 +782,40 @@ document.addEventListener('fullscreenchange', () => {
 });
 
 // ---- TAB SWITCH DETECTION ----
-document.addEventListener('visibilitychange', () => {
+document.addEventListener("visibilitychange", () => {
     if (!appState.isQuizActive) return;
 
     if (document.hidden) {
         tabSwitchCount++;
 
+        // 🚨 LIMIT EXCEEDED → AUTO SUBMIT
         if (tabSwitchCount > MAX_TAB_SWITCHES) {
-            alert("Tab switched too many times. Exam will be submitted.");
-            finishQuiz(true);
+            forceAutoSubmit = true;
+
+            alert(
+                "You switched tabs too many times.\n\n" +
+                "Your exam will be submitted now."
+            );
+
+            // Allow browser to stabilize, then submit
+            setTimeout(() => {
+                finishQuiz(true);
+            }, 200);
+
             return;
         }
 
-      //  alert(`Warning: Tab switch detected (${tabSwitchCount}/${MAX_TAB_SWITCHES})`);
+        // ⚠️ WARNING POPUP
         alert(
             `Warning: Tab switch detected!\n\n` +
-            `This is violation ${tabSwitchCount} of ${MAX_TAB_SWITCHES}.\n` +
-            `Do NOT switch tabs again. Test Will Submit Automatic`
+            `Attempt ${tabSwitchCount} of ${MAX_TAB_SWITCHES}\n` +
+            `Do not switch tabs again.`
         );
+
         pauseTimer(true);
     }
 });
+
 
     // --- ADMIN PANEL LISTENERS ---
     DOM.showAddQuestionBtn.addEventListener('click', renderAddQuestionForm);
