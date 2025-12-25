@@ -756,11 +756,12 @@ document.addEventListener('contextmenu', (e) => {
     }
 });
 
-DOM.adminContentArea.addEventListener('click', (e) => {
+// ================================
+// ADMIN QUESTION EDIT / DELETE
+// ================================
+document.addEventListener('click', (e) => {
 
-    /* =========================
-       DELETE QUESTION
-    ========================== */
+    /* ===== DELETE QUESTION ===== */
     const deleteBtn = e.target.closest('.delete-q-btn');
     if (deleteBtn) {
 
@@ -781,52 +782,52 @@ DOM.adminContentArea.addEventListener('click', (e) => {
         return;
     }
 
-    /* =========================
-       EDIT QUESTION
-    ========================== */
+    /* ===== EDIT QUESTION ===== */
     const editBtn = e.target.closest('.edit-q-btn');
-if (editBtn) {
+    if (editBtn) {
 
-    if (appState.isQuizActive) {
-        alert("Cannot edit questions during an active exam.");
+        if (appState.isQuizActive) {
+            alert("Cannot edit questions during an active exam.");
+            return;
+        }
+
+        const { subject, topic, id } = editBtn.dataset;
+        const question = quizDB[subject][topic].find(q => q.id === Number(id));
+        if (!question) return;
+
+        // Open form
+        renderAddQuestionForm();
+
+        // Get form elements AFTER render
+        const subjectSelect = document.getElementById('new-q-subject');
+        const topicSelect = document.getElementById('new-q-topic');
+        const form = document.getElementById('add-question-form');
+
+        // Set subject
+        subjectSelect.value = subject;
+        subjectSelect.dispatchEvent(new Event('change'));
+
+        // Set topic
+        topicSelect.value = topic;
+
+        // Fill fields
+        document.getElementById('new-q-text').value = question.question;
+        document.getElementById('opt-a').value = question.options[0];
+        document.getElementById('opt-b').value = question.options[1];
+        document.getElementById('opt-c').value = question.options[2];
+        document.getElementById('opt-d').value = question.options[3];
+        document.getElementById('new-q-answer').value = question.answer;
+        document.getElementById('new-q-explanation').value = question.explanation;
+        document.getElementById('new-q-image').value = question.image || "";
+
+        // 🔥 EDIT MODE FLAG
+        form.dataset.editId = id;
+
         return;
     }
-
-    const { subject, topic, id } = editBtn.dataset;
-    const question = quizDB[subject][topic].find(q => q.id === Number(id));
-    if (!question) return;
-
-    // Open form
-    renderAddQuestionForm();
-
-    // Get elements AFTER render
-    const subjectSelect = document.getElementById('new-q-subject');
-    const topicSelect = document.getElementById('new-q-topic');
-    const form = document.getElementById('add-question-form');
-
-    // Set subject and load topics
-    subjectSelect.value = subject;
-    subjectSelect.dispatchEvent(new Event('change'));
-
-    // Set topic AFTER topics loaded
-    topicSelect.value = topic;
-
-    // Fill form
-    document.getElementById('new-q-text').value = question.question;
-    document.getElementById('opt-a').value = question.options[0];
-    document.getElementById('opt-b').value = question.options[1];
-    document.getElementById('opt-c').value = question.options[2];
-    document.getElementById('opt-d').value = question.options[3];
-    document.getElementById('new-q-answer').value = question.answer;
-    document.getElementById('new-q-explanation').value = question.explanation;
-    document.getElementById('new-q-image').value = question.image || "";
-
-    // 🔥 SET EDIT MODE
-    form.dataset.editId = id;
-
-    return;
-}
 });
+
+
 
 
 // ---- DISABLE COPY / PASTE ----
