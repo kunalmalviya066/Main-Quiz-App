@@ -5,6 +5,13 @@
  * ============================================
  */
 
+
+let tabSwitchCount = 0;
+const MAX_TAB_SWITCHES = 3;
+let forceAutoSubmit = false; // you can change this
+// --- ADMIN LOCAL STORAGE DB ---
+const ADMIN_DB_KEY = "quizAppAdminDB";
+
 // --- 0. SECURITY & CONFIGURATION ---
 const MASTER_PASSWORD = "AccessGrant"; 
 const ADMIN_PASSWORD = "Admin@123"; // New Admin Password
@@ -405,9 +412,17 @@ function clearCurrentAnswer() {
 function finishQuiz(isTimeUp = false) {
     if (appState.isQuizActive === false) return;
 
-    if (!confirm(isTimeUp ? "Time is up! Submitting your quiz now." : "Are you sure you want to finish and submit the quiz?")) {
+    if (!forceAutoSubmit) {
+    if (!confirm(
+        isTimeUp
+            ? "Time is up! Submitting your quiz now."
+            : "Are you sure you want to finish and submit the quiz?"
+    )) {
         return;
     }
+}
+
+
 
     if (appState.currentQuiz.timerId) clearInterval(appState.currentQuiz.timerId);
 
@@ -731,6 +746,78 @@ function setupEventListeners() {
     DOM.adminPasswordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleAdminLogin();
     });
+      
+    // ---- DISABLE RIGHT CLICK ----
+document.addEventListener('contextmenu', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+        alert("Right-click is disabled during the exam.");
+    }
+});
+// ---- DISABLE COPY / PASTE ----
+document.addEventListener('copy', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+        alert("Copy is disabled during the exam.");
+    }
+});
+
+document.addEventListener('paste', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+        alert("Paste is disabled during the exam.");
+    }
+});
+
+document.addEventListener('selectstart', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+    }
+});
+
+// ---- FULLSCREEN EXIT ----
+document.addEventListener('fullscreenchange', () => {
+    if (appState.isQuizActive && !document.fullscreenElement) {
+        alert("Fullscreen exited. Exam will be submitted.");
+        finishQuiz(true);
+    }
+});
+
+// ---- TAB SWITCH DETECTION ----
+document.addEventListener("visibilitychange", () => {
+    if (!appState.isQuizActive) return;
+
+    if (document.hidden) {
+        tabSwitchCount++;
+
+        // 🚨 LIMIT EXCEEDED → AUTO SUBMIT
+        if (tabSwitchCount > MAX_TAB_SWITCHES) {
+            forceAutoSubmit = true;
+
+            alert(
+                "You switched tabs too many times.\n\n" +
+                "Your exam will be submitted now."
+            );
+
+            // Allow browser to stabilize, then submit
+            setTimeout(() => {
+                finishQuiz(true);
+            }, 200);
+
+            return;
+        }
+
+        // ⚠️ WARNING POPUP
+        alert(
+            `Warning: Tab switch detected!\n\n` +
+            `Attempt ${tabSwitchCount} of ${MAX_TAB_SWITCHES}\n` +
+            `Do not switch tabs again.`
+        );
+
+        pauseTimer(true);
+    }
+});
+
 
     // --- ADMIN PANEL LISTENERS ---
     DOM.showAddQuestionBtn.addEventListener('click', renderAddQuestionForm);
@@ -749,6 +836,7 @@ function setupEventListeners() {
 function handleClearHistoryAdmin() {
     if (confirm("WARNING: Are you sure you want to PERMANENTLY delete ALL user quiz history? This cannot be undone.")) {
         localStorage.removeItem('quizHistory');
+        localStorage.removeItem(ADMIN_DB_KEY);
         appState.history = [];
         DOM.adminContentArea.innerHTML = '<p class="info-message" style="color:var(--success-color); font-weight:bold;">All user quiz history has been cleared successfully.</p>';
     }
@@ -866,6 +954,8 @@ function renderAddQuestionForm() {
         if (isNonShuffling) {
             quizDB[selectedSubject][newTopicName].shuffle = false;
         }
+        // 🔐 Persist admin DB
+localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
 
         // Clear creation fields and update dropdown
         newTopicNameInput.value = '';
@@ -926,6 +1016,10 @@ function handleAddQuestionSubmit(e) {
 
     if (quizDB[subject] && quizDB[subject][topic]) {
         quizDB[subject][topic].push(newQuestion);
+
+// 🔐 Persist admin DB
+localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
+
         
         document.getElementById('add-question-form').reset();
         statusDiv.textContent = `Success! Question ID ${newQuestion.id} added to ${subject} - ${topic}. (NOTE: Refresh required for changes to take full effect)`;
@@ -988,9 +1082,39 @@ function renderQuestionList() {
     listContainer.innerHTML = tableHTML;
 }
 
+function loadAdminDB() {
+    const savedDB = localStorage.getItem(ADMIN_DB_KEY);
+    if (!savedDB) return;
+
+    try {
+        const parsedDB = JSON.parse(savedDB);
+
+        // Merge saved DB into quizDB
+        Object.keys(parsedDB).forEach(subject => {
+            if (!quizDB[subject]) {
+                quizDB[subject] = parsedDB[subject];
+            } else {
+                Object.keys(parsedDB[subject]).forEach(topic => {
+                    if (!quizDB[subject][topic]) {
+                        quizDB[subject][topic] = parsedDB[subject][topic];
+                    } else {
+                        // Replace topic completely (safe & predictable)
+                        quizDB[subject][topic] = parsedDB[subject][topic];
+                    }
+                });
+            }
+        });
+
+        console.log("✅ Admin DB loaded from localStorage");
+    } catch (err) {
+        console.error("❌ Failed to load admin DB:", err);
+    }
+}
+
 // --- 11. APPLICATION STARTUP ---
 
 function initApp() {
+    loadAdminDB();          // 🔥 ADD THIS LINE FIRST
     initializeSetupScreens();
     setupEventListeners();
     

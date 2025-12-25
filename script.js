@@ -654,6 +654,7 @@ function setupEventListeners() {
         if (e.key === 'Enter') handleLogin();
     });
     
+    
     // General Navigation
     DOM.navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -754,6 +755,80 @@ document.addEventListener('contextmenu', (e) => {
         alert("Right-click is disabled during the exam.");
     }
 });
+
+DOM.adminContentArea.addEventListener('click', (e) => {
+
+    /* =========================
+       DELETE QUESTION
+    ========================== */
+    const deleteBtn = e.target.closest('.delete-q-btn');
+    if (deleteBtn) {
+
+        if (appState.isQuizActive) {
+            alert("Cannot modify questions during an active exam.");
+            return;
+        }
+
+        const { subject, topic, id } = deleteBtn.dataset;
+
+        if (!confirm("Delete this question permanently?")) return;
+
+        quizDB[subject][topic] =
+            quizDB[subject][topic].filter(q => q.id !== Number(id));
+
+        saveAdminDB();
+        renderQuestionList();
+        return;
+    }
+
+    /* =========================
+       EDIT QUESTION
+    ========================== */
+    const editBtn = e.target.closest('.edit-q-btn');
+    if (editBtn) {
+
+        if (appState.isQuizActive) {
+            alert("Cannot modify questions during an active exam.");
+            return;
+        }
+
+        const { subject, topic, id } = editBtn.dataset;
+
+        const question =
+            quizDB[subject][topic].find(q => q.id === Number(id));
+
+        if (!question) return;
+
+        renderAddQuestionForm();
+
+        // Wait for form to render
+        setTimeout(() => {
+            document.getElementById('new-q-subject').value = subject;
+            document.getElementById('new-q-subject')
+                .dispatchEvent(new Event('change'));
+
+            setTimeout(() => {
+                document.getElementById('new-q-topic').value = topic;
+                document.getElementById('new-q-text').value = question.question;
+
+                document.getElementById('opt-a').value = question.options[0];
+                document.getElementById('opt-b').value = question.options[1];
+                document.getElementById('opt-c').value = question.options[2];
+                document.getElementById('opt-d').value = question.options[3];
+
+                document.getElementById('new-q-answer').value = question.answer;
+                document.getElementById('new-q-explanation').value = question.explanation;
+                document.getElementById('new-q-image').value = question.image || "";
+
+                // Mark edit mode
+                document.getElementById('add-question-form')
+                    .dataset.editId = id;
+            }, 50);
+        }, 50);
+    }
+});
+
+
 // ---- DISABLE COPY / PASTE ----
 document.addEventListener('copy', (e) => {
     if (appState.isQuizActive) {
@@ -828,6 +903,11 @@ document.addEventListener("visibilitychange", () => {
         DOM.adminNavLink.classList.remove('hidden');
     }
 }
+
+function saveAdminDB() {
+    localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
+}
+
 // --- 10. ADMIN PANEL FUNCTIONS (UPDATED) ---
 
 /**
@@ -1050,6 +1130,8 @@ function renderQuestionList() {
                     <th>Topic (Shuffle)</th>
                     <th>Question (Snippet)</th>
                     <th>Answer</th>
+                    <th>Actions</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -1072,6 +1154,22 @@ function renderQuestionList() {
                         <td>${topic} (${shuffleDisplay})</td>
                         <td>${snippet}</td>
                         <td>${q.answer}</td>
+<td>
+  <button class="control-btn danger delete-q-btn"
+    data-subject="${subject}"
+    data-topic="${topic}"
+    data-id="${q.id}">
+    Delete
+  </button>
+  <button class="control-btn primary edit-q-btn"
+  data-subject="${subject}"
+  data-topic="${topic}"
+  data-id="${q.id}">
+  Edit
+</button>
+
+</td>
+
                     </tr>
                 `;
             });
