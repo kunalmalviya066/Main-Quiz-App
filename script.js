@@ -956,18 +956,37 @@ function renderAddQuestionForm() {
     <button type="button" id="delete-topic-btn" class="control-btn danger" style="width:100%;">
         Delete Selected Topic
     </button>
-</div>
 <div class="setup-step" style="border:1px dashed #2196f3; background:#f4f9ff;">
   <h4>📥 Import Questions (JSON)</h4>
 
+  <div class="info-message" style="
+      background:#e3f2fd;
+      border-left:4px solid #2196f3;
+      padding:10px;
+      font-size:14px;
+      margin-bottom:10px;
+  ">
+    <strong>📌 Important Instructions:</strong>
+    <ul style="margin:6px 0 0 18px;">
+      <li>Select <strong>Subject</strong> and <strong>Topic</strong> first.</li>
+      <li>If the topic does not exist, <strong>create the topic first</strong> using the section above.</li>
+      <li>After creating a new topic, <strong>select the topic</strong> from the dropdown.</li>
+      <li>Only then upload and import the JSON file.</li>
+      <li>Imported questions are saved permanently and available immediately.</li>
+    </ul>
+  </div>
+
   <input type="file" id="import-json-file" accept=".json" />
 
-  <button type="button" id="import-json-btn" class="control-btn primary" style="width:100%; margin-top:10px;">
+  <button type="button" id="import-json-btn"
+    class="control-btn primary"
+    style="width:100%; margin-top:10px;">
     Import Questions
   </button>
 
   <p id="import-status" class="error-message hidden"></p>
 </div>
+
 
 
             <div class="setup-step" style="border: 1px solid #ffc107; background-color: #fffde7;">
