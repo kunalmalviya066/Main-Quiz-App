@@ -957,6 +957,18 @@ function renderAddQuestionForm() {
         Delete Selected Topic
     </button>
 </div>
+<div class="setup-step" style="border:1px dashed #2196f3; background:#f4f9ff;">
+  <h4>📥 Import Questions (JSON)</h4>
+
+  <input type="file" id="import-json-file" accept=".json" />
+
+  <button type="button" id="import-json-btn" class="control-btn primary" style="width:100%; margin-top:10px;">
+    Import Questions
+  </button>
+
+  <p id="import-status" class="error-message hidden"></p>
+</div>
+
 
             <div class="setup-step" style="border: 1px solid #ffc107; background-color: #fffde7;">
                 <label for="new-topic-name" style="color: #ffc107;">3. Create New Topic:</label>
@@ -1000,6 +1012,49 @@ function renderAddQuestionForm() {
     const createNewTopicBtn = document.getElementById('create-new-topic-btn');
     const nonShufflingCheckbox = document.getElementById('new-topic-non-shuffling');
     const deleteTopicBtn = document.getElementById('delete-topic-btn');
+    const importBtn = document.getElementById('import-json-btn');
+const fileInput = document.getElementById('import-json-file');
+const importStatus = document.getElementById('import-status');
+
+importBtn.addEventListener('click', () => {
+    const subject = subjectSelect.value;
+    const topic = topicSelect.value;
+    const file = fileInput.files[0];
+
+    importStatus.classList.add('hidden');
+
+    if (!subject || !topic) {
+        alert("Select subject and topic first.");
+        return;
+    }
+
+    if (!file) {
+        alert("Please select a JSON file.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = e => {
+        try {
+            const data = JSON.parse(e.target.result);
+            const count = handleImportQuestions(subject, topic, data);
+
+            importStatus.textContent = `✅ ${count} questions imported successfully.`;
+            importStatus.style.color = 'var(--success-color)';
+            importStatus.classList.remove('hidden');
+
+            fileInput.value = "";
+        } catch (err) {
+            importStatus.textContent = "❌ Import failed: " + err.message;
+            importStatus.style.color = 'var(--danger-color)';
+            importStatus.classList.remove('hidden');
+        }
+    };
+
+    reader.readAsText(file);
+});
+
 deleteTopicBtn.addEventListener('click', () => {
 
     if (appState.isQuizActive) {
@@ -1081,6 +1136,58 @@ localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
     });
 
     document.getElementById('add-question-form').addEventListener('submit', handleAddQuestionSubmit);
+}
+
+function handleImportQuestions(subject, topic, questions) {
+    if (!Array.isArray(questions)) {
+        throw new Error("Invalid JSON format: expected an array");
+    }
+
+    let maxId = 0;
+
+    Object.values(quizDB).forEach(sub =>
+        Object.values(sub).forEach(arr =>
+            arr.forEach(q => {
+                const num = parseInt(String(q.id).replace(/\D/g, ''));
+                if (!isNaN(num) && num > maxId) maxId = num;
+            })
+        )
+    );
+
+    let added = 0;
+
+    questions.forEach(q => {
+        if (
+            !q.question ||
+            !Array.isArray(q.options) ||
+            q.options.length < 4 ||
+            !q.answer ||
+            !q.explanation ||
+            !q.options.includes(q.answer)
+        ) {
+            return;
+        }
+
+        const exists = quizDB[subject][topic].some(x => x.id === q.id);
+
+        const newId = exists || !q.id
+            ? `q-${++maxId}`
+            : q.id;
+
+        quizDB[subject][topic].push({
+            id: newId,
+            question: q.question,
+            image: q.image || null,
+            options: q.options,
+            answer: q.answer,
+            explanation: q.explanation
+        });
+
+        added++;
+    });
+
+    saveAdminDB();
+    return added;
 }
 
 /**
