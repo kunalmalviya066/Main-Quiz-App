@@ -785,49 +785,47 @@ DOM.adminContentArea.addEventListener('click', (e) => {
        EDIT QUESTION
     ========================== */
     const editBtn = e.target.closest('.edit-q-btn');
-    if (editBtn) {
+if (editBtn) {
 
-        if (appState.isQuizActive) {
-            alert("Cannot modify questions during an active exam.");
-            return;
-        }
-
-        const { subject, topic, id } = editBtn.dataset;
-
-        const question =
-            quizDB[subject][topic].find(q => q.id === Number(id));
-
-        if (!question) return;
-
-        renderAddQuestionForm();
-
-        // Wait for form to render
-        setTimeout(() => {
-            document.getElementById('new-q-subject').value = subject;
-            document.getElementById('new-q-subject')
-                .dispatchEvent(new Event('change'));
-
-            setTimeout(() => {
-                document.getElementById('new-q-topic').value = topic;
-                document.getElementById('new-q-text').value = question.question;
-
-                document.getElementById('opt-a').value = question.options[0];
-                document.getElementById('opt-b').value = question.options[1];
-                document.getElementById('opt-c').value = question.options[2];
-                document.getElementById('opt-d').value = question.options[3];
-
-                document.getElementById('new-q-answer').value = question.answer;
-                document.getElementById('new-q-explanation').value = question.explanation;
-                document.getElementById('new-q-image').value = question.image || "";
-
-                // Mark edit mode
-                document.getElementById('add-question-form')
-                    .dataset.editId = id;
-            }, 50);
-        }, 50);
+    if (appState.isQuizActive) {
+        alert("Cannot edit questions during an active exam.");
+        return;
     }
 
-   
+    const { subject, topic, id } = editBtn.dataset;
+    const question = quizDB[subject][topic].find(q => q.id === Number(id));
+    if (!question) return;
+
+    // Open form
+    renderAddQuestionForm();
+
+    // Get elements AFTER render
+    const subjectSelect = document.getElementById('new-q-subject');
+    const topicSelect = document.getElementById('new-q-topic');
+    const form = document.getElementById('add-question-form');
+
+    // Set subject and load topics
+    subjectSelect.value = subject;
+    subjectSelect.dispatchEvent(new Event('change'));
+
+    // Set topic AFTER topics loaded
+    topicSelect.value = topic;
+
+    // Fill form
+    document.getElementById('new-q-text').value = question.question;
+    document.getElementById('opt-a').value = question.options[0];
+    document.getElementById('opt-b').value = question.options[1];
+    document.getElementById('opt-c').value = question.options[2];
+    document.getElementById('opt-d').value = question.options[3];
+    document.getElementById('new-q-answer').value = question.answer;
+    document.getElementById('new-q-explanation').value = question.explanation;
+    document.getElementById('new-q-image').value = question.image || "";
+
+    // 🔥 SET EDIT MODE
+    form.dataset.editId = id;
+
+    return;
+}
 });
 
 
@@ -1166,7 +1164,9 @@ const editId = form.dataset.editId;
     // 🔐 Persist admin DB
     localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
 
-    document.getElementById('add-question-form').reset();
+    form.reset();
+delete form.dataset.editId;
+
     statusDiv.style.color = 'var(--success-color)';
     statusDiv.classList.remove('hidden');
 
