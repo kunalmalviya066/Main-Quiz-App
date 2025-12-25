@@ -956,6 +956,18 @@ function renderAddQuestionForm() {
     <button type="button" id="delete-topic-btn" class="control-btn danger" style="width:100%;">
         Delete Selected Topic
     </button>
+ <div class="setup-step" style="border: 1px solid #ffc107; background-color: #fffde7;">
+                <label for="new-topic-name" style="color: #ffc107;">3. Create New Topic:</label>
+                <input type="text" id="new-topic-name" placeholder="Enter NEW Topic Name">
+                <div style="margin-top: 10px;">
+                    <label style="display:inline; font-weight:normal;">
+                        <input type="checkbox" id="new-topic-non-shuffling"> 
+                        **Non-Shuffling Topic** (For DI, Puzzles)
+                    </label>
+                </div>
+                <button type="button" id="create-new-topic-btn" class="control-btn primary" style="width:100%; margin-top:10px;">Create Topic</button>
+            </div>
+
 <div class="setup-step" style="border:1px dashed #2196f3; background:#f4f9ff;">
   <h4>📥 Import Questions (JSON)</h4>
 
@@ -989,17 +1001,7 @@ function renderAddQuestionForm() {
 
 
 
-            <div class="setup-step" style="border: 1px solid #ffc107; background-color: #fffde7;">
-                <label for="new-topic-name" style="color: #ffc107;">3. Create New Topic:</label>
-                <input type="text" id="new-topic-name" placeholder="Enter NEW Topic Name">
-                <div style="margin-top: 10px;">
-                    <label style="display:inline; font-weight:normal;">
-                        <input type="checkbox" id="new-topic-non-shuffling"> 
-                        **Non-Shuffling Topic** (For DI, Puzzles)
-                    </label>
-                </div>
-                <button type="button" id="create-new-topic-btn" class="control-btn primary" style="width:100%; margin-top:10px;">Create Topic</button>
-            </div>
+           
 
             <label for="new-q-text">4. Question Text (Use \\n for new lines):</label>
             <textarea id="new-q-text" required></textarea>
