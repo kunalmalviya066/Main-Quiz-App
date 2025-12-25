@@ -827,21 +827,7 @@ DOM.adminContentArea.addEventListener('click', (e) => {
         }, 50);
     }
 
-    if (editId) {
-    const index = quizDB[subject][topic]
-        .findIndex(q => q.id === Number(editId));
-
-    quizDB[subject][topic][index] = {
-        ...quizDB[subject][topic][index],
-        question, options, answer, explanation, image
-    };
-
-    delete form.dataset.editId;
-} else {
-    quizDB[subject][topic].push(newQuestion);
-}
-saveAdminDB();
-
+   
 });
 
 
@@ -1113,22 +1099,48 @@ const editId = form.dataset.editId;
         explanation: explanation,
     };
 
-    if (quizDB[subject] && quizDB[subject][topic]) {
-        quizDB[subject][topic].push(newQuestion);
+   if (quizDB[subject] && quizDB[subject][topic]) {
 
-// 🔐 Persist admin DB
-localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
+    if (editId) {
+        const index = quizDB[subject][topic]
+            .findIndex(q => q.id === Number(editId));
 
-        
-        document.getElementById('add-question-form').reset();
-        statusDiv.textContent = `Success! Question ID ${newQuestion.id} added to ${subject} - ${topic}. (NOTE: Refresh required for changes to take full effect)`;
-        statusDiv.style.color = 'var(--success-color)';
-        statusDiv.classList.remove('hidden');
+        if (index === -1) {
+            statusDiv.textContent = "Error: Question not found for editing.";
+            statusDiv.style.color = 'var(--danger-color)';
+            statusDiv.classList.remove('hidden');
+            return;
+        }
+
+        quizDB[subject][topic][index] = {
+            ...quizDB[subject][topic][index],
+            question,
+            options,
+            answer,
+            explanation,
+            image
+        };
+
+        delete form.dataset.editId;
+
+        statusDiv.textContent = `Question ID ${editId} updated successfully.`;
     } else {
-        statusDiv.textContent = "Error: Subject or Topic structure not found in db.js.";
-        statusDiv.style.color = 'var(--danger-color)';
-        statusDiv.classList.remove('hidden');
+        quizDB[subject][topic].push(newQuestion);
+        statusDiv.textContent = `Success! Question ID ${newQuestion.id} added to ${subject} - ${topic}.`;
     }
+
+    // 🔐 Persist admin DB
+    localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
+
+    document.getElementById('add-question-form').reset();
+    statusDiv.style.color = 'var(--success-color)';
+    statusDiv.classList.remove('hidden');
+
+} else {
+    statusDiv.textContent = "Error: Subject or Topic structure not found in db.js.";
+    statusDiv.style.color = 'var(--danger-color)';
+    statusDiv.classList.remove('hidden');
+}
 }
 
 /**
