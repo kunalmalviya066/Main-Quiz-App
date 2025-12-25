@@ -826,6 +826,22 @@ DOM.adminContentArea.addEventListener('click', (e) => {
             }, 50);
         }, 50);
     }
+
+    if (editId) {
+    const index = quizDB[subject][topic]
+        .findIndex(q => q.id === Number(editId));
+
+    quizDB[subject][topic][index] = {
+        ...quizDB[subject][topic][index],
+        question, options, answer, explanation, image
+    };
+
+    delete form.dataset.editId;
+} else {
+    quizDB[subject][topic].push(newQuestion);
+}
+saveAdminDB();
+
 });
 
 
@@ -1052,6 +1068,9 @@ localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
  * Processes the form submission for adding a new question.
  */
 function handleAddQuestionSubmit(e) {
+    const form = e.target;
+const editId = form.dataset.editId;
+
     e.preventDefault();
     const statusDiv = document.getElementById('question-save-status');
     statusDiv.classList.add('hidden');
