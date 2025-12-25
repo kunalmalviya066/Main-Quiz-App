@@ -16,48 +16,6 @@ const ADMIN_DB_KEY = "quizAppAdminDB";
 const MASTER_PASSWORD = "AccessGrant"; 
 const ADMIN_PASSWORD = "Admin@123"; // New Admin Password
 const AUTH_KEY = "quizAppAuthenticated"; // Key for localStorage flag
-// --- ADMIN UNDO BUFFER (SAFE PATCH) ---
-let adminUndoAction = null;
-let adminUndoTimer = null;
-const ADMIN_UNDO_TIME = 30000; // 30 seconds
-
-function setAdminUndo(label, restoreFn) {
-    clearTimeout(adminUndoTimer);
-
-    adminUndoAction = restoreFn;
-
-    const banner = document.createElement('div');
-    banner.id = 'admin-undo-banner';
-    banner.style.cssText = `
-        background:#ffeeba;
-        border:1px solid #ffc107;
-        padding:10px;
-        margin-bottom:10px;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-    `;
-    banner.innerHTML = `
-        <strong>${label} deleted</strong>
-        <button class="control-btn primary">UNDO</button>
-    `;
-
-    DOM.adminContentArea.prepend(banner);
-
-    banner.querySelector('button').onclick = () => {
-        adminUndoAction?.();
-        adminUndoAction = null;
-        banner.remove();
-        saveAdminDB();
-        renderQuestionList();
-    };
-
-    adminUndoTimer = setTimeout(() => {
-        adminUndoAction = null;
-        banner.remove();
-    }, ADMIN_UNDO_TIME);
-}
-
 
 // --- 1. APPLICATION STATE MANAGEMENT ---
 const appState = {
@@ -816,22 +774,11 @@ document.addEventListener('click', (e) => {
 
         if (!confirm("Delete this question permanently?")) return;
 
-        const deletedQuestion = quizDB[subject][topic].find(q => q.id === Number(id));
+        quizDB[subject][topic] =
+            quizDB[subject][topic].filter(q => q.id !== Number(id));
 
-quizDB[subject][topic] =
-    quizDB[subject][topic].filter(q => q.id !== Number(id));
-
-saveAdminDB();
-
-setAdminUndo(
-    `Question ID ${id}`,
-    () => {
-        quizDB[subject][topic].push(deletedQuestion);
-    }
-);
-
-renderQuestionList();
-
+        saveAdminDB();
+        renderQuestionList();
         return;
     }
 
@@ -980,7 +927,6 @@ function handleClearHistoryAdmin() {
  * Renders the form to add a new question, including a new topic creator.
  */
 function renderAddQuestionForm() {
-    
     const subjects = Object.keys(quizDB);
     if (subjects.length === 0) {
         DOM.adminContentArea.innerHTML = '<p class="error-message">Cannot add questions. Please define subjects/topics in db.js first.</p>';
@@ -990,8 +936,6 @@ function renderAddQuestionForm() {
     let subjectOptions = subjects.map(s => `<option value="${s}">${s}</option>`).join('');
 
     DOM.adminContentArea.innerHTML = `
-    
-
         <h3>Add New Question</h3>
         <form id="add-question-form" class="setup-form-container">
             <div class="setup-step">
@@ -1001,15 +945,7 @@ function renderAddQuestionForm() {
                     ${subjectOptions}
                 </select>
             </div>
-            <div class="setup-step">
-    <input type="text" id="new-subject-name" placeholder="New Subject Name">
-    <button type="button" id="create-subject-btn" class="control-btn primary">
-        Create Subject
-    </button>
-    <button type="button" id="delete-subject-btn" class="control-btn danger">
-        Delete Selected Subject
-    </button>
-</div>
+            
             <div class="setup-step">
                 <label for="new-q-topic">2. Select Existing Topic OR Create New:</label>
                 <select id="new-q-topic" required>
@@ -1064,35 +1000,6 @@ function renderAddQuestionForm() {
     const createNewTopicBtn = document.getElementById('create-new-topic-btn');
     const nonShufflingCheckbox = document.getElementById('new-topic-non-shuffling');
     const deleteTopicBtn = document.getElementById('delete-topic-btn');
-
-    document.getElementById('create-subject-btn').onclick = () => {
-    const name = document.getElementById('new-subject-name').value.trim();
-    if (!name || quizDB[name]) return alert("Invalid subject");
-
-    quizDB[name] = {};
-    saveAdminDB();
-    renderAddQuestionForm();
-};
-
-document.getElementById('delete-subject-btn').onclick = () => {
-    const subject = document.getElementById('new-q-subject').value;
-    if (!subject) return alert("Select subject first");
-    if (appState.isQuizActive) return alert("Exam running");
-
-    const backup = quizDB[subject];
-    delete quizDB[subject];
-    saveAdminDB();
-
-    setAdminUndo(
-        `Subject "${subject}"`,
-        () => {
-            quizDB[subject] = backup;
-        }
-    );
-
-    renderAddQuestionForm();
-};
-
 deleteTopicBtn.addEventListener('click', () => {
 
     if (appState.isQuizActive) {
@@ -1114,20 +1021,10 @@ deleteTopicBtn.addEventListener('click', () => {
         return;
     }
 
-    const backup = quizDB[subject][topic];
+    delete quizDB[subject][topic];
+    saveAdminDB();
 
-delete quizDB[subject][topic];
-saveAdminDB();
-
-setAdminUndo(
-    `Topic "${topic}"`,
-    () => {
-        quizDB[subject][topic] = backup;
-    }
-);
-
-alert(`Topic "${topic}" deleted. You can UNDO.`);
-
+    alert(`Topic "${topic}" deleted successfully.`);
     renderAddQuestionForm(); // refresh admin UI
 });
 
