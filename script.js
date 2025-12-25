@@ -995,6 +995,34 @@ function renderAddQuestionForm() {
     const newTopicNameInput = document.getElementById('new-topic-name');
     const createNewTopicBtn = document.getElementById('create-new-topic-btn');
     const nonShufflingCheckbox = document.getElementById('new-topic-non-shuffling');
+const deleteTopicBtn = document.getElementById('delete-topic-btn');
+
+deleteTopicBtn.addEventListener('click', () => {
+    if (appState.isQuizActive) {
+        alert("Cannot modify topics during an active exam.");
+        return;
+    }
+
+    const subject = subjectSelect.value;
+    const topic = topicSelect.value;
+
+    if (!subject || !topic) {
+        alert("Please select a subject and topic first.");
+        return;
+    }
+
+    const count = quizDB[subject][topic].length;
+
+    if (!confirm(`Delete topic "${topic}"?\n\nThis will remove ${count} questions permanently.`)) {
+        return;
+    }
+
+    delete quizDB[subject][topic];
+    saveAdminDB();
+
+    alert(`Topic "${topic}" deleted successfully.`);
+    renderAddQuestionForm(); // refresh admin UI
+});
 
     const updateTopicDropdown = (selectedSubject) => {
         topicSelect.innerHTML = '<option value="">-- Select Topic --</option>';
@@ -1141,6 +1169,8 @@ const editId = form.dataset.editId;
     statusDiv.style.color = 'var(--danger-color)';
     statusDiv.classList.remove('hidden');
 }
+saveAdminDB();
+
 }
 
 /**
@@ -1198,6 +1228,10 @@ function renderQuestionList() {
   data-id="${q.id}">
   Edit
 </button>
+<button id="delete-topic-btn" class="control-btn danger">
+  Delete Topic
+</button>
+
 
 </td>
 
