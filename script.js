@@ -1,18 +1,24 @@
 /*
  * ============================================
- * FILE: script.js (FINAL - No Login Prompt on Refresh)
- * DESCRIPTION: Core application logic with persistent authentication fix.
+ * FILE: script.js (FINAL - Includes Non-Shuffling Topic Feature)
+ * DESCRIPTION: Core application logic with persistent authentication and question formatting.
  * ============================================
  */
 
+
+let tabSwitchCount = 0;
+const MAX_TAB_SWITCHES = 3;
+let forceAutoSubmit = false; // you can change this
+// --- ADMIN LOCAL STORAGE DB ---
+const ADMIN_DB_KEY = "quizAppAdminDB";
+
 // --- 0. SECURITY & CONFIGURATION ---
-const MASTER_PASSWORD = "BankMock"; 
+const MASTER_PASSWORD = "AccessGrant"; 
 const ADMIN_PASSWORD = "Admin@123"; // New Admin Password
-const AUTH_KEY = "quizAppAuthenticated";
+const AUTH_KEY = "quizAppAuthenticated"; // Key for localStorage flag
 
 // --- 1. APPLICATION STATE MANAGEMENT ---
 const appState = {
-    // FIX: Read authentication status on load. This determines the initial flow.
     isAuthenticated: localStorage.getItem(AUTH_KEY) === 'true', 
     currentView: 'login-gate', 
     isQuizActive: false,
@@ -45,7 +51,6 @@ const DOM = {
     adminLoginError: document.getElementById('admin-login-error'),
     adminNavLink: document.getElementById('nav-admin'),
     
-    // ... (in const DOM)
     // Admin Panel
     adminPanel: document.getElementById('admin-panel'),
     adminControlsGrid: document.getElementById('admin-controls-grid'),
@@ -53,7 +58,6 @@ const DOM = {
     showQuestionListBtn: document.getElementById('show-question-list'),
     clearHistoryAdminBtn: document.getElementById('clear-history-admin'),
     adminContentArea: document.getElementById('admin-content-area'),
-// ...
     
     // Setup Screens
     subjectSelect: document.getElementById('subject-select'),
@@ -104,7 +108,6 @@ let currentQIndex = 0;
  * Changes the active view in the SPA.
  */
 function navigateTo(viewId, forceChange = false) {
-    // Ensure navigation always redirects to login if not authenticated, unless explicitly going to login.
     if (!appState.isAuthenticated && viewId !== 'login-gate') {
         viewId = 'login-gate';
     }
@@ -124,7 +127,6 @@ function navigateTo(viewId, forceChange = false) {
 
     DOM.navLinks.forEach(link => {
         link.classList.remove('active');
-        // Hide nav links if not authenticated
         link.classList.toggle('hidden', !appState.isAuthenticated);
         if (link.dataset.view === viewId) {
             link.classList.add('active');
@@ -144,7 +146,6 @@ function handleLogin() {
     
     if (enteredPassword === MASTER_PASSWORD) {
         appState.isAuthenticated = true;
-        // PERSISTENCE FIX: Save authentication status to localStorage
         localStorage.setItem(AUTH_KEY, 'true'); 
         navigateTo('home', true);
     } else {
@@ -158,7 +159,6 @@ function handleAdminLogin() {
     DOM.adminLoginError.classList.add('hidden');
     
     if (enteredPassword === ADMIN_PASSWORD) {
-        // Successful Admin Login
         DOM.adminPasswordInput.value = '';
         navigateTo('admin-panel', true);
     } else {
@@ -206,7 +206,7 @@ function updateTimerDisplay() {
         `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
-// --- 6. QUIZ SETUP & DATA SELECTION ---
+// --- 6. QUIZ SETUP & DATA SELECTION (UPDATED) ---
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -219,6 +219,9 @@ function shuffleArray(array) {
 function prepareQuestions(type, params) {
     let allQuestions = [];
     let selectedQuestions = [];
+    let allShuffledQuestions = [];
+    let allNonShuffledQuestions = []; 
+    
     const numQ = parseInt(params.numQ);
 
     if (type === 'subject') {
@@ -226,8 +229,16 @@ function prepareQuestions(type, params) {
         if (!subjectData) return [];
 
         for (const topic of params.topics) {
-            if (subjectData[topic]) {
-                allQuestions.push(...subjectData[topic]);
+            let topicQuestions = subjectData[topic];
+            if (!topicQuestions) continue;
+
+            // CHECK SHUFFLE PROPERTY AT TOPIC LEVEL
+            if (topicQuestions.shuffle === false) {
+                // If it shouldn't shuffle, add all questions from that topic directly
+                allNonShuffledQuestions.push(...topicQuestions);
+            } else {
+                // Otherwise, add to the pool to be shuffled later
+                allShuffledQuestions.push(...topicQuestions);
             }
         }
     } else if (type === 'mock' || type === 'daily') {
@@ -238,14 +249,27 @@ function prepareQuestions(type, params) {
         for (const subject of subjectsToUse) {
             const subjectData = quizDB[subject];
             for (const topic in subjectData) {
-                allQuestions.push(...subjectData[topic]);
+                // Determine if any topic should retain order even in a mixed quiz
+                 if (subjectData[topic].shuffle === false) {
+                    allNonShuffledQuestions.push(...subjectData[topic]);
+                } else {
+                    allShuffledQuestions.push(...subjectData[topic]);
+                }
             }
         }
     }
+    
+    // Shuffle the mixable questions pool
+    shuffleArray(allShuffledQuestions);
+    
+    // Combine the non-shuffled questions (in their original order) and the shuffled pool
+    allQuestions = [...allNonShuffledQuestions, ...allShuffledQuestions];
 
     if (allQuestions.length === 0) return [];
-    shuffleArray(allQuestions);
+    
+    // Select the required number of questions (take from the combined, ordered list)
     selectedQuestions = allQuestions.slice(0, numQ);
+    
     selectedQuestions.forEach((q, index) => q.quizIndex = index + 1);
     return selectedQuestions;
 }
@@ -263,7 +287,7 @@ function startQuiz(type, params) {
     appState.currentQuiz = {
         type: type,
         subject: params.subject || (type === 'daily' ? 'Mixed' : null),
-        topic: type === 'subject' ? params.topics.join(', ') : (type === 'daily' ? 'Random Selection' : 'Full Subject Mock'),
+        topic: params.topics ? params.topics.join(', ') : (type === 'daily' ? 'Random Selection' : 'Full Subject Mock'),
         questions: questions,
         totalQuestions: questions.length,
         timer: params.timer, 
@@ -294,7 +318,14 @@ function renderQuestion(index) {
     document.getElementById('quiz-topic-info').textContent = `Topic: ${appState.currentQuiz.topic}`;
     
     DOM.qNumberDisplay.textContent = `Question ${q.quizIndex} of ${appState.currentQuiz.totalQuestions}`;
-    DOM.questionText.textContent = q.question;
+    
+    // FIX: Handle newline characters (\n) for formatting multiline question text
+    const formattedQuestionText = q.question
+    .replace(/\\n+/g, '<br>')  // converts \n, \n\n, \n\n\n → <br>
+    .replace(/\n+/g, '<br>');  // converts real newlines → <br>
+
+DOM.questionText.innerHTML = formattedQuestionText;
+ // Use innerHTML to render <br>
 
     DOM.questionImageContainer.innerHTML = q.image 
         ? `<img src="${q.image}" alt="Question Image" />`
@@ -381,9 +412,17 @@ function clearCurrentAnswer() {
 function finishQuiz(isTimeUp = false) {
     if (appState.isQuizActive === false) return;
 
-    if (!confirm(isTimeUp ? "Time is up! Submitting your quiz now." : "Are you sure you want to finish and submit the quiz?")) {
+    if (!forceAutoSubmit) {
+    if (!confirm(
+        isTimeUp
+            ? "Time is up! Submitting your quiz now."
+            : "Are you sure you want to finish and submit the quiz?"
+    )) {
         return;
     }
+}
+
+
 
     if (appState.currentQuiz.timerId) clearInterval(appState.currentQuiz.timerId);
 
@@ -450,7 +489,6 @@ function finishQuiz(isTimeUp = false) {
 // --- 8. HISTORY & RESULTS RENDERING ---
 
 function renderHistorySummary() {
-    // FIX: Ensure history is refreshed from storage when viewing the summary.
     appState.history = JSON.parse(localStorage.getItem('quizHistory')) || [];
 
     DOM.historyList.innerHTML = '';
@@ -536,6 +574,16 @@ function renderResultDetails(id) {
         const userAnswerText = result.userAnswer || 'N/A';
         const userClass = result.isCorrect ? 'correct-answer' : 'user-answer';
 
+       const formattedQuestionText = result.questionText
+    .replace(/\\n+/g, '<br>')
+    .replace(/\n+/g, '<br>');
+
+    const formattedExplanation = result.explanation
+    ? result.explanation.replace(/\\n+/g, '<br>').replace(/\n+/g, '<br>')
+    : 'No explanation provided.';
+
+        // const formattedExplanation = result.explanation ? result.explanation.replace(/\n/g, '<br>') : 'No explanation provided.';
+
         const card = document.createElement('div');
         card.className = 'review-question-card';
         card.innerHTML = `
@@ -543,7 +591,7 @@ function renderResultDetails(id) {
                 <h4>Question ${result.qIndex + 1}</h4>
                 <span class="review-status ${statusClass}">${statusText}</span>
             </div>
-            <p>${result.questionText}</p>
+            <p>${formattedQuestionText}</p>
             
             <div class="review-answers">
                 <p>Your Answer: <span class="${userClass}">${userAnswerText}</span></p>
@@ -552,7 +600,7 @@ function renderResultDetails(id) {
             
             <div class="explanation-box">
                 <strong>Explanation:</strong>
-                <p>${result.explanation}</p>
+                <p>${formattedExplanation}</p>
             </div>
         `;
         DOM.questionReviewList.appendChild(card);
@@ -582,13 +630,16 @@ function initializeSetupScreens() {
 
         const topics = Object.keys(quizDB[selectedSubject]);
         topics.forEach(topic => {
-            const questionCount = quizDB[selectedSubject] && quizDB[selectedSubject][topic] ? quizDB[selectedSubject][topic].length : 0;
+            const topicData = quizDB[selectedSubject][topic];
+            const questionCount = topicData ? topicData.length : 0;
+            // Display shuffle status in the selection list
+            const shuffleStatus = topicData.shuffle === false ? ' (Non-Shuffling)' : '';
             
             DOM.topicsContainer.innerHTML += `
                 <div class="topic-item">
                     <label>
                         <input type="checkbox" name="topic" value="${topic}"> 
-                        ${topic} (${questionCount} Qs)
+                        ${topic} (${questionCount} Qs)${shuffleStatus}
                     </label>
                 </div>
             `;
@@ -602,9 +653,8 @@ function setupEventListeners() {
     DOM.passwordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleLogin();
     });
-     
-     
-     
+    
+    
     // General Navigation
     DOM.navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -697,18 +747,169 @@ function setupEventListeners() {
     DOM.adminPasswordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleAdminLogin();
     });
+      
+    // ---- DISABLE RIGHT CLICK ----
+document.addEventListener('contextmenu', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+        alert("Right-click is disabled during the exam.");
+    }
+});
+
+// ================================
+// ADMIN QUESTION EDIT / DELETE
+// ================================
+document.addEventListener('click', (e) => {
+
+    /* ===== DELETE QUESTION ===== */
+    const deleteBtn = e.target.closest('.delete-q-btn');
+    if (deleteBtn) {
+
+        if (appState.isQuizActive) {
+            alert("Cannot modify questions during an active exam.");
+            return;
+        }
+
+        const { subject, topic, id } = deleteBtn.dataset;
+
+        if (!confirm("Delete this question permanently?")) return;
+
+        quizDB[subject][topic] =
+            quizDB[subject][topic].filter(q => q.id !== Number(id));
+
+        saveAdminDB();
+        renderQuestionList();
+        return;
+    }
+
+    /* ===== EDIT QUESTION ===== */
+    const editBtn = e.target.closest('.edit-q-btn');
+    if (editBtn) {
+
+        if (appState.isQuizActive) {
+            alert("Cannot edit questions during an active exam.");
+            return;
+        }
+
+        const { subject, topic, id } = editBtn.dataset;
+        const question = quizDB[subject][topic].find(q => q.id === Number(id));
+        if (!question) return;
+
+        // Open form
+        renderAddQuestionForm();
+
+        // Get form elements AFTER render
+        const subjectSelect = document.getElementById('new-q-subject');
+        const topicSelect = document.getElementById('new-q-topic');
+        const form = document.getElementById('add-question-form');
+
+        // Set subject
+        subjectSelect.value = subject;
+        subjectSelect.dispatchEvent(new Event('change'));
+
+        // Set topic
+        topicSelect.value = topic;
+
+        // Fill fields
+        document.getElementById('new-q-text').value = question.question;
+        document.getElementById('opt-a').value = question.options[0];
+        document.getElementById('opt-b').value = question.options[1];
+        document.getElementById('opt-c').value = question.options[2];
+        document.getElementById('opt-d').value = question.options[3];
+        document.getElementById('new-q-answer').value = question.answer;
+        document.getElementById('new-q-explanation').value = question.explanation;
+        document.getElementById('new-q-image').value = question.image || "";
+
+        // 🔥 EDIT MODE FLAG
+        form.dataset.editId = id;
+
+        return;
+    }
+});
+
+
+
+
+// ---- DISABLE COPY / PASTE ----
+document.addEventListener('copy', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+        alert("Copy is disabled during the exam.");
+    }
+});
+
+document.addEventListener('paste', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+        alert("Paste is disabled during the exam.");
+    }
+});
+
+document.addEventListener('selectstart', (e) => {
+    if (appState.isQuizActive) {
+        e.preventDefault();
+    }
+});
+
+// ---- FULLSCREEN EXIT ----
+document.addEventListener('fullscreenchange', () => {
+    if (appState.isQuizActive && !document.fullscreenElement) {
+        alert("Fullscreen exited. Exam will be submitted.");
+        finishQuiz(true);
+    }
+});
+
+// ---- TAB SWITCH DETECTION ----
+document.addEventListener("visibilitychange", () => {
+    if (!appState.isQuizActive) return;
+
+    if (document.hidden) {
+        tabSwitchCount++;
+
+        // 🚨 LIMIT EXCEEDED → AUTO SUBMIT
+        if (tabSwitchCount > MAX_TAB_SWITCHES) {
+            forceAutoSubmit = true;
+
+            alert(
+                "You switched tabs too many times.\n\n" +
+                "Your exam will be submitted now."
+            );
+
+            // Allow browser to stabilize, then submit
+            setTimeout(() => {
+                finishQuiz(true);
+            }, 200);
+
+            return;
+        }
+
+        // ⚠️ WARNING POPUP
+        alert(
+            `Warning: Tab switch detected!\n\n` +
+            `Attempt ${tabSwitchCount} of ${MAX_TAB_SWITCHES}\n` +
+            `Do not switch tabs again.`
+        );
+
+        pauseTimer(true);
+    }
+});
+
 
     // --- ADMIN PANEL LISTENERS ---
     DOM.showAddQuestionBtn.addEventListener('click', renderAddQuestionForm);
     DOM.showQuestionListBtn.addEventListener('click', renderQuestionList);
     DOM.clearHistoryAdminBtn.addEventListener('click', handleClearHistoryAdmin);
     
-    // Show admin link only if authenticated (superficial check)
     if (appState.isAuthenticated) {
         DOM.adminNavLink.classList.remove('hidden');
     }
 }
-// --- 9. ADMIN PANEL FUNCTIONS ---
+
+function saveAdminDB() {
+    localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
+}
+
+// --- 10. ADMIN PANEL FUNCTIONS (UPDATED) ---
 
 /**
  * Handles clearing all quiz history from localStorage.
@@ -716,13 +917,14 @@ function setupEventListeners() {
 function handleClearHistoryAdmin() {
     if (confirm("WARNING: Are you sure you want to PERMANENTLY delete ALL user quiz history? This cannot be undone.")) {
         localStorage.removeItem('quizHistory');
+        localStorage.removeItem(ADMIN_DB_KEY);
         appState.history = [];
         DOM.adminContentArea.innerHTML = '<p class="info-message" style="color:var(--success-color); font-weight:bold;">All user quiz history has been cleared successfully.</p>';
     }
 }
 
 /**
- * Renders the form to add a new question.
+ * Renders the form to add a new question, including a new topic creator.
  */
 function renderAddQuestionForm() {
     const subjects = Object.keys(quizDB);
@@ -737,36 +939,53 @@ function renderAddQuestionForm() {
         <h3>Add New Question</h3>
         <form id="add-question-form" class="setup-form-container">
             <div class="setup-step">
-                <label for="new-q-subject">Subject:</label>
+                <label for="new-q-subject">1. Select Subject:</label>
                 <select id="new-q-subject" required>
                     <option value="">-- Select Subject --</option>
                     ${subjectOptions}
                 </select>
             </div>
-
+            
             <div class="setup-step">
-                <label for="new-q-topic">Topic:</label>
+                <label for="new-q-topic">2. Select Existing Topic OR Create New:</label>
                 <select id="new-q-topic" required>
                     <option value="">-- Select Topic --</option>
                 </select>
             </div>
+            <div class="setup-step">
+    <button type="button" id="delete-topic-btn" class="control-btn danger" style="width:100%;">
+        Delete Selected Topic
+    </button>
+</div>
 
-            <label for="new-q-text">Question Text:</label>
+            <div class="setup-step" style="border: 1px solid #ffc107; background-color: #fffde7;">
+                <label for="new-topic-name" style="color: #ffc107;">3. Create New Topic:</label>
+                <input type="text" id="new-topic-name" placeholder="Enter NEW Topic Name">
+                <div style="margin-top: 10px;">
+                    <label style="display:inline; font-weight:normal;">
+                        <input type="checkbox" id="new-topic-non-shuffling"> 
+                        **Non-Shuffling Topic** (For DI, Puzzles)
+                    </label>
+                </div>
+                <button type="button" id="create-new-topic-btn" class="control-btn primary" style="width:100%; margin-top:10px;">Create Topic</button>
+            </div>
+
+            <label for="new-q-text">4. Question Text (Use \\n for new lines):</label>
             <textarea id="new-q-text" required></textarea>
 
-            <label>Options (A, B, C, D):</label>
+            <label>5. Options (A, B, C, D):</label>
             <input type="text" id="opt-a" placeholder="Option A" required>
             <input type="text" id="opt-b" placeholder="Option B" required>
             <input type="text" id="opt-c" placeholder="Option C" required>
             <input type="text" id="opt-d" placeholder="Option D" required>
 
-            <label for="new-q-answer">Correct Answer (Must match one option):</label>
+            <label for="new-q-answer">6. Correct Answer (Must match one option):</label>
             <input type="text" id="new-q-answer" required>
 
-            <label for="new-q-explanation">Explanation:</label>
+            <label for="new-q-explanation">7. Explanation (Use \\n for new lines):</label>
             <textarea id="new-q-explanation" rows="3" required></textarea>
             
-            <label for="new-q-image">Image URL/Path (Optional):</label>
+            <label for="new-q-image">8. Image URL/Path (Optional):</label>
             <input type="text" id="new-q-image" placeholder="e.g., images/my_chart.png">
 
             <button type="submit" class="start-button">Save Question</button>
@@ -774,21 +993,93 @@ function renderAddQuestionForm() {
         </form>
     `;
 
-    // Dynamic Topic Loading for Admin Form
+    // Dynamic Topic Loading
     const subjectSelect = document.getElementById('new-q-subject');
     const topicSelect = document.getElementById('new-q-topic');
-    subjectSelect.addEventListener('change', () => {
-        const selectedSubject = subjectSelect.value;
+    const newTopicNameInput = document.getElementById('new-topic-name');
+    const createNewTopicBtn = document.getElementById('create-new-topic-btn');
+    const nonShufflingCheckbox = document.getElementById('new-topic-non-shuffling');
+    const deleteTopicBtn = document.getElementById('delete-topic-btn');
+deleteTopicBtn.addEventListener('click', () => {
+
+    if (appState.isQuizActive) {
+        alert("Cannot delete topic during an active exam.");
+        return;
+    }
+
+    const subject = subjectSelect.value;
+    const topic = topicSelect.value;
+
+    if (!subject || !topic) {
+        alert("Please select subject and topic first.");
+        return;
+    }
+
+    const count = quizDB[subject][topic].length;
+
+    if (!confirm(`Delete topic "${topic}"?\n\nThis will remove ${count} questions permanently.`)) {
+        return;
+    }
+
+    delete quizDB[subject][topic];
+    saveAdminDB();
+
+    alert(`Topic "${topic}" deleted successfully.`);
+    renderAddQuestionForm(); // refresh admin UI
+});
+
+
+    const updateTopicDropdown = (selectedSubject) => {
         topicSelect.innerHTML = '<option value="">-- Select Topic --</option>';
         if (selectedSubject && quizDB[selectedSubject]) {
             const topics = Object.keys(quizDB[selectedSubject]);
             topics.forEach(t => {
-                topicSelect.innerHTML += `<option value="${t}">${t}</option>`;
+                const topicData = quizDB[selectedSubject][t];
+                const shuffleStatus = topicData.shuffle === false ? ' (Sequential)' : '';
+                topicSelect.innerHTML += `<option value="${t}">${t}${shuffleStatus}</option>`;
             });
         }
+    };
+
+    subjectSelect.addEventListener('change', () => {
+        updateTopicDropdown(subjectSelect.value);
     });
 
-    // Handle Form Submission
+    // New Topic Creation Handler
+    createNewTopicBtn.addEventListener('click', () => {
+        const selectedSubject = subjectSelect.value;
+        const newTopicName = newTopicNameInput.value.trim();
+        const isNonShuffling = nonShufflingCheckbox.checked;
+
+        if (!selectedSubject) {
+            alert("Please select a subject first.");
+            return;
+        }
+        if (!newTopicName) {
+            alert("Please enter a name for the new topic.");
+            return;
+        }
+        if (quizDB[selectedSubject][newTopicName]) {
+            alert(`Topic "${newTopicName}" already exists! Select it from the dropdown.`);
+            return;
+        }
+
+        // Create the new topic array/structure
+        quizDB[selectedSubject][newTopicName] = [];
+        if (isNonShuffling) {
+            quizDB[selectedSubject][newTopicName].shuffle = false;
+        }
+        // 🔐 Persist admin DB
+localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
+
+        // Clear creation fields and update dropdown
+        newTopicNameInput.value = '';
+        nonShufflingCheckbox.checked = false;
+        updateTopicDropdown(selectedSubject);
+        topicSelect.value = newTopicName; // Auto-select the newly created topic
+        alert(`Topic "${newTopicName}" created! Shuffle: ${isNonShuffling ? 'Disabled' : 'Enabled'}.`);
+    });
+
     document.getElementById('add-question-form').addEventListener('submit', handleAddQuestionSubmit);
 }
 
@@ -796,6 +1087,9 @@ function renderAddQuestionForm() {
  * Processes the form submission for adding a new question.
  */
 function handleAddQuestionSubmit(e) {
+    const form = e.target;
+const editId = form.dataset.editId;
+
     e.preventDefault();
     const statusDiv = document.getElementById('question-save-status');
     statusDiv.classList.add('hidden');
@@ -820,7 +1114,6 @@ function handleAddQuestionSubmit(e) {
         return;
     }
 
-    // Find the current max ID in the entire database (simple way to ensure uniqueness)
     let maxId = 0;
     Object.values(quizDB).forEach(subData => {
         Object.values(subData).forEach(topicArray => {
@@ -839,26 +1132,56 @@ function handleAddQuestionSubmit(e) {
         explanation: explanation,
     };
 
-    // Add question to the in-memory database object
-    if (quizDB[subject] && quizDB[subject][topic]) {
-        quizDB[subject][topic].push(newQuestion);
-        
-        // Success message and reset form (or you could just show success)
-        document.getElementById('add-question-form').reset();
-        statusDiv.textContent = `Success! Question ID ${newQuestion.id} added to ${subject} - ${topic}. (NOTE: Refresh required for changes to take full effect)`;
-        statusDiv.style.color = 'var(--success-color)';
-        statusDiv.classList.remove('hidden');
+   if (quizDB[subject] && quizDB[subject][topic]) {
+
+    if (editId) {
+        const index = quizDB[subject][topic]
+            .findIndex(q => q.id === Number(editId));
+
+        if (index === -1) {
+            statusDiv.textContent = "Error: Question not found for editing.";
+            statusDiv.style.color = 'var(--danger-color)';
+            statusDiv.classList.remove('hidden');
+            return;
+        }
+
+        quizDB[subject][topic][index] = {
+            ...quizDB[subject][topic][index],
+            question,
+            options,
+            answer,
+            explanation,
+            image
+        };
+
+        delete form.dataset.editId;
+
+        statusDiv.textContent = `Question ID ${editId} updated successfully.`;
     } else {
-        statusDiv.textContent = "Error: Subject or Topic structure not found in db.js.";
-        statusDiv.style.color = 'var(--danger-color)';
-        statusDiv.classList.remove('hidden');
+        quizDB[subject][topic].push(newQuestion);
+        statusDiv.textContent = `Success! Question ID ${newQuestion.id} added to ${subject} - ${topic}.`;
     }
+
+    // 🔐 Persist admin DB
+    localStorage.setItem(ADMIN_DB_KEY, JSON.stringify(quizDB));
+
+    form.reset();
+delete form.dataset.editId;
+
+    statusDiv.style.color = 'var(--success-color)';
+    statusDiv.classList.remove('hidden');
+
+} else {
+    statusDiv.textContent = "Error: Subject or Topic structure not found in db.js.";
+    statusDiv.style.color = 'var(--danger-color)';
+    statusDiv.classList.remove('hidden');
+}
+saveAdminDB();
+
 }
 
 /**
  * Renders the full list of all questions (Read function).
- * NOTE: Edit and Delete functionality require extensive DOM manipulation 
- * which is omitted here for brevity, focusing on the essential View.
  */
 function renderQuestionList() {
     DOM.adminContentArea.innerHTML = '<h3>All Questions in Database</h3><div id="question-list-container"></div>';
@@ -872,9 +1195,11 @@ function renderQuestionList() {
                 <tr>
                     <th>ID</th>
                     <th>Subject</th>
-                    <th>Topic</th>
+                    <th>Topic (Shuffle)</th>
                     <th>Question (Snippet)</th>
                     <th>Answer</th>
+                    <th>Actions</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -882,15 +1207,39 @@ function renderQuestionList() {
 
     Object.entries(quizDB).forEach(([subject, subData]) => {
         Object.entries(subData).forEach(([topic, topicArray]) => {
+            questionCount += topicArray.length;
+            
+            const isNonShuffling = topicArray.shuffle === false;
+            const shuffleDisplay = isNonShuffling ? 'Sequential' : 'Shuffling';
+
             topicArray.forEach(q => {
-                questionCount++;
+                const snippet = q.question.replace(/\n/g, ' ').substring(0, 50) + '...';
+
                 tableHTML += `
                     <tr>
                         <td>${q.id}</td>
                         <td>${subject}</td>
-                        <td>${topic}</td>
-                        <td>${q.question.substring(0, 50)}...</td>
+                        <td>${topic} (${shuffleDisplay})</td>
+                        <td>${snippet}</td>
                         <td>${q.answer}</td>
+<td>
+  <button class="control-btn danger delete-q-btn"
+    data-subject="${subject}"
+    data-topic="${topic}"
+    data-id="${q.id}">
+    Delete
+  </button>
+  <button class="control-btn primary edit-q-btn"
+  data-subject="${subject}"
+  data-topic="${topic}"
+  data-id="${q.id}">
+  Edit
+</button>
+
+
+
+</td>
+
                     </tr>
                 `;
             });
@@ -901,14 +1250,42 @@ function renderQuestionList() {
     listContainer.innerHTML = tableHTML;
 }
 
-// Ensure you also add the necessary CSS to style the admin table and controls.
-// --- 10. APPLICATION STARTUP ---
+function loadAdminDB() {
+    const savedDB = localStorage.getItem(ADMIN_DB_KEY);
+    if (!savedDB) return;
+
+    try {
+        const parsedDB = JSON.parse(savedDB);
+
+        // Merge saved DB into quizDB
+        Object.keys(parsedDB).forEach(subject => {
+            if (!quizDB[subject]) {
+                quizDB[subject] = parsedDB[subject];
+            } else {
+                Object.keys(parsedDB[subject]).forEach(topic => {
+                    if (!quizDB[subject][topic]) {
+                        quizDB[subject][topic] = parsedDB[subject][topic];
+                    } else {
+                        // Replace topic completely (safe & predictable)
+                        quizDB[subject][topic] = parsedDB[subject][topic];
+                    }
+                });
+            }
+        });
+
+        console.log("✅ Admin DB loaded from localStorage");
+    } catch (err) {
+        console.error("❌ Failed to load admin DB:", err);
+    }
+}
+
+// --- 11. APPLICATION STARTUP ---
 
 function initApp() {
+    loadAdminDB();          // 🔥 ADD THIS LINE FIRST
     initializeSetupScreens();
     setupEventListeners();
     
-    // STARTUP FIX: Navigate directly to 'home' if authenticated, otherwise go to 'login-gate'.
     const initialView = appState.isAuthenticated ? 'home' : 'login-gate';
     navigateTo(initialView, true);
 }
