@@ -953,7 +953,12 @@ function renderAddQuestionForm() {
                     <option value="">-- Select Topic --</option>
                 </select>
             </div>
-            
+            <div class="setup-step">
+    <button type="button" id="delete-topic-btn" class="control-btn danger" style="width:100%;">
+        Delete Selected Topic
+    </button>
+</div>
+
             <div class="setup-step" style="border: 1px solid #ffc107; background-color: #fffde7;">
                 <label for="new-topic-name" style="color: #ffc107;">3. Create New Topic:</label>
                 <input type="text" id="new-topic-name" placeholder="Enter NEW Topic Name">
@@ -995,11 +1000,11 @@ function renderAddQuestionForm() {
     const newTopicNameInput = document.getElementById('new-topic-name');
     const createNewTopicBtn = document.getElementById('create-new-topic-btn');
     const nonShufflingCheckbox = document.getElementById('new-topic-non-shuffling');
-const deleteTopicBtn = document.getElementById('delete-topic-btn');
-
+    const deleteTopicBtn = document.getElementById('delete-topic-btn');
 deleteTopicBtn.addEventListener('click', () => {
+
     if (appState.isQuizActive) {
-        alert("Cannot modify topics during an active exam.");
+        alert("Cannot delete topic during an active exam.");
         return;
     }
 
@@ -1007,7 +1012,7 @@ deleteTopicBtn.addEventListener('click', () => {
     const topic = topicSelect.value;
 
     if (!subject || !topic) {
-        alert("Please select a subject and topic first.");
+        alert("Please select subject and topic first.");
         return;
     }
 
@@ -1023,6 +1028,7 @@ deleteTopicBtn.addEventListener('click', () => {
     alert(`Topic "${topic}" deleted successfully.`);
     renderAddQuestionForm(); // refresh admin UI
 });
+
 
     const updateTopicDropdown = (selectedSubject) => {
         topicSelect.innerHTML = '<option value="">-- Select Topic --</option>';
@@ -1228,9 +1234,7 @@ function renderQuestionList() {
   data-id="${q.id}">
   Edit
 </button>
-<button id="delete-topic-btn" class="control-btn danger">
-  Delete Topic
-</button>
+
 
 
 </td>
